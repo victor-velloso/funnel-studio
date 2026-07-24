@@ -1,0 +1,24 @@
+{
+  "name": "funnel-studio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/fragment-mono": "^5.3.0",
+    "@fontsource/geist": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
+    "@xyflow/react": "^12.8.2",
+    "html-to-image": "^1.11.11",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
+}
