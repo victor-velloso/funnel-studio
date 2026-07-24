@@ -1,61 +1,10 @@
-import { useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { formatDate } from '../lib/storage.js'
+import { toast } from '../lib/toast.js'
+import { buildTemplate } from '../data/templates.js'
+import MiniPreview from './MiniPreview.jsx'
+import TemplateModal from './TemplateModal.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
-
-function MiniPreview({ nodes, edges }) {
-  if (!nodes.length) {
-    return (
-      <div className="card-preview card-preview--empty">
-        <span>Quadro vazio</span>
-      </div>
-    )
-  }
-  const xs = nodes.map((n) => n.position.x)
-  const ys = nodes.map((n) => n.position.y)
-  const minX = Math.min(...xs)
-  const minY = Math.min(...ys)
-  const w = Math.max(...xs) - minX + 1
-  const h = Math.max(...ys) - minY + 1
-  const scale = Math.min(180 / Math.max(w, 1), 84 / Math.max(h, 1))
-  const px = (x) => 10 + (x - minX) * scale
-  const py = (y) => 10 + (y - minY) * scale
-  const pos = Object.fromEntries(nodes.map((n) => [n.id, [px(n.position.x), py(n.position.y)]]))
-  return (
-    <svg className="card-preview" viewBox="0 0 200 104" aria-hidden="true">
-      {edges.map(
-        (e) =>
-          pos[e.source] &&
-          pos[e.target] && (
-            <line
-              key={e.id}
-              x1={pos[e.source][0]}
-              y1={pos[e.source][1]}
-              x2={pos[e.target][0]}
-              y2={pos[e.target][1]}
-              style={{ stroke: 'var(--border)' }}
-              strokeWidth="1.5"
-              strokeDasharray="3 3"
-            />
-          ),
-      )}
-      {nodes.map((n) => (
-        <rect
-          key={n.id}
-          x={pos[n.id][0] - 5}
-          y={pos[n.id][1] - 5}
-          width="10"
-          height="10"
-          rx="3"
-          style={{
-            fill: 'var(--bg-surface-alt)',
-            stroke: n.type === 'note' ? 'var(--border)' : 'var(--accent)',
-          }}
-          strokeWidth="1.5"
-        />
-      ))}
-    </svg>
-  )
-}
 
 function FunnelCard({ funnel, onOpen, onDuplicate, onRename, onDelete }) {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -122,6 +71,7 @@ function FunnelCard({ funnel, onOpen, onDuplicate, onRename, onDelete }) {
                 onClick={() => {
                   onDuplicate(funnel.id)
                   setMenuOpen(false)
+                  toast('Funil duplicado')
                 }}
               >
                 Duplicar
@@ -131,6 +81,7 @@ function FunnelCard({ funnel, onOpen, onDuplicate, onRename, onDelete }) {
                 onClick={() => {
                   if (confirmDelete) {
                     onDelete(funnel.id)
+                    toast('Funil excluído')
                   } else {
                     setConfirmDelete(true)
                   }
@@ -158,6 +109,15 @@ export default function Dashboard({
   onImport,
 }) {
   const fileRef = useRef(null)
+  const [showTemplates, setShowTemplates] = useState(false)
+  const [query, setQuery] = useState('')
+
+  const visible = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    return [...funnels]
+      .sort((a, b) => b.updatedAt - a.updatedAt)
+      .filter((f) => !q || f.name.toLowerCase().includes(q))
+  }, [funnels, query])
 
   function handleImportFile(e) {
     const file = e.target.files?.[0]
@@ -165,11 +125,18 @@ export default function Dashboard({
     file.text().then((text) => {
       try {
         onImport(JSON.parse(text))
+        toast('Funil importado')
       } catch {
-        alert('Arquivo inválido — esperado um .funnel.json exportado pelo Funnel Studio.')
+        toast('Arquivo inválido — esperado um .funnel.json', 'error')
       }
     })
     e.target.value = ''
+  }
+
+  function handlePickTemplate(spec) {
+    const { nodes, edges } = buildTemplate(spec)
+    onCreate(spec.id === 'blank' ? 'Funil sem título' : spec.name, nodes, edges)
+    setShowTemplates(false)
   }
 
   return (
@@ -185,7 +152,7 @@ export default function Dashboard({
           <button className="btn btn--secondary" onClick={() => fileRef.current?.click()}>
             Importar JSON
           </button>
-          <button className="btn btn--primary" onClick={() => onCreate('Funil sem título')}>
+          <button className="btn btn--primary" onClick={() => setShowTemplates(true)}>
             + Novo funil
           </button>
           <input
@@ -200,11 +167,26 @@ export default function Dashboard({
 
       <main className="dashboard__main">
         <div className="dashboard__heading">
-          <span className="badge">Planejamento visual</span>
-          <h1>
-            Seus <em>funis</em>
-          </h1>
-          <p>Desenhe, organize e compartilhe a arquitetura dos seus funis de venda.</p>
+          <div>
+            <span className="badge">Planejamento visual</span>
+            <h1>
+              Seus <em>funis</em>
+            </h1>
+            <p>Desenhe, organize e compartilhe a arquitetura dos seus funis de venda.</p>
+          </div>
+          {funnels.length > 0 && (
+            <div className="dashboard__search">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <circle cx="11" cy="11" r="6.5" />
+                <path d="m16 16 5 5" />
+              </svg>
+              <input
+                placeholder="Buscar funil…"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </div>
+          )}
         </div>
 
         {funnels.length === 0 ? (
@@ -213,14 +195,19 @@ export default function Dashboard({
               <path d="M3 4h18l-6.5 8v6.5L9.5 21v-9L3 4z" />
             </svg>
             <h2>Desenhe seu primeiro funil</h2>
-            <p>Crie um quadro em branco e arraste elementos de tráfego, páginas e ações.</p>
-            <button className="btn btn--primary" onClick={() => onCreate('Meu primeiro funil')}>
+            <p>Crie um quadro em branco ou parta de um template de VSL, webinar ou lançamento.</p>
+            <button className="btn btn--primary" onClick={() => setShowTemplates(true)}>
               + Criar funil
             </button>
           </div>
+        ) : visible.length === 0 ? (
+          <div className="empty-state">
+            <h2>Nenhum funil encontrado</h2>
+            <p>Nada com o nome “{query.trim()}”. Tente outra busca.</p>
+          </div>
         ) : (
           <div className="funnel-grid">
-            {funnels.map((f) => (
+            {visible.map((f) => (
               <FunnelCard
                 key={f.id}
                 funnel={f}
@@ -238,6 +225,10 @@ export default function Dashboard({
         <span>Elyon Studios™ — ferramenta interna</span>
         <span className="mono">100% offline · dados no seu navegador</span>
       </footer>
+
+      {showTemplates && (
+        <TemplateModal onPick={handlePickTemplate} onClose={() => setShowTemplates(false)} />
+      )}
     </div>
   )
 }

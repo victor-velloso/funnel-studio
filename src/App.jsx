@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import Dashboard from './components/Dashboard.jsx'
 import Editor from './components/Editor.jsx'
+import Toasts from './components/Toasts.jsx'
 import { loadWorkspace, saveWorkspace, newFunnel, uid } from './lib/storage.js'
 
 const THEME_KEY = 'elyon-funnel-studio:theme'
@@ -29,8 +30,8 @@ export default function App() {
   }, [])
 
   const createFunnel = useCallback(
-    (name) => {
-      const funnel = newFunnel(name)
+    (name, nodes = [], edges = []) => {
+      const funnel = newFunnel(name, nodes, edges)
       persist((ws) => ({ ...ws, funnels: [funnel, ...ws.funnels] }))
       setOpenId(funnel.id)
     },
@@ -106,31 +107,32 @@ export default function App() {
 
   const openFunnel = workspace.funnels.find((f) => f.id === openId)
 
-  if (openFunnel) {
-    return (
-      <Editor
-        key={openFunnel.id}
-        funnel={openFunnel}
-        theme={theme}
-        onToggleTheme={toggleTheme}
-        onBack={() => setOpenId(null)}
-        onChange={(patch) => updateFunnel(openFunnel.id, patch)}
-        onRename={(name) => renameFunnel(openFunnel.id, name)}
-      />
-    )
-  }
-
   return (
-    <Dashboard
-      funnels={workspace.funnels}
-      theme={theme}
-      onToggleTheme={toggleTheme}
-      onOpen={setOpenId}
-      onCreate={createFunnel}
-      onDuplicate={duplicateFunnel}
-      onRename={renameFunnel}
-      onDelete={deleteFunnel}
-      onImport={importFunnel}
-    />
+    <>
+      {openFunnel ? (
+        <Editor
+          key={openFunnel.id}
+          funnel={openFunnel}
+          theme={theme}
+          onToggleTheme={toggleTheme}
+          onBack={() => setOpenId(null)}
+          onChange={(patch) => updateFunnel(openFunnel.id, patch)}
+          onRename={(name) => renameFunnel(openFunnel.id, name)}
+        />
+      ) : (
+        <Dashboard
+          funnels={workspace.funnels}
+          theme={theme}
+          onToggleTheme={toggleTheme}
+          onOpen={setOpenId}
+          onCreate={createFunnel}
+          onDuplicate={duplicateFunnel}
+          onRename={renameFunnel}
+          onDelete={deleteFunnel}
+          onImport={importFunnel}
+        />
+      )}
+      <Toasts />
+    </>
   )
 }

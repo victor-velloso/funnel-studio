@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useReducer, useRef, useState } from 'react'
 import {
   ReactFlow,
   ReactFlowProvider,
@@ -8,26 +8,107 @@ import {
   Controls,
   Panel,
   ConnectionMode,
-  MarkerType,
   addEdge,
   applyNodeChanges,
   applyEdgeChanges,
   useReactFlow,
+  useViewport,
   getViewportForBounds,
 } from '@xyflow/react'
 import { toPng } from 'html-to-image'
 import { FunnelNode, NoteNode } from './FunnelNode.jsx'
+import LabeledEdge from './LabeledEdge.jsx'
 import Sidebar from './Sidebar.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
+import HelpModal from './HelpModal.jsx'
+import { EDGE_OPTIONS } from '../lib/flow.js'
+import { toast } from '../lib/toast.js'
 import { uid, downloadJSON, slug, formatTime } from '../lib/storage.js'
 
 const nodeTypes = { funnel: FunnelNode, note: NoteNode }
+const edgeTypes = { default: LabeledEdge }
 
-const edgeDefaults = {
-  type: 'default',
-  markerEnd: { type: MarkerType.ArrowClosed, width: 18, height: 18, color: '#8a8a8a' },
-  style: { stroke: '#6b6b6b', strokeWidth: 1.8, strokeDasharray: '7 5' },
+/* ---------- Histórico (undo/redo) ---------- */
+
+function snapshot(nodes, edges) {
+  return {
+    nodes: nodes.map((n) => ({ ...n, selected: false, dragging: false })),
+    edges: edges.map((e) =>
+      e.data?.editing ? { ...e, selected: false, data: { ...e.data, editing: false } } : { ...e, selected: false },
+    ),
+  }
 }
+
+function signature(snap) {
+  return JSON.stringify({
+    n: snap.nodes.map(({ id, type, position, data, style }) => ({ id, type, position, data, style })),
+    e: snap.edges.map(({ id, source, target, sourceHandle, targetHandle, data }) => ({
+      id,
+      source,
+      target,
+      sourceHandle,
+      targetHandle,
+      label: data?.label ?? '',
+    })),
+  })
+}
+
+function useHistory(nodes, edges, setNodes, setEdges) {
+  const past = useRef([])
+  const future = useRef([])
+  const settled = useRef(null)
+  const restoring = useRef(false)
+  const [, force] = useReducer((c) => c + 1, 0)
+
+  if (settled.current === null) settled.current = snapshot(nodes, edges)
+
+  // Comita um passo de histórico quando o estado "assenta" (320ms sem mudanças).
+  // Coalesce arrastes e digitação em passos únicos.
+  useEffect(() => {
+    if (restoring.current) {
+      restoring.current = false
+      settled.current = snapshot(nodes, edges)
+      return
+    }
+    const t = setTimeout(() => {
+      const cur = snapshot(nodes, edges)
+      if (signature(cur) !== signature(settled.current)) {
+        past.current.push(settled.current)
+        if (past.current.length > 60) past.current.shift()
+        future.current = []
+        settled.current = cur
+        force()
+      }
+    }, 320)
+    return () => clearTimeout(t)
+  }, [nodes, edges])
+
+  const undo = useCallback(() => {
+    if (!past.current.length) return
+    future.current.push(settled.current)
+    const prev = past.current.pop()
+    settled.current = prev
+    restoring.current = true
+    setNodes(prev.nodes)
+    setEdges(prev.edges)
+    force()
+  }, [setNodes, setEdges])
+
+  const redo = useCallback(() => {
+    if (!future.current.length) return
+    past.current.push(settled.current)
+    const next = future.current.pop()
+    settled.current = next
+    restoring.current = true
+    setNodes(next.nodes)
+    setEdges(next.edges)
+    force()
+  }, [setNodes, setEdges])
+
+  return { undo, redo, canUndo: past.current.length > 0, canRedo: future.current.length > 0 }
+}
+
+/* ---------- Toolbar ---------- */
 
 function Toolbar({
   name,
@@ -39,6 +120,10 @@ function Toolbar({
   onImportInto,
   theme,
   onToggleTheme,
+  undo,
+  redo,
+  canUndo,
+  canRedo,
 }) {
   const [editing, setEditing] = useState(false)
   const fileRef = useRef(null)
@@ -76,6 +161,19 @@ function Toolbar({
             {name}
           </button>
         )}
+        <div className="brand__divider" />
+        <button className="icon-btn" onClick={undo} disabled={!canUndo} aria-label="Desfazer" title="Desfazer (⌘Z)">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 14 4 9l5-5" />
+            <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H12" />
+          </svg>
+        </button>
+        <button className="icon-btn" onClick={redo} disabled={!canRedo} aria-label="Refazer" title="Refazer (⌘⇧Z)">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m15 14 5-5-5-5" />
+            <path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H12" />
+          </svg>
+        </button>
       </div>
 
       <div className="toolbar__right">
@@ -106,12 +204,35 @@ function Toolbar({
   )
 }
 
+/* ---------- Indicador de zoom ---------- */
+
+function ZoomBadge() {
+  const { zoom } = useViewport()
+  const { fitView } = useReactFlow()
+  return (
+    <button
+      className="zoom-badge mono"
+      onClick={() => fitView({ padding: 0.25, duration: 300 })}
+      title="Ajustar à tela"
+    >
+      {Math.round(zoom * 100)}%
+    </button>
+  )
+}
+
+/* ---------- Canvas ---------- */
+
 function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
   const [nodes, setNodes] = useState(funnel.nodes)
-  const [edges, setEdges] = useState(funnel.edges)
+  const [edges, setEdges] = useState(() =>
+    funnel.edges.map((e) => (e.data?.editing ? { ...e, data: { ...e.data, editing: false } } : e)),
+  )
   const [savedAt, setSavedAt] = useState(null)
+  const [helpOpen, setHelpOpen] = useState(false)
   const { screenToFlowPosition, getViewport, getNodesBounds } = useReactFlow()
   const wrapperRef = useRef(null)
+
+  const { undo, redo, canUndo, canRedo } = useHistory(nodes, edges, setNodes, setEdges)
 
   // Refs estáveis para o auto-save (onChange do App muda de identidade a cada render)
   const onChangeRef = useRef(onChange)
@@ -121,11 +242,13 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
 
   // Auto-save com debounce
   const firstRun = useRef(true)
+  const dirtyRef = useRef(false)
   useEffect(() => {
     if (firstRun.current) {
       firstRun.current = false
       return
     }
+    dirtyRef.current = true
     const t = setTimeout(() => {
       onChangeRef.current({ nodes, edges, viewport: getViewport() })
       setSavedAt(Date.now())
@@ -133,9 +256,11 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
     return () => clearTimeout(t)
   }, [nodes, edges, getViewport])
 
-  // Flush no unmount — sem isso, alterações feitas até 600ms antes de sair se perdem
+  // Flush no unmount — sem isso, alterações feitas até 600ms antes de sair se perdem.
+  // Só salva se algo mudou (evita gravar viewport pré-fitView no double-mount do StrictMode).
   useEffect(() => {
     return () => {
+      if (!dirtyRef.current) return
       let viewport = null
       try {
         viewport = getViewport()
@@ -155,9 +280,15 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
     [],
   )
   const onConnect = useCallback(
-    (connection) => setEdges((es) => addEdge({ ...connection, ...edgeDefaults }, es)),
+    (connection) => setEdges((es) => addEdge({ ...connection, ...EDGE_OPTIONS }, es)),
     [],
   )
+
+  const onEdgeDoubleClick = useCallback((_, edge) => {
+    setEdges((es) =>
+      es.map((e) => (e.id === edge.id ? { ...e, data: { ...e.data, editing: true } } : e)),
+    )
+  }, [])
 
   const addElement = useCallback(
     (payload) => {
@@ -194,18 +325,67 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
     [screenToFlowPosition],
   )
 
-  const selectedCount =
-    nodes.filter((n) => n.selected).length + edges.filter((e) => e.selected).length
+  const selectedNodeCount = nodes.filter((n) => n.selected).length
+  const selectedCount = selectedNodeCount + edges.filter((e) => e.selected).length
 
   const deleteSelection = useCallback(() => {
-    setNodes((ns) => {
-      const removed = new Set(ns.filter((n) => n.selected).map((n) => n.id))
-      setEdges((es) =>
-        es.filter((e) => !e.selected && !removed.has(e.source) && !removed.has(e.target)),
-      )
-      return ns.filter((n) => !n.selected)
+    const removed = new Set(nodes.filter((n) => n.selected).map((n) => n.id))
+    setNodes((ns) => ns.filter((n) => !n.selected))
+    setEdges((es) => es.filter((e) => !e.selected && !removed.has(e.source) && !removed.has(e.target)))
+  }, [nodes])
+
+  const duplicateSelection = useCallback(() => {
+    const selNodes = nodes.filter((n) => n.selected)
+    if (!selNodes.length) return
+    const idMap = {}
+    const clones = selNodes.map((n) => {
+      const nid = uid()
+      idMap[n.id] = nid
+      return {
+        ...structuredClone(n),
+        id: nid,
+        position: { x: n.position.x + 40, y: n.position.y + 40 },
+        selected: true,
+      }
     })
-  }, [])
+    const cloneEdges = edges
+      .filter((e) => idMap[e.source] && idMap[e.target])
+      .map((e) => ({
+        ...structuredClone(e),
+        id: uid(),
+        source: idMap[e.source],
+        target: idMap[e.target],
+        selected: false,
+      }))
+    setNodes((ns) => [...ns.map((n) => ({ ...n, selected: false })), ...clones])
+    setEdges((es) => [...es.map((e) => ({ ...e, selected: false })), ...cloneEdges])
+  }, [nodes, edges])
+
+  // Atalhos de teclado
+  useEffect(() => {
+    const onKey = (e) => {
+      const t = e.target
+      if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return
+      const mod = e.metaKey || e.ctrlKey
+      const k = e.key.toLowerCase()
+      if (mod && k === 'z' && !e.shiftKey) {
+        e.preventDefault()
+        undo()
+      } else if ((mod && k === 'z' && e.shiftKey) || (mod && k === 'y')) {
+        e.preventDefault()
+        redo()
+      } else if (mod && k === 'd') {
+        e.preventDefault()
+        duplicateSelection()
+      } else if (e.key === '?') {
+        setHelpOpen(true)
+      } else if (e.key === 'Escape') {
+        setHelpOpen(false)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [undo, redo, duplicateSelection])
 
   const onDragOver = useCallback((e) => {
     e.preventDefault()
@@ -248,6 +428,7 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
 
   const exportJSON = useCallback(() => {
     downloadJSON({ ...funnel, nodes, edges, viewport: getViewport() })
+    toast('JSON exportado')
   }, [funnel, nodes, edges, getViewport])
 
   const importInto = useCallback((text) => {
@@ -256,14 +437,15 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
       if (!Array.isArray(data.nodes)) throw new Error('sem nodes')
       setNodes(data.nodes)
       setEdges(Array.isArray(data.edges) ? data.edges : [])
+      toast('Funil importado no quadro')
     } catch {
-      alert('Arquivo inválido — esperado um .funnel.json exportado pelo Funnel Studio.')
+      toast('Arquivo inválido — esperado um .funnel.json', 'error')
     }
   }, [])
 
   const exportPNG = useCallback(() => {
     if (!nodes.length) {
-      alert('O quadro está vazio — adicione elementos antes de exportar.')
+      toast('O quadro está vazio — adicione elementos antes', 'error')
       return
     }
     const bounds = getNodesBounds(nodes.map((n) => n.id))
@@ -290,8 +472,9 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
         a.href = dataUrl
         a.download = `${slug(funnel.name)}.png`
         a.click()
+        toast('PNG exportado')
       })
-      .catch(() => alert('Não foi possível gerar o PNG. Tente novamente.'))
+      .catch(() => toast('Não foi possível gerar o PNG', 'error'))
   }, [nodes, funnel.name, getNodesBounds, theme])
 
   return (
@@ -306,6 +489,10 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
         onImportInto={importInto}
         theme={theme}
         onToggleTheme={onToggleTheme}
+        undo={undo}
+        redo={redo}
+        canUndo={canUndo}
+        canRedo={canRedo}
       />
       <div className="editor__body">
         <Sidebar onAdd={addElement} />
@@ -314,14 +501,16 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
             nodes={nodes}
             edges={edges}
             nodeTypes={nodeTypes}
+            edgeTypes={edgeTypes}
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
+            onEdgeDoubleClick={onEdgeDoubleClick}
             onDrop={onDrop}
             onDragOver={onDragOver}
             connectionMode={ConnectionMode.Loose}
             connectionRadius={34}
-            defaultEdgeOptions={edgeDefaults}
+            defaultEdgeOptions={EDGE_OPTIONS}
             connectionLineStyle={{ stroke: 'rgb(242, 86, 43)', strokeWidth: 1.8, strokeDasharray: '7 5' }}
             defaultViewport={funnel.viewport ?? undefined}
             fitView={!funnel.viewport && funnel.nodes.length > 0}
@@ -331,6 +520,8 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
             multiSelectionKeyCode={['Meta', 'Control']}
             proOptions={{ hideAttribution: true }}
             zoomOnDoubleClick={false}
+            snapToGrid
+            snapGrid={[11, 11]}
             minZoom={0.15}
             maxZoom={2.5}
           >
@@ -348,12 +539,26 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
               nodeColor={theme === 'light' ? '#DEDEDE' : '#4D4D4D'}
               nodeStrokeColor="transparent"
             />
+            <Controls showInteractive={false} position="bottom-left" />
+            <Panel position="bottom-left" className="zoom-panel">
+              <ZoomBadge />
+            </Panel>
+            <Panel position="top-right" className="help-panel">
+              <button className="icon-btn" onClick={() => setHelpOpen(true)} aria-label="Atalhos e ajuda" title="Atalhos (?)">
+                <span className="mono">?</span>
+              </button>
+            </Panel>
             {selectedCount > 0 && (
               <Panel position="bottom-center">
                 <div className="selection-bar">
                   <span>
                     {selectedCount} {selectedCount === 1 ? 'item selecionado' : 'itens selecionados'}
                   </span>
+                  {selectedNodeCount > 0 && (
+                    <button className="btn btn--secondary" onClick={duplicateSelection} title="Duplicar (⌘D)">
+                      Duplicar
+                    </button>
+                  )}
                   <button className="btn btn--danger" onClick={deleteSelection}>
                     <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M3.5 6h17M8 6V4.5A1.5 1.5 0 0 1 9.5 3h5A1.5 1.5 0 0 1 16 4.5V6M18.5 6l-.9 13a1.8 1.8 0 0 1-1.8 1.7H8.2a1.8 1.8 0 0 1-1.8-1.7L5.5 6M10 10.5v6M14 10.5v6" />
@@ -363,7 +568,6 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
                 </div>
               </Panel>
             )}
-            <Controls showInteractive={false} position="bottom-left" />
             {nodes.length === 0 && (
               <div className="canvas-empty">
                 <p className="mono">Quadro em branco</p>
@@ -372,6 +576,7 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
               </div>
             )}
           </ReactFlow>
+          {helpOpen && <HelpModal onClose={() => setHelpOpen(false)} />}
         </div>
       </div>
     </div>

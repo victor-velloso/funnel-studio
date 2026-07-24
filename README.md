@@ -14,8 +14,12 @@ Build de produção: `npm run build` (sai em `dist/`, deployável em qualquer ho
 
 ## Funcionalidades
 
-- **Dashboard multi-funil** — criar, renomear, duplicar e excluir funis; cards com mini-preview do desenho.
-- **Canvas** (React Flow) — zoom, pan, minimapa, seleção múltipla (Shift + arrastar).
+- **Dashboard multi-funil** — criar, renomear, duplicar e excluir funis; cards com mini-preview do desenho, busca e ordenação por recência.
+- **Templates prontos** — novo funil pode partir de estruturas completas: Funil de VSL, Webinar, Lançamento ou Isca + Nutrição.
+- **Undo/Redo** — ⌘Z / ⌘⇧Z (ou botões na toolbar), com histórico de até 60 passos.
+- **Rótulos nas conexões** — duplo clique numa seta para anotar ("32% assistem", "e-mail D+1"…).
+- **Duplicar seleção** — ⌘D ou botão na barra flutuante; preserva conexões internas.
+- **Canvas** (React Flow) — zoom, pan, minimapa, seleção múltipla (Shift + arrastar), snap ao grid, indicador de zoom (clique = ajustar à tela) e painel de atalhos (botão "?").
 - **35 elementos** em 5 categorias: Tráfego, Páginas, Marcos (Lead, Cliente, Venda Perdida — losangos), Ações e Conteúdo — arraste para o quadro ou duplo clique para adicionar ao centro.
 - **Páginas como mini-navegadores** — cada tipo de página renderiza como uma janelinha de browser com wireframe próprio (captura, VSL, checkout, webinar…), estilo Funnelytics.
 - **Conexões** — arraste a partir das bordas de um elemento; setas tracejadas animadas, accent ao selecionar.

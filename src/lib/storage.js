@@ -19,15 +19,15 @@ export function saveWorkspace(ws) {
   localStorage.setItem(KEY, JSON.stringify(ws))
 }
 
-export function newFunnel(name = 'Funil sem título') {
+export function newFunnel(name = 'Funil sem título', nodes = [], edges = []) {
   const now = Date.now()
   return {
     id: uid(),
     name,
     createdAt: now,
     updatedAt: now,
-    nodes: [],
-    edges: [],
+    nodes,
+    edges,
     viewport: null,
   }
 }
