@@ -22,6 +22,7 @@ import Sidebar from './Sidebar.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
 import HelpModal from './HelpModal.jsx'
 import { EDGE_OPTIONS } from '../lib/flow.js'
+import { layoutNodes } from '../lib/layout.js'
 import { toast } from '../lib/toast.js'
 import { uid, downloadJSON, slug, formatTime } from '../lib/storage.js'
 
@@ -124,6 +125,8 @@ function Toolbar({
   redo,
   canUndo,
   canRedo,
+  onAutoLayout,
+  canLayout,
 }) {
   const [editing, setEditing] = useState(false)
   const fileRef = useRef(null)
@@ -172,6 +175,20 @@ function Toolbar({
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="m15 14 5-5-5-5" />
             <path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H12" />
+          </svg>
+        </button>
+        <button
+          className="icon-btn"
+          onClick={onAutoLayout}
+          disabled={!canLayout}
+          aria-label="Organizar o quadro"
+          title="Organizar o quadro (auto-layout) — ⌘Z desfaz"
+        >
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2.5" y="9.5" width="6" height="5" rx="1.5" />
+            <rect x="15.5" y="3" width="6" height="5" rx="1.5" />
+            <rect x="15.5" y="16" width="6" height="5" rx="1.5" />
+            <path d="M8.5 12h3.5m0 0V5.5h3.5M12 12v6.5h3.5" />
           </svg>
         </button>
       </div>
@@ -229,7 +246,7 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
   )
   const [savedAt, setSavedAt] = useState(null)
   const [helpOpen, setHelpOpen] = useState(false)
-  const { screenToFlowPosition, getViewport, getNodesBounds } = useReactFlow()
+  const { screenToFlowPosition, getViewport, getNodesBounds, fitView } = useReactFlow()
   const wrapperRef = useRef(null)
 
   const { undo, redo, canUndo, canRedo } = useHistory(nodes, edges, setNodes, setEdges)
@@ -360,6 +377,15 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
     setNodes((ns) => [...ns.map((n) => ({ ...n, selected: false })), ...clones])
     setEdges((es) => [...es.map((e) => ({ ...e, selected: false })), ...cloneEdges])
   }, [nodes, edges])
+
+  // Auto-layout sob demanda (nunca automático) — entra no histórico, ⌘Z desfaz
+  const autoLayout = useCallback(() => {
+    if (!nodes.length) return
+    setNodes(layoutNodes(nodes, edges))
+    setEdges((es) => es.map((e) => ({ ...e, sourceHandle: 'right', targetHandle: 'left' })))
+    setTimeout(() => fitView({ padding: 0.25, duration: 300 }), 80)
+    toast('Quadro organizado — ⌘Z desfaz')
+  }, [nodes, edges, fitView])
 
   // Atalhos de teclado
   useEffect(() => {
@@ -493,6 +519,8 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
         redo={redo}
         canUndo={canUndo}
         canRedo={canRedo}
+        onAutoLayout={autoLayout}
+        canLayout={nodes.length > 0}
       />
       <div className="editor__body">
         <Sidebar onAdd={addElement} />

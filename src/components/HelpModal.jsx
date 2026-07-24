@@ -10,6 +10,7 @@ const SHORTCUTS = [
   ['Shift + arrastar', 'Seleção em área'],
   ['⌘/Ctrl + clique', 'Adicionar à seleção'],
   ['Scroll / pinch', 'Zoom'],
+  ['Botão de organizar (barra superior)', 'Auto-layout do quadro'],
 ]
 
 export default function HelpModal({ onClose }) {
