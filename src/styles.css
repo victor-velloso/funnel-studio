@@ -295,12 +295,16 @@ body {
 }
 
 .funnel-card {
+  position: relative;
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
-  overflow: hidden;
+  /* sem overflow:hidden — cortaria o menu de opções (⋯) que abre para fora do card */
   cursor: pointer;
   transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.funnel-card > .card-preview {
+  border-radius: 17px 17px 0 0; /* r-lg menos a borda de 1px */
 }
 .funnel-card:hover {
   border-color: var(--fg-secondary);
