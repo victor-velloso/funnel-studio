@@ -125,9 +125,6 @@ export const FunnelNode = memo(function FunnelNode({ id, data, selected }) {
 
   return (
     <div className={`fnode ${selected ? 'is-selected' : ''}`}>
-      <NodeToolbar isVisible={selected} position={Position.Top} offset={10}>
-        <ColorSwatches id={id} current={data.color} />
-      </NodeToolbar>
       {category === 'pages' ? (
         <div className={`pnode ${colorClass}`} style={colorStyle}>
           <div className="pnode__bar">
@@ -215,20 +212,17 @@ export const TextNode = memo(function TextNode({ id, data, selected }) {
       style={data.color ? { '--tint': data.color } : undefined}
     >
       <NodeToolbar isVisible={selected && !editing} position={Position.Top} offset={10}>
-        <div className="node-toolbar-row">
-          <div className="tnode__sizes">
-            {TEXT_SIZES.map((s) => (
-              <button
-                key={s.id}
-                className={`mono ${s.id === size ? 'is-active' : ''}`}
-                onClick={() => patch({ size: s.id })}
-                title={`Tamanho ${s.label}`}
-              >
-                {s.label}
-              </button>
-            ))}
-          </div>
-          <ColorSwatches id={id} current={data.color} />
+        <div className="tnode__sizes">
+          {TEXT_SIZES.map((s) => (
+            <button
+              key={s.id}
+              className={`mono ${s.id === size ? 'is-active' : ''}`}
+              onClick={() => patch({ size: s.id })}
+              title={`Tamanho ${s.label}`}
+            >
+              {s.label}
+            </button>
+          ))}
         </div>
       </NodeToolbar>
       {editing ? (
@@ -281,9 +275,6 @@ export const NoteNode = memo(function NoteNode({ id, data, selected }) {
       className={`nnode ${selected ? 'is-selected' : ''} ${data.color ? 'has-color' : ''}`}
       style={data.color ? { '--tint': data.color } : undefined}
     >
-      <NodeToolbar isVisible={selected} position={Position.Top} offset={10}>
-        <ColorSwatches id={id} current={data.color} />
-      </NodeToolbar>
       <NodeResizer
         isVisible={selected}
         minWidth={160}

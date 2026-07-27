@@ -1000,11 +1000,16 @@ body {
   color: var(--tint);
 }
 
-/* Seletor de cores (toolbar flutuante) */
-.node-toolbar-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* Seletor de cores (dentro do menu de contexto) */
+.menu__swatches {
+  padding: 4px 6px 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 4px;
+}
+.menu__swatches .color-swatches {
+  background: none;
+  border: none;
+  padding: 4px 6px;
 }
 .color-swatches {
   display: flex;

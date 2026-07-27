@@ -16,7 +16,7 @@ import {
   getViewportForBounds,
 } from '@xyflow/react'
 import { toPng } from 'html-to-image'
-import { FunnelNode, NoteNode, TextNode } from './FunnelNode.jsx'
+import { FunnelNode, NoteNode, TextNode, ColorSwatches } from './FunnelNode.jsx'
 import LabeledEdge from './LabeledEdge.jsx'
 import Sidebar from './Sidebar.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
@@ -746,6 +746,12 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
             <div className="menu menu--ctx" style={{ left: ctxMenu.x, top: ctxMenu.y }}>
               {ctxMenu.type === 'node' ? (
                 <>
+                  <div className="menu__swatches">
+                    <ColorSwatches
+                      id={ctxMenu.id}
+                      current={nodes.find((n) => n.id === ctxMenu.id)?.data?.color}
+                    />
+                  </div>
                   <button
                     onClick={() => {
                       requestEdit(ctxMenu.id)
