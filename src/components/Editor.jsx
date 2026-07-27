@@ -28,6 +28,10 @@ import { uid, downloadJSON, slug, formatTime } from '../lib/storage.js'
 
 const nodeTypes = { funnel: FunnelNode, note: NoteNode, text: TextNode }
 
+// Área de transferência interna (nível de módulo: sobrevive à troca de funil
+// na mesma sessão, permitindo copiar de um funil e colar em outro)
+let clipboard = null
+
 function newCanvasNode(payload, position) {
   if (payload.kind === 'note') {
     return {
@@ -450,6 +454,49 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
     setEdges((es) => es.filter((e) => e.id !== id))
   }, [])
 
+  // Copiar / recortar / colar
+  const copySelection = useCallback(() => {
+    const sel = nodes.filter((n) => n.selected)
+    if (!sel.length) return false
+    const ids = new Set(sel.map((n) => n.id))
+    clipboard = {
+      nodes: structuredClone(sel).map((n) => ({
+        ...n,
+        data: n.data?.editRequested ? { ...n.data, editRequested: undefined } : n.data,
+      })),
+      edges: structuredClone(edges.filter((e) => ids.has(e.source) && ids.has(e.target))),
+      pastes: 0,
+    }
+    toast(sel.length === 1 ? 'Elemento copiado' : `${sel.length} elementos copiados`)
+    return true
+  }, [nodes, edges])
+
+  const pasteClipboard = useCallback(() => {
+    if (!clipboard?.nodes.length) return
+    clipboard.pastes += 1
+    const off = 40 * clipboard.pastes
+    const idMap = {}
+    const clones = clipboard.nodes.map((n) => {
+      const nid = uid()
+      idMap[n.id] = nid
+      return {
+        ...structuredClone(n),
+        id: nid,
+        position: { x: n.position.x + off, y: n.position.y + off },
+        selected: true,
+      }
+    })
+    const cloneEdges = clipboard.edges.map((e) => ({
+      ...structuredClone(e),
+      id: uid(),
+      source: idMap[e.source],
+      target: idMap[e.target],
+      selected: false,
+    }))
+    setNodes((ns) => [...ns.map((n) => ({ ...n, selected: false })), ...clones])
+    setEdges((es) => [...es.map((e) => ({ ...e, selected: false })), ...cloneEdges])
+  }, [])
+
   // Auto-layout sob demanda (nunca automático) — entra no histórico, ⌘Z desfaz
   const autoLayout = useCallback(() => {
     if (!nodes.length) return
@@ -475,6 +522,18 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
       } else if (mod && k === 'd') {
         e.preventDefault()
         duplicateSelection()
+      } else if (mod && k === 'c') {
+        if (copySelection()) e.preventDefault()
+      } else if (mod && k === 'x') {
+        if (copySelection()) {
+          e.preventDefault()
+          deleteSelection()
+        }
+      } else if (mod && k === 'v') {
+        if (clipboard?.nodes.length) {
+          e.preventDefault()
+          pasteClipboard()
+        }
       } else if (e.key === '?') {
         setHelpOpen(true)
       } else if (e.key === 'Escape') {
@@ -484,7 +543,7 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [undo, redo, duplicateSelection, closeCtx])
+  }, [undo, redo, duplicateSelection, copySelection, pasteClipboard, deleteSelection, closeCtx])
 
   const onDragOver = useCallback((e) => {
     e.preventDefault()
