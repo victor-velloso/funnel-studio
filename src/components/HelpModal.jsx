@@ -3,6 +3,7 @@ const SHORTCUTS = [
   ['Duplo clique na conexão', 'Rotular a conexão'],
   ['Clique no rótulo (elemento selecionado)', 'Editar o texto'],
   ['Duplo clique no elemento da barra lateral', 'Adicionar ao centro'],
+  ['Botão direito no elemento ou conexão', 'Renomear · Duplicar · Excluir'],
   ['Delete / Backspace', 'Excluir seleção'],
   ['⌘Z / Ctrl+Z', 'Desfazer'],
   ['⌘⇧Z / Ctrl+Shift+Z', 'Refazer'],

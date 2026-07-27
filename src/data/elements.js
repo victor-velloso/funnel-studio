@@ -144,6 +144,7 @@ export const ICONS = {
     '<path d="M12 3v11"/><path d="m7.5 10 4.5 4.5L16.5 10"/><path d="M4 17v2.5A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5V17"/>',
 
   note: '<path d="M5 3.5h14A1.5 1.5 0 0 1 20.5 5v9.5L14.5 20.5H5A1.5 1.5 0 0 1 3.5 19V5A1.5 1.5 0 0 1 5 3.5z"/><path d="M14.5 20.5V15a.5.5 0 0 1 .5-.5h5.5"/>',
+  text: '<path d="M5 7V4.5h14V7"/><path d="M12 4.5V19.5"/><path d="M8.5 19.5h7"/>',
 }
 
 // Wireframes das páginas (corpo da mini-janela de navegador, viewBox 0 0 64 60).

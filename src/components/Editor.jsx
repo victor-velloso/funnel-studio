@@ -16,7 +16,7 @@ import {
   getViewportForBounds,
 } from '@xyflow/react'
 import { toPng } from 'html-to-image'
-import { FunnelNode, NoteNode } from './FunnelNode.jsx'
+import { FunnelNode, NoteNode, TextNode } from './FunnelNode.jsx'
 import LabeledEdge from './LabeledEdge.jsx'
 import Sidebar from './Sidebar.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
@@ -26,14 +26,45 @@ import { layoutNodes } from '../lib/layout.js'
 import { toast } from '../lib/toast.js'
 import { uid, downloadJSON, slug, formatTime } from '../lib/storage.js'
 
-const nodeTypes = { funnel: FunnelNode, note: NoteNode }
+const nodeTypes = { funnel: FunnelNode, note: NoteNode, text: TextNode }
+
+function newCanvasNode(payload, position) {
+  if (payload.kind === 'note') {
+    return {
+      id: uid(),
+      type: 'note',
+      position: { x: position.x - 110, y: position.y - 50 },
+      data: { text: '' },
+      style: { width: 220, height: 100 },
+    }
+  }
+  if (payload.kind === 'text') {
+    return {
+      id: uid(),
+      type: 'text',
+      position: { x: position.x - 60, y: position.y - 16 },
+      data: { text: '', size: 'md' },
+    }
+  }
+  return {
+    id: uid(),
+    type: 'funnel',
+    position: { x: position.x - 44, y: position.y - 44 },
+    data: { label: payload.label, icon: payload.type },
+  }
+}
 const edgeTypes = { default: LabeledEdge }
 
 /* ---------- Histórico (undo/redo) ---------- */
 
 function snapshot(nodes, edges) {
   return {
-    nodes: nodes.map((n) => ({ ...n, selected: false, dragging: false })),
+    nodes: nodes.map((n) => ({
+      ...n,
+      selected: false,
+      dragging: false,
+      data: n.data?.editRequested ? { ...n.data, editRequested: undefined } : n.data,
+    })),
     edges: edges.map((e) =>
       e.data?.editing ? { ...e, selected: false, data: { ...e.data, editing: false } } : { ...e, selected: false },
     ),
@@ -246,6 +277,8 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
   )
   const [savedAt, setSavedAt] = useState(null)
   const [helpOpen, setHelpOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [ctxMenu, setCtxMenu] = useState(null)
   const { screenToFlowPosition, getViewport, getNodesBounds, fitView } = useReactFlow()
   const wrapperRef = useRef(null)
 
@@ -316,28 +349,7 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
         x: rect.left + rect.width / 2 + jitter(),
         y: rect.top + rect.height / 2 + jitter(),
       })
-      if (payload.kind === 'note') {
-        setNodes((ns) => [
-          ...ns,
-          {
-            id: uid(),
-            type: 'note',
-            position: { x: position.x - 110, y: position.y - 50 },
-            data: { text: '' },
-            style: { width: 220, height: 100 },
-          },
-        ])
-      } else {
-        setNodes((ns) => [
-          ...ns,
-          {
-            id: uid(),
-            type: 'funnel',
-            position: { x: position.x - 44, y: position.y - 44 },
-            data: { label: payload.label, icon: payload.type },
-          },
-        ])
-      }
+      setNodes((ns) => [...ns, newCanvasNode(payload, position)])
     },
     [screenToFlowPosition],
   )
@@ -351,32 +363,92 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
     setEdges((es) => es.filter((e) => !e.selected && !removed.has(e.source) && !removed.has(e.target)))
   }, [nodes])
 
-  const duplicateSelection = useCallback(() => {
-    const selNodes = nodes.filter((n) => n.selected)
-    if (!selNodes.length) return
-    const idMap = {}
-    const clones = selNodes.map((n) => {
-      const nid = uid()
-      idMap[n.id] = nid
-      return {
-        ...structuredClone(n),
-        id: nid,
-        position: { x: n.position.x + 40, y: n.position.y + 40 },
-        selected: true,
-      }
+  const duplicateNodes = useCallback(
+    (ids) => {
+      const idSet = new Set(ids)
+      const selNodes = nodes.filter((n) => idSet.has(n.id))
+      if (!selNodes.length) return
+      const idMap = {}
+      const clones = selNodes.map((n) => {
+        const nid = uid()
+        idMap[n.id] = nid
+        return {
+          ...structuredClone(n),
+          id: nid,
+          position: { x: n.position.x + 40, y: n.position.y + 40 },
+          selected: true,
+        }
+      })
+      const cloneEdges = edges
+        .filter((e) => idMap[e.source] && idMap[e.target])
+        .map((e) => ({
+          ...structuredClone(e),
+          id: uid(),
+          source: idMap[e.source],
+          target: idMap[e.target],
+          selected: false,
+        }))
+      setNodes((ns) => [...ns.map((n) => ({ ...n, selected: false })), ...clones])
+      setEdges((es) => [...es.map((e) => ({ ...e, selected: false })), ...cloneEdges])
+    },
+    [nodes, edges],
+  )
+
+  const duplicateSelection = useCallback(
+    () => duplicateNodes(nodes.filter((n) => n.selected).map((n) => n.id)),
+    [duplicateNodes, nodes],
+  )
+
+  // Menu de contexto (botão direito em elementos e conexões)
+  const closeCtx = useCallback(() => setCtxMenu(null), [])
+
+  const openCtx = useCallback((e, target) => {
+    e.preventDefault()
+    const rect = wrapperRef.current?.getBoundingClientRect()
+    if (!rect) return
+    setCtxMenu({
+      ...target,
+      x: Math.min(e.clientX - rect.left, rect.width - 200),
+      y: Math.min(e.clientY - rect.top, rect.height - 150),
     })
-    const cloneEdges = edges
-      .filter((e) => idMap[e.source] && idMap[e.target])
-      .map((e) => ({
-        ...structuredClone(e),
-        id: uid(),
-        source: idMap[e.source],
-        target: idMap[e.target],
-        selected: false,
-      }))
-    setNodes((ns) => [...ns.map((n) => ({ ...n, selected: false })), ...clones])
-    setEdges((es) => [...es.map((e) => ({ ...e, selected: false })), ...cloneEdges])
-  }, [nodes, edges])
+  }, [])
+
+  const onNodeContextMenu = useCallback(
+    (e, node) => openCtx(e, { type: 'node', id: node.id, nodeType: node.type }),
+    [openCtx],
+  )
+  const onEdgeContextMenu = useCallback(
+    (e, edge) => openCtx(e, { type: 'edge', id: edge.id }),
+    [openCtx],
+  )
+  const onPaneContextMenu = useCallback(
+    (e) => {
+      e.preventDefault()
+      closeCtx()
+    },
+    [closeCtx],
+  )
+
+  const requestEdit = useCallback((id) => {
+    setNodes((ns) =>
+      ns.map((n) => (n.id === id ? { ...n, data: { ...n.data, editRequested: true } } : n)),
+    )
+  }, [])
+
+  const requestEdgeLabel = useCallback((id) => {
+    setEdges((es) =>
+      es.map((e) => (e.id === id ? { ...e, data: { ...e.data, editing: true } } : e)),
+    )
+  }, [])
+
+  const deleteNode = useCallback((id) => {
+    setNodes((ns) => ns.filter((n) => n.id !== id))
+    setEdges((es) => es.filter((e) => e.source !== id && e.target !== id))
+  }, [])
+
+  const deleteEdge = useCallback((id) => {
+    setEdges((es) => es.filter((e) => e.id !== id))
+  }, [])
 
   // Auto-layout sob demanda (nunca automático) — entra no histórico, ⌘Z desfaz
   const autoLayout = useCallback(() => {
@@ -407,11 +479,12 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
         setHelpOpen(true)
       } else if (e.key === 'Escape') {
         setHelpOpen(false)
+        closeCtx()
       }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [undo, redo, duplicateSelection])
+  }, [undo, redo, duplicateSelection, closeCtx])
 
   const onDragOver = useCallback((e) => {
     e.preventDefault()
@@ -425,29 +498,7 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
       if (!raw) return
       const payload = JSON.parse(raw)
       const position = screenToFlowPosition({ x: e.clientX, y: e.clientY })
-
-      if (payload.kind === 'note') {
-        setNodes((ns) => [
-          ...ns,
-          {
-            id: uid(),
-            type: 'note',
-            position: { x: position.x - 110, y: position.y - 50 },
-            data: { text: '' },
-            style: { width: 220, height: 100 },
-          },
-        ])
-      } else {
-        setNodes((ns) => [
-          ...ns,
-          {
-            id: uid(),
-            type: 'funnel',
-            position: { x: position.x - 44, y: position.y - 44 },
-            data: { label: payload.label, icon: payload.type },
-          },
-        ])
-      }
+      setNodes((ns) => [...ns, newCanvasNode(payload, position)])
     },
     [screenToFlowPosition],
   )
@@ -523,7 +574,7 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
         canLayout={nodes.length > 0}
       />
       <div className="editor__body">
-        <Sidebar onAdd={addElement} />
+        <Sidebar onAdd={addElement} collapsed={!sidebarOpen} />
         <div className="editor__canvas" ref={wrapperRef}>
           <ReactFlow
             nodes={nodes}
@@ -534,6 +585,12 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
             onEdgeDoubleClick={onEdgeDoubleClick}
+            onNodeContextMenu={onNodeContextMenu}
+            onEdgeContextMenu={onEdgeContextMenu}
+            onPaneContextMenu={onPaneContextMenu}
+            onPaneClick={closeCtx}
+            onMoveStart={closeCtx}
+            onNodeDragStart={closeCtx}
             onDrop={onDrop}
             onDragOver={onDragOver}
             connectionMode={ConnectionMode.Loose}
@@ -571,6 +628,28 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
             <Panel position="bottom-left" className="zoom-panel">
               <ZoomBadge />
             </Panel>
+            <Panel position="top-left" className="help-panel">
+              <button
+                className="icon-btn"
+                onClick={() => setSidebarOpen((v) => !v)}
+                aria-label={sidebarOpen ? 'Ocultar barra de elementos' : 'Mostrar barra de elementos'}
+                title={sidebarOpen ? 'Ocultar barra de elementos' : 'Mostrar barra de elementos'}
+              >
+                {sidebarOpen ? (
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="4" width="18" height="16" rx="2.5" />
+                    <path d="M9.5 4v16" />
+                    <path d="m16 10-2 2 2 2" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="4" width="18" height="16" rx="2.5" />
+                    <path d="M9.5 4v16" />
+                    <path d="m14 10 2 2-2 2" />
+                  </svg>
+                )}
+              </button>
+            </Panel>
             <Panel position="top-right" className="help-panel">
               <button className="icon-btn" onClick={() => setHelpOpen(true)} aria-label="Atalhos e ajuda" title="Atalhos (?)">
                 <span className="mono">?</span>
@@ -604,6 +683,59 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
               </div>
             )}
           </ReactFlow>
+          {ctxMenu && (
+            <div className="menu menu--ctx" style={{ left: ctxMenu.x, top: ctxMenu.y }}>
+              {ctxMenu.type === 'node' ? (
+                <>
+                  <button
+                    onClick={() => {
+                      requestEdit(ctxMenu.id)
+                      closeCtx()
+                    }}
+                  >
+                    {ctxMenu.nodeType === 'funnel' ? 'Renomear' : 'Editar texto'}
+                  </button>
+                  <button
+                    onClick={() => {
+                      duplicateNodes([ctxMenu.id])
+                      closeCtx()
+                    }}
+                  >
+                    Duplicar
+                  </button>
+                  <button
+                    className="menu__danger"
+                    onClick={() => {
+                      deleteNode(ctxMenu.id)
+                      closeCtx()
+                    }}
+                  >
+                    Excluir
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => {
+                      requestEdgeLabel(ctxMenu.id)
+                      closeCtx()
+                    }}
+                  >
+                    Rotular
+                  </button>
+                  <button
+                    className="menu__danger"
+                    onClick={() => {
+                      deleteEdge(ctxMenu.id)
+                      closeCtx()
+                    }}
+                  >
+                    Excluir
+                  </button>
+                </>
+              )}
+            </div>
+          )}
           {helpOpen && <HelpModal onClose={() => setHelpOpen(false)} />}
         </div>
       </div>

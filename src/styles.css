@@ -409,6 +409,14 @@ body {
   color: var(--accent) !important;
 }
 
+/* Menu de contexto (botão direito no quadro) */
+.menu--ctx {
+  right: auto;
+  top: auto;
+  z-index: 9;
+  animation: fs-fade 0.12s var(--ease);
+}
+
 .empty-state {
   border: 1px dashed var(--border);
   border-radius: var(--r-lg);
@@ -508,10 +516,21 @@ body {
 .sidebar {
   width: 264px;
   flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
+  overflow: hidden;
   background: var(--bg-surface);
   border-right: 1px solid var(--border-subtle);
+  min-height: 0;
+  transition: width 0.25s var(--ease);
+}
+.sidebar.is-collapsed {
+  width: 0;
+  border-right-color: transparent;
+}
+.sidebar__inner {
+  width: 264px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   min-height: 0;
 }
 
@@ -735,10 +754,16 @@ body {
   border-radius: 8px;
   color: var(--fg-primary);
   font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 130%;
   padding: 3px 6px;
   width: 110px;
   outline: none;
   text-align: center;
+  resize: none;
+  overflow: hidden;
+  display: block;
 }
 
 /* Nó de marco (losango, estilo Funnelytics) */
@@ -829,6 +854,111 @@ body {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/* Nó de texto livre (transparente, escrita direta no quadro) */
+.tnode {
+  position: relative;
+  color: var(--fg-primary);
+  outline: 1px dashed transparent;
+  outline-offset: 7px;
+  border-radius: 2px;
+  transition: outline-color 0.15s var(--ease);
+}
+.tnode:hover {
+  outline-color: var(--border);
+}
+.tnode.is-selected {
+  outline-color: var(--accent);
+}
+.tnode span,
+.tnode textarea {
+  display: block;
+  white-space: pre-wrap;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+.tnode span {
+  cursor: text;
+  min-width: 24px;
+}
+.tnode textarea {
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  caret-color: var(--accent);
+}
+.tnode textarea::placeholder,
+.tnode__placeholder {
+  color: var(--fg-muted);
+}
+
+.tnode--sm {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%;
+  max-width: 280px;
+}
+.tnode--sm textarea {
+  width: 220px;
+}
+.tnode--md {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 135%;
+  max-width: 360px;
+}
+.tnode--md textarea {
+  width: 280px;
+}
+.tnode--lg {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 120%;
+  max-width: 520px;
+}
+.tnode--lg textarea {
+  width: 400px;
+}
+
+.tnode__sizes {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 3px;
+}
+.tnode__sizes button {
+  background: none;
+  border: none;
+  color: var(--fg-secondary);
+  font-size: 10px;
+  width: 24px;
+  height: 22px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: color 0.15s var(--ease), background 0.15s var(--ease);
+}
+.tnode__sizes button:hover {
+  color: var(--fg-primary);
+}
+.tnode__sizes button.is-active {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 /* Handles */

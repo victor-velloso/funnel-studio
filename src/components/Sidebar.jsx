@@ -36,7 +36,7 @@ function ElementTile({ item, category, onAdd }) {
   )
 }
 
-export default function Sidebar({ onAdd }) {
+export default function Sidebar({ onAdd, collapsed }) {
   const [query, setQuery] = useState('')
   const q = query.trim().toLowerCase()
 
@@ -51,7 +51,8 @@ export default function Sidebar({ onAdd }) {
   }
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${collapsed ? 'is-collapsed' : ''}`}>
+      <div className="sidebar__inner">
       <div className="sidebar__search">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
           <circle cx="11" cy="11" r="6.5" />
@@ -84,6 +85,30 @@ export default function Sidebar({ onAdd }) {
               type="button"
               className="note-tile"
               draggable
+              onDragStart={(e) => {
+                e.dataTransfer.setData('application/funnelstudio', JSON.stringify({ kind: 'text' }))
+                e.dataTransfer.effectAllowed = 'move'
+              }}
+              onDoubleClick={() => onAdd({ kind: 'text' })}
+              title="Arraste para escrever direto no quadro (ou duplo clique)"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                dangerouslySetInnerHTML={{ __html: ICONS.text }}
+              />
+              <span>Texto livre</span>
+            </button>
+            <button
+              type="button"
+              className="note-tile"
+              draggable
               onDragStart={onDragStartNote}
               onDoubleClick={() => onAdd({ kind: 'note' })}
               title="Arraste para adicionar uma nota (ou duplo clique)"
@@ -106,6 +131,7 @@ export default function Sidebar({ onAdd }) {
       </div>
 
       <div className="sidebar__hint mono">Arraste um elemento para o quadro</div>
+      </div>
     </aside>
   )
 }
