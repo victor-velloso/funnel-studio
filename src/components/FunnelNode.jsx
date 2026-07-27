@@ -137,6 +137,7 @@ const TEXT_SIZES = [
   { id: 'sm', label: 'P' },
   { id: 'md', label: 'M' },
   { id: 'lg', label: 'G' },
+  { id: 'xl', label: 'GG' },
 ]
 
 // Texto livre: escrita direta no quadro, sem card — fundo transparente.
