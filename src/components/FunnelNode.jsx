@@ -9,6 +9,43 @@ const HANDLES = [
   { id: 'left', position: Position.Left },
 ]
 
+// Paleta funcional para codificação por cor (dados/status), não branding.
+// O accent da marca é a última opção; "auto" volta à cor da categoria.
+export const ELEMENT_COLORS = [
+  '#5B9CFF',
+  '#3FBF7F',
+  '#E8B341',
+  '#E5484D',
+  '#9B6DFF',
+  'rgb(242, 86, 43)',
+]
+
+export function ColorSwatches({ id, current }) {
+  const { setNodes } = useReactFlow()
+  const set = (color) =>
+    setNodes((ns) => ns.map((n) => (n.id === id ? { ...n, data: { ...n.data, color } } : n)))
+  return (
+    <div className="color-swatches">
+      <button
+        className={`color-dot color-dot--auto ${!current ? 'is-active' : ''}`}
+        onClick={() => set(undefined)}
+        title="Cor padrão"
+        aria-label="Cor padrão"
+      />
+      {ELEMENT_COLORS.map((c) => (
+        <button
+          key={c}
+          className={`color-dot ${current === c ? 'is-active' : ''}`}
+          style={{ background: c }}
+          onClick={() => set(c)}
+          title="Aplicar cor"
+          aria-label="Aplicar cor"
+        />
+      ))}
+    </div>
+  )
+}
+
 function autoGrowEl(el) {
   el.style.height = 'auto'
   el.style.height = `${el.scrollHeight}px`
@@ -80,14 +117,19 @@ function Label({ id, value, className, selected, editRequested }) {
 
 export const FunnelNode = memo(function FunnelNode({ id, data, selected }) {
   const category = findElement(data.icon)?.category ?? 'pages'
+  const colorStyle = data.color ? { '--tint': data.color } : undefined
+  const colorClass = data.color ? 'has-color' : ''
   const handles = HANDLES.map((h) => (
     <Handle key={h.id} id={h.id} type="source" position={h.position} className="fs-handle" />
   ))
 
   return (
     <div className={`fnode ${selected ? 'is-selected' : ''}`}>
+      <NodeToolbar isVisible={selected} position={Position.Top} offset={10}>
+        <ColorSwatches id={id} current={data.color} />
+      </NodeToolbar>
       {category === 'pages' ? (
-        <div className="pnode">
+        <div className={`pnode ${colorClass}`} style={colorStyle}>
           <div className="pnode__bar">
             <i />
             <i />
@@ -106,7 +148,8 @@ export const FunnelNode = memo(function FunnelNode({ id, data, selected }) {
         <div
           className={`fnode__tile cat-${category} ${
             category === 'milestones' ? 'fnode__tile--diamond' : ''
-          }`}
+          } ${colorClass}`}
+          style={colorStyle}
         >
           <svg
             viewBox="0 0 24 24"
@@ -165,19 +208,27 @@ export const TextNode = memo(function TextNode({ id, data, selected }) {
   }
 
   return (
-    <div className={`tnode tnode--${size} ${selected ? 'is-selected' : ''}`}>
+    <div
+      className={`tnode tnode--${size} ${selected ? 'is-selected' : ''} ${
+        data.color ? 'has-color' : ''
+      }`}
+      style={data.color ? { '--tint': data.color } : undefined}
+    >
       <NodeToolbar isVisible={selected && !editing} position={Position.Top} offset={10}>
-        <div className="tnode__sizes">
-          {TEXT_SIZES.map((s) => (
-            <button
-              key={s.id}
-              className={`mono ${s.id === size ? 'is-active' : ''}`}
-              onClick={() => patch({ size: s.id })}
-              title={`Tamanho ${s.label}`}
-            >
-              {s.label}
-            </button>
-          ))}
+        <div className="node-toolbar-row">
+          <div className="tnode__sizes">
+            {TEXT_SIZES.map((s) => (
+              <button
+                key={s.id}
+                className={`mono ${s.id === size ? 'is-active' : ''}`}
+                onClick={() => patch({ size: s.id })}
+                title={`Tamanho ${s.label}`}
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
+          <ColorSwatches id={id} current={data.color} />
         </div>
       </NodeToolbar>
       {editing ? (
@@ -226,7 +277,13 @@ export const NoteNode = memo(function NoteNode({ id, data, selected }) {
   }, [data.editRequested, id, setNodes])
 
   return (
-    <div className={`nnode ${selected ? 'is-selected' : ''}`}>
+    <div
+      className={`nnode ${selected ? 'is-selected' : ''} ${data.color ? 'has-color' : ''}`}
+      style={data.color ? { '--tint': data.color } : undefined}
+    >
+      <NodeToolbar isVisible={selected} position={Position.Top} offset={10}>
+        <ColorSwatches id={id} current={data.color} />
+      </NodeToolbar>
       <NodeResizer
         isVisible={selected}
         minWidth={160}

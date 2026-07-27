@@ -25,7 +25,8 @@ Build de produção: `npm run build` (sai em `dist/`, deployável em qualquer ho
 - **Páginas como mini-navegadores** — cada tipo de página renderiza como uma janelinha de browser com wireframe próprio (captura, VSL, checkout, webinar…), estilo Funnelytics.
 - **Conexões** — arraste a partir das bordas de um elemento; setas tracejadas animadas, accent ao selecionar.
 - **Editar texto do elemento** — clique no rótulo (com o elemento selecionado) ou duplo clique.
-- **Texto livre** — escrita direta no quadro (transparente, sem card), com três tamanhos (P/M/G) na toolbar flutuante.
+- **Texto livre** — escrita direta no quadro (transparente, sem card), com quatro tamanhos (P/M/G/GG) na toolbar flutuante.
+- **Cor por elemento** — paleta de 6 cores na toolbar flutuante de qualquer elemento selecionado (ícone/borda nos blocos, CTA no wireframe das páginas, fundo nas notas, cor no texto livre); "auto" volta à cor da categoria.
 - **Notas de texto** — redimensionáveis, para anotações no quadro.
 - **Menu de contexto** — botão direito em elementos e conexões: renomear/editar, duplicar, rotular e excluir.
 - **Sidebar recolhível** — botão no canto do quadro esconde/mostra a barra de elementos.

@@ -44,7 +44,7 @@ export default function MiniPreview({ nodes, edges }) {
           rx="3"
           style={{
             fill: 'var(--bg-surface-alt)',
-            stroke: n.type === 'funnel' ? 'var(--accent)' : 'var(--border)',
+            stroke: n.data?.color ?? (n.type === 'funnel' ? 'var(--accent)' : 'var(--border)'),
           }}
           strokeWidth="1.5"
         />
