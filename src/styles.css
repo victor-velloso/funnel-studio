@@ -89,6 +89,17 @@ body {
   font-weight: 500;
   line-height: 140%;
   -webkit-font-smoothing: antialiased;
+  /* App-like: sem seleção nativa de texto (Shift+arrastar no quadro
+     estendia a seleção azul do navegador pelos textos da página) */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+input,
+textarea,
+[contenteditable] {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 .mono {
