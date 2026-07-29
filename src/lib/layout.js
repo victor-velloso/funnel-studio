@@ -9,14 +9,21 @@ export function layoutNodes(nodes, edges) {
   g.setGraph({ rankdir: 'LR', nodesep: 56, ranksep: 110, marginx: 40, marginy: 40 })
   g.setDefaultEdgeLabel(() => ({}))
 
-  for (const node of nodes) {
+  // Só elementos de funil entram no layout — anotações espaciais
+  // (retângulos, desenhos, textos e notas) ficam onde estão.
+  const flowNodes = nodes.filter((n) => n.type === 'funnel')
+  const flowIds = new Set(flowNodes.map((n) => n.id))
+
+  for (const node of flowNodes) {
     g.setNode(node.id, {
       width: node.measured?.width ?? node.style?.width ?? FALLBACK.width,
       height: node.measured?.height ?? node.style?.height ?? FALLBACK.height,
     })
   }
   for (const edge of edges) {
-    g.setEdge(edge.source, edge.target)
+    if (flowIds.has(edge.source) && flowIds.has(edge.target)) {
+      g.setEdge(edge.source, edge.target)
+    }
   }
 
   dagre.layout(g)

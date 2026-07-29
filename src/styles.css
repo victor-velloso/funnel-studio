@@ -984,6 +984,128 @@ textarea,
   color: var(--on-accent);
 }
 
+/* Retângulo / Região (fica atrás dos demais elementos) */
+.rnode {
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--fg-primary) 3%, transparent);
+  transition: border-color 0.2s var(--ease);
+}
+.rnode:hover {
+  border-color: var(--fg-secondary);
+}
+.rnode.is-selected {
+  border-color: var(--accent);
+}
+.rnode.has-color {
+  border-color: color-mix(in srgb, var(--tint) 60%, transparent);
+  background: color-mix(in srgb, var(--tint) 8%, transparent);
+}
+.rnode.has-color.is-selected {
+  border-color: var(--accent);
+}
+.rnode__label {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-secondary);
+  cursor: text;
+  max-width: calc(100% - 28px);
+}
+.rnode.has-color .rnode__label {
+  color: color-mix(in srgb, var(--tint) 80%, var(--fg-primary));
+}
+.rnode__label--input {
+  position: absolute;
+  top: 7px;
+  left: 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--accent);
+  border-radius: 7px;
+  color: var(--fg-primary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 6px;
+  width: 150px;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  display: block;
+}
+
+/* Traços de desenho (mão livre) */
+.react-flow__node-draw {
+  pointer-events: none !important;
+}
+.dnode svg {
+  display: block;
+  overflow: visible;
+}
+.dnode svg path {
+  pointer-events: stroke;
+  cursor: pointer;
+}
+.dnode.is-selected {
+  outline: 1px dashed var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Overlay do modo desenho */
+.draw-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  cursor: crosshair;
+  touch-action: none;
+}
+.draw-overlay__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.pen-bar {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 8px 10px 8px 18px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.35);
+  animation: fs-rise 0.2s var(--ease);
+}
+.pen-bar > .mono {
+  font-size: 10px;
+  color: var(--fg-muted);
+}
+.pen-bar .color-swatches {
+  border: none;
+  background: none;
+  padding: 0;
+}
+.btn--pen {
+  padding: 9px 16px;
+}
+.icon-btn.is-active-pen {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* Cor por elemento (override da cor de categoria) */
 .fnode__tile.has-color {
   border-color: color-mix(in srgb, var(--tint) 55%, var(--border));

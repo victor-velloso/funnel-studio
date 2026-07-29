@@ -86,6 +86,30 @@ export default function Sidebar({ onAdd, collapsed }) {
               className="note-tile"
               draggable
               onDragStart={(e) => {
+                e.dataTransfer.setData('application/funnelstudio', JSON.stringify({ kind: 'rect' }))
+                e.dataTransfer.effectAllowed = 'move'
+              }}
+              onDoubleClick={() => onAdd({ kind: 'rect' })}
+              title="Arraste para englobar uma região do funil (ou duplo clique)"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                dangerouslySetInnerHTML={{ __html: ICONS.rect }}
+              />
+              <span>Retângulo / Região</span>
+            </button>
+            <button
+              type="button"
+              className="note-tile"
+              draggable
+              onDragStart={(e) => {
                 e.dataTransfer.setData('application/funnelstudio', JSON.stringify({ kind: 'text' }))
                 e.dataTransfer.effectAllowed = 'move'
               }}

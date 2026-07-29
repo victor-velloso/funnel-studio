@@ -16,7 +16,16 @@ import {
   getViewportForBounds,
 } from '@xyflow/react'
 import { toPng } from 'html-to-image'
-import { FunnelNode, NoteNode, TextNode, ColorSwatches } from './FunnelNode.jsx'
+import {
+  FunnelNode,
+  NoteNode,
+  TextNode,
+  RectNode,
+  DrawNode,
+  ColorSwatches,
+  ELEMENT_COLORS,
+} from './FunnelNode.jsx'
+import { smoothPath } from '../lib/draw.js'
 import LabeledEdge from './LabeledEdge.jsx'
 import Sidebar from './Sidebar.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
@@ -26,7 +35,13 @@ import { layoutNodes } from '../lib/layout.js'
 import { toast } from '../lib/toast.js'
 import { uid, downloadJSON, slug, formatTime } from '../lib/storage.js'
 
-const nodeTypes = { funnel: FunnelNode, note: NoteNode, text: TextNode }
+const nodeTypes = {
+  funnel: FunnelNode,
+  note: NoteNode,
+  text: TextNode,
+  rect: RectNode,
+  draw: DrawNode,
+}
 
 // Área de transferência interna (nível de módulo: sobrevive à troca de funil
 // na mesma sessão, permitindo copiar de um funil e colar em outro)
@@ -48,6 +63,16 @@ function newCanvasNode(payload, position) {
       type: 'text',
       position: { x: position.x - 60, y: position.y - 16 },
       data: { text: '', size: 'md' },
+    }
+  }
+  if (payload.kind === 'rect') {
+    return {
+      id: uid(),
+      type: 'rect',
+      position: { x: position.x - 170, y: position.y - 110 },
+      zIndex: -1,
+      data: { label: 'Região' },
+      style: { width: 340, height: 220 },
     }
   }
   return {
@@ -256,6 +281,65 @@ function Toolbar({
   )
 }
 
+/* ---------- Modo desenho (mão livre) ---------- */
+
+function DrawOverlay({ color, onCommit }) {
+  const { screenToFlowPosition } = useReactFlow()
+  const [preview, setPreview] = useState(null)
+  const originRef = useRef(null)
+  const flowRef = useRef([])
+  const lastRef = useRef(null)
+  const drawing = useRef(false)
+
+  const toLocal = (e) => ({
+    x: e.clientX - originRef.current.left,
+    y: e.clientY - originRef.current.top,
+  })
+
+  return (
+    <div
+      className="draw-overlay"
+      onPointerDown={(e) => {
+        if (e.button !== 0) return
+        e.currentTarget.setPointerCapture(e.pointerId)
+        originRef.current = e.currentTarget.getBoundingClientRect()
+        drawing.current = true
+        lastRef.current = { x: e.clientX, y: e.clientY }
+        flowRef.current = [screenToFlowPosition({ x: e.clientX, y: e.clientY })]
+        setPreview([toLocal(e)])
+      }}
+      onPointerMove={(e) => {
+        if (!drawing.current) return
+        const dx = e.clientX - lastRef.current.x
+        const dy = e.clientY - lastRef.current.y
+        if (dx * dx + dy * dy < 4) return
+        lastRef.current = { x: e.clientX, y: e.clientY }
+        flowRef.current.push(screenToFlowPosition({ x: e.clientX, y: e.clientY }))
+        setPreview((p) => [...p, toLocal(e)])
+      }}
+      onPointerUp={() => {
+        if (!drawing.current) return
+        drawing.current = false
+        onCommit(flowRef.current)
+        setPreview(null)
+      }}
+    >
+      {preview && (
+        <svg className="draw-overlay__svg">
+          <path
+            d={smoothPath(preview)}
+            fill="none"
+            stroke={color}
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      )}
+    </div>
+  )
+}
+
 /* ---------- Indicador de zoom ---------- */
 
 function ZoomBadge() {
@@ -283,6 +367,8 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
   const [helpOpen, setHelpOpen] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [ctxMenu, setCtxMenu] = useState(null)
+  const [penMode, setPenMode] = useState(false)
+  const [penColor, setPenColor] = useState('rgb(242, 86, 43)')
   const { screenToFlowPosition, getViewport, getNodesBounds, fitView } = useReactFlow()
   const wrapperRef = useRef(null)
 
@@ -454,6 +540,42 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
     setEdges((es) => es.filter((e) => e.id !== id))
   }, [])
 
+  // Desenho à mão livre: cada traço vira um nó (persiste, seleciona, apaga)
+  const penColorRef = useRef(penColor)
+  penColorRef.current = penColor
+
+  const addDrawing = useCallback((pts) => {
+    if (pts.length < 2) return
+    const xs = pts.map((p) => p.x)
+    const ys = pts.map((p) => p.y)
+    const minX = Math.min(...xs) - 6
+    const minY = Math.min(...ys) - 6
+    const w = Math.round(Math.max(...xs) - minX + 6)
+    const h = Math.round(Math.max(...ys) - minY + 6)
+    const rel = pts.map((p) => ({
+      x: Math.round((p.x - minX) * 10) / 10,
+      y: Math.round((p.y - minY) * 10) / 10,
+    }))
+    setNodes((ns) => [
+      ...ns,
+      {
+        id: uid(),
+        type: 'draw',
+        position: { x: minX, y: minY },
+        zIndex: 1200,
+        data: { points: rel, w, h, color: penColorRef.current },
+      },
+    ])
+  }, [])
+
+  const clearDrawings = useCallback(() => {
+    setNodes((ns) => {
+      if (!ns.some((n) => n.type === 'draw')) return ns
+      toast('Desenhos apagados — ⌘Z desfaz')
+      return ns.filter((n) => n.type !== 'draw')
+    })
+  }, [])
+
   // Copiar / recortar / colar
   const copySelection = useCallback(() => {
     const sel = nodes.filter((n) => n.selected)
@@ -538,6 +660,7 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
         setHelpOpen(true)
       } else if (e.key === 'Escape') {
         setHelpOpen(false)
+        setPenMode(false)
         closeCtx()
       }
     }
@@ -708,6 +831,17 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
                   </svg>
                 )}
               </button>
+              <button
+                className={`icon-btn ${penMode ? 'is-active-pen' : ''}`}
+                onClick={() => setPenMode((v) => !v)}
+                aria-label="Modo desenho"
+                title="Desenhar na tela (Esc sai)"
+              >
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14.5 4.5 19.5 9.5 8 21H3v-5L14.5 4.5z" />
+                  <path d="m12.5 6.5 5 5" />
+                </svg>
+              </button>
             </Panel>
             <Panel position="top-right" className="help-panel">
               <button className="icon-btn" onClick={() => setHelpOpen(true)} aria-label="Atalhos e ajuda" title="Atalhos (?)">
@@ -742,6 +876,29 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
               </div>
             )}
           </ReactFlow>
+          {penMode && <DrawOverlay color={penColor} onCommit={addDrawing} />}
+          {penMode && (
+            <div className="pen-bar">
+              <span className="mono">Desenho</span>
+              <div className="color-swatches">
+                {ELEMENT_COLORS.map((c) => (
+                  <button
+                    key={c}
+                    className={`color-dot ${penColor === c ? 'is-active' : ''}`}
+                    style={{ background: c }}
+                    onClick={() => setPenColor(c)}
+                    aria-label="Cor do traço"
+                  />
+                ))}
+              </div>
+              <button className="btn btn--secondary btn--pen" onClick={clearDrawings}>
+                Limpar desenhos
+              </button>
+              <button className="btn btn--primary btn--pen" onClick={() => setPenMode(false)}>
+                Concluir
+              </button>
+            </div>
+          )}
           {ctxMenu && (
             <div className="menu menu--ctx" style={{ left: ctxMenu.x, top: ctxMenu.y }}>
               {ctxMenu.type === 'node' ? (
@@ -752,14 +909,18 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
                       current={nodes.find((n) => n.id === ctxMenu.id)?.data?.color}
                     />
                   </div>
-                  <button
-                    onClick={() => {
-                      requestEdit(ctxMenu.id)
-                      closeCtx()
-                    }}
-                  >
-                    {ctxMenu.nodeType === 'funnel' ? 'Renomear' : 'Editar texto'}
-                  </button>
+                  {ctxMenu.nodeType !== 'draw' && (
+                    <button
+                      onClick={() => {
+                        requestEdit(ctxMenu.id)
+                        closeCtx()
+                      }}
+                    >
+                      {ctxMenu.nodeType === 'funnel' || ctxMenu.nodeType === 'rect'
+                        ? 'Renomear'
+                        : 'Editar texto'}
+                    </button>
+                  )}
                   <button
                     onClick={() => {
                       duplicateNodes([ctxMenu.id])

@@ -15,6 +15,7 @@ const SHORTCUTS = [
   ['⌘/Ctrl + clique', 'Adicionar à seleção'],
   ['Scroll / pinch', 'Zoom'],
   ['Botão de organizar (barra superior)', 'Auto-layout do quadro'],
+  ['Botão de lápis (canto do quadro)', 'Desenho à mão livre (Esc sai)'],
 ]
 
 export default function HelpModal({ onClose }) {

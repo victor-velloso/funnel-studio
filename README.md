@@ -28,6 +28,8 @@ Build de produção: `npm run build` (sai em `dist/`, deployável em qualquer ho
 - **Texto livre** — escrita direta no quadro (transparente, sem card), com quatro tamanhos (P/M/G/GG) na toolbar flutuante.
 - **Cor por elemento** — paleta de 6 cores na toolbar flutuante de qualquer elemento selecionado (ícone/borda nos blocos, CTA no wireframe das páginas, fundo nas notas, cor no texto livre); "auto" volta à cor da categoria.
 - **Notas de texto** — redimensionáveis, para anotações no quadro.
+- **Retângulo / Região** — engloba áreas do funil; fica atrás dos demais elementos, com rótulo editável, cor e redimensionamento.
+- **Modo desenho** — botão de lápis: desenhe à mão livre por cima do quadro (ótimo para apresentações); os traços persistem, são selecionáveis/apagáveis individualmente e há "Limpar desenhos".
 - **Menu de contexto** — botão direito em elementos e conexões: renomear/editar, duplicar, rotular e excluir.
 - **Sidebar recolhível** — botão no canto do quadro esconde/mostra a barra de elementos.
 - **Excluir** — selecione elementos/conexões e use o botão "Excluir" na barra flutuante, ou pressione Delete/Backspace.

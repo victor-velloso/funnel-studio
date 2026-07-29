@@ -1,6 +1,7 @@
 import { memo, useEffect, useRef, useState } from 'react'
 import { Handle, Position, useReactFlow, NodeResizer, NodeToolbar } from '@xyflow/react'
 import { ICONS, PAGE_WIREFRAMES, findElement } from '../data/elements.js'
+import { smoothPath } from '../lib/draw.js'
 
 const HANDLES = [
   { id: 'top', position: Position.Top },
@@ -255,6 +256,60 @@ export const TextNode = memo(function TextNode({ id, data, selected }) {
           {data.text || 'Texto'}
         </span>
       )}
+    </div>
+  )
+})
+
+// Retângulo/Região: engloba uma área do funil, fica atrás dos demais elementos.
+export const RectNode = memo(function RectNode({ id, data, selected }) {
+  return (
+    <div
+      className={`rnode ${selected ? 'is-selected' : ''} ${data.color ? 'has-color' : ''}`}
+      style={data.color ? { '--tint': data.color } : undefined}
+    >
+      <NodeResizer
+        isVisible={selected}
+        minWidth={140}
+        minHeight={100}
+        lineClassName="nnode__resize-line"
+        handleClassName="nnode__resize-handle"
+      />
+      <Label
+        id={id}
+        value={data.label}
+        className="rnode__label"
+        selected={selected}
+        editRequested={data.editRequested}
+      />
+    </div>
+  )
+})
+
+// Traço de desenho à mão livre (criado no modo desenho).
+export const DrawNode = memo(function DrawNode({ data, selected }) {
+  const color = data.color ?? 'rgb(242, 86, 43)'
+  return (
+    <div className={`dnode ${selected ? 'is-selected' : ''}`} style={{ width: data.w, height: data.h }}>
+      <svg width={data.w} height={data.h} viewBox={`0 0 ${data.w} ${data.h}`}>
+        {/* path invisível mais largo = área de clique generosa */}
+        <path
+          className="dnode__hit"
+          d={smoothPath(data.points)}
+          fill="none"
+          stroke="transparent"
+          strokeWidth="16"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d={smoothPath(data.points)}
+          fill="none"
+          stroke={color}
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
     </div>
   )
 })
