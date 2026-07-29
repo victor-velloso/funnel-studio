@@ -304,18 +304,18 @@ function DrawOverlay({ tool, color, width, onCommit, onErase }) {
         e.currentTarget.setPointerCapture(e.pointerId)
         active.current = true
         if (tool === 'erase') {
-          onErase(screenToFlowPosition({ x: e.clientX, y: e.clientY }))
+          onErase(screenToFlowPosition({ x: e.clientX, y: e.clientY }, { snapToGrid: false }))
           return
         }
         originRef.current = e.currentTarget.getBoundingClientRect()
         lastRef.current = { x: e.clientX, y: e.clientY }
-        flowRef.current = [screenToFlowPosition({ x: e.clientX, y: e.clientY })]
+        flowRef.current = [screenToFlowPosition({ x: e.clientX, y: e.clientY }, { snapToGrid: false })]
         setPreview([toLocal(e)])
       }}
       onPointerMove={(e) => {
         if (!active.current) return
         if (tool === 'erase') {
-          onErase(screenToFlowPosition({ x: e.clientX, y: e.clientY }))
+          onErase(screenToFlowPosition({ x: e.clientX, y: e.clientY }, { snapToGrid: false }))
           return
         }
         // Captura em resolução total (eventos coalescidos, coords fracionárias)
@@ -327,7 +327,7 @@ function DrawOverlay({ tool, color, width, onCommit, onErase }) {
           const dy = ev.clientY - lastRef.current.y
           if (dx * dx + dy * dy < 0.25) continue
           lastRef.current = { x: ev.clientX, y: ev.clientY }
-          flowRef.current.push(screenToFlowPosition({ x: ev.clientX, y: ev.clientY }))
+          flowRef.current.push(screenToFlowPosition({ x: ev.clientX, y: ev.clientY }, { snapToGrid: false }))
           added.push({
             x: ev.clientX - originRef.current.left,
             y: ev.clientY - originRef.current.top,
