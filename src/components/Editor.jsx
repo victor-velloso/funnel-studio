@@ -25,7 +25,7 @@ import {
   ColorSwatches,
   ELEMENT_COLORS,
 } from './FunnelNode.jsx'
-import { smoothPath } from '../lib/draw.js'
+import { smoothPath, recognizeStroke, pointSegDist } from '../lib/draw.js'
 import LabeledEdge from './LabeledEdge.jsx'
 import Sidebar from './Sidebar.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
@@ -71,7 +71,7 @@ function newCanvasNode(payload, position) {
       type: 'rect',
       position: { x: position.x - 170, y: position.y - 110 },
       zIndex: -1,
-      data: { label: 'Região' },
+      data: { label: '' },
       style: { width: 340, height: 220 },
     }
   }
@@ -283,13 +283,13 @@ function Toolbar({
 
 /* ---------- Modo desenho (mão livre) ---------- */
 
-function DrawOverlay({ color, onCommit }) {
+function DrawOverlay({ tool, color, width, onCommit, onErase }) {
   const { screenToFlowPosition } = useReactFlow()
   const [preview, setPreview] = useState(null)
   const originRef = useRef(null)
   const flowRef = useRef([])
   const lastRef = useRef(null)
-  const drawing = useRef(false)
+  const active = useRef(false)
 
   const toLocal = (e) => ({
     x: e.clientX - originRef.current.left,
@@ -298,18 +298,26 @@ function DrawOverlay({ color, onCommit }) {
 
   return (
     <div
-      className="draw-overlay"
+      className={`draw-overlay ${tool === 'erase' ? 'draw-overlay--erase' : ''}`}
       onPointerDown={(e) => {
         if (e.button !== 0) return
         e.currentTarget.setPointerCapture(e.pointerId)
+        active.current = true
+        if (tool === 'erase') {
+          onErase(screenToFlowPosition({ x: e.clientX, y: e.clientY }))
+          return
+        }
         originRef.current = e.currentTarget.getBoundingClientRect()
-        drawing.current = true
         lastRef.current = { x: e.clientX, y: e.clientY }
         flowRef.current = [screenToFlowPosition({ x: e.clientX, y: e.clientY })]
         setPreview([toLocal(e)])
       }}
       onPointerMove={(e) => {
-        if (!drawing.current) return
+        if (!active.current) return
+        if (tool === 'erase') {
+          onErase(screenToFlowPosition({ x: e.clientX, y: e.clientY }))
+          return
+        }
         const dx = e.clientX - lastRef.current.x
         const dy = e.clientY - lastRef.current.y
         if (dx * dx + dy * dy < 4) return
@@ -318,8 +326,9 @@ function DrawOverlay({ color, onCommit }) {
         setPreview((p) => [...p, toLocal(e)])
       }}
       onPointerUp={() => {
-        if (!drawing.current) return
-        drawing.current = false
+        if (!active.current) return
+        active.current = false
+        if (tool === 'erase') return
         onCommit(flowRef.current)
         setPreview(null)
       }}
@@ -330,7 +339,7 @@ function DrawOverlay({ color, onCommit }) {
             d={smoothPath(preview)}
             fill="none"
             stroke={color}
-            strokeWidth="3"
+            strokeWidth={width}
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -369,6 +378,9 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
   const [ctxMenu, setCtxMenu] = useState(null)
   const [penMode, setPenMode] = useState(false)
   const [penColor, setPenColor] = useState('rgb(242, 86, 43)')
+  const [penShapes, setPenShapes] = useState(false)
+  const [penWidth, setPenWidth] = useState(3)
+  const [penTool, setPenTool] = useState('draw')
   const { screenToFlowPosition, getViewport, getNodesBounds, fitView } = useReactFlow()
   const wrapperRef = useRef(null)
 
@@ -543,9 +555,20 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
   // Desenho à mão livre: cada traço vira um nó (persiste, seleciona, apaga)
   const penColorRef = useRef(penColor)
   penColorRef.current = penColor
+  const penShapesRef = useRef(penShapes)
+  penShapesRef.current = penShapes
+  const penWidthRef = useRef(penWidth)
+  penWidthRef.current = penWidth
 
-  const addDrawing = useCallback((pts) => {
-    if (pts.length < 2) return
+  const addDrawing = useCallback((rawPts) => {
+    if (rawPts.length < 2) return
+    let pts = rawPts
+    let kind = 'smooth'
+    if (penShapesRef.current) {
+      const rec = recognizeStroke(rawPts)
+      pts = rec.points
+      kind = rec.kind
+    }
     const xs = pts.map((p) => p.x)
     const ys = pts.map((p) => p.y)
     const minX = Math.min(...xs) - 6
@@ -563,9 +586,30 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
         type: 'draw',
         position: { x: minX, y: minY },
         zIndex: 1200,
-        data: { points: rel, w, h, color: penColorRef.current },
+        data: { points: rel, w, h, color: penColorRef.current, width: penWidthRef.current, kind },
       },
     ])
+  }, [])
+
+  // Borracha: apaga por completo o traço tocado
+  const eraseAt = useCallback((pt) => {
+    setNodes((ns) =>
+      ns.filter((n) => {
+        if (n.type !== 'draw') return true
+        const pad = 14
+        const lx = pt.x - n.position.x
+        const ly = pt.y - n.position.y
+        if (lx < -pad || ly < -pad || lx > (n.data.w ?? 0) + pad || ly > (n.data.h ?? 0) + pad) {
+          return true
+        }
+        const pts = n.data.points
+        const local = { x: lx, y: ly }
+        for (let i = 1; i < pts.length; i++) {
+          if (pointSegDist(local, pts[i - 1], pts[i]) < pad) return false
+        }
+        return true
+      }),
+    )
   }, [])
 
   const clearDrawings = useCallback(() => {
@@ -876,21 +920,80 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
               </div>
             )}
           </ReactFlow>
-          {penMode && <DrawOverlay color={penColor} onCommit={addDrawing} />}
+          {penMode && (
+            <DrawOverlay
+              tool={penTool}
+              color={penColor}
+              width={penWidth}
+              onCommit={addDrawing}
+              onErase={eraseAt}
+            />
+          )}
           {penMode && (
             <div className="pen-bar">
-              <span className="mono">Desenho</span>
+              <div className="tnode__sizes">
+                <button
+                  className={`mono ${!penShapes ? 'is-active' : ''}`}
+                  onClick={() => {
+                    setPenShapes(false)
+                    setPenTool('draw')
+                  }}
+                  title="Desenho livre"
+                >
+                  Livre
+                </button>
+                <button
+                  className={`mono ${penShapes ? 'is-active' : ''}`}
+                  onClick={() => {
+                    setPenShapes(true)
+                    setPenTool('draw')
+                  }}
+                  title="Converte o traço em formas limpas (retas, círculos, retângulos…)"
+                >
+                  Formas
+                </button>
+              </div>
+              <div className="pen-widths">
+                {[2, 3.5, 6].map((w) => (
+                  <button
+                    key={w}
+                    className={penWidth === w && penTool === 'draw' ? 'is-active' : ''}
+                    onClick={() => {
+                      setPenWidth(w)
+                      setPenTool('draw')
+                    }}
+                    title="Espessura do pincel"
+                    aria-label={`Espessura ${w}`}
+                  >
+                    <i style={{ width: w + 3, height: w + 3 }} />
+                  </button>
+                ))}
+              </div>
               <div className="color-swatches">
                 {ELEMENT_COLORS.map((c) => (
                   <button
                     key={c}
-                    className={`color-dot ${penColor === c ? 'is-active' : ''}`}
+                    className={`color-dot ${penColor === c && penTool === 'draw' ? 'is-active' : ''}`}
                     style={{ background: c }}
-                    onClick={() => setPenColor(c)}
+                    onClick={() => {
+                      setPenColor(c)
+                      setPenTool('draw')
+                    }}
                     aria-label="Cor do traço"
                   />
                 ))}
               </div>
+              <button
+                className={`icon-btn ${penTool === 'erase' ? 'is-active-pen' : ''}`}
+                onClick={() => setPenTool((t) => (t === 'erase' ? 'draw' : 'erase'))}
+                title="Borracha — clique num traço para apagá-lo por completo"
+                aria-label="Borracha"
+              >
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m4.5 14.5 8.5-8.5a2.2 2.2 0 0 1 3.1 0l2.9 2.9a2.2 2.2 0 0 1 0 3.1l-7 7H8.5l-4-3.5a2.2 2.2 0 0 1 0-3.1z" />
+                  <path d="M20.5 19h-8.5" />
+                </svg>
+              </button>
               <button className="btn btn--secondary btn--pen" onClick={clearDrawings}>
                 Limpar desenhos
               </button>

@@ -1018,6 +1018,16 @@ textarea,
   cursor: text;
   max-width: calc(100% - 28px);
 }
+/* Sem título: placeholder discreto, visível só no hover/seleção */
+.rnode__label--empty {
+  color: var(--fg-muted);
+  opacity: 0;
+  transition: opacity 0.15s var(--ease);
+}
+.rnode:hover .rnode__label--empty,
+.rnode.is-selected .rnode__label--empty {
+  opacity: 1;
+}
 .rnode.has-color .rnode__label {
   color: color-mix(in srgb, var(--tint) 80%, var(--fg-primary));
 }
@@ -1067,6 +1077,44 @@ textarea,
   cursor: crosshair;
   touch-action: none;
 }
+.draw-overlay--erase {
+  cursor: cell;
+}
+
+.pen-widths {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 3px;
+}
+.pen-widths button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 22px;
+  background: none;
+  border: none;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  color: var(--fg-secondary);
+  transition: background 0.15s var(--ease), color 0.15s var(--ease);
+}
+.pen-widths button:hover {
+  color: var(--fg-primary);
+}
+.pen-widths button.is-active {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.pen-widths button i {
+  display: block;
+  border-radius: 50%;
+  background: currentColor;
+}
 .draw-overlay__svg {
   width: 100%;
   height: 100%;
@@ -1097,6 +1145,9 @@ textarea,
   border: none;
   background: none;
   padding: 0;
+}
+.pen-bar .tnode__sizes {
+  background: var(--bg-page);
 }
 .btn--pen {
   padding: 9px 16px;

@@ -1,7 +1,7 @@
 import { memo, useEffect, useRef, useState } from 'react'
 import { Handle, Position, useReactFlow, NodeResizer, NodeToolbar } from '@xyflow/react'
 import { ICONS, PAGE_WIREFRAMES, findElement } from '../data/elements.js'
-import { smoothPath } from '../lib/draw.js'
+import { buildPath } from '../lib/draw.js'
 
 const HANDLES = [
   { id: 'top', position: Position.Top },
@@ -60,7 +60,7 @@ function clearEditRequest(setNodes, id) {
   )
 }
 
-function Label({ id, value, className, selected, editRequested }) {
+function Label({ id, value, className, selected, editRequested, allowEmpty, placeholder }) {
   const { setNodes } = useReactFlow()
   const [editing, setEditing] = useState(false)
 
@@ -74,7 +74,15 @@ function Label({ id, value, className, selected, editRequested }) {
   function commit(next) {
     setNodes((nodes) =>
       nodes.map((n) =>
-        n.id === id ? { ...n, data: { ...n.data, label: next.trim() || n.data.label } } : n,
+        n.id === id
+          ? {
+              ...n,
+              data: {
+                ...n.data,
+                label: allowEmpty ? next.trim() : next.trim() || n.data.label,
+              },
+            }
+          : n,
       ),
     )
     setEditing(false)
@@ -106,12 +114,12 @@ function Label({ id, value, className, selected, editRequested }) {
   }
   return (
     <span
-      className={className}
+      className={`${className} ${!value && placeholder ? `${className}--empty` : ''}`}
       onClick={() => selected && setEditing(true)}
       onDoubleClick={() => setEditing(true)}
       title="Clique para editar o texto"
     >
-      {value}
+      {value || placeholder}
     </span>
   )
 }
@@ -280,6 +288,8 @@ export const RectNode = memo(function RectNode({ id, data, selected }) {
         className="rnode__label"
         selected={selected}
         editRequested={data.editRequested}
+        allowEmpty
+        placeholder="Adicionar título"
       />
     </div>
   )
@@ -288,24 +298,26 @@ export const RectNode = memo(function RectNode({ id, data, selected }) {
 // Traço de desenho à mão livre (criado no modo desenho).
 export const DrawNode = memo(function DrawNode({ data, selected }) {
   const color = data.color ?? 'rgb(242, 86, 43)'
+  const width = data.width ?? 3
+  const d = buildPath(data.points, data.kind)
   return (
     <div className={`dnode ${selected ? 'is-selected' : ''}`} style={{ width: data.w, height: data.h }}>
       <svg width={data.w} height={data.h} viewBox={`0 0 ${data.w} ${data.h}`}>
         {/* path invisível mais largo = área de clique generosa */}
         <path
           className="dnode__hit"
-          d={smoothPath(data.points)}
+          d={d}
           fill="none"
           stroke="transparent"
-          strokeWidth="16"
+          strokeWidth={Math.max(16, width + 10)}
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
-          d={smoothPath(data.points)}
+          d={d}
           fill="none"
           stroke={color}
-          strokeWidth="3"
+          strokeWidth={width}
           strokeLinecap="round"
           strokeLinejoin="round"
         />
