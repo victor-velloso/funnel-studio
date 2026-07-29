@@ -1568,6 +1568,16 @@ textarea,
 .help-panel .icon-btn {
   background: var(--bg-surface);
 }
+
+/* Ferramentas do canto do quadro (sidebar + lápis): empilhadas com respiro */
+.react-flow__panel.canvas-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.canvas-tools .icon-btn {
+  background: var(--bg-surface);
+}
 .help-panel .icon-btn .mono {
   font-size: 12px;
 }

@@ -318,12 +318,22 @@ function DrawOverlay({ tool, color, width, onCommit, onErase }) {
           onErase(screenToFlowPosition({ x: e.clientX, y: e.clientY }))
           return
         }
-        const dx = e.clientX - lastRef.current.x
-        const dy = e.clientY - lastRef.current.y
-        if (dx * dx + dy * dy < 4) return
-        lastRef.current = { x: e.clientX, y: e.clientY }
-        flowRef.current.push(screenToFlowPosition({ x: e.clientX, y: e.clientY }))
-        setPreview((p) => [...p, toLocal(e)])
+        // Captura em resolução total (eventos coalescidos, coords fracionárias)
+        // para o traço ficar exatamente como desenhado — sem escadinha.
+        const events = e.nativeEvent.getCoalescedEvents?.() ?? [e]
+        const added = []
+        for (const ev of events) {
+          const dx = ev.clientX - lastRef.current.x
+          const dy = ev.clientY - lastRef.current.y
+          if (dx * dx + dy * dy < 0.25) continue
+          lastRef.current = { x: ev.clientX, y: ev.clientY }
+          flowRef.current.push(screenToFlowPosition({ x: ev.clientX, y: ev.clientY }))
+          added.push({
+            x: ev.clientX - originRef.current.left,
+            y: ev.clientY - originRef.current.top,
+          })
+        }
+        if (added.length) setPreview((p) => [...p, ...added])
       }}
       onPointerUp={() => {
         if (!active.current) return
@@ -563,7 +573,8 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
   const addDrawing = useCallback((rawPts) => {
     if (rawPts.length < 2) return
     let pts = rawPts
-    let kind = 'smooth'
+    // 'free' renderiza como polilinha exata — nenhum ajuste sobre o desenhado
+    let kind = 'free'
     if (penShapesRef.current) {
       const rec = recognizeStroke(rawPts)
       pts = rec.points
@@ -854,7 +865,7 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
             <Panel position="bottom-left" className="zoom-panel">
               <ZoomBadge />
             </Panel>
-            <Panel position="top-left" className="help-panel">
+            <Panel position="top-left" className="canvas-tools">
               <button
                 className="icon-btn"
                 onClick={() => setSidebarOpen((v) => !v)}

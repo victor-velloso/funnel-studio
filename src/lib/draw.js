@@ -70,7 +70,9 @@ function sharpPath(pts) {
 }
 
 export function buildPath(pts, kind) {
-  return kind === 'sharp' ? sharpPath(pts) : smoothPath(pts)
+  // 'smooth' = curvas reconhecidas/legadas; todo o resto (free/sharp) é
+  // polilinha fiel — com amostragem densa, fica exatamente como desenhado
+  return kind === 'smooth' ? smoothPath(pts) : sharpPath(pts)
 }
 
 /**
