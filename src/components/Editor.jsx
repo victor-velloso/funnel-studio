@@ -43,9 +43,28 @@ const nodeTypes = {
   draw: DrawNode,
 }
 
-// Área de transferência interna (nível de módulo: sobrevive à troca de funil
-// na mesma sessão, permitindo copiar de um funil e colar em outro)
-let clipboard = null
+// Área de transferência persistida em localStorage: sobrevive à troca de funil,
+// a recarregar a página e é compartilhada entre abas do mesmo navegador —
+// copiar numa aba e colar noutra funciona.
+const CLIPBOARD_KEY = 'elyon-funnel-studio:clipboard'
+
+function readClipboard() {
+  try {
+    const raw = localStorage.getItem(CLIPBOARD_KEY)
+    const data = raw ? JSON.parse(raw) : null
+    return Array.isArray(data?.nodes) && data.nodes.length ? data : null
+  } catch {
+    return null
+  }
+}
+
+function writeClipboard(data) {
+  try {
+    localStorage.setItem(CLIPBOARD_KEY, JSON.stringify(data))
+  } catch {
+    /* quota cheia — colar segue funcionando com o conteúdo anterior */
+  }
+}
 
 function newCanvasNode(payload, position) {
   if (payload.kind === 'note') {
@@ -636,21 +655,27 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
     const sel = nodes.filter((n) => n.selected)
     if (!sel.length) return false
     const ids = new Set(sel.map((n) => n.id))
-    clipboard = {
+    writeClipboard({
       nodes: structuredClone(sel).map((n) => ({
         ...n,
+        selected: false,
         data: n.data?.editRequested ? { ...n.data, editRequested: undefined } : n.data,
       })),
-      edges: structuredClone(edges.filter((e) => ids.has(e.source) && ids.has(e.target))),
+      edges: structuredClone(edges.filter((e) => ids.has(e.source) && ids.has(e.target))).map(
+        (e) => ({ ...e, selected: false }),
+      ),
       pastes: 0,
-    }
+    })
     toast(sel.length === 1 ? 'Elemento copiado' : `${sel.length} elementos copiados`)
     return true
   }, [nodes, edges])
 
   const pasteClipboard = useCallback(() => {
-    if (!clipboard?.nodes.length) return
-    clipboard.pastes += 1
+    const clipboard = readClipboard()
+    if (!clipboard) return
+    // Deslocamento cresce a cada colagem consecutiva do mesmo conteúdo
+    clipboard.pastes = (clipboard.pastes ?? 0) + 1
+    writeClipboard(clipboard)
     const off = 40 * clipboard.pastes
     const idMap = {}
     const clones = clipboard.nodes.map((n) => {
@@ -707,7 +732,7 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
           deleteSelection()
         }
       } else if (mod && k === 'v') {
-        if (clipboard?.nodes.length) {
+        if (readClipboard()) {
           e.preventDefault()
           pasteClipboard()
         }
