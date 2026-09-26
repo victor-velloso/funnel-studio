@@ -1,0 +1,12 @@
+{
+  "name": "familia-restaurada-ofertas",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "qa": "node qa/run.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.55.0"
+  }
+}
