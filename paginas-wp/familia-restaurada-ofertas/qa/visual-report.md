@@ -24,9 +24,17 @@ Nenhum.
 
 Nenhuma.
 
+## Eduzz thankyou.js sem transactionkey
+
+- upsell/default sem chave: tags=1 fr-no-eduzz=true sunVisivel=false spinnerVisivel=false oferta=true
+- downsell/default sem chave: tags=1 fr-no-eduzz=true sunVisivel=false spinnerVisivel=false oferta=true
+
+O script carrega nas duas páginas. Sem transactionkey ele pede GET https://elements-api.eduzz.com/thankyou/ com a query da página e recebe 404. O bloco (#sun-root / #sun-loading) fica oculto (html.fr-no-eduzz). Chamadas vistas: 33.
+
 ## Erros de console / pageerror
 
-Nenhum.
+Nenhum erro nosso. O 404 do lookup da Eduzz sem transactionkey não quebra a página.
+
 
 ## Pesos locais (cópias da biblioteca)
 

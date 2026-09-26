@@ -145,6 +145,8 @@ async function main() {
   const lineFails = [];
   const brokenAll = [];
   const consoleErrors = [];
+  const eduzzHttp = [];
+  const eduzzNotes = [];
   const variations = ["casamento", "filhos", "oracao", "financeiro", "default"];
   const pages = [
     { name: "upsell", path: "/preview/familia-oferta/index.html" },
@@ -159,6 +161,10 @@ async function main() {
     const ctx = await browser.newContext(mobile ? { ...iphone, viewport: { width, height: width === 320 ? 700 : 844 } } : { viewport: { width, height: 900 }, deviceScaleFactor: 1 });
     const page = await ctx.newPage();
     page.on("pageerror", (err) => consoleErrors.push(String(err)));
+    page.on("response", (res) => {
+      const url = res.url();
+      if (res.status() >= 400 && url.indexOf("elements-api.eduzz.com/thankyou/") !== -1) eduzzHttp.push(res.status() + " " + url);
+    });
     page.on("console", (msg) => { if (msg.type() === "error") consoleErrors.push(msg.text()); });
     return { ctx, page };
   }
@@ -170,6 +176,29 @@ async function main() {
         const { ctx, page } = await openVisual(width);
         await page.goto(`${origin}${pg.path}?${q}`, { waitUntil: "networkidle", timeout: 45000 });
         await bootPage(page);
+        if (width === 390 && variation === "default") {
+          const eduzz = await page.evaluate(() => {
+            function vis(el) {
+              if (!el) return false;
+              const cs = getComputedStyle(el);
+              if (cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") return false;
+              const r = el.getBoundingClientRect();
+              return r.width > 0 && r.height > 0;
+            }
+            const tags = Array.from(document.scripts).filter((s) => (s.getAttribute("src") || "").indexOf("cdn.eduzzcdn.com/sun/thankyou/thankyou.js") !== -1);
+            const offer = document.getElementById("fr-oferta");
+            return {
+              tags: tags.length,
+              noEduzz: document.documentElement.classList.contains("fr-no-eduzz"),
+              sunVisible: vis(document.getElementById("sun-root")),
+              loadVisible: vis(document.getElementById("sun-loading")),
+              offer: !!(offer && offer.innerText && offer.innerText.length > 40)
+            };
+          });
+          eduzzNotes.push(`${pg.name}/default sem chave: tags=${eduzz.tags} fr-no-eduzz=${eduzz.noEduzz} sunVisivel=${eduzz.sunVisible} spinnerVisivel=${eduzz.loadVisible} oferta=${eduzz.offer}`);
+          if (eduzz.tags !== 1) misses.push(`${pg.name}: thankyou.js ${eduzz.tags} vez(es)`);
+          if (!eduzz.noEduzz || eduzz.sunVisible || eduzz.loadVisible || !eduzz.offer) misses.push(`${pg.name}: bloco Eduzz visível sem transactionkey`);
+        }
         const state = await readState(page);
         if (state.m !== (variation === "default" ? "default" : variation)) misses.push(`${pg.name}/${variation}@${width}: data-m=${state.m}`);
         if (state.sw > state.cw + 1) overflows.push(`${pg.name}/${variation}@${width}: scroll ${state.sw} > ${state.cw}`);
@@ -328,6 +357,7 @@ async function main() {
     await ctx.close();
     const result = { pre, decline, accept, acceptFixed, stayed, fbq, errors };
     const problems = row.check(result);
+    if (errors.length) problems.push("pageerror " + errors.join(" | "));
     linkRows.push({ n: row.n, expect: row.expect, got: row.got(result), pass: problems.length === 0, problems });
   }
 
@@ -559,7 +589,12 @@ async function main() {
   vis += `## Vazamentos\n\n${leaks.length ? leaks.map((x) => "- " + x).join("\n") : "Nenhum."}\n\n`;
   vis += `## Mais de 3 linhas (390)\n\n${lineFails.length ? lineFails.map((x) => "- " + x).join("\n") : "Nenhum."}\n\n`;
   vis += `## Imagens quebradas\n\n${brokenAll.length ? brokenAll.map((x) => "- " + x).join("\n") : "Nenhuma."}\n\n`;
-  vis += `## Erros de console / pageerror\n\n${consoleErrors.length ? consoleErrors.slice(0, 30).map((x) => "- " + x).join("\n") : "Nenhum."}\n\n`;
+  const resourceNoise = consoleErrors.filter((x) => x.indexOf("Failed to load resource") === 0);
+  const realConsole = consoleErrors.filter((x) => x.indexOf("Failed to load resource") !== 0);
+  const eduzzOnly = realConsole.length === 0 && eduzzHttp.length > 0 && resourceNoise.length > 0;
+  vis += `## Eduzz thankyou.js sem transactionkey\n\n${eduzzNotes.length ? eduzzNotes.map((x) => "- " + x).join("\n") : "Sem leitura."}\n\n`;
+  vis += `O script carrega nas duas páginas. Sem transactionkey ele pede GET https://elements-api.eduzz.com/thankyou/ com a query da página e recebe 404. O bloco (#sun-root / #sun-loading) fica oculto (html.fr-no-eduzz). Chamadas vistas: ${eduzzHttp.length}.\n\n`;
+  vis += `## Erros de console / pageerror\n\n${eduzzOnly ? "Nenhum erro nosso. O 404 do lookup da Eduzz sem transactionkey não quebra a página.\n" : ""}${realConsole.length ? realConsole.slice(0, 30).map((x) => "- " + x).join("\n") : (eduzzOnly ? "" : "Nenhum.")}\n\n`;
   vis += `## Pesos locais (cópias da biblioteca)\n\n${weights}\n\n`;
   vis += `## Prints\n\n${shots.length} arquivos.\n`;
   writeFileSync(join(ROOT, "qa/visual-report.md"), vis);
@@ -571,7 +606,8 @@ async function main() {
     overflows: overflows.length,
     lineFails: lineFails.length,
     broken: brokenAll.length,
-    consoleErrors: consoleErrors.length,
+    consoleErrors: realConsole.length,
+    eduzzThankyouHttp: eduzzHttp.length,
     linkFail,
     linkTotal: linkRows.length,
     xyz

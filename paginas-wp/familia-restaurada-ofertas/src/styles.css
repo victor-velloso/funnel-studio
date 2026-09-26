@@ -161,3 +161,5 @@ width:100%;max-width:100%;min-height:100vh;overflow-x:hidden;position:relative;
 #fr-oferta .fr-fixed{transition:none}
 }
 html.fr-qa #fr-oferta.fr-anim .fr-sec{opacity:1 !important;transform:none !important}
+/* Sem transactionkey o thankyou.js da Eduzz injeta #sun-loading e #sun-root (spinner e "transação não encontrada"). Escondidos para a oferta continuar intacta. Com a chave, a classe não entra e o bloco da Eduzz aparece. */
+html.fr-no-eduzz #sun-loading,html.fr-no-eduzz #sun-root{display:none !important}

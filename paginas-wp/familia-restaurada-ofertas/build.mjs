@@ -7,10 +7,22 @@ import { AREAS, SHARED, copyDefault } from "./src/copy.mjs";
 const root = dirname(fileURLToPath(import.meta.url));
 const ASSET = "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/";
 
-const EDUZZ = `<!-- ===== EDUZZ THANK-YOU SCRIPT (Checkout Elements, Tópico 3) — PENDING FROM PETER =====
-     Paste the Eduzz script here, in place of the line below, and uncomment it. Change nothing else.
-<script>/* EDUZZ_SCRIPT_AQUI */</script>
-===== END EDUZZ SCRIPT ===== -->`;
+const EDUZZ_GUARD = `<script>
+(function(){
+  var key = "";
+  try {
+    var q = new URLSearchParams(location.search);
+    key = q.get("transactionkey");
+    if (!key) key = q.get("transactionKey");
+  } catch (e) {}
+  if (!key) {
+    try { if (window.Eduzz) { if (window.Eduzz.transactionKey) key = window.Eduzz.transactionKey; } } catch (e2) {}
+  }
+  if (key) return;
+  document.documentElement.classList.add("fr-no-eduzz");
+})();
+</script>`;
+const EDUZZ_TAG = `<script src="https://cdn.eduzzcdn.com/sun/thankyou/thankyou.js"></script>`;
 
 const FONT = `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap">`;
 
@@ -53,16 +65,20 @@ function widget(page) {
   if (script.includes("</script>")) throw new Error("script contém </script>");
   const html = [
     FONT,
-    EDUZZ,
     `<div id="fr-oferta" data-page="${page}"></div>`,
     "<style>",
     css,
     "</style>",
     "<script>",
     script,
-    "</script>"
+    "</script>",
+    EDUZZ_GUARD,
+    EDUZZ_TAG
   ].join("\n");
-  return stripBlank(html) + "\n";
+  const out = stripBlank(html) + "\n";
+  const tags = out.split(EDUZZ_TAG).length - 1;
+  if (tags !== 1) throw new Error("thankyou.js deve aparecer uma vez, apareceu " + tags);
+  return out;
 }
 
 function shell(title, body) {
@@ -110,15 +126,16 @@ function harness(up, down) {
   if (!tpl) return;
   var frag = tpl.content.cloneNode(true);
   var scripts = frag.querySelectorAll("script");
-  var codes = [];
+  var jobs = [];
   Array.prototype.forEach.call(scripts, function(sc){
-    codes.push(sc.textContent || "");
+    jobs.push({ src: sc.getAttribute("src") || "", code: sc.textContent || "" });
     if (sc.parentNode) sc.parentNode.removeChild(sc);
   });
   document.body.appendChild(frag);
-  codes.forEach(function(code){
+  jobs.forEach(function(job){
     var s = document.createElement("script");
-    s.textContent = code;
+    if (job.src) s.src = job.src;
+    else s.textContent = job.code;
     document.body.appendChild(s);
   });
 })();
