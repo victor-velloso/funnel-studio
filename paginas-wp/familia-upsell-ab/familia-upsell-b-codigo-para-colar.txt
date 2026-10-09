@@ -1,0 +1,729 @@
+<!-- Família Restaurada · upsell A/B · Página B · os 3 manuais que faltam (R$ 47) · página /familia-upsell-b/ · Elementor: 1 widget HTML, página Full Width sem espaço. Gerado por paginas-wp/familia-upsell-ab/src/build-wp.py a partir do mockup aprovado em 09/10. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Raleway:wght@600;700;800&display=swap">
+<style>
+#fr-up{display:block;width:100%;max-width:100%;overflow-x:hidden;position:relative;text-align:left;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+#fr-up p,#fr-up li,#fr-up span,#fr-up div,#fr-up a,#fr-up em,#fr-up strong,#fr-up b,#fr-up summary,#fr-up blockquote,#fr-up cite,#fr-up figcaption,#fr-up details{font-family:inherit}
+#fr-up h1,#fr-up h2,#fr-up h3{font-family:Raleway,sans-serif !important;text-transform:none;margin:0;padding:0;border:0;background:none}
+#fr-up p{margin:0;padding:0}
+#fr-up ul,#fr-up ol{margin:0;padding:0;list-style:none}
+#fr-up li{margin:0}
+#fr-up figure{margin:1em 40px}
+#fr-up blockquote{margin:0;padding:0;border:0;background:none;quotes:none}
+#fr-up blockquote::before,#fr-up blockquote::after{content:none}
+#fr-up cite{font-style:normal}
+#fr-up img{height:auto;max-width:100%;border:0;border-radius:0;box-shadow:none}
+#fr-up svg{display:inline-block;vertical-align:middle}
+#fr-up a{text-decoration:none;box-shadow:none;outline-offset:2px}
+#fr-up a.btn,#fr-up a.btn:hover,#fr-up a.btn:focus,#fr-up a.btn:visited{color:#fff !important;text-decoration:none !important}
+#fr-up a.recusa,#fr-up a.recusa:hover,#fr-up a.recusa:visited{color:var(--muted) !important;text-decoration:underline !important}
+#fr-up details,#fr-up summary{margin:0;border:0;background:none}
+#fr-up main,#fr-up header,#fr-up section,#fr-up article{display:block;margin:0}
+#fr-up .preco p,#fr-up .faq p{margin-bottom:0}
+html.fr-qa #fr-up .reveal{opacity:1 !important;transform:none !important}
+html.fr-no-eduzz #sun-loading,html.fr-no-eduzz #sun-root{display:none !important}
+#fr-up{--bg:#FFFFFF; --card:#FAF6F1; --line:#EAE0D5; --line-relato:#E4D9CC;--ink:#2F2118; --body:#52453B; --muted:#94867A;--brown:#A25A38; --brown-dark:#7E4527; --brown-soft:rgba(162,90,56,.10);--green:#2F9540; --green-dark:#256F31; --green-soft:#EEF6EF;--sp-sec:56px; --sp-blk:28px; --sp-title:14px;--r:16px; --col:600px;}
+#fr-up,#fr-up *,#fr-up *::before,#fr-up *::after{box-sizing:border-box}
+#fr-up{margin:0 !important;background:var(--bg);color:var(--body);font:400 17px/1.6 "Open Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+#fr-up img{max-width:100%;display:block}
+#fr-up h1,#fr-up h2,#fr-up h3{font-family:Raleway,sans-serif;color:var(--ink);margin:0;line-height:1.25}
+#fr-up p{margin:0}
+#fr-up p+p{margin-top:14px}
+#fr-up strong{color:var(--ink);font-weight:700}
+#fr-up .terra{color:var(--brown)}
+#fr-up .verde{color:var(--green-dark)}
+#fr-up .wrap{max-width:var(--col);margin:0 auto;padding:0 20px}
+#fr-up .sec{padding-top:var(--sp-sec)}
+#fr-up main > .sec:last-child{padding-bottom:var(--sp-sec)}
+#fr-up .sec-creme{background:var(--card);padding:var(--sp-sec) 0;margin-top:var(--sp-sec);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#fr-up .sec-creme + .sec{padding-top:var(--sp-sec)}
+#fr-up .t-sec{font-size:26px;font-weight:800;text-align:center;margin-bottom:var(--sp-title);letter-spacing:-.01em}
+#fr-up .t-sec + p,#fr-up .t-sec + .lead{margin-top:0}
+#fr-up .blk{margin-top:var(--sp-blk)}
+#fr-up .center{text-align:center}
+#fr-up .kicker{display:block;font:700 12px/1.4 "Open Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+#fr-up .kicker.terra{color:var(--brown)}
+#fr-up .small{font-size:15px}
+#fr-up .micro{font-size:13px;color:var(--muted);line-height:1.5}
+#fr-up .ic{flex:none;display:inline-block;vertical-align:middle}
+#fr-up .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+#fr-up .reveal.in{opacity:1;transform:none}
+#fr-up .faixa{background:var(--brown);color:#fff;text-align:center;font:700 11.5px/1 "Open Sans",sans-serif;letter-spacing:.22em;padding:10px 12px;text-transform:uppercase}
+#fr-up .topo{padding-top:24px}
+#fr-up .ok-linha{display:flex;gap:12px;align-items:flex-start}
+#fr-up .ok-linha .bola{flex:none;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;margin-top:1px}
+#fr-up .ok-linha p{font-weight:700;color:var(--ink);font-size:17px;line-height:1.5}
+#fr-up .topo .sub{font-size:15px;margin-top:10px;padding-left:42px}
+#fr-up .etapas{display:flex;align-items:flex-start;justify-content:space-between;margin:26px auto 0;max-width:380px;position:relative}
+#fr-up .etapa{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1}
+#fr-up .etapa .pt{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid var(--line);color:#fff}
+#fr-up .etapa span.nm{font:700 12.5px/1.3 "Open Sans",sans-serif;color:var(--muted);margin-top:8px}
+#fr-up .etapa.feita .pt{background:var(--green);border-color:var(--green)}
+#fr-up .etapa.feita .nm{color:var(--green-dark)}
+#fr-up .etapa.atual .pt{background:var(--brown);border-color:var(--brown);box-shadow:0 0 0 5px var(--brown-soft)}
+#fr-up .etapa.atual .nm{color:var(--brown)}
+#fr-up .etapa .aqui{display:inline-block;margin-top:5px;font:700 10.5px/1 "Open Sans",sans-serif;letter-spacing:.06em;color:var(--brown);background:var(--brown-soft);padding:4px 8px;border-radius:99px}
+#fr-up .etapas::before,#fr-up .etapas::after{content:"";position:absolute;top:13px;height:2px;z-index:0}
+#fr-up .etapas::before{left:16.6%;width:33.4%;background:var(--green)}
+#fr-up .etapas::after{left:50%;width:33.4%;background:var(--line)}
+#fr-up .h-hero{font-size:28px;font-weight:800;text-align:center;letter-spacing:-.015em}
+#fr-up .capa-dela{position:relative;width:128px;margin:0 auto 22px}
+#fr-up .capa{display:block;border-radius:10px;overflow:hidden;box-shadow:0 8px 22px rgba(47,33,24,.18),0 1px 3px rgba(47,33,24,.14);background:#2a1a12;aspect-ratio:1/1}
+#fr-up .capa img{width:100%;height:100%;object-fit:contain}
+#fr-up .selo-seu{position:absolute;left:50%;bottom:-11px;transform:translateX(-50%);white-space:nowrap;display:inline-flex;align-items:center;gap:5px;background:var(--green);color:#fff;font:700 12px/1 "Open Sans",sans-serif;padding:6px 10px;border-radius:99px;box-shadow:0 2px 6px rgba(37,111,49,.3)}
+#fr-up .celebrar{margin-top:var(--sp-title);text-align:center}
+#fr-up .fecho2{margin-top:var(--sp-blk);text-align:center}
+#fr-up .fecho2 em{display:block;margin-top:14px;color:var(--ink);font-weight:600}
+#fr-up .cenas{list-style:none;padding:0;margin:var(--sp-blk) 0 0;display:flex;flex-direction:column;align-items:stretch}
+#fr-up .cena{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:16px;line-height:1.5}
+#fr-up .cena b{color:var(--ink)}
+#fr-up .cena .seta{color:var(--brown);margin:0 4px;vertical-align:-3px}
+#fr-up .cenas .liga{align-self:center;color:var(--brown);opacity:.7;height:26px;display:grid;place-items:center}
+#fr-up .destaque{border-left:3px solid var(--green-dark);padding:2px 0 2px 16px;font-family:Raleway,sans-serif;font-weight:700;font-size:19px;line-height:1.45;color:var(--ink)}
+#fr-up .destaque-sub{margin-top:10px;padding-left:19px}
+#fr-up .versiculo{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 22px;text-align:center}
+#fr-up .versiculo blockquote{margin:0;font:italic 400 20px/1.5 "Open Sans",sans-serif;color:var(--ink)}
+#fr-up .versiculo cite{display:block;margin-top:14px;font:700 11.5px/1.5 "Open Sans",sans-serif;font-style:normal;letter-spacing:.14em;color:var(--brown)}
+#fr-up .chip-linha{margin-top:12px}
+#fr-up .chip-pesa{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1.5px solid var(--line);border-radius:99px;padding:6px 14px 6px 8px;font:700 14.5px/1.3 "Open Sans",sans-serif;color:var(--brown-dark)}
+#fr-up .chip-pesa img{width:22px;height:22px;background:#fff;border-radius:50%;padding:2px;border:1px solid var(--line)}
+#fr-up .card-ok{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-top:var(--sp-blk)}
+#fr-up .card-ok .ok-ic{flex:none;width:30px;height:30px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;border:1px solid rgba(47,149,64,.3)}
+#fr-up .card-ok p{font-size:16px}
+#fr-up .metodo{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin-top:var(--sp-blk)}
+#fr-up .metodo .m-chip{background:var(--card);border:1.5px solid var(--line);border-radius:99px;padding:7px 14px;font:700 14px/1 "Open Sans",sans-serif;color:var(--ink)}
+#fr-up .metodo .sep{color:var(--brown);display:inline-flex}
+#fr-up .palavra{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;font-size:14.5px;color:var(--brown-dark);font-weight:600}
+#fr-up .palavra .ib{width:32px;height:32px;border-radius:50%;background:var(--brown-soft);color:var(--brown);display:grid;place-items:center}
+#fr-up .portas{list-style:none;margin:var(--sp-blk) 0 0;padding:0;position:relative}
+#fr-up .portas::before{content:"";position:absolute;left:17px;top:18px;bottom:30px;width:2px;background:repeating-linear-gradient(var(--line) 0 6px,transparent 6px 11px)}
+#fr-up .porta{position:relative;padding-left:50px;margin-bottom:14px}
+#fr-up .porta-no{position:absolute;left:0;top:16px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid var(--brown);color:var(--brown);z-index:1}
+#fr-up .porta-dela .porta-no{background:var(--green);border-color:var(--green);color:#fff}
+#fr-up .porta-card{display:flex;gap:14px;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:var(--r);padding:14px;min-height:118px}
+#fr-up .porta-dela .porta-card{background:var(--green-soft);border-color:rgba(47,149,64,.3)}
+#fr-up .capa-p{width:76px;flex:none;border-radius:8px}
+#fr-up .porta-txt{flex:1;min-width:0}
+#fr-up .porta-txt .kicker{font-size:11px;letter-spacing:.12em;color:var(--brown)}
+#fr-up .porta-dela .porta-txt .kicker{color:var(--green-dark)}
+#fr-up .porta-txt h3{font-size:17px;font-weight:700;margin-top:4px}
+#fr-up .porta-txt p{font-size:14.5px;line-height:1.5;margin-top:6px}
+#fr-up .porta-txt .chip-pesa{margin-top:8px;font-size:12.5px;padding:4px 10px 4px 5px}
+#fr-up .porta-txt .chip-pesa img{width:18px;height:18px}
+#fr-up .tag{display:inline-block;margin-top:10px;font:800 10.5px/1 "Open Sans",sans-serif;letter-spacing:.12em;padding:6px 9px;border-radius:99px}
+#fr-up .tag-verde{background:var(--green);color:#fff}
+#fr-up .tag-terra{background:var(--brown-soft);color:var(--brown-dark)}
+#fr-up .porta-grupo{padding:10px 0 12px 50px;position:relative}
+#fr-up .porta-grupo .kicker{color:var(--ink)}
+#fr-up .porta-grupo p{font-size:15px;margin-top:4px}
+#fr-up .btn{display:flex;align-items:center;justify-content:center;text-align:center;width:100%;min-height:60px;padding:16px 22px;border-radius:99px;background:var(--brown);color:#fff;text-decoration:none;font:800 15.5px/1.3 "Open Sans",sans-serif;letter-spacing:.02em;text-transform:uppercase;box-shadow:0 8px 20px rgba(162,90,56,.32);border:0;cursor:pointer;transition:background .2s}
+#fr-up .btn:hover{background:var(--brown-dark)}
+#fr-up .btn-wrap{margin-top:var(--sp-blk)}
+#fr-up .recusa{display:block;margin:18px auto 0;max-width:420px;text-align:center;font-size:14px;line-height:1.5;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+#fr-up .pgto{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;font-size:13px;color:var(--muted);line-height:1.45;text-align:left}
+#fr-up .pgto .ics{display:inline-flex;gap:4px;flex:none;color:var(--muted)}
+#fr-up .manuais{display:grid;gap:14px;margin-top:var(--sp-blk)}
+#fr-up .manual{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+#fr-up .capa-m{width:92px;flex:none;border-radius:8px}
+#fr-up .manual-txt{flex:1;min-width:0}
+#fr-up .manual-txt .chip-pesa{margin-bottom:10px;font-size:12.5px;padding:4px 10px 4px 5px}
+#fr-up .manual-txt .chip-pesa img{width:18px;height:18px}
+#fr-up .manual h3{font-size:19px;font-weight:700;margin-top:4px}
+#fr-up .manual p{font-size:15.5px;line-height:1.55;margin-top:8px}
+#fr-up .chips{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+#fr-up .chips li{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:5px 10px;font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.3}
+#fr-up .chips .ic{color:var(--brown)}
+#fr-up .preview{margin:var(--sp-blk) auto 0;max-width:300px;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 10px 26px rgba(47,33,24,.12);aspect-ratio:579/560;background:#fff}
+#fr-up .preview img{width:100%;height:auto}
+#fr-up .preview::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(rgba(255,255,255,0),#fff 92%)}
+#fr-up .linha6{margin-top:var(--sp-blk);text-align:center;font-weight:600;color:var(--ink)}
+#fr-up .foto{width:132px;height:132px;border-radius:50%;overflow:hidden;margin:0 auto 18px;border:4px solid #fff;box-shadow:0 0 0 1.5px var(--line),0 8px 20px rgba(47,33,24,.12)}
+#fr-up .foto img{width:100%;height:100%;object-fit:cover}
+#fr-up .numeros{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:var(--sp-blk)}
+#fr-up .num{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 12px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+#fr-up .num b{display:block;font:800 28px/1.1 Raleway,sans-serif;color:var(--brown)}
+#fr-up .num span{display:block;font-size:13px;line-height:1.4;margin-top:6px}
+#fr-up .relatos{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:16px -20px 0;padding:4px 20px 10px;scrollbar-width:none}
+#fr-up .relatos::-webkit-scrollbar{display:none}
+#fr-up .relato{flex:0 0 84%;scroll-snap-align:center;background:var(--card);border:1px solid var(--line-relato);border-radius:14px;padding:12px;margin:0;display:flex;flex-direction:column}
+#fr-up .relato .shot{border-radius:10px;overflow:hidden;background:#000;display:grid;place-items:center;flex:1}
+#fr-up .relato .shot.claro{background:#fff;border:1px solid var(--line)}
+#fr-up .relato img{width:100%;height:auto}
+#fr-up .relato figcaption{font:700 13px/1.3 "Open Sans",sans-serif;color:var(--brown-dark);margin-top:10px}
+#fr-up .legenda{font-size:12.5px;color:var(--muted);text-align:center;font-style:italic;margin-top:10px;line-height:1.5}
+#fr-up .checks{list-style:none;padding:0;margin:var(--sp-blk) 0 0;display:grid;gap:16px}
+#fr-up .checks li{display:flex;gap:12px;align-items:flex-start;font-size:17px;line-height:1.5;color:var(--ink)}
+#fr-up .checks .ck{flex:none;width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;margin-top:1px}
+#fr-up .recebe{background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:30px 18px 20px;margin-top:var(--sp-blk);box-shadow:0 6px 22px rgba(47,33,24,.05)}
+#fr-up .leque{position:relative;margin:0 auto;display:flex;justify-content:center;align-items:flex-start}
+#fr-up .leque-item{position:absolute;top:4px;width:var(--cs);transform-origin:50% 100%}
+#fr-up .leque-item .selo-seu{bottom:-12px}
+#fr-up .itens{list-style:none;padding:0;margin:28px 0 0}
+#fr-up .itens li{display:flex;align-items:center;gap:10px;padding:12px 0;border-top:1px solid var(--line);font-size:15.5px;line-height:1.45}
+#fr-up .itens li:first-child{border-top:0}
+#fr-up .itens .ck-t{flex:none;color:var(--brown)}
+#fr-up .itens .incl{margin-left:auto;flex:none;font:700 11px/1 "Open Sans",sans-serif;letter-spacing:.06em;color:var(--green-dark);background:var(--green-soft);padding:5px 8px;border-radius:99px}
+#fr-up .itens .dot{flex:none;width:20px;display:grid;place-items:center;color:var(--green)}
+#fr-up .fora{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px;font-size:14.5px}
+#fr-up .fora .ck-v{color:var(--green)}
+#fr-up .capa-xs{width:34px;border-radius:5px;box-shadow:0 2px 6px rgba(47,33,24,.2)}
+#fr-up .preco{background:linear-gradient(#FBF8F4,var(--card));border:2px solid var(--brown);border-radius:20px;padding:26px 20px 24px;text-align:center;margin-top:0;box-shadow:0 12px 30px rgba(162,90,56,.12)}
+#fr-up .preco .leque{margin-bottom:10px}
+#fr-up .fora-pg{font:700 11.5px/1.4 "Open Sans",sans-serif;letter-spacing:.14em;color:var(--muted)}
+#fr-up .conta{font-size:16px;margin-top:6px;color:var(--body)}
+#fr-up .div-preco{height:1px;background:var(--line);margin:20px auto;max-width:200px}
+#fr-up .cond{font:700 11.5px/1.4 "Open Sans",sans-serif;letter-spacing:.14em;color:var(--ink)}
+#fr-up .so-aqui{display:inline-block;margin-top:10px;background:var(--brown-soft);color:var(--brown-dark);font:800 11.5px/1 "Open Sans",sans-serif;letter-spacing:.14em;padding:7px 12px;border-radius:99px}
+#fr-up .sai-por{margin-top:16px;font-size:16px;color:var(--ink)}
+#fr-up .parcela{font:800 40px/1.1 Raleway,sans-serif;color:var(--brown);margin-top:6px;letter-spacing:-.02em}
+#fr-up .avista{font-size:17px;color:var(--body);margin-top:4px}
+#fr-up .dif{font-size:15px;margin:16px auto 0;max-width:420px}
+#fr-up .preco .btn-wrap{margin-top:22px}
+#fr-up .garantia{display:flex;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 18px}
+#fr-up .garantia svg{flex:none}
+#fr-up .garantia h3{font:800 12px/1.4 "Open Sans",sans-serif;letter-spacing:.12em;color:var(--ink)}
+#fr-up .garantia p{font-size:16px;line-height:1.55;margin-top:6px}
+#fr-up .faq{margin-top:var(--sp-blk);border-top:1px solid var(--line)}
+#fr-up .faq details{border-bottom:1px solid var(--line)}
+#fr-up .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 2px;font:700 16.5px/1.4 Raleway,sans-serif;color:var(--ink)}
+#fr-up .faq summary::-webkit-details-marker{display:none}
+#fr-up .faq summary::after{content:"";flex:none;width:9px;height:9px;border-right:2px solid var(--brown);border-bottom:2px solid var(--brown);transform:rotate(45deg) translate(-2px,-2px);transition:transform .2s}
+#fr-up .faq details[open] summary::after{transform:rotate(-135deg)}
+#fr-up .faq details p{padding:0 2px 18px;font-size:16px}
+#fr-up .h-fecho{font-size:25px;font-weight:800;text-align:center;letter-spacing:-.01em}
+#fr-up .linha14{font-weight:700;color:var(--ink);text-align:center}
+#fr-up .fecho14 .chip-linha{text-align:center}
+#fr-up .nao-volta{font-size:15px;text-align:center;margin-top:var(--sp-blk);color:var(--ink);font-weight:600}
+#fr-up .resumo{font-size:13px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.5}
+#fr-up .cta-fixo{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(47,33,24,.08);transform:translateY(110%);transition:transform .3s ease}
+#fr-up .cta-fixo.on{transform:none}
+#fr-up .cta-fixo .btn{max-width:560px;margin:0 auto;min-height:54px;font-size:14px;padding:12px 18px}
+#fr-up.tem-fixo{padding-bottom:90px}
+#fr-up .comp{display:grid;gap:12px;margin-top:var(--sp-blk)}
+#fr-up .comp-card{border-radius:var(--r);padding:20px 16px;text-align:center;display:flex;flex-direction:column;align-items:center}
+#fr-up .comp-card .ib{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;margin-bottom:10px}
+#fr-up .comp-antes{background:#F4F1EE;border:1px solid #E6E1DC;color:var(--muted)}
+#fr-up .comp-antes .ib{background:#fff;color:var(--muted)}
+#fr-up .comp-antes h3{color:#7A6E64}
+#fr-up .comp-depois{background:var(--card);border:2px solid var(--brown)}
+#fr-up .comp-depois .ib{background:var(--brown-soft);color:var(--brown)}
+#fr-up .comp-card .kicker{font-size:11px}
+#fr-up .comp-card h3{font-size:17px;font-weight:700;margin-top:6px}
+#fr-up .comp-card .val{font:800 24px/1.2 Raleway,sans-serif;margin-top:8px}
+#fr-up .comp-antes .val{color:#8E837A}
+#fr-up .comp-depois .val{color:var(--brown)}
+#fr-up .comp-card p{font-size:14.5px;margin-top:8px;line-height:1.5}
+#fr-up .portas-mini .porta-card{min-height:0;padding:10px 12px}
+#fr-up .portas-mini .capa-p{width:52px}
+#fr-up .portas-mini .porta-txt h3{margin-top:0;font-size:16px}
+#fr-up .portas-mini .tag{margin-top:6px}
+#fr-up .portas-mini .porta-no{top:16px}
+#fr-up .linha-down{font-weight:700;color:var(--ink);margin-top:12px}
+#fr-up .linha-vermelha{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:15px;margin-top:18px;color:var(--ink);text-align:center}
+#fr-up .h-down{font-size:25px;font-weight:800;text-align:center;letter-spacing:-.01em}
+@media (min-width:720px){#fr-up .t-sec{font-size:30px}
+#fr-up .h-hero{font-size:32px}
+#fr-up .h-fecho,#fr-up .h-down{font-size:28px}
+#fr-up .numeros{grid-template-columns:repeat(4,1fr)}
+#fr-up .relato{flex-basis:46%}
+#fr-up .comp{grid-template-columns:1fr 1fr}
+#fr-up .parcela{font-size:46px}}
+@media (prefers-reduced-motion:reduce){#fr-up .reveal{opacity:1;transform:none;transition:none}}
+#fr-up .cenas4{list-style:none;padding:0;margin:var(--sp-blk) 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#fr-up .cena4{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;font-size:15.5px;line-height:1.45;color:var(--ink);font-weight:600}
+#fr-up .cena4 img{width:44px;height:44px;background:#fff;border-radius:50%;padding:4px;border:1px solid var(--line)}
+#fr-up .manual{display:block;padding:18px}
+#fr-up .manual > .chip-pesa{margin-bottom:12px;font-size:12.5px;padding:4px 10px 4px 5px}
+#fr-up .manual > .chip-pesa img{width:18px;height:18px}
+#fr-up .manual-top{display:flex;gap:14px;align-items:center}
+#fr-up .manual-top .capa-m{width:84px}
+#fr-up .manual-head h3{margin-top:4px}
+#fr-up .manual > p{margin-top:14px}
+@media (min-width:720px){#fr-up .manual-top .capa-m{width:96px}}
+#fr-up .pgto{flex-direction:column;gap:6px;text-align:center}
+#fr-up .pgto .ics{gap:8px}
+#fr-up .btn span{display:contents}
+#fr-up .faixa{letter-spacing:.16em;font-size:11px;line-height:1.5}
+#fr-up .cenas4{grid-template-columns:1fr;gap:10px}
+#fr-up .cena4{flex-direction:row;text-align:left;align-items:center;gap:14px;padding:14px 16px}
+#fr-up .cena4 img{flex:none}
+@media (min-width:720px){#fr-up .cenas4{grid-template-columns:1fr 1fr;grid-auto-rows:1fr}
+#fr-up .cena4{flex-direction:column;text-align:center;justify-content:center}}
+#fr-up .relato .shot{width:100%}
+#fr-up .rcrop{display:block;position:relative;overflow:hidden;width:100%}
+#fr-up .rcrop.r1{aspect-ratio:749/214}
+#fr-up .rcrop.r2{aspect-ratio:749/247}
+#fr-up .rcrop.r1 img,#fr-up .rcrop.r2 img{position:absolute !important;display:block !important;width:calc(100% * 800 / 749) !important;height:auto !important;max-width:none !important;max-height:none !important;aspect-ratio:1/1 !important;left:calc(100% * -12 / 749) !important;margin:0 !important}
+#fr-up .rcrop.r1 img{top:calc(100% * -299 / 214) !important}
+#fr-up .rcrop.r2 img{top:calc(100% * -264 / 247) !important}
+#fr-up .rcrop.r3{max-width:454px;margin:0 auto}
+#fr-up .rcrop.r3 img{position:static !important;width:100% !important;height:auto !important}
+</style>
+<div id="fr-up" data-pagina="b" class="tem-fixo"><!-- BLOCO 1 · Faixa de confirmação e retenção --> <div class="faixa">NÃO FECHE ESTA PÁGINA</div> <header class="wrap topo"> <div class="ok-linha"><span class="bola" data-ic="check" data-size="17"></span><p>Deu certo. O seu manual já está garantido e vai chegar no mesmo e-mail da sua compra.</p></div> <p class="sub">Antes de você ir baixar, eu separei uma condição que só aparece aqui, logo depois da compra. Leia com calma até o final.</p> <div class="etapas" role="list"> <div class="etapa feita" role="listitem"><span class="pt" data-ic="check" data-size="15"></span><span class="nm">Compra feita</span></div> <div class="etapa atual" role="listitem"><span class="pt"></span><span class="nm">Condição especial</span><span class="aqui">você está aqui</span></div> <div class="etapa" role="listitem"><span class="pt"></span><span class="nm">Acesso</span></div> </div> </header> <main> <!-- BLOCO 2 · Celebrar a decisão [varia por ?m] --> <section class="sec wrap reveal"> <div data-slot="capa-dela"></div> <h1 class="h-hero">Você acabou de fazer o que <span class="terra">pouca gente faz.</span></h1> <div class="celebrar" data-slot="celebrar"></div> <div class="fecho2"> <p>Começar pela área que mais dói foi a decisão certa. A partir de hoje, você vai pra oração sabendo o que está enfrentando ali.</p> <em>Mas, antes de você ir baixar, eu preciso te mostrar uma coisa.</em> </div> </section> <!-- ESPAÇO DO VÍDEO (2ª fase): entra depois do bloco 2 quando o vídeo existir --> <!-- BLOCO 3 · O aviso --> <section class="sec wrap reveal"> <h2 class="t-sec">Dentro de casa, <span class="terra">nada aperta sozinho.</span></h2> <p class="center">Quem vive numa casa sabe como é.</p> <p class="destaque blk">Quando uma área da casa aperta, as outras sentem junto.</p> <ul class="cenas4"> <li class="cena4"><img src="https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-simbolo-casamento.svg" width="40" height="40" alt=""><span>A briga com o marido muda o clima da casa inteira.</span></li> <li class="cena4"><img src="https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-simbolo-filhos.svg" width="40" height="40" alt=""><span>O filho se fecha no quarto.</span></li> <li class="cena4"><img src="https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-simbolo-financeiro.svg" width="40" height="40" alt=""><span>A conta que não fecha tira o sono.</span></li> <li class="cena4"><img src="https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-simbolo-oracao.svg" width="40" height="40" alt=""><span>E a oração vai esfriando no meio disso tudo.</span></li> </ul> <p class="blk">Isso acontece porque a casa é uma só. Não tem nada a ver com a sua fé ser pequena.</p> <figure class="versiculo blk"> <blockquote>“Com a sabedoria se edifica a casa, e com a inteligência ela se firma.”</blockquote> <cite>PROVÉRBIOS 24:3 · A PALAVRA FALA DA CASA INTEIRA</cite> </figure> <div class="blk"> <p>Repara que o versículo não fala de um cômodo. Fala da casa. Você acabou de buscar direção pra área que mais dói, e esse é o começo certo.</p> <p>Só que, quando outra área apertar e você estiver sem direção nela, o mais comum é voltar a orar do jeito de antes, sem saber o que pedir.</p> <p>Por isso tanta gente começa bem e, uns meses depois, se vê de novo perdida na oração. Cuidou de uma área e deixou as outras pro dia em que apertassem.</p> <p>E, quando apertam, costumam apertar juntas. Foi pensando nisso que eu preparei esta página.</p> </div> </section> <!-- BLOCO 4 · O problema que continua [varia por ?area] --> <section class="sec wrap reveal"> <div data-slot="gancho4"></div> </section> <!-- BLOCO 5 · O caminho da casa inteira --> <section class="sec wrap reveal"> <h2 class="t-sec">São 4 portas na mesma casa. Da primeira, <span class="verde">você já está cuidando.</span></h2> <p class="center">Os meus 4 manuais usam o mesmo método. Pra cada situação, você entende o que está acontecendo, de onde aquilo vem e o que orar, com a Palavra na mão.</p> <div class="metodo"><span class="m-chip">Situação</span><span class="sep" data-ic="arrowR" data-size="14"></span><span class="m-chip">Causa</span><span class="sep" data-ic="arrowR" data-size="14"></span><span class="m-chip">O que orar</span></div> <p class="palavra"><span class="ib" data-ic="book" data-size="17"></span>com a Palavra na mão</p> <div class="blk"> <p>No manual que você comprou, você aprende esse jeito de orar. Nos outros, você usa esse mesmo jeito em cada área da casa, sem começar do zero.</p> <p>Nesta página, e só nela, os 3 manuais que faltam destravam juntos. <span data-mc="O">O seu manual</span> já é seu e fica do jeito que está:</p> </div> <div data-slot="portas"></div> </section> <!-- BLOCO 6 · Um bloco pra cada manual novo [varia por ?m e ?area] --> <section class="sec wrap reveal"> <h2 class="t-sec">Os 3 que destravam hoje</h2> <div class="manuais" data-slot="manuais"></div> <div data-slot="preview"></div> <p class="linha6">O mesmo método do manual que você já tem, agora pra cada área da casa.</p> </section> <!-- BLOCO 7 · Prova --> <section class="sec wrap reveal"> <div class="foto"><img src="https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-ezenete-autora.webp" alt="Pra. Ezenete Rodrigues" width="600" height="604" loading="lazy"></div> <h2 class="t-sec">Quem ensina</h2> <p class="center">Eu sou a Pra. Ezenete Rodrigues e estou há mais de 20 anos à frente da intercessão da Estância Paraíso, em Sabará (MG). Já formei mais de 200 mil pessoas na intercessão e sou autora do livro <em>Uma Vida de Milagres</em>.</p> <div class="numeros"> <div class="num"><b>20+ anos</b><span>à frente da intercessão da Estância Paraíso</span></div> <div class="num"><b>200 mil</b><span>pessoas formadas na intercessão</span></div> <div class="num"><b>60</b><span>armas espirituais novas pra sua casa</span></div> <div class="num"><b>Autora</b><span>de Uma Vida de Milagres</span></div> </div> <p class="blk center"><strong>Veja o que dizem as mulheres que aprenderam a orar comigo:</strong></p> <div class="relatos"> <figure class="relato"><div class="shot"><span class="rcrop r1"><img src="https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-relato-1.webp" alt="Relato de @katianascimento9902" loading="lazy" decoding="async"></span></div><figcaption>@katianascimento9902</figcaption></figure> <figure class="relato"><div class="shot"><span class="rcrop r2"><img src="https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-relato-2.webp" alt="Relato de @andrezarosolen" loading="lazy" decoding="async"></span></div><figcaption>@andrezarosolen</figcaption></figure> <figure class="relato"><div class="shot claro"><span class="rcrop r3"><img src="https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-relato-3.webp" alt="Relato de @maria.rgoncalves" loading="lazy" decoding="async"></span></div><figcaption>@maria.rgoncalves</figcaption></figure> </div> <p class="legenda">Relatos reais publicados nas minhas redes. São testemunhos pessoais e não representam promessa de resultado.</p> </section> <!-- BLOCO 8 · Pra quem é (fundo creme) --> <section class="sec-creme reveal"> <div class="wrap"> <h2 class="t-sec">Essa condição é pra você que:</h2> <ul class="checks"> <li><span class="ck" data-ic="check" data-size="15"></span><span>Quer cuidar da casa inteira, e não só da área que mais dói agora;</span></li> <li><span class="ck" data-ic="check" data-size="15"></span><span>Quer orar por cada pessoa da sua casa sabendo o que pedir, e não só quando a crise estoura;</span></li> <li><span class="ck" data-ic="check" data-size="15"></span><span>Já fez campanha, jejum e propósito, e quer entender o que está acontecendo antes de pedir de novo;</span></li> <li><span class="ck" data-ic="check" data-size="15"></span><span>Quer ter a direção da próxima área na mão antes de ela apertar;</span></li> <li><span class="ck" data-ic="check" data-size="15"></span><span data-slot="item8"></span></li> </ul> </div> </section> <!-- BLOCO 9 · Você recebe --> <section class="sec wrap reveal"> <h2 class="t-sec">Levando os 3 agora, você recebe:</h2> <div class="recebe"> <div data-leque="tres" data-size="112"></div> <ul class="itens"> <li><span class="ck-t" data-ic="check" data-size="18"></span><span><strong>Os 3 manuais que faltam completos</strong>, com 20 armas espirituais cada</span></li> <li><span class="dot" data-ic="check" data-size="16"></span><span>Situação, causa e o que orar em cada situação, com a Palavra aplicada</span><span class="incl">incluso</span></li> <li><span class="dot" data-ic="check" data-size="16"></span><span>Entrega no mesmo e-mail da sua compra</span><span class="incl">incluso</span></li> <li><span class="dot" data-ic="check" data-size="16"></span><span>Pra ler no celular ou imprimir</span><span class="incl">incluso</span></li> <li><span class="dot" data-ic="check" data-size="16"></span><span>Garantia de 7 dias</span><span class="incl">incluso</span></li> </ul> </div> <p class="fora"><span class="ck-v" data-ic="check" data-size="17"></span><span data-slot="capa-mini"></span><span><span data-mc="O">O seu manual</span> continua seu, do jeito que você comprou.</span></p> </section> <!-- BLOCO 10 · Preço + BLOCO 11 · Aceite e recusa --> <section class="sec wrap reveal" id="preco"> <div class="preco"> <div data-leque="tres" data-size="70"></div> <p class="fora-pg">VALOR FORA DESTA PÁGINA</p> <p class="conta">Cada manual sai por <span data-var="precoAvulso">R$ 47</span>. Os 3, separados, somam <span data-var="somaAvulsos">R$ 141</span>.</p> <div class="div-preco"></div> <p class="cond">CONDIÇÃO DE QUEM ACABOU DE COMPRAR</p> <span class="so-aqui">SÓ NESTA PÁGINA</span> <p class="sai-por">Os 3 manuais que faltam saem por</p> <p class="parcela"><span data-var="parcelaB">12x de R$ 4,86</span></p> <p class="avista">ou <span data-var="avistaB">R$ 47</span> à vista</p> <p class="dif">Dá <span data-var="porManualB">R$ 15,67</span> por manual, com as 20 armas espirituais de cada um.</p> <div class="btn-wrap"> <!-- LINK DE 1 CLIQUE: troque em config.js > links.aceiteB --> <a class="btn cta-aceite" href="#" data-link="aceiteB">SIM, QUERO OS 3 QUE FALTAM POR <span data-var="parcelaB">12x de R$ 4,86</span></a> </div> <p class="pgto"><span class="ics"><span data-ic="lock" data-size="15"></span><span data-ic="card" data-size="15"></span><span data-ic="pix" data-size="15"></span></span><span>Pagamento único. Pagou no cartão? É um clique, no mesmo cartão. Pagou no Pix? Você gera um Pix novo na próxima tela.</span></p> </div> <!-- RECUSA: página de obrigado da compra (config.js > links.obrigado) --> <a class="recusa" href="#" data-link="obrigado">Não, obrigada. Prefiro seguir só com <span data-mc="o">o seu manual</span> e abrir mão dessa condição.</a> </section> <!-- BLOCO 12 · Garantia --> <section class="sec wrap reveal"> <div class="garantia"><svg width="76" height="76" viewBox="0 0 76 76" aria-hidden="true"><circle cx="38" cy="38" r="36" fill="#fff" stroke="#A25A38" stroke-width="1.5"/><circle cx="38" cy="38" r="30" fill="none" stroke="#A25A38" stroke-width="1" stroke-dasharray="2 3"/><text x="38" y="42" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="800" font-size="24" fill="#A25A38">7</text><text x="38" y="54" text-anchor="middle" font-family="Open Sans,sans-serif" font-weight="700" font-size="7.5" letter-spacing="1.5" fill="#7E4527">DIAS</text></svg><div><h3>FIQUE TRANQUILA, A SUA COMPRA É SEGURA</h3><p>Você tem 7 dias pra ler, orar e usar. Se sentir que não é pra você, é só mandar uma mensagem pro nosso suporte que a gente devolve todo o valor desta compra.</p></div></div> </section> <!-- BLOCO 13 · Perguntas frequentes --> <section class="sec wrap reveal"> <h2 class="t-sec">Perguntas frequentes</h2> <div class="faq"> <details><summary>Vou pagar de novo pelo manual que eu comprei?</summary><p>Não. <span data-mc="O">O seu manual</span> já é seu e não entra nessa cobrança. O valor desta página é só pelos 3 manuais que faltam.</p></details> <details><summary>Como eu recebo?</summary><p>Os 3 manuais chegam no mesmo e-mail da sua compra, logo depois que o pagamento é confirmado. No Pix, chegam assim que o Pix for confirmado. Se não encontrar, olhe a caixa de spam ou fale com o nosso suporte.</p></details> <details><summary>Posso aproveitar essa condição depois?</summary><p>Não. Ela aparece só aqui, logo depois da compra. Fora desta página, cada manual volta ao valor normal de <span data-var="precoAvulso">R$ 47</span>.</p></details> <details><summary>Faz sentido pra quem está começando a orar agora?</summary><p>Faz. Os manuais não partem do princípio de que você já sabe orar com direção. Cada situação vem explicada, com o que orar e a Palavra pra usar, e dá pra começar com poucos minutos por dia.</p></details> <details><summary>Isso garante que a situação da minha casa vai mudar?</summary><p>Não. Ninguém pode te garantir que o casamento volta, que o filho se converte ou que a dívida some. O que os manuais te dão é direção: entender o que está acontecendo em cada área da casa e saber o que orar ali.</p></details> <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Se sentir que não é pra você, é só mandar uma mensagem que a gente devolve 100% do valor, sem pergunta e sem burocracia.</p></details> </div> </section> <!-- BLOCO 14 · Fechamento [linha varia por ?area] --> <section class="sec wrap reveal fecho14"> <h2 class="h-fecho">Deus não te chamou só pra cuidar da área que mais dói. Ele te chamou pra <span class="terra">cuidar da casa.</span></h2> <p class="center" style="margin-top:14px">Você já deu o passo mais difícil, que foi parar pra entender o que está acontecendo. A pergunta que fica é simples: quando a próxima área apertar, você quer estar sem saber o que orar ou já com a direção na mão?</p> <div class="blk" data-slot="linha14"></div> <p class="nao-volta">Essa condição não aparece de novo.</p> <div class="btn-wrap"> <!-- LINK DE 1 CLIQUE: config.js > links.aceiteB --> <a class="btn cta-aceite" href="#" data-link="aceiteB">SIM, QUERO OS 3 QUE FALTAM POR <span data-var="parcelaB">12x de R$ 4,86</span></a> </div> <p class="resumo"><span data-var="parcelaB">12x de R$ 4,86</span> ou <span data-var="avistaB">R$ 47</span> à vista · Garantia de 7 dias · Chega no mesmo e-mail da sua compra</p> <a class="recusa" href="#" data-link="obrigado">Não, obrigada. Prefiro seguir só com <span data-mc="o">o seu manual</span> e abrir mão dessa condição.</a> </section> </main> <!-- Botão fixo: aparece a partir do bloco 10 (some quando um botão de aceite está na tela) --> <div class="cta-fixo" aria-hidden="false"><a class="btn" href="#" data-link="aceiteB">SIM, QUERO OS 3 QUE FALTAM POR <span data-var="parcelaB">12x de R$ 4,86</span></a></div></div>
+<script>
+/* =====================================================================
+   TEXTOS VARIÁVEIS DAS PÁGINAS DE UPSELL (Família Restaurada, teste A/B)
+   Troque aqui e as 3 páginas atualizam juntas.
+   Tudo que está aqui ainda depende de confirmação (Victor/Peter).
+   No HTML, cada lugar que usa um destes valores tem data-var="<chave>".
+   ===================================================================== */
+window.UPSELL_CONFIG = {
+  /* Nome do kit (doc do Alan: "Combo Casa Restaurada") */
+  kitNome: "Combo Casa Restaurada",
+  /* Página A: kit com os 4 manuais */
+  parcelaA: "12x de R$ 10,03",
+  avistaA: "R$ 97",
+  diferencaA: "R$ 44",          /* R$ 141 - R$ 97 */
+  /* Página B: os 3 manuais que faltam */
+  parcelaB: "12x de R$ 4,86",
+  avistaB: "R$ 47",
+  porManualB: "R$ 15,67",       /* R$ 47 / 3 */
+  /* Downsell da A: mesmo kit */
+  parcelaDown: "12x de R$ 6,93",
+  avistaDown: "R$ 67",
+  diferencaDown: "R$ 30",       /* R$ 97 - R$ 67 */
+  /* Valor fora da página */
+  precoAvulso: "R$ 47",
+  somaAvulsos: "R$ 141",
+  /* Links (o Theo troca pelos links reais da Eduzz).
+     Aceite = link de 1 clique. Recusa da A leva pro downsell com ?m e ?area. */
+  links: {
+    /* LINKS DE 1 CLIQUE DA EDUZZ: o Peter passa. Enquanto for "#", o botão não sai da página.
+       Referência (oferta no ar hoje): kit R$ 97 = https://chk.eduzz.com/crl53eyv · kit R$ 67 = https://chk.eduzz.com/liawsws4 */
+    aceiteA: "#",        /* LINK DE 1 CLIQUE DA PÁGINA A (Combo R$ 97) */
+    aceiteB: "#",        /* LINK DE 1 CLIQUE DA PÁGINA B (3 manuais R$ 47, produto novo) */
+    aceiteDown: "#",     /* LINK DE 1 CLIQUE DO DOWNSELL DA A (Combo R$ 67) */
+    recusaA: "/familia-upsell-a-2/",  /* downsell da A (leva ?m e ?area junto) */
+    obrigado: "/parabens-familia/",   /* recusa da Página B: página de obrigado da compra (a mesma das ofertas no ar) */
+    recusaDown: "/parabens-familia/"  /* recusa do downsell: página de obrigado da compra */
+  },
+  /* true = acrescenta ?u=1 no link de aceite, como a oferta no ar faz (1 clique da Eduzz) */
+  umClique: true,
+  /* Funnel Control: a API de hoje recusa campo fora da lista. Deixe false até o Max liberar "variant" e "area2". */
+  fcEnviarVariante: false,
+  /* 2ª área = casamento, mas o quiz marcou que o casamento acabou: "casamento" usa o texto do casamento (como no mockup aprovado);
+     "padrao" usa o texto sem a 2ª área. O doc do Alan pede "a dor do casamento que acabou", que ainda não tem texto. */
+  casamentoAcabou: "casamento",
+  /* Nome do parâmetro da 2ª área na URL */
+  paramArea: "area",
+  /* braço do teste (vai pro dataLayer e pro pixel) */
+  variante: "b"
+};
+/* =====================================================================
+   TEXTOS QUE MUDAM POR ÁREA (copy do Alan, sem reescrever)
+   ?m=   manual comprado: casamento | filhos | oracao | financeiro
+   ?area= 2ª área do teste: casamento | filhos | oracao | financeiro
+   ===================================================================== */
+window.UPSELL_TEXTOS = {
+  ordem: ["casamento", "filhos", "oracao", "financeiro"],
+  areas: {
+    casamento: {
+      manual: "Casamento Restaurado",
+      segunda: "o seu casamento",
+      capa: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-capa-casamento.webp",
+      simbolo: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-simbolo-casamento.svg",
+      preview: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-preview-casamento.webp",
+      celebrar: ["A maioria passa anos orando pelo casamento do mesmo jeito, no escuro, e acha que é assim mesmo.", "Você não. Você parou pra entender o que está acontecendo aí dentro e levou o <strong>Casamento Restaurado</strong>, pra saber o que orar no silêncio dentro de casa, na briga que sempre volta e na desconfiança que não deixa você dormir."],
+      card: "Pra orar pelo casamento sabendo o que está acontecendo: no silêncio dentro de casa, na briga que sempre volta, na traição, quando se fala em ir embora. Você aprende a orar a favor do casamento, e não contra a pessoa.",
+      chips: ["20 armas espirituais", "Situação, causa e o que orar", "Oração a favor do casamento"],
+      gancho4: {
+        abre: "E no seu caso tem um detalhe. No teste, além do que você escolheu, apareceu mais uma área pesando aí:",
+        meio: "Talvez você nem tenha parado pra pensar nisso agora. Faz sentido: quando uma área dói muito, a gente só olha pra ela. Mas as suas respostas mostram que o casamento também está apertando. A conversa que não acontece, a distância dentro de casa, a briga que sempre volta. E o casamento não espera a outra área melhorar pra pesar.",
+        fecho: "Ele só não fala do casamento, porque cada manual cuida de uma área da casa."
+      },
+      porta02: "O casamento apareceu no seu teste. Aqui você usa o mesmo método onde a pressão já chegou.",
+      item8: "Viu no teste que o seu casamento também pesa aí, e quer saber o que orar por ele antes da próxima briga.",
+      linha14: "E você já sabe qual área é essa: o seu casamento. O Casamento Restaurado destrava hoje, junto com os outros.",
+      linhaDown4: "Inclusive o Casamento Restaurado, do casamento, que também pesa aí.",
+      downEntra: "Você já tem o <strong>Casamento Restaurado</strong>. Com esse valor, entram também o Filhos Restaurados, o Vida de Oração Restaurada e o Financeiro Restaurado."
+    },
+    filhos: {
+      manual: "Filhos Restaurados",
+      segunda: "o seu filho",
+      capa: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-capa-filhos.webp",
+      simbolo: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-simbolo-filhos.svg",
+      preview: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-preview-filhos.webp",
+      celebrar: ["A maioria passa anos chorando por um filho sem saber o que pedir, e acha que só resta esperar.", "Você não. Você parou pra entender o que está acontecendo e levou o <strong>Filhos Restaurados</strong>, pra saber como ficar na brecha pelo seu filho quando ele se afasta de Deus, da igreja ou de você."],
+      card: "Pra ficar na brecha pelo filho que se afastou de Deus, da igreja ou de você. Você aprende a largar a culpa que não é sua e a orar pela mente e pelas escolhas dele com a Palavra, sem implorar e sem sermão.",
+      chips: ["20 armas espirituais", "Situação, causa e o que orar", "Oração pelo filho, mesmo de longe"],
+      gancho4: {
+        abre: "E no seu caso tem um detalhe. No teste, além do que você escolheu, apareceu mais uma área pesando aí:",
+        meio: "Talvez você nem tenha parado pra pensar nisso agora. Faz sentido: quando uma área dói muito, a gente só olha pra ela. Mas as suas respostas mostram que a preocupação com o seu filho também está apertando. O jeito que ele se fecha, a distância de Deus, o medo do caminho que ele está escolhendo. E essa preocupação não espera a outra área melhorar pra pesar.",
+        fecho: "Ele só não fala dos filhos, porque cada manual cuida de uma área da casa."
+      },
+      porta02: "O seu filho apareceu no seu teste. Aqui você usa o mesmo método onde a pressão já chegou.",
+      item8: "Viu no teste que o seu filho também pesa aí, e quer ficar na brecha por ele sabendo o que pedir.",
+      linha14: "E você já sabe qual área é essa: o seu filho. O Filhos Restaurados destrava hoje, junto com os outros.",
+      linhaDown4: "Inclusive o Filhos Restaurados, do seu filho, que também pesa aí.",
+      downEntra: "Você já tem o <strong>Filhos Restaurados</strong>. Com esse valor, entram também o Casamento Restaurado, o Vida de Oração Restaurada e o Financeiro Restaurado."
+    },
+    oracao: {
+      manual: "Vida de Oração Restaurada",
+      segunda: "a sua vida de oração",
+      capa: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-capa-oracao.webp",
+      simbolo: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-simbolo-oracao.svg",
+      preview: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-preview-oracao.webp",
+      celebrar: ["A maioria passa anos ajoelhando sem sentir que a oração sai do lugar, e acha que o problema é ela mesma.", "Você não. Você parou pra entender o que está acontecendo e levou o <strong>Vida de Oração Restaurada</strong>, pra voltar a orar com direção, inclusive nos dias em que a vontade de orar some."],
+      card: "Pra quem ajoelha e não sai nada, ou sente que a oração não passa do teto. Você aprende a voltar a orar começando com poucos minutos por dia, até isso virar costume, inclusive nos dias em que a vontade de orar some.",
+      chips: ["20 armas espirituais", "Situação, causa e o que orar", "Recomeço de 5 a 15 minutos"],
+      gancho4: {
+        abre: "E no seu caso tem um detalhe. No teste, além do que você escolheu, apareceu mais uma área pesando aí:",
+        meio: "Talvez você nem tenha parado pra pensar nisso agora. Faz sentido: quando uma área dói muito, a gente só olha pra ela. Mas as suas respostas mostram que a sua oração também está sofrendo. O joelho que dobra e não sai nada, a oração que parece não passar do teto, os dias em que a vontade de orar some. E isso não espera a outra área melhorar pra pesar.",
+        fecho: "Ele só não fala da sua vida de oração, porque cada manual cuida de uma área da casa."
+      },
+      porta02: "A sua vida de oração apareceu no seu teste. Aqui você usa o mesmo método onde a pressão já chegou.",
+      item8: "Viu no teste que a sua vida de oração também pesa aí, e quer voltar a orar sabendo o que dizer a Deus.",
+      linha14: "E você já sabe qual área é essa: a sua vida de oração. O Vida de Oração Restaurada destrava hoje, junto com os outros.",
+      linhaDown4: "Inclusive o Vida de Oração Restaurada, da sua vida de oração, que também pesa aí.",
+      downEntra: "Você já tem o <strong>Vida de Oração Restaurada</strong>. Com esse valor, entram também o Casamento Restaurado, o Filhos Restaurados e o Financeiro Restaurado."
+    },
+    financeiro: {
+      manual: "Financeiro Restaurado",
+      segunda: "as contas da casa",
+      capa: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-capa-financeiro.webp",
+      simbolo: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-simbolo-financeiro.svg",
+      preview: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/fr-preview-financeiro.webp",
+      celebrar: ["A maioria passa anos correndo atrás da conta do mês e nunca ora pela vida financeira da casa com direção.", "Você não. Você parou pra entender o que está acontecendo e levou o <strong>Financeiro Restaurado</strong>, pra saber o que orar quando a conta não fecha, a dívida aperta e o peso fica todo em cima de uma pessoa só."],
+      card: "Pra orar pela vida financeira da casa: a dívida, o nome sujo, o peso que fica todo em cima de uma pessoa só. Você aprende a juntar oração e responsabilidade, com um passo prático pra cada dia e sem promessa de prosperidade.",
+      chips: ["20 armas espirituais", "Situação, causa e o que orar", "Oração junto com um passo prático"],
+      gancho4: {
+        abre: "E no seu caso tem um detalhe. No teste, além do que você escolheu, apareceu mais uma área pesando aí:",
+        meio: "Talvez você nem tenha parado pra pensar nisso agora. Faz sentido: quando uma área dói muito, a gente só olha pra ela. Mas as suas respostas mostram que o dinheiro também está apertando. A conta que não fecha, a dívida que cresce, o peso que fica todo em cima de uma pessoa só. E a conta do mês não espera a outra área melhorar pra pesar.",
+        fecho: "Ele só não fala das contas da casa, porque cada manual cuida de uma área da casa."
+      },
+      porta02: "As contas da casa apareceram no seu teste. Aqui você usa o mesmo método onde a pressão já chegou.",
+      item8: "Viu no teste que as contas da casa também pesam aí, e quer orar pela vida financeira da casa com direção, e não só no aperto do fim do mês.",
+      linha14: "E você já sabe qual área é essa: as contas da casa. O Financeiro Restaurado destrava hoje, junto com os outros.",
+      linhaDown4: "Inclusive o Financeiro Restaurado, das contas da casa, que também pesam aí.",
+      downEntra: "Você já tem o <strong>Financeiro Restaurado</strong>. Com esse valor, entram também o Casamento Restaurado, o Filhos Restaurados e o Vida de Oração Restaurada."
+    }
+  },
+  /* Sem 2ª área (ou ?area vazio/inválido/igual ao ?m) */
+  padrao: {
+    gancho4: {
+      abre: "Pensa na sua casa hoje. Quase sempre, além da área que mais dói, tem uma segunda apertando junto. Pode ser a conversa que não acontece em casa, a oração que esfriou ou a conta que não fecha no fim do mês.",
+      meio: "Talvez você nem tenha parado pra pensar nela agora. Faz sentido: quando uma área dói muito, a gente só olha pra ela. Mas a outra área não espera a primeira melhorar pra pesar.",
+      fecho: "Ele só não fala das outras áreas, porque cada manual cuida de uma área da casa."
+    },
+    item8: "Quer cuidar da casa inteira com o mesmo jeito de orar, antes de a próxima área apertar.",
+    linha14: "E, quando ela apertar, você já vai ter nas mãos a direção pra cada área da casa."
+  },
+  /* Sem ?m (manual comprado desconhecido) */
+  semParametro: {
+    manual: "o seu manual",
+    celebrar: ["A maioria passa anos orando do mesmo jeito, no escuro, e acha que é assim mesmo.", "Você não. Você parou pra entender o que está acontecendo na sua casa e levou o manual da área que mais dói agora."],
+    downEntra: "Você já tem o seu manual. Com esse valor, entram também os outros 3."
+  }
+};
+/* Família Restaurada · upsell A/B · lógica (WordPress-safe: sem linha em branco, sem dois "e comercial" seguidos e sem comparação de maior/menor) */
+(function () {
+  var ROOT = document.getElementById("fr-up");
+  if (!ROOT) return;
+  var C = window.UPSELL_CONFIG, T = window.UPSELL_TEXTOS;
+  var PAG = ROOT.getAttribute("data-pagina"); /* a | b | down */
+  var FC_PAGE = PAG === "down" ? "downsell" : "upsell";
+  function lt(a, b) { var d = b - a; if (d === 0) return false; return d === Math.abs(d); }
+  function norm(v) {
+    v = String(v || "").toLowerCase().replace(/^\s+|\s+$/g, "");
+    try { v = v.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); } catch (e) {}
+    return v;
+  }
+  function valida(v) { return T.ordem.indexOf(v) !== -1; }
+  function qp(k) { try { return new URLSearchParams(location.search).get(k); } catch (e) { return null; } }
+  function lerEstado() { try { return JSON.parse(localStorage.getItem("fr_state") || "{}") || {}; } catch (e) { return {}; } }
+  if (qp("qa") === "1") document.documentElement.classList.add("fr-qa");
+  /* ---------- ?m e 2ª área ---------- */
+  var m = norm(qp("m"));
+  if (!valida(m)) m = "";
+  var area = "", areaFonte = "";
+  var areaBruta = qp(C.paramArea);
+  if (areaBruta) {
+    /* veio na URL: vale só se for válida e diferente do ?m. Inválida ou igual = padrão (não cai no quiz). */
+    var a0 = norm(areaBruta);
+    if (valida(a0)) { if (a0 !== m) { area = a0; areaFonte = "url"; } }
+  } else if (m) {
+    /* sem ?area na URL: lê o resultado salvo pelo quiz (só leitura), só se o manual do quiz for o mesmo do ?m */
+    var st = lerEstado(), res = st.res;
+    if (res) {
+      if (norm(res.m) === m) {
+        var a1 = norm(res.m2);
+        if (valida(a1)) {
+          if (a1 !== m) {
+            area = a1; areaFonte = "quiz";
+            if (a1 === "casamento") { if (res.cx) { if (C.casamentoAcabou === "padrao") { area = ""; areaFonte = ""; } } }
+          }
+        }
+      }
+    }
+  }
+  if (!m) { area = ""; areaFonte = ""; }
+  var A = m ? T.areas[m] : null, A2 = area ? T.areas[area] : null;
+  ROOT.classList.add(area ? "com-area" : "sem-area");
+  if (!m) ROOT.classList.add("sem-m");
+  ROOT.setAttribute("data-m", m || "default");
+  ROOT.setAttribute("data-area", area || "");
+  ROOT.setAttribute("data-area-fonte", areaFonte);
+  /* ---------- ícones (SVG de linha, traço 1.5) ---------- */
+  var P = {
+    check: '<path d="M5 12.5l4.2 4.2L19 7"/>',
+    lockOpen: '<rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 7.6-1.7"/>',
+    lock: '<rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    book: '<path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5z"/><path d="M12 6.5v13"/>',
+    shield: '<path d="M12 3l7.5 3v5.5c0 4.5-3.2 8.2-7.5 9.5-4.3-1.3-7.5-5-7.5-9.5V6z"/>',
+    list: '<path d="M9 6.5h11M9 12h11M9 17.5h11"/><circle cx="4.8" cy="6.5" r=".9"/><circle cx="4.8" cy="12" r=".9"/><circle cx="4.8" cy="17.5" r=".9"/>',
+    hands: '<path d="M12 21V11.5L9.6 4.2c-.4-1.1-1.9-1-2.1.1L6 12.5l-2 3.6V21"/><path d="M12 21V11.5l2.4-7.3c.4-1.1 1.9-1 2.1.1l1.5 8.2 2 3.6V21"/>',
+    card: '<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/>',
+    pix: '<path d="M12 3.2l3.6 3.6-3.6 3.6-3.6-3.6zM12 13.6l3.6 3.6L12 20.8l-3.6-3.6zM6.8 8.4l3.6 3.6-3.6 3.6L3.2 12zM17.2 8.4l3.6 3.6-3.6 3.6-3.6-3.6z"/>',
+    arrowR: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    arrowD: '<path d="M12 5v14M6 13l6 6 6-6"/>',
+    books: '<rect x="3.5" y="4" width="4" height="16" rx="1"/><rect x="8.5" y="4" width="4" height="16" rx="1"/><path d="M14 5.2l3.8-1 4 15.3-3.8 1z"/>'
+  };
+  function ic(n, s) { s = s || 20; return '<svg class="ic ic-' + n + '" viewBox="0 0 24 24" width="' + s + '" height="' + s + '" style="width:' + s + 'px;height:' + s + 'px" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + P[n] + "</svg>"; }
+  function each(sel, fn) { Array.prototype.forEach.call(ROOT.querySelectorAll(sel), fn); }
+  each("[data-ic]", function (el) { el.innerHTML = ic(el.getAttribute("data-ic"), +el.getAttribute("data-size") || 20); });
+  /* ---------- variáveis do config ---------- */
+  each("[data-var]", function (el) { var k = el.getAttribute("data-var"); if (C[k] != null) el.textContent = C[k]; });
+  /* [MANUAL COMPRADO]: data-mc="o" vira "o Casamento Restaurado" ou "o seu manual" */
+  each("[data-mc]", function (el) {
+    var art = el.getAttribute("data-mc"), nome = A ? A.manual : null, txt;
+    if (nome) txt = (art ? art + " " : "") + nome;
+    else txt = art === "O" ? "O seu manual" : "o seu manual";
+    el.textContent = txt;
+  });
+  /* ---------- helpers de montagem ---------- */
+  var outros = T.ordem.filter(function (k) { return k !== m; });
+  if (area) outros = [area].concat(outros.filter(function (k) { return k !== area; }));
+  function chip(k) { var a = T.areas[k]; return '<span class="chip-pesa"><img src="' + a.simbolo + '" width="22" height="22" alt="">Também pesa aí: ' + a.segunda + "</span>"; }
+  function capa(k, cls) { return '<span class="capa ' + (cls || "") + '"><img src="' + T.areas[k].capa + '" alt="Capa do ' + T.areas[k].manual + '" width="800" height="800" loading="lazy" decoding="async"></span>'; }
+  function fill(slot, html) { each('[data-slot="' + slot + '"]', function (el) { el.innerHTML = html; }); }
+  function leque(keys, size) {
+    var n = keys.length, mid = (n - 1) / 2, step = size * 0.44, h = "";
+    keys.forEach(function (k, i) {
+      var d = i - mid, front = k === m;
+      var z = front ? 20 : 10 - Math.abs(Math.round(d * 2));
+      h += '<span class="leque-item' + (front ? " is-dela" : "") + '" style="z-index:' + z + ";transform:translateX(" + (d * step).toFixed(1) + "px) rotate(" + (d * 6).toFixed(1) + "deg)" + (front ? " translateY(-6px)" : "") + '">' + capa(k) + (front ? '<span class="selo-seu">' + ic("check", 13) + " já é seu</span>" : "") + "</span>";
+    });
+    return '<div class="leque" style="--cs:' + size + "px;height:" + Math.round(size * 1.18) + 'px">' + h + "</div>";
+  }
+  function lequeKit(size) {
+    if (!m) return leque(T.ordem, size);
+    var o = T.ordem.filter(function (k) { return k !== m; });
+    return leque([o[0], m, o[1], o[2]], size);
+  }
+  /* ---------- Bloco 2: celebrar ---------- */
+  var cel = A ? A.celebrar : T.semParametro.celebrar;
+  fill("celebrar", cel.map(function (p) { return "<p>" + p + "</p>"; }).join(""));
+  fill("capa-dela", A ? '<div class="capa-dela">' + capa(m) + '<span class="selo-seu">' + ic("check", 13) + " já é seu</span></div>" : "");
+  /* ---------- Bloco 4: o problema que continua ---------- */
+  var g = A2 ? A2.gancho4 : T.padrao.gancho4;
+  var abre = A2 ? "<p>" + g.abre + "</p>" + '<p class="chip-linha">' + chip(area) + "</p>" : '<p class="destaque">' + g.abre + "</p>";
+  fill("gancho4", abre + "<p>" + g.meio + "</p>" + '<div class="card-ok"><span class="ok-ic">' + ic("check", 18) + '</span><p>O manual que você levou <strong class="verde">continua sendo o seu começo</strong> e dá conta da área que mais dói. ' + g.fecho + "</p></div>");
+  /* ---------- Bloco 5: as 4 portas (sem botão) ---------- */
+  function porta(num, k, kicker, texto, tag, extra) {
+    var dela = tag === "dela";
+    return '<li class="porta' + (dela ? " porta-dela" : "") + '">' +
+      '<span class="porta-no">' + (dela ? ic("check", 18) : ic("lockOpen", 18)) + "</span>" +
+      '<div class="porta-card">' + (k ? capa(k, "capa-p") : "") +
+      '<div class="porta-txt"><span class="kicker">' + num + (kicker ? " · " + kicker : "") + "</span>" +
+      "<h3>" + (k ? T.areas[k].manual : "O seu manual") + "</h3>" + (extra || "") + (texto ? "<p>" + texto + "</p>" : "") +
+      '<span class="tag ' + (dela ? "tag-verde" : "tag-terra") + '">' + (dela ? "JÁ É SEU" : "DESTRAVA HOJE") + "</span></div></div></li>";
+  }
+  function grupo(t, s) { return '<li class="porta-grupo"><span class="kicker">' + t + "</span>" + (s ? "<p>" + s + "</p>" : "") + "</li>"; }
+  var portas = porta("01", m || null, "A PORTA QUE MAIS DÓI HOJE", "A área que você escolheu no teste. Aqui você aprende o método.", "dela");
+  if (A2) {
+    portas += porta("02", area, "A PORTA QUE TAMBÉM PESA", A2.porta02, "", chip(area));
+    portas += grupo("03 e 04 · AS PORTAS QUE HOJE ESTÃO QUIETAS", "Pra quando essas áreas apertarem, você já ter a direção na mão.");
+    portas += porta("03", outros[1], "", "", "") + porta("04", outros[2], "", "", "");
+  } else if (m) {
+    portas += grupo("02, 03 e 04 · AS OUTRAS PORTAS DA CASA", "Os 3 manuais que você ainda não tem.");
+    portas += porta("02", outros[0], "", "", "") + porta("03", outros[1], "", "", "") + porta("04", outros[2], "", "", "");
+  } else {
+    portas += grupo("02, 03 e 04 · AS OUTRAS PORTAS DA CASA", "Os 3 manuais que você ainda não tem.");
+  }
+  fill("portas", '<ol class="portas">' + portas + "</ol>");
+  /* ---------- Bloco 6: cards dos manuais novos ---------- */
+  var chipIc = ["shield", "list", "hands"];
+  var lista6 = m ? outros : T.ordem;
+  fill("manuais", lista6.map(function (k) {
+    var a = T.areas[k];
+    return '<article class="manual">' + (k === area ? chip(k) : "") +
+      '<div class="manual-top">' + capa(k, "capa-m") + '<div class="manual-head"><span class="kicker terra">Destrava hoje</span><h3>' + a.manual + "</h3></div></div>" +
+      "<p>" + a.card + "</p>" +
+      '<ul class="chips">' + a.chips.map(function (c, i) { return "<li>" + ic(chipIc[i], 16) + c + "</li>"; }).join("") + "</ul></article>";
+  }).join(""));
+  fill("preview", '<figure class="preview"><img src="' + T.areas[lista6[0]].preview + '" alt="Página interna do ' + T.areas[lista6[0]].manual + '" width="579" height="819" loading="lazy" decoding="async"></figure>');
+  /* ---------- Blocos 8 e 14 ---------- */
+  fill("item8", A2 ? A2.item8 : T.padrao.item8);
+  fill("linha14", A2 ? '<p class="linha14">' + A2.linha14 + "</p>" + '<p class="chip-linha">' + chip(area) + "</p>" : '<p class="linha14">' + T.padrao.linha14 + "</p>");
+  /* ---------- Leques ---------- */
+  each("[data-leque]", function (el) {
+    var tipo = el.getAttribute("data-leque"), s = +el.getAttribute("data-size") || 110;
+    el.innerHTML = tipo === "kit" ? lequeKit(s) : leque(m ? T.ordem.filter(function (k) { return k !== m; }) : T.ordem.slice(0, 3), s);
+  });
+  fill("capa-mini", A ? capa(m, "capa-xs") : "");
+  /* ---------- Downsell: o que entra ---------- */
+  fill("down-entra", "<p>" + (A ? A.downEntra : T.semParametro.downEntra) + "</p>" + (A2 ? '<p class="linha-down">' + A2.linhaDown4 + "</p>" : ""));
+  if (PAG === "down") {
+    var dp = porta("", m || null, "", "", "dela").replace('<span class="kicker"></span>', "");
+    (m ? outros : []).forEach(function (k) {
+      dp += '<li class="porta porta-mini"><span class="porta-no">' + ic("plus", 16) + '</span><div class="porta-card">' + capa(k, "capa-p") + '<div class="porta-txt"><h3>' + T.areas[k].manual + "</h3>" + (k === area ? chip(k) : "") + "</div></div></li>";
+    });
+    fill("down-portas", '<ol class="portas portas-mini">' + dp + "</ol>");
+  }
+  /* ---------- Funnel Control + pixel (mesmo formato das ofertas no ar) ---------- */
+  var FC_TRACK = "https://funnel-control.vercel.app/api/track/quiz";
+  function fcVid() {
+    var s = lerEstado();
+    if (!s.vid) {
+      var c = window.crypto; var id = ("fc" + Math.random().toString(36).slice(2) + Date.now().toString(36)); if (c) { if (c.randomUUID) id = c.randomUUID(); } s.vid = id;
+      if (!s.answers) s.answers = {}; if (!s.history) s.history = []; if (!s.lead) s.lead = {};
+      try { localStorage.setItem("fr_state", JSON.stringify(s)); } catch (e) {}
+    }
+    return s.vid;
+  }
+  function fcSend(body) {
+    var payload = JSON.stringify(body);
+    try {
+      if (navigator.sendBeacon) {
+        var blob = new Blob([payload], { type: "text/plain;charset=UTF-8" });
+        if (navigator.sendBeacon(FC_TRACK, blob)) return;
+      }
+    } catch (e) {}
+    try { fetch(FC_TRACK, { method: "POST", mode: "cors", headers: { "Content-Type": "text/plain;charset=UTF-8" }, body: payload, keepalive: true }).catch(function () {}); } catch (e2) {}
+  }
+  function track(ev) {
+    var info = { page: FC_PAGE, m: m || "default", variante: C.variante, area2: area || "", area2_fonte: areaFonte };
+    try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: ev, page: info.page, m: info.m, variante: info.variante, area2: info.area2, area2_fonte: info.area2_fonte }); } catch (e) {}
+    try { if (typeof window.fbq === "function") window.fbq("trackCustom", ev, info); } catch (e2) {}
+    /* A API do Funnel Control recusa campo fora da lista e page fora de upsell/downsell.
+       variant e area2 só entram quando o Funnel Control aceitar (config.fcEnviarVariante). */
+    var body = { funnel: "familia", visitor_id: "", event: ev, page: FC_PAGE, area: m || null };
+    if (C.fcEnviarVariante) { body.variant = C.variante; body.area2 = area || null; }
+    try { body.visitor_id = fcVid(); fcSend(body); } catch (e3) {}
+  }
+  window.FR_UP = { m: m, area: area, areaFonte: areaFonte, page: FC_PAGE, variante: C.variante, track: track };
+  /* ---------- Links: aceite (1 clique Eduzz) e recusa ---------- */
+  var UTM = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id"];
+  var KEEP_IDS = ["sck", "utm_sck", "fbclid", "gclid"];
+  var DEFAULTS = { utm_source: "quiz", utm_medium: "funnel", utm_campaign: "familia-restaurada" };
+  function hasUtm(o) { return !!(o.utm_source || o.utm_campaign); }
+  function only(o) { var r = {}; UTM.forEach(function (k) { if (o[k]) { r[k] = String(o[k]); } }); return r; }
+  function fromUrl() { var r = {}; try { var p = new URLSearchParams(location.search); UTM.forEach(function (k) { var v = p.get(k); if (v) { r[k] = v; } }); } catch (e) {} return r; }
+  function fromQuiz() { try { var s = JSON.parse(localStorage.getItem("fr_state") || "{}"); return only(s.utms || {}); } catch (e) { return {}; } }
+  function fromUtmify() {
+    var r = {};
+    try { UTM.forEach(function (k) { var v = localStorage.getItem(k); var ex = localStorage.getItem(k + "_exp"); if (v) { if (ex) { var left = new Date(ex).getTime() - Date.now(); if (left === Math.abs(left)) { r[k] = v; } } } }); } catch (e) {}
+    return r;
+  }
+  function fromLegacy() { try { return only(JSON.parse(localStorage.getItem("utm_data") || "{}")); } catch (e) { return {}; } }
+  function pickUtms(noDefaults) {
+    var srcs = [fromUrl(), fromQuiz(), fromUtmify(), fromLegacy()];
+    for (var i = 0; i !== srcs.length; i++) { if (hasUtm(srcs[i])) { return srcs[i]; } }
+    return noDefaults ? {} : DEFAULTS;
+  }
+  function isAceite(key) { return String(key).indexOf("aceite") === 0; }
+  function build(key, currentHref) {
+    var dest = C.links[key] || "#", utms = pickUtms(false), u, k;
+    if (dest === "#") return "#"; /* link de 1 clique ainda não definido */
+    if (isAceite(key)) {
+      u = new URL(dest);
+      var cur = null; try { cur = new URL(currentHref, location.href); } catch (e) {}
+      /* só os ids que o Track Hunter/track-cta põem no link; m, area, xcod e o resto ficam de fora */
+      if (cur) { KEEP_IDS.forEach(function (id) { var v = cur.searchParams.get(id); if (v) { u.searchParams.set(id, v); } }); }
+      u.searchParams.delete("m"); u.searchParams.delete(C.paramArea);
+      for (k in utms) { u.searchParams.set(k, utms[k]); }
+      if (C.umClique) u.searchParams.set("u", "1");
+      return u.toString();
+    }
+    u = new URL(dest, location.origin);
+    if (key === "recusaA") { if (m) { u.searchParams.set("m", m); } if (area) { u.searchParams.set(C.paramArea, area); } }
+    for (k in utms) { u.searchParams.set(k, utms[k]); }
+    if (u.origin === location.origin) return u.pathname + u.search;
+    return u.toString();
+  }
+  function absHref(v) { try { return new URL(v, location.href).toString(); } catch (e) { return String(v || ""); } }
+  /* O UTMify reescreve todo <a> (2s, 3s, 5s, 9s). Depois de cada reescrita, volta o link limpo (no máximo 3 vezes seguidas). */
+  function writeHref(el) {
+    var next = build(el.getAttribute("data-link"), el.href);
+    if (absHref(el.href) === absHref(next)) { el.__frN = 0; return; }
+    if (el.__frLast === next) { el.__frN = (el.__frN || 0) + 1; } else { el.__frLast = next; el.__frN = 1; }
+    if ([0, 1, 2, 3].indexOf(el.__frN) === -1) return;
+    el.setAttribute("href", next);
+  }
+  function watchHref(el) {
+    if (typeof MutationObserver !== "function") return;
+    var obs = new MutationObserver(function () { writeHref(el); });
+    obs.observe(el, { attributes: true, attributeFilter: ["href"] });
+  }
+  function onActivate(e) {
+    var el = e.currentTarget;
+    writeHref(el);
+    if (e.type === "click") track(isAceite(el.getAttribute("data-link")) ? "fr_oferta_accept" : "fr_oferta_decline");
+    if (el.getAttribute("href") === "#") { e.preventDefault(); }
+    e.stopPropagation();
+  }
+  /* Tira o "m" e a 2ª área que o script global grava no utm_data (senão vazam pra todo link da Eduzz do site por 90 dias). */
+  function repairStorage() {
+    try {
+      var raw = localStorage.getItem("utm_data"); if (!raw) { return; }
+      var d = JSON.parse(raw), mexeu = false;
+      ["m", C.paramArea].forEach(function (k) { if (d.hasOwnProperty(k)) { delete d[k]; mexeu = true; } });
+      if (!mexeu) { return; }
+      if (!hasUtm(only(d))) { var best = pickUtms(true); for (var k in best) { d[k] = best[k]; } }
+      var keys = Object.keys(d).filter(function (x) { return x !== "timestamp"; });
+      if (keys.length === 0) { localStorage.removeItem("utm_data"); } else { localStorage.setItem("utm_data", JSON.stringify(d)); }
+    } catch (e) {}
+  }
+  repairStorage();
+  each("a[data-link]", function (el) {
+    writeHref(el); watchHref(el);
+    el.addEventListener("click", onActivate);
+    el.addEventListener("auxclick", onActivate);
+  });
+  /* ---------- Fade ao rolar ---------- */
+  var reduz = false; try { reduz = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+  var secs = ROOT.querySelectorAll(".reveal");
+  if (reduz || !("IntersectionObserver" in window)) Array.prototype.forEach.call(secs, function (s) { s.classList.add("in"); });
+  else {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
+    Array.prototype.forEach.call(secs, function (s) { io.observe(s); });
+  }
+  /* ---------- Botão fixo: só a partir do preço (bloco 10); some com um botão de aceite na tela ---------- */
+  var fixo = ROOT.querySelector(".cta-fixo"), preco = document.getElementById("preco");
+  if (fixo) { if (preco) {
+    var ctas = ROOT.querySelectorAll(".cta-aceite"), visiveis = [];
+    var upd = function () {
+      var passou = lt(preco.getBoundingClientRect().top, window.innerHeight * 0.6);
+      if (passou) { if (visiveis.length === 0) { fixo.classList.add("on"); return; } }
+      fixo.classList.remove("on");
+    };
+    if ("IntersectionObserver" in window) {
+      var o2 = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { var i = visiveis.indexOf(e.target); if (e.isIntersecting) { if (i === -1) visiveis.push(e.target); } else if (i !== -1) { visiveis.splice(i, 1); } });
+        upd();
+      });
+      Array.prototype.forEach.call(ctas, function (c) { o2.observe(c); });
+    }
+    window.addEventListener("scroll", upd, { passive: true });
+    window.addEventListener("resize", upd);
+    upd();
+  } }
+  track("fr_oferta_view");
+})();
+</script>
+<script>
+(function(){
+  var key = "";
+  try {
+    var q = new URLSearchParams(location.search);
+    key = q.get("transactionkey");
+    if (!key) key = q.get("transactionKey");
+  } catch (e) {}
+  if (!key) {
+    try { if (window.Eduzz) { if (window.Eduzz.transactionKey) key = window.Eduzz.transactionKey; } } catch (e2) {}
+  }
+  if (key) return;
+  document.documentElement.classList.add("fr-no-eduzz");
+})();
+</script>
+<script src="https://cdn.eduzzcdn.com/sun/thankyou/thankyou.js"></script>
