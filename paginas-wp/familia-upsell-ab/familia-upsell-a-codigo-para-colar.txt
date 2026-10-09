@@ -302,7 +302,7 @@ window.UPSELL_CONFIG = {
   fcEnviarVariante: false,
   /* 2ª área = casamento, mas o quiz marcou que o casamento acabou: "casamento" usa o texto do casamento (como no mockup aprovado);
      "padrao" usa o texto sem a 2ª área. O doc do Alan pede "a dor do casamento que acabou", que ainda não tem texto. */
-  casamentoAcabou: "casamento",
+  casamentoAcabou: "padrao",
   /* Nome do parâmetro da 2ª área na URL */
   paramArea: "area",
   /* braço do teste (vai pro dataLayer e pro pixel) */

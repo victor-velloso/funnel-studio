@@ -140,7 +140,7 @@ LINKS = """  links: {
   fcEnviarVariante: false,
   /* 2ª área = casamento, mas o quiz marcou que o casamento acabou: "casamento" usa o texto do casamento (como no mockup aprovado);
      "padrao" usa o texto sem a 2ª área. O doc do Alan pede "a dor do casamento que acabou", que ainda não tem texto. */
-  casamentoAcabou: "casamento","""
+  casamentoAcabou: "padrao","""
 def config_for(pag):
     c = re.sub(r"  links: \{.*?\n  \},", LINKS, cfg, flags=re.S)
     variante = {"a": "a", "b": "b", "down": "down-a"}[pag]
