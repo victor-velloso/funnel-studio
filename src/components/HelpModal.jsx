@@ -11,6 +11,7 @@ const SHORTCUTS = [
   ['⌘C / Ctrl+C', 'Copiar seleção'],
   ['⌘X / Ctrl+X', 'Recortar seleção'],
   ['⌘V / Ctrl+V', 'Colar (funciona entre funis)'],
+  ['⌘S / Ctrl+S', 'Salvar no sistema (Funnel Control)'],
   ['Shift + arrastar', 'Seleção em área'],
   ['⌘/Ctrl + clique', 'Adicionar à seleção'],
   ['Scroll / pinch', 'Zoom'],

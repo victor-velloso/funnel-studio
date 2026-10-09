@@ -802,74 +802,6 @@ function Canvas({
     toast('Quadro organizado — ⌘Z desfaz')
   }, [nodes, edges, fitView])
 
-  // Atalhos de teclado
-  useEffect(() => {
-    const onKey = (e) => {
-      const t = e.target
-      const mod = e.metaKey || e.ctrlKey
-      const k = e.key.toLowerCase()
-      if (mod && k === 's') {
-        e.preventDefault()
-        if (!document.querySelector('.modal-overlay')) openSave()
-        return
-      }
-      if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable) return
-      if (document.querySelector('.modal-overlay')) return
-      if (mod && k === 'z' && !e.shiftKey) {
-        e.preventDefault()
-        undo()
-      } else if ((mod && k === 'z' && e.shiftKey) || (mod && k === 'y')) {
-        e.preventDefault()
-        redo()
-      } else if (mod && k === 'd') {
-        e.preventDefault()
-        duplicateSelection()
-      } else if (mod && k === 'c') {
-        if (copySelection()) e.preventDefault()
-      } else if (mod && k === 'x') {
-        if (copySelection()) {
-          e.preventDefault()
-          deleteSelection()
-        }
-      } else if (mod && k === 'v') {
-        if (readClipboard()) {
-          e.preventDefault()
-          pasteClipboard()
-        }
-      } else if (e.key === '?') {
-        setHelpOpen(true)
-      } else if (e.key === 'Escape') {
-        setHelpOpen(false)
-        setPenMode(false)
-        closeCtx()
-      }
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [undo, redo, duplicateSelection, copySelection, pasteClipboard, deleteSelection, closeCtx, openSave])
-
-  const onDragOver = useCallback((e) => {
-    e.preventDefault()
-    e.dataTransfer.dropEffect = 'move'
-  }, [])
-
-  const onDrop = useCallback(
-    (e) => {
-      e.preventDefault()
-      const raw = e.dataTransfer.getData('application/funnelstudio')
-      if (!raw) return
-      const payload = JSON.parse(raw)
-      const position = screenToFlowPosition({ x: e.clientX, y: e.clientY })
-      setNodes((ns) => [...ns, newCanvasNode(payload, position)])
-    },
-    [screenToFlowPosition],
-  )
-
-  const exportJSON = useCallback(() => {
-    downloadJSON(toDocumento({ ...funnel, nodes, edges, viewport: getViewport() }))
-    toast('JSON exportado')
-  }, [funnel, nodes, edges, getViewport])
-
   /* ---------- Funnel Control ---------- */
 
   // Assinatura do quadro ao vivo (com debounce) para o indicador salvo / não salvo.
@@ -961,6 +893,77 @@ function Canvas({
     },
     [onOpenVersion],
   )
+
+  // Atalhos de teclado
+  useEffect(() => {
+    const onKey = (e) => {
+      const t = e.target
+      const mod = e.metaKey || e.ctrlKey
+      const k = e.key.toLowerCase()
+      if (mod && k === 's') {
+        e.preventDefault()
+        if (!document.querySelector('.modal-overlay')) openSave()
+        return
+      }
+      if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable) return
+      if (e.key === 'Escape') {
+        setHelpOpen(false)
+        setHistoryOpen(false)
+        setPenMode(false)
+        closeCtx()
+        return
+      }
+      if (document.querySelector('.modal-overlay')) return
+      if (mod && k === 'z' && !e.shiftKey) {
+        e.preventDefault()
+        undo()
+      } else if ((mod && k === 'z' && e.shiftKey) || (mod && k === 'y')) {
+        e.preventDefault()
+        redo()
+      } else if (mod && k === 'd') {
+        e.preventDefault()
+        duplicateSelection()
+      } else if (mod && k === 'c') {
+        if (copySelection()) e.preventDefault()
+      } else if (mod && k === 'x') {
+        if (copySelection()) {
+          e.preventDefault()
+          deleteSelection()
+        }
+      } else if (mod && k === 'v') {
+        if (readClipboard()) {
+          e.preventDefault()
+          pasteClipboard()
+        }
+      } else if (e.key === '?') {
+        setHelpOpen(true)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [undo, redo, duplicateSelection, copySelection, pasteClipboard, deleteSelection, closeCtx, openSave])
+
+  const onDragOver = useCallback((e) => {
+    e.preventDefault()
+    e.dataTransfer.dropEffect = 'move'
+  }, [])
+
+  const onDrop = useCallback(
+    (e) => {
+      e.preventDefault()
+      const raw = e.dataTransfer.getData('application/funnelstudio')
+      if (!raw) return
+      const payload = JSON.parse(raw)
+      const position = screenToFlowPosition({ x: e.clientX, y: e.clientY })
+      setNodes((ns) => [...ns, newCanvasNode(payload, position)])
+    },
+    [screenToFlowPosition],
+  )
+
+  const exportJSON = useCallback(() => {
+    downloadJSON(toDocumento({ ...funnel, nodes, edges, viewport: getViewport() }))
+    toast('JSON exportado')
+  }, [funnel, nodes, edges, getViewport])
 
   const importInto = useCallback((text) => {
     try {

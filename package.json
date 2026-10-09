@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "mock": "node e2e/mock-fc.mjs"
   },
   "dependencies": {
     "@dagrejs/dagre": "^3.0.0",
