@@ -1,7 +1,38 @@
 import { memo, useEffect, useRef, useState } from 'react'
-import { Handle, Position, useReactFlow, NodeResizer, NodeToolbar } from '@xyflow/react'
+import {
+  Handle,
+  Position,
+  useReactFlow,
+  useUpdateNodeInternals,
+  NodeResizer,
+  NodeToolbar,
+} from '@xyflow/react'
 import { ICONS, PAGE_WIREFRAMES, findElement } from '../data/elements.js'
 import { buildPath } from '../lib/draw.js'
+import {
+  reaisParaCentavos,
+  centavosParaReais,
+  formatBRL,
+  precoExplicitoNoTexto,
+} from '../lib/sistema.js'
+
+// A animação de entrada (scale) faz o React Flow medir os handles no meio do
+// pop. Depois que ela termina, pedimos uma nova medição para as setas e os
+// degraus sumirem.
+function useRemediarHandles(id) {
+  const updateNodeInternals = useUpdateNodeInternals()
+  useEffect(() => {
+    const remediar = () => updateNodeInternals(id)
+    const t1 = setTimeout(remediar, 50)
+    const t2 = setTimeout(remediar, 200)
+    const t3 = setTimeout(remediar, 400)
+    return () => {
+      clearTimeout(t1)
+      clearTimeout(t2)
+      clearTimeout(t3)
+    }
+  }, [id, updateNodeInternals])
+}
 
 const HANDLES = [
   { id: 'top', position: Position.Top },
@@ -124,16 +155,101 @@ function Label({ id, value, className, selected, editRequested, allowEmpty, plac
   )
 }
 
+function PrecoNo({ id, centavos, selected }) {
+  const { setNodes } = useReactFlow()
+  const updateNodeInternals = useUpdateNodeInternals()
+  const [editing, setEditing] = useState(false)
+  const temPreco = Number.isInteger(centavos) && centavos >= 0
+
+  function commit(texto) {
+    const limpo = String(texto ?? '').trim()
+    let next = null
+    if (limpo) {
+      next = reaisParaCentavos(limpo.startsWith('R$') || limpo.startsWith('r$') ? limpo : `R$ ${limpo}`)
+      if (next === null) {
+        setEditing(false)
+        return
+      }
+    }
+    setNodes((nodes) =>
+      nodes.map((n) => {
+        if (n.id !== id) return n
+        const data = { ...n.data }
+        if (next === null) {
+          delete data.preco_centavos
+          delete data.valor_centavos
+        } else {
+          data.preco_centavos = next
+          delete data.valor_centavos
+        }
+        return { ...n, data }
+      }),
+    )
+    setEditing(false)
+    requestAnimationFrame(() => updateNodeInternals(id))
+  }
+
+  if (editing) {
+    return (
+      <input
+        className="fnode__preco fnode__preco--input nodrag"
+        defaultValue={temPreco ? centavosParaReais(centavos) : ''}
+        placeholder="0,00"
+        aria-label="Preço do elemento"
+        ref={(el) => {
+          if (!el) return
+          if (document.activeElement !== el) requestAnimationFrame(() => el.focus())
+        }}
+        onFocus={(e) => e.target.select()}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault()
+            commit(e.target.value)
+          }
+          if (e.key === 'Escape') setEditing(false)
+        }}
+        onBlur={(e) => commit(e.target.value)}
+      />
+    )
+  }
+
+  return (
+    <button
+      type="button"
+      className={`fnode__preco ${temPreco ? '' : 'fnode__preco--vazio'} nodrag`}
+      onClick={() => selected && setEditing(true)}
+      onDoubleClick={() => setEditing(true)}
+      title="Clique para editar o preço (R$)"
+    >
+      {temPreco ? formatBRL(centavos) : selected ? '＋ preço' : null}
+    </button>
+  )
+}
+
 export const FunnelNode = memo(function FunnelNode({ id, data, selected }) {
+  useRemediarHandles(id)
   const category = findElement(data.icon)?.category ?? 'pages'
   const colorStyle = data.color ? { '--tint': data.color } : undefined
   const colorClass = data.color ? 'has-color' : ''
+  const precoDoCampo =
+    Number.isInteger(data.preco_centavos) && data.preco_centavos >= 0
+      ? data.preco_centavos
+      : Number.isInteger(data.valor_centavos) && data.valor_centavos >= 0
+        ? data.valor_centavos
+        : null
+  // Mostra o R$ do rótulo sem gravar; editar o campo grava preco_centavos no documento.
+  const preco = precoDoCampo ?? precoExplicitoNoTexto(data.label)
   const handles = HANDLES.map((h) => (
     <Handle key={h.id} id={h.id} type="source" position={h.position} className="fs-handle" />
   ))
 
   return (
-    <div className={`fnode ${selected ? 'is-selected' : ''}`}>
+    <div
+      className={`fnode ${selected ? 'is-selected' : ''}`}
+      onAnimationEnd={(e) => {
+        if (e.target === e.currentTarget) e.currentTarget.dataset.settled = '1'
+      }}
+    >
       {category === 'pages' ? (
         <div className={`pnode ${colorClass}`} style={colorStyle}>
           <div className="pnode__bar">
@@ -178,6 +294,7 @@ export const FunnelNode = memo(function FunnelNode({ id, data, selected }) {
         selected={selected}
         editRequested={data.editRequested}
       />
+      {(preco !== null || selected) && <PrecoNo id={id} centavos={preco} selected={selected} />}
     </div>
   )
 })
@@ -327,6 +444,7 @@ export const DrawNode = memo(function DrawNode({ data, selected }) {
 })
 
 export const NoteNode = memo(function NoteNode({ id, data, selected }) {
+  useRemediarHandles(id)
   const { setNodes } = useReactFlow()
   const textareaRef = useRef(null)
 

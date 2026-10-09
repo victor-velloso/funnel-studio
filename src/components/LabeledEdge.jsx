@@ -1,36 +1,49 @@
-import { BaseEdge, EdgeLabelRenderer, getBezierPath, useReactFlow } from '@xyflow/react'
+import { BaseEdge, EdgeLabelRenderer, useReactFlow } from '@xyflow/react'
+import { caminhoDaLigacao } from '../lib/flow.js'
 
-// Edge padrão com rótulo editável (duplo clique na conexão para rotular).
+// Ligação com rótulo editável (duplo clique). Aceita bezier, step, smoothstep e straight.
 export default function LabeledEdge({
   id,
+  type = 'default',
   sourceX,
   sourceY,
   targetX,
   targetY,
   sourcePosition,
   targetPosition,
+  pathOptions,
   style,
   markerEnd,
   data,
+  label: labelProp,
   selected,
 }) {
   const { setEdges } = useReactFlow()
-  const [path, labelX, labelY] = getBezierPath({
+  const [path, labelX, labelY] = caminhoDaLigacao({
+    type,
     sourceX,
     sourceY,
-    sourcePosition,
     targetX,
     targetY,
+    sourcePosition,
     targetPosition,
+    pathOptions,
   })
 
-  const label = data?.label ?? ''
+  const label = data?.label ?? labelProp ?? ''
   const editing = data?.editing ?? false
 
   function commit(value) {
+    const next = value.trim()
     setEdges((es) =>
       es.map((e) =>
-        e.id === id ? { ...e, data: { ...e.data, label: value.trim(), editing: false } } : e,
+        e.id === id
+          ? {
+              ...e,
+              label: next || undefined,
+              data: { ...e.data, label: next, editing: false },
+            }
+          : e,
       ),
     )
   }

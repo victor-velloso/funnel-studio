@@ -124,14 +124,30 @@ export function fromFunilSistema(funil, { versaoBase, restauradaDe } = {}) {
 
 /* ---------- Preços ---------- */
 
-const PRECO_RE = /R\$\s*(\d{1,3}(?:\.\d{3})+|\d+)(?:,(\d{1,2}))?/i
+// Só valor monetário explícito: "R$" + número. Aceita espaço normal e NBSP
+// (os funis do Alex usam R$ 47 com espaço não-quebrável).
+const PRECO_RE = /R\$[\s\u00a0\u202f]*(\d{1,3}(?:\.\d{3})+|\d+)(?:[,](\d{1,2}))?/i
+
+function centavosDoCampo(data) {
+  for (const chave of ['preco_centavos', 'valor_centavos']) {
+    const v = data?.[chave]
+    if (Number.isInteger(v) && v >= 0) return v
+  }
+  return null
+}
+
+// Extrai "R$ 47" / "R$ 1.997,90" de um texto. Sem "R$" → null (não inventa preço).
+export function precoExplicitoNoTexto(texto) {
+  const m = PRECO_RE.exec(String(texto ?? ''))
+  if (!m) return null
+  return reaisParaCentavos(`${m[1]}${m[2] != null ? `,${m[2]}` : ''}`)
+}
 
 // "497" · "497,00" · "1.997,90" · "R$ 47" → centavos (inteiro) ou null
 export function reaisParaCentavos(texto) {
   if (typeof texto === 'number') return Number.isFinite(texto) ? Math.round(texto * 100) : null
-  const limpo = String(texto ?? '')
-    .replace(/R\$/i, '')
-    .trim()
+  const bruto = String(texto ?? '').replace(/\u00a0|\u202f/g, ' ')
+  const limpo = bruto.replace(/R\$/i, '').trim()
   const m = /^(\d{1,3}(?:\.\d{3})+|\d+)(?:,(\d{1,2}))?$/.exec(limpo)
   if (!m) return null
   const inteiro = Number(m[1].replace(/\./g, ''))
@@ -166,21 +182,25 @@ function limparRotulo(texto) {
     .trim()
 }
 
-// Preços já presentes no desenho: "Checkout R$ 47", "Upsell — R$ 197,00" ou
-// data.valor_centavos/data.preco_centavos gravados por outra ferramenta.
+// Preços do desenho. Ordem: campo do nó (preco_centavos / valor_centavos) e,
+// só se não houver campo, um "R$ …" explícito no rótulo.
+// Textos sem valor monetário ("Webinário", "Quiz", "20h") nunca viram preço.
 export function precosDosNos(nodes = []) {
   const out = []
   for (const node of nodes) {
-    if (node.type === 'note' || node.type === 'draw') continue
+    if (node.type === 'note' || node.type === 'draw' || node.type === 'rect') continue
     const texto = String(node.data?.label ?? node.data?.text ?? '')
-    const explicito = node.data?.valor_centavos ?? node.data?.preco_centavos
-    let valor = Number.isInteger(explicito) && explicito >= 0 ? explicito : null
+    const doCampo = centavosDoCampo(node.data)
+    let valor = doCampo
     let rotulo = texto
     if (valor === null) {
       const m = PRECO_RE.exec(texto)
       if (!m) continue
-      valor = reaisParaCentavos(m[2] ? `${m[1]},${m[2]}` : m[1])
+      valor = reaisParaCentavos(`${m[1]}${m[2] != null ? `,${m[2]}` : ''}`)
       rotulo = texto.replace(m[0], ' ')
+    } else {
+      // Campo manda; tira um R$ do rótulo só para não duplicar o nome.
+      rotulo = texto.replace(PRECO_RE, ' ')
     }
     if (valor === null) continue
     rotulo = limparRotulo(rotulo) || findElement(node.data?.icon)?.label || 'Preço'

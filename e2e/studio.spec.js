@@ -291,3 +291,69 @@ test('atalhos: ? abre a ajuda, Esc fecha ajuda e histórico', async ({ page }) =
   await page.keyboard.press('Escape')
   await expect(page.getByRole('dialog', { name: 'Histórico de versões' })).toHaveCount(0)
 })
+
+test('funil compacto: ligações step retas, setas visíveis, preço só com R$', async ({ page }) => {
+  await page.goto('/')
+  await page.locator('input[type=file]').first().setInputFiles('e2e/fixtures/funil-compacto.json')
+  await expect(page.locator('.toolbar__name')).toHaveText('Família Restaurada (cópia local QA)')
+  await expect(page.locator('.react-flow__node')).toHaveCount(11)
+  // Espera a animação de entrada + updateNodeInternals
+  await page.waitForTimeout(400)
+
+  const paths = await page.locator('.react-flow__edge-path').evaluateAll((ps) =>
+    ps.map((p) => p.getAttribute('d') || ''),
+  )
+  expect(paths.length).toBe(11)
+  // Step reto: sem curva cúbica (C). Q degenerado (raio 0) pode aparecer.
+  for (const d of paths) {
+    expect(d).not.toMatch(/C/)
+    expect(d).toMatch(/^M/)
+  }
+  await expect(page.locator('svg.react-flow__marker').first()).toBeAttached()
+  // Fecha o toast de importação para o print ficar limpo
+  await page.keyboard.press('Escape')
+  await page.waitForTimeout(200)
+  await shot(page, '11-linhas-depois')
+
+  const salvo = await page.evaluate(() => {
+    const raw = localStorage.getItem('elyon-funnel-studio:v1')
+    return JSON.parse(raw).funnels.find((f) => f.name.includes('cópia local QA'))
+  })
+  expect(salvo.edges.every((e) => e.type === 'step')).toBe(true)
+  expect(salvo.edges[0].pathOptions).toMatchObject({ offset: 20, borderRadius: 0 })
+
+  await page.getByLabel('Voltar ao painel').click()
+  const doc = JSON.parse(fs.readFileSync('e2e/fixtures/funil-compacto.json', 'utf8'))
+  doc.id = `qa-preco-${Date.now()}`
+  doc.name = 'QA preços'
+  doc.nodes = [
+    ...doc.nodes,
+    { id: 'web', type: 'funnel', position: { x: 1200, y: 0 }, data: { icon: 'webinar', label: 'Webinário' } },
+    {
+      id: 'ment',
+      type: 'funnel',
+      position: { x: 1200, y: 200 },
+      data: { icon: 'call', label: 'Mentoria sem R$ no rótulo', preco_centavos: 300000 },
+    },
+  ]
+  const tmp = `/tmp/qa-preco-${Date.now()}.json`
+  fs.writeFileSync(tmp, JSON.stringify(doc))
+  await page.locator('input[type=file]').first().setInputFiles(tmp)
+  await expect(page.locator('.toolbar__name')).toHaveText('QA preços')
+  await page.getByRole('button', { name: 'Salvar no sistema' }).click()
+  await entrar(page)
+  const modal = page.getByRole('dialog', { name: 'Salvar no sistema' })
+  await expect(modal).toBeVisible()
+  const rotulos = await modal.locator('input[aria-label^="Rótulo do preço"]').evaluateAll((els) =>
+    els.map((e) => e.value),
+  )
+  expect(rotulos.some((r) => /webin[aá]rio/i.test(r))).toBe(false)
+  expect(rotulos.some((r) => /Mentoria/i.test(r))).toBe(true)
+  const valores = await modal.locator('input[aria-label^="Valor do preço"]').evaluateAll((els) =>
+    els.map((e) => e.value),
+  )
+  expect(valores).toContain('47,00')
+  expect(valores).toContain('3.000,00')
+  await shot(page, '12-precos-so-com-rs')
+  await modal.getByRole('button', { name: 'Cancelar' }).click()
+})

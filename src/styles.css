@@ -759,6 +759,43 @@ textarea,
   max-width: 110px;
   cursor: text;
 }
+.fnode__preco {
+  display: block;
+  margin: 2px auto 0;
+  max-width: 110px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-mono, 'Fragment Mono', ui-monospace, monospace);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+  cursor: text;
+  text-align: center;
+}
+.fnode__preco--vazio {
+  color: var(--fg-secondary);
+  opacity: 0.75;
+}
+.fnode__preco--input {
+  display: block;
+  margin: 2px auto 0;
+  width: 84px;
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-surface);
+  color: var(--fg-primary);
+  font-family: var(--font-mono, 'Fragment Mono', ui-monospace, monospace);
+  font-size: 11px;
+  text-align: center;
+  outline: none;
+}
+.fnode__preco--input:focus {
+  border-color: var(--accent);
+}
 .fnode__label--input {
   background: var(--bg-surface);
   border: 1px solid var(--accent);
@@ -1620,14 +1657,13 @@ textarea,
 
 /* ---------- Animações ---------- */
 
+/* Só opacidade: scale deslocava a medição dos handles no React Flow. */
 @keyframes fs-pop {
   from {
     opacity: 0;
-    transform: scale(0.86);
   }
   to {
     opacity: 1;
-    transform: scale(1);
   }
 }
 @keyframes fs-rise {
