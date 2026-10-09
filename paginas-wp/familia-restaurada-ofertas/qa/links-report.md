@@ -1,0 +1,18 @@
+# Matriz de links
+
+| Caso | Esperado | Obtido | Resultado |
+|---|---|---|---|
+| 1 upsell ?m=casamento sem UTM | accept quiz/funnel/familia-restaurada + sck + u=1, sem m; decline /familia-oferta-2/?m=casamento + defaults | accept https://chk.eduzz.com/crl53eyv?sck=11111111-2222-3333-4444-555555555555&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1<br>decline /familia-oferta-2/?m=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada | PASS |
+| 2 upsell ?m=filhos + utm + fbclid | accept utm fb/cpc/c1/a1 + fbclid + sck + u=1, sem m/organic; decline m=filhos + os mesmos utm | accept https://chk.eduzz.com/crl53eyv?sck=11111111-2222-3333-4444-555555555555&fbclid=FBX&utm_source=fb&utm_medium=cpc&utm_campaign=c1&utm_content=a1&u=1<br>decline /familia-oferta-2/?m=filhos&utm_source=fb&utm_medium=cpc&utm_campaign=c1&utm_content=a1 | PASS |
+| 3 upsell ?m=oracao UTMs só no fr_state | accept/decline usam o conjunto do fr_state; utm_data depois do load não tem m | accept https://chk.eduzz.com/crl53eyv?sck=11111111-2222-3333-4444-555555555555&utm_source=fb&utm_medium=paid&utm_campaign=fr-camp&utm_content=ad1&u=1<br>decline /familia-oferta-2/?m=oracao&utm_source=fb&utm_medium=paid&utm_campaign=fr-camp&utm_content=ad1<br>utm_data {"page":"upsell","timestamp":1790388849631,"utm_source":"fb","utm_medium":"paid","utm_campaign":"fr-camp","utm_content":"ad1"} | PASS |
+| 4 upsell ?m=financeiro UTMs só no UTMify | accept usa utm_source=ig, utm_medium=cpc, utm_campaign=c9 | accept https://chk.eduzz.com/crl53eyv?sck=11111111-2222-3333-4444-555555555555&utm_source=ig&utm_medium=cpc&utm_campaign=c9&u=1 | PASS |
+| 5a upsell ?m=xyz default, decline sem m | data-m=default; decline /familia-oferta-2/ sem m; copy default | m=default decline /familia-oferta-2/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada | PASS |
+| 5b upsell sem m | data-m=default; decline sem m | m=default decline /familia-oferta-2/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada | PASS |
+| 6 upsell ?m=Oração | variação oracao | m=oracao decline /familia-oferta-2/?m=oracao&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada | PASS |
+| 7 dois botões de aceite do upsell | card e fixo navegam para a mesma URL limpa | card https://chk.eduzz.com/crl53eyv?sck=11111111-2222-3333-4444-555555555555&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1<br>fixo https://chk.eduzz.com/crl53eyv?sck=11111111-2222-3333-4444-555555555555&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1 | PASS |
+| 8 downsell ?m=casamento&utm_source=fb&utm_campaign=k | accept liawsws4 utm fb/k + u=1 sem m; decline /parabens-familia/ sem m | accept https://chk.eduzz.com/liawsws4?sck=11111111-2222-3333-4444-555555555555&utm_source=fb&utm_campaign=k&u=1<br>decline /parabens-familia/?utm_source=fb&utm_campaign=k | PASS |
+| 9 downsell sem parâmetros | accept defaults + u=1; decline /parabens-familia/ com defaults, sem m | accept https://chk.eduzz.com/liawsws4?sck=11111111-2222-3333-4444-555555555555&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1<br>decline /parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada | PASS |
+| 10 ctrl-click no aceite | href limpo e a aba atual não navega (utm_data inline não assume) | href https://chk.eduzz.com/crl53eyv?sck=11111111-2222-3333-4444-555555555555&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1 stayed true | PASS |
+| 11 InitiateCheckout no aceite | fbq track InitiateCheckout disparado pelo track-cta | trackCustom:fr_oferta_view \| trackCustom:fr_oferta_decline \| track:InitiateCheckout \| trackCustom:fr_oferta_accept | PASS |
+
+Falhas: 0 de 12.

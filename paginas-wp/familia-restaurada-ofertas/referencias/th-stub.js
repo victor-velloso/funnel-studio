@@ -1,0 +1,2 @@
+/* Track Hunter stub: same behaviour as decorateUrl on click (capture) -- adds sck without overwriting. */
+document.addEventListener("click", function(e){ var el = e.target.closest("a"); if(!el) return; try{ var u = new URL(el.href); if(u.host === location.host) return; if(!u.searchParams.get("sck")) u.searchParams.set("sck","11111111-2222-3333-4444-555555555555"); el.href = u.toString(); }catch(_){} }, true);

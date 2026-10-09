@@ -1,0 +1,18 @@
+{
+  "dist/upsell-widget.html": {
+    "bytes": 49894,
+    "sha256": "6b5e5ad30e59ad61c5c0bf1013657bd3f0a7d06483a30185cfe9c0b84fa2531b"
+  },
+  "dist/downsell-widget.html": {
+    "bytes": 49898,
+    "sha256": "ab3e793d301a6d9c3b4b42c09723fd447d151a734baeef563543371480b827e1"
+  },
+  "dist/familia-oferta-codigo-para-colar.txt": {
+    "bytes": 49894,
+    "sha256": "6b5e5ad30e59ad61c5c0bf1013657bd3f0a7d06483a30185cfe9c0b84fa2531b"
+  },
+  "dist/familia-oferta-2-codigo-para-colar.txt": {
+    "bytes": 49898,
+    "sha256": "ab3e793d301a6d9c3b4b42c09723fd447d151a734baeef563543371480b827e1"
+  }
+}
