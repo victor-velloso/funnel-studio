@@ -1,0 +1,407 @@
+{
+  "id": "familiarestaurada01-copia-qa",
+  "name": "Família Restaurada (cópia local QA)",
+  "createdAt": 1791558483955,
+  "updatedAt": 1791558483956,
+  "especialista": "ezenete",
+  "nodes": [
+    {
+      "id": "ad",
+      "data": {
+        "icon": "meta-ads",
+        "label": "ANÚNCIO — vende o teste"
+      },
+      "type": "funnel",
+      "position": {
+        "x": 0,
+        "y": 7.62
+      }
+    },
+    {
+      "id": "quiz",
+      "data": {
+        "icon": "quiz",
+        "label": "QUIZ — O que está acontecendo na minha casa?"
+      },
+      "type": "funnel",
+      "position": {
+        "x": 200,
+        "y": 0
+      }
+    },
+    {
+      "id": "res",
+      "data": {
+        "icon": "sales-page",
+        "label": "RESULTADO DA ÁREA + PITCH"
+      },
+      "type": "funnel",
+      "position": {
+        "x": 400,
+        "y": 0
+      }
+    },
+    {
+      "id": "ck",
+      "data": {
+        "icon": "checkout",
+        "label": "FRONT R$ 47 — PDF da área"
+      },
+      "type": "funnel",
+      "position": {
+        "x": 600,
+        "y": 0
+      }
+    },
+    {
+      "id": "up",
+      "data": {
+        "icon": "upsell",
+        "label": "UPSELL R$ 97 — Combo Restauração"
+      },
+      "type": "funnel",
+      "position": {
+        "x": 800,
+        "y": 0
+      }
+    },
+    {
+      "id": "ty",
+      "data": {
+        "icon": "thank-you",
+        "label": "OBRIGADO + ENTREGA"
+      },
+      "type": "funnel",
+      "position": {
+        "x": 1000,
+        "y": 0
+      }
+    },
+    {
+      "id": "lead",
+      "data": {
+        "icon": "lead",
+        "label": "CAPTURA — nome, WhatsApp, e‑mail"
+      },
+      "type": "funnel",
+      "position": {
+        "x": 300,
+        "y": -200
+      }
+    },
+    {
+      "id": "ob1",
+      "data": {
+        "icon": "checkout",
+        "label": "ORDER BUMP 1 R$ 29 — Caderno de Oração"
+      },
+      "type": "funnel",
+      "position": {
+        "x": 411.5,
+        "y": 200
+      }
+    },
+    {
+      "id": "ob2",
+      "data": {
+        "icon": "checkout",
+        "label": "ORDER BUMP 2 R$ 29 — Orações pra Hora da Crise"
+      },
+      "type": "funnel",
+      "position": {
+        "x": 541.5,
+        "y": 200
+      }
+    },
+    {
+      "id": "ob3",
+      "data": {
+        "icon": "checkout",
+        "label": "ORDER BUMP 3 R$ 19 — 30 Versículos em cartão"
+      },
+      "type": "funnel",
+      "position": {
+        "x": 671.5,
+        "y": 200
+      }
+    },
+    {
+      "id": "down",
+      "data": {
+        "icon": "downsell",
+        "label": "DOWNSELL R$ 67 — Combo Restauração"
+      },
+      "type": "funnel",
+      "position": {
+        "x": 871.5,
+        "y": 200
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "m_ad_quiz",
+      "type": "step",
+      "style": {
+        "stroke": "#6b6b6b",
+        "strokeWidth": 1.8,
+        "strokeDasharray": "7 5"
+      },
+      "source": "ad",
+      "target": "quiz",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8a8a8a",
+        "width": 18,
+        "height": 18
+      },
+      "pathOptions": {
+        "offset": 20,
+        "borderRadius": 0
+      },
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "m_quiz_res",
+      "type": "step",
+      "style": {
+        "stroke": "#6b6b6b",
+        "strokeWidth": 1.8,
+        "strokeDasharray": "7 5"
+      },
+      "source": "quiz",
+      "target": "res",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8a8a8a",
+        "width": 18,
+        "height": 18
+      },
+      "pathOptions": {
+        "offset": 20,
+        "borderRadius": 0
+      },
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "m_res_ck",
+      "type": "step",
+      "style": {
+        "stroke": "#6b6b6b",
+        "strokeWidth": 1.8,
+        "strokeDasharray": "7 5"
+      },
+      "source": "res",
+      "target": "ck",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8a8a8a",
+        "width": 18,
+        "height": 18
+      },
+      "pathOptions": {
+        "offset": 20,
+        "borderRadius": 0
+      },
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "m_ck_up",
+      "type": "step",
+      "style": {
+        "stroke": "#6b6b6b",
+        "strokeWidth": 1.8,
+        "strokeDasharray": "7 5"
+      },
+      "source": "ck",
+      "target": "up",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8a8a8a",
+        "width": 18,
+        "height": 18
+      },
+      "pathOptions": {
+        "offset": 20,
+        "borderRadius": 0
+      },
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "m_up_ty",
+      "data": {
+        "label": "sim"
+      },
+      "type": "step",
+      "label": "sim",
+      "style": {
+        "stroke": "#6b6b6b",
+        "strokeWidth": 1.8,
+        "strokeDasharray": "7 5"
+      },
+      "source": "up",
+      "target": "ty",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8a8a8a",
+        "width": 18,
+        "height": 18
+      },
+      "pathOptions": {
+        "offset": 20,
+        "borderRadius": 0
+      },
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "id": "c_quiz_lead",
+      "type": "step",
+      "style": {
+        "stroke": "#6b6b6b",
+        "strokeWidth": 1.8,
+        "strokeDasharray": "7 5"
+      },
+      "source": "quiz",
+      "target": "lead",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8a8a8a",
+        "width": 18,
+        "height": 18
+      },
+      "pathOptions": {
+        "offset": 20,
+        "borderRadius": 0
+      },
+      "sourceHandle": "top",
+      "targetHandle": "left"
+    },
+    {
+      "id": "b_ob1",
+      "type": "step",
+      "style": {
+        "stroke": "#6b6b6b",
+        "strokeWidth": 1.8,
+        "strokeDasharray": "7 5"
+      },
+      "source": "ck",
+      "target": "ob1",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8a8a8a",
+        "width": 18,
+        "height": 18
+      },
+      "pathOptions": {
+        "offset": 20,
+        "borderRadius": 0
+      },
+      "sourceHandle": "right",
+      "targetHandle": "top"
+    },
+    {
+      "id": "b_ob2",
+      "type": "step",
+      "style": {
+        "stroke": "#6b6b6b",
+        "strokeWidth": 1.8,
+        "strokeDasharray": "7 5"
+      },
+      "source": "ck",
+      "target": "ob2",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8a8a8a",
+        "width": 18,
+        "height": 18
+      },
+      "pathOptions": {
+        "offset": 20,
+        "borderRadius": 0
+      },
+      "sourceHandle": "right",
+      "targetHandle": "top"
+    },
+    {
+      "id": "b_ob3",
+      "type": "step",
+      "style": {
+        "stroke": "#6b6b6b",
+        "strokeWidth": 1.8,
+        "strokeDasharray": "7 5"
+      },
+      "source": "ck",
+      "target": "ob3",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8a8a8a",
+        "width": 18,
+        "height": 18
+      },
+      "pathOptions": {
+        "offset": 20,
+        "borderRadius": 0
+      },
+      "sourceHandle": "right",
+      "targetHandle": "top"
+    },
+    {
+      "id": "d_up_down",
+      "type": "step",
+      "style": {
+        "stroke": "#6b6b6b",
+        "strokeWidth": 1.8,
+        "strokeDasharray": "7 5"
+      },
+      "source": "up",
+      "target": "down",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8a8a8a",
+        "width": 18,
+        "height": 18
+      },
+      "pathOptions": {
+        "offset": 20,
+        "borderRadius": 0
+      },
+      "sourceHandle": "right",
+      "targetHandle": "top"
+    },
+    {
+      "id": "d_down_ty",
+      "type": "step",
+      "style": {
+        "stroke": "#6b6b6b",
+        "strokeWidth": 1.8,
+        "strokeDasharray": "7 5"
+      },
+      "source": "down",
+      "target": "ty",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "color": "#8a8a8a",
+        "width": 18,
+        "height": 18
+      },
+      "pathOptions": {
+        "offset": 10,
+        "borderRadius": 0,
+        "stepPosition": 0.5
+      },
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    }
+  ],
+  "precos": [],
+  "viewport": {
+    "x": 80,
+    "y": 180,
+    "zoom": 0.85
+  }
+}

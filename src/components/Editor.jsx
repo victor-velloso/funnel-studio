@@ -8,10 +8,13 @@ import {
   Controls,
   Panel,
   ConnectionMode,
+  ConnectionLineType,
   addEdge,
   applyNodeChanges,
   applyEdgeChanges,
   useReactFlow,
+  useUpdateNodeInternals,
+  useNodesInitialized,
   useViewport,
   getViewportForBounds,
 } from '@xyflow/react'
@@ -106,7 +109,13 @@ function newCanvasNode(payload, position) {
     data: { label: payload.label, icon: payload.type },
   }
 }
-const edgeTypes = { default: LabeledEdge }
+// Mesmo componente para todos os tipos: o traçado muda pelo `type` da ligação.
+const edgeTypes = {
+  default: LabeledEdge,
+  step: LabeledEdge,
+  smoothstep: LabeledEdge,
+  straight: LabeledEdge,
+}
 
 /* ---------- Histórico (undo/redo) ---------- */
 
@@ -127,13 +136,15 @@ function snapshot(nodes, edges) {
 function signature(snap) {
   return JSON.stringify({
     n: snap.nodes.map(({ id, type, position, data, style }) => ({ id, type, position, data, style })),
-    e: snap.edges.map(({ id, source, target, sourceHandle, targetHandle, data }) => ({
+    e: snap.edges.map(({ id, source, target, sourceHandle, targetHandle, type, pathOptions, data, label }) => ({
       id,
       source,
       target,
       sourceHandle,
       targetHandle,
-      label: data?.label ?? '',
+      type: type ?? 'step',
+      pathOptions: pathOptions ?? null,
+      label: data?.label ?? label ?? '',
     })),
   })
 }
@@ -503,9 +514,28 @@ function Canvas({
   const [saveOpen, setSaveOpen] = useState(false)
   const [historyOpen, setHistoryOpen] = useState(false)
   const { screenToFlowPosition, getViewport, getNodesBounds, fitView } = useReactFlow()
+  const updateNodeInternals = useUpdateNodeInternals()
+  const nodesInitialized = useNodesInitialized()
   const wrapperRef = useRef(null)
 
   const { undo, redo, canUndo, canRedo } = useHistory(nodes, edges, setNodes, setEdges)
+
+  // Depois do primeiro layout (e da animação/preço no nó), re-mede os handles
+  // para as ligações step ficarem retas e as setas aparecerem no lugar certo.
+  const nodeIdsKey = nodes.map((n) => n.id).join(',')
+  useEffect(() => {
+    if (!nodesInitialized || !nodeIdsKey) return
+    const ids = nodeIdsKey.split(',')
+    const remediar = () => {
+      for (const id of ids) updateNodeInternals(id)
+    }
+    const t1 = setTimeout(remediar, 50)
+    const t2 = setTimeout(remediar, 220)
+    return () => {
+      clearTimeout(t1)
+      clearTimeout(t2)
+    }
+  }, [nodesInitialized, nodeIdsKey, updateNodeInternals])
 
   // Refs estáveis para o auto-save (onChange do App muda de identidade a cada render)
   const onChangeRef = useRef(onChange)
@@ -1061,6 +1091,7 @@ function Canvas({
             connectionMode={ConnectionMode.Loose}
             connectionRadius={34}
             defaultEdgeOptions={EDGE_OPTIONS}
+            connectionLineType={ConnectionLineType.Step}
             connectionLineStyle={{ stroke: 'rgb(242, 86, 43)', strokeWidth: 1.8, strokeDasharray: '7 5' }}
             defaultViewport={funnel.viewport ?? undefined}
             fitView={!funnel.viewport && funnel.nodes.length > 0}

@@ -204,7 +204,7 @@ export default function SaveModal({ funnel, nodes, getDocumento, onSaved, onRelo
               <p className="field__hint">
                 {sugestao.encontrados > 0
                   ? `${sugestao.encontrados} ${sugestao.encontrados === 1 ? 'preço encontrado' : 'preços encontrados'} nos elementos do funil. Confira antes de salvar.`
-                  : 'Nenhum preço nos elementos. Escreva “R$ 47” no rótulo de um elemento para ele aparecer aqui, ou adicione à mão.'}
+                  : 'Nenhum preço nos elementos. Use o campo de preço do elemento, escreva “R$ 47” no rótulo, ou adicione à mão.'}
               </p>
               {linhas.length > 0 && (
                 <div className="prices">

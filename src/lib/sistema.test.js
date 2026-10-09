@@ -7,6 +7,7 @@ import {
   stableStringify,
   reaisParaCentavos,
   centavosParaReais,
+  precoExplicitoNoTexto,
   precosDosNos,
   montarPrecos,
   quemSalvou,
@@ -97,6 +98,15 @@ describe('preços', () => {
     expect(centavosParaReais(undefined)).toBe('')
   })
 
+  it('só aceita R$ explícito; texto sem preço não vira preço', () => {
+    expect(precoExplicitoNoTexto('Webinário')).toBeNull()
+    expect(precoExplicitoNoTexto('WEBINÁRIO 20h')).toBeNull()
+    expect(precoExplicitoNoTexto('Quiz')).toBeNull()
+    expect(precoExplicitoNoTexto('ORDER BUMP 3 — 30 Versículos')).toBeNull()
+    expect(precoExplicitoNoTexto('Checkout R$ 47')).toBe(4700)
+    expect(precoExplicitoNoTexto('FRONT R$\u00a0297 — Jornada')).toBe(29700)
+  })
+
   it('tira preços dos rótulos dos elementos', () => {
     const nodes = [
       no('a', 'checkout', 'Checkout R$ 47'),
@@ -106,6 +116,15 @@ describe('preços', () => {
       { id: 'e', type: 'note', position: { x: 0, y: 0 }, data: { text: 'R$ 10 na nota' } },
       no('f', 'sales-page', 'Order bump R$ 27'),
       { id: 'g', type: 'funnel', position: { x: 0, y: 0 }, data: { label: 'Mentoria', icon: 'call', valor_centavos: 300000 } },
+      { id: 'h', type: 'funnel', position: { x: 0, y: 0 }, data: { label: 'Webinário', icon: 'webinar' } },
+      { id: 'i', type: 'funnel', position: { x: 0, y: 0 }, data: { label: 'WEBINÁRIO 20h', icon: 'webinar' } },
+      {
+        id: 'j',
+        type: 'funnel',
+        position: { x: 0, y: 0 },
+        data: { label: 'Backend R$ 99', icon: 'webinar', preco_centavos: 59700 },
+      },
+      no('k', 'checkout', 'FRONT R$\u00a047 — PDF da área'),
     ]
     expect(precosDosNos(nodes)).toEqual([
       { rotulo: 'Checkout', valor_centavos: 4700, tipo: 'front', no_id: 'a' },
@@ -113,7 +132,47 @@ describe('preços', () => {
       { rotulo: 'Downsell', valor_centavos: 149700, tipo: 'downsell', no_id: 'c' },
       { rotulo: 'Order bump', valor_centavos: 2700, tipo: 'order_bump', no_id: 'f' },
       { rotulo: 'Mentoria', valor_centavos: 300000, tipo: 'outro', no_id: 'g' },
+      { rotulo: 'Backend', valor_centavos: 59700, tipo: 'backend', no_id: 'j' },
+      { rotulo: 'FRONT — PDF da área', valor_centavos: 4700, tipo: 'front', no_id: 'k' },
     ])
+  })
+
+  it('preserva type step, pathOptions e preco_centavos no documento', () => {
+    const funnel = {
+      id: 'x',
+      name: 'F',
+      createdAt: 1,
+      updatedAt: 2,
+      nodes: [
+        {
+          id: 'ck',
+          type: 'funnel',
+          position: { x: 0, y: 0 },
+          data: { label: 'Front', icon: 'checkout', preco_centavos: 4700 },
+          selected: true,
+        },
+      ],
+      edges: [
+        {
+          id: 'e1',
+          type: 'step',
+          source: 'ck',
+          target: 'ck',
+          pathOptions: { offset: 20, borderRadius: 0 },
+          selected: true,
+          data: { label: 'sim', editing: true },
+        },
+      ],
+    }
+    const doc = toDocumento(funnel)
+    expect(doc.nodes[0].data).toEqual({ label: 'Front', icon: 'checkout', preco_centavos: 4700 })
+    expect(doc.edges[0]).toMatchObject({
+      type: 'step',
+      pathOptions: { offset: 20, borderRadius: 0 },
+      data: { label: 'sim' },
+    })
+    expect(doc.edges[0].selected).toBeUndefined()
+    expect(doc.edges[0].data.editing).toBeUndefined()
   })
 
   it('junta com os preços do sistema: valor do nó vence, nó apagado sai', () => {
