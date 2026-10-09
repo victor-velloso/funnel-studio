@@ -821,17 +821,18 @@ function Canvas({
       : 'pendente'
 
   const openSave = useCallback(() => {
+    const abrirSePuder = (s) => {
+      if (s.pessoa && s.pessoa.pode_gravar === false) {
+        toast('Sua conta só pode abrir funis. Peça a um administrador para salvar no sistema.', 'error')
+        return
+      }
+      setSaveOpen(true)
+    }
     if (!sessao) {
-      onRequestLogin('Entre com sua conta do Funnel Control para salvar este funil no sistema.', () =>
-        setSaveOpen(true),
-      )
+      onRequestLogin('Entre com sua conta do Funnel Control para salvar este funil no sistema.', abrirSePuder)
       return
     }
-    if (sessao.pessoa && sessao.pessoa.pode_gravar === false) {
-      toast('Sua conta só pode abrir funis. Peça a um administrador para salvar no sistema.', 'error')
-      return
-    }
-    setSaveOpen(true)
+    abrirSePuder(sessao)
   }, [sessao, onRequestLogin])
 
   const getDocumento = useCallback(
