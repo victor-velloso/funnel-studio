@@ -1,10 +1,25 @@
 import { useMemo, useRef, useState } from 'react'
 import { formatDate } from '../lib/storage.js'
 import { toast } from '../lib/toast.js'
+import { statusSistema } from '../lib/sistema.js'
 import { buildTemplate } from '../data/templates.js'
 import MiniPreview from './MiniPreview.jsx'
 import TemplateModal from './TemplateModal.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
+import SessionMenu from './SessionMenu.jsx'
+import SystemFunnels from './SystemFunnels.jsx'
+
+const ABA_KEY = 'elyon-funnel-studio:aba'
+
+function SyncTag({ funnel }) {
+  const status = statusSistema(funnel)
+  if (status === 'local') return null
+  return (
+    <span className={`sync-tag sync-tag--${status}`}>
+      {status === 'salvo' ? `No sistema · v${funnel.sistema.versao}` : 'Não salvo no sistema'}
+    </span>
+  )
+}
 
 function FunnelCard({ funnel, onOpen, onDuplicate, onRename, onDelete }) {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -41,6 +56,7 @@ function FunnelCard({ funnel, onOpen, onDuplicate, onRename, onDelete }) {
             {funnel.nodes.length} {funnel.nodes.length === 1 ? 'elemento' : 'elementos'} ·{' '}
             {formatDate(funnel.updatedAt)}
           </p>
+          <SyncTag funnel={funnel} />
         </div>
         <div className="funnel-card__actions" onClick={(e) => e.stopPropagation()}>
           <button
@@ -99,7 +115,9 @@ function FunnelCard({ funnel, onOpen, onDuplicate, onRename, onDelete }) {
 
 export default function Dashboard({
   funnels,
+  localById,
   theme,
+  sessao,
   onToggleTheme,
   onOpen,
   onCreate,
@@ -107,10 +125,19 @@ export default function Dashboard({
   onRename,
   onDelete,
   onImport,
+  onLogin,
+  onLogout,
+  onOpenFromSystem,
+  onHistory,
 }) {
   const fileRef = useRef(null)
   const [showTemplates, setShowTemplates] = useState(false)
   const [query, setQuery] = useState('')
+  const [aba, setAbaState] = useState(() => (localStorage.getItem(ABA_KEY) === 'sistema' ? 'sistema' : 'local'))
+  const setAba = (v) => {
+    setAbaState(v)
+    localStorage.setItem(ABA_KEY, v)
+  }
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -149,6 +176,7 @@ export default function Dashboard({
         </div>
         <div className="dashboard__nav-actions">
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+          <SessionMenu sessao={sessao} onLogin={onLogin} onLogout={onLogout} />
           <button className="btn btn--secondary" onClick={() => fileRef.current?.click()}>
             Importar JSON
           </button>
@@ -174,7 +202,7 @@ export default function Dashboard({
             </h1>
             <p>Desenhe, organize e compartilhe a arquitetura dos seus funis de venda.</p>
           </div>
-          {funnels.length > 0 && (
+          {aba === 'local' && funnels.length > 0 && (
             <div className="dashboard__search">
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <circle cx="11" cy="11" r="6.5" />
@@ -189,7 +217,35 @@ export default function Dashboard({
           )}
         </div>
 
-        {funnels.length === 0 ? (
+        <div className="tabs" role="tablist" aria-label="Onde estão os funis">
+          <button
+            role="tab"
+            aria-selected={aba === 'local'}
+            className={`tab ${aba === 'local' ? 'is-active' : ''}`}
+            onClick={() => setAba('local')}
+          >
+            Neste navegador <span className="tab__count mono">{funnels.length}</span>
+          </button>
+          <button
+            role="tab"
+            aria-selected={aba === 'sistema'}
+            className={`tab ${aba === 'sistema' ? 'is-active' : ''}`}
+            onClick={() => setAba('sistema')}
+          >
+            No sistema
+            {!sessao && <span className="tab__count mono">entrar</span>}
+          </button>
+        </div>
+
+        {aba === 'sistema' ? (
+          <SystemFunnels
+            sessao={sessao}
+            localById={localById}
+            onLogin={onLogin}
+            onOpen={onOpenFromSystem}
+            onHistory={onHistory}
+          />
+        ) : funnels.length === 0 ? (
           <div className="empty-state">
             <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="rgb(242, 86, 43)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 4h18l-6.5 8v6.5L9.5 21v-9L3 4z" />
@@ -223,7 +279,9 @@ export default function Dashboard({
 
       <footer className="dashboard__footer">
         <span>Elyon Studios™ — ferramenta interna</span>
-        <span className="mono">100% offline · dados no seu navegador</span>
+        <span className="mono">
+          {sessao ? 'Conectado ao Funnel Control · cópias locais no navegador' : 'Offline · dados no seu navegador'}
+        </span>
       </footer>
 
       {showTemplates && (

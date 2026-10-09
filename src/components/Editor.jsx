@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import {
   ReactFlow,
   ReactFlowProvider,
@@ -30,10 +30,15 @@ import LabeledEdge from './LabeledEdge.jsx'
 import Sidebar from './Sidebar.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
 import HelpModal from './HelpModal.jsx'
+import SessionMenu from './SessionMenu.jsx'
+import SaveModal from './SaveModal.jsx'
+import HistoryModal from './HistoryModal.jsx'
 import { EDGE_OPTIONS } from '../lib/flow.js'
 import { layoutNodes } from '../lib/layout.js'
 import { toast } from '../lib/toast.js'
 import { uid, downloadJSON, slug, formatTime } from '../lib/storage.js'
+import { assinatura, toDocumento } from '../lib/sistema.js'
+import { abrirFunil } from '../lib/api.js'
 
 const nodeTypes = {
   funnel: FunnelNode,
@@ -190,6 +195,63 @@ function useHistory(nodes, edges, setNodes, setEdges) {
 
 /* ---------- Toolbar ---------- */
 
+function SyncStatus({ status, sistema, savedAt }) {
+  const local = savedAt ? `Cópia no navegador salva às ${formatTime(savedAt)}` : 'Cópia no navegador'
+  if (status === 'local') {
+    return (
+      <span className="toolbar__saved mono" title="Este funil ainda não foi salvo no Funnel Control">
+        {savedAt ? `Salvo no navegador às ${formatTime(savedAt)}` : 'Só neste navegador'}
+      </span>
+    )
+  }
+  const texto =
+    status === 'salvo'
+      ? `Salvo no sistema · v${sistema.versao}`
+      : sistema.restauradaDe
+        ? `Versão ${sistema.restauradaDe} aberta · não salva`
+        : 'Alterações não salvas no sistema'
+  return (
+    <span className={`sync-pill sync-pill--${status}`} title={local} role="status">
+      <i />
+      {texto}
+    </span>
+  )
+}
+
+function ExportMenu({ onExportJSON, onExportPNG }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="export-menu">
+      <button className="btn btn--secondary" onClick={() => setOpen((v) => !v)} aria-expanded={open}>
+        Exportar
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+      {open && (
+        <div className="menu" onMouseLeave={() => setOpen(false)}>
+          <button
+            onClick={() => {
+              setOpen(false)
+              onExportPNG()
+            }}
+          >
+            Imagem PNG
+          </button>
+          <button
+            onClick={() => {
+              setOpen(false)
+              onExportJSON()
+            }}
+          >
+            Arquivo JSON
+          </button>
+        </div>
+      )}
+    </div>
+  )
+}
+
 function Toolbar({
   name,
   onRename,
@@ -206,6 +268,13 @@ function Toolbar({
   canRedo,
   onAutoLayout,
   canLayout,
+  sync,
+  sistema,
+  sessao,
+  onLogin,
+  onLogout,
+  onSaveSystem,
+  onHistory,
 }) {
   const [editing, setEditing] = useState(false)
   const fileRef = useRef(null)
@@ -273,17 +342,25 @@ function Toolbar({
       </div>
 
       <div className="toolbar__right">
-        {savedAt && <span className="toolbar__saved mono">Salvo às {formatTime(savedAt)}</span>}
+        <SyncStatus status={sync} sistema={sistema} savedAt={savedAt} />
         <ThemeToggle theme={theme} onToggle={onToggleTheme} />
         <button className="btn btn--secondary" onClick={() => fileRef.current?.click()}>
           Importar
         </button>
-        <button className="btn btn--secondary" onClick={onExportJSON}>
-          Exportar JSON
+        <ExportMenu onExportJSON={onExportJSON} onExportPNG={onExportPNG} />
+        {onHistory && (
+          <button className="icon-btn" onClick={onHistory} aria-label="Histórico de versões" title="Histórico de versões">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3.5 8.5" />
+              <path d="M3.5 3.5v5h5" />
+              <path d="M12 7.5V12l3 2" />
+            </svg>
+          </button>
+        )}
+        <button className="btn btn--primary" onClick={onSaveSystem} title="Salvar no Funnel Control (⌘S)">
+          Salvar no sistema
         </button>
-        <button className="btn btn--primary" onClick={onExportPNG}>
-          Exportar PNG
-        </button>
+        <SessionMenu sessao={sessao} onLogin={onLogin} onLogout={onLogout} />
         <input
           ref={fileRef}
           type="file"
@@ -396,7 +473,20 @@ function ZoomBadge() {
 
 /* ---------- Canvas ---------- */
 
-function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
+function Canvas({
+  funnel,
+  theme,
+  sessao,
+  onToggleTheme,
+  onChange,
+  onRename,
+  onBack,
+  onRequestLogin,
+  onLogout,
+  onSystemSaved,
+  onLoadFromSystem,
+  onOpenVersion,
+}) {
   const [nodes, setNodes] = useState(funnel.nodes)
   const [edges, setEdges] = useState(() =>
     funnel.edges.map((e) => (e.data?.editing ? { ...e, data: { ...e.data, editing: false } } : e)),
@@ -410,6 +500,8 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
   const [penShapes, setPenShapes] = useState(false)
   const [penWidth, setPenWidth] = useState(3)
   const [penTool, setPenTool] = useState('draw')
+  const [saveOpen, setSaveOpen] = useState(false)
+  const [historyOpen, setHistoryOpen] = useState(false)
   const { screenToFlowPosition, getViewport, getNodesBounds, fitView } = useReactFlow()
   const wrapperRef = useRef(null)
 
@@ -439,9 +531,11 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
 
   // Flush no unmount — sem isso, alterações feitas até 600ms antes de sair se perdem.
   // Só salva se algo mudou (evita gravar viewport pré-fitView no double-mount do StrictMode).
+  // Ao trocar o quadro pela versão do sistema, o flush não pode regravar o conteúdo antigo.
+  const discardRef = useRef(false)
   useEffect(() => {
     return () => {
-      if (!dirtyRef.current) return
+      if (!dirtyRef.current || discardRef.current) return
       let viewport = null
       try {
         viewport = getViewport()
@@ -708,13 +802,119 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
     toast('Quadro organizado — ⌘Z desfaz')
   }, [nodes, edges, fitView])
 
+  /* ---------- Funnel Control ---------- */
+
+  // Assinatura do quadro ao vivo (com debounce) para o indicador salvo / não salvo.
+  const [settled, setSettled] = useState({ nodes, edges })
+  useEffect(() => {
+    const t = setTimeout(() => setSettled({ nodes, edges }), 250)
+    return () => clearTimeout(t)
+  }, [nodes, edges])
+  const liveSig = useMemo(
+    () => (funnel.sistema ? assinatura({ ...funnel, nodes: settled.nodes, edges: settled.edges }) : null),
+    [funnel, settled],
+  )
+  const sync = !funnel.sistema
+    ? 'local'
+    : funnel.sistema.assinatura && funnel.sistema.assinatura === liveSig
+      ? 'salvo'
+      : 'pendente'
+
+  const openSave = useCallback(() => {
+    const abrirSePuder = (s) => {
+      if (s.pessoa && s.pessoa.pode_gravar === false) {
+        toast('Sua conta só pode abrir funis. Peça a um administrador para salvar no sistema.', 'error')
+        return
+      }
+      setSaveOpen(true)
+    }
+    if (!sessao) {
+      onRequestLogin('Entre com sua conta do Funnel Control para salvar este funil no sistema.', abrirSePuder)
+      return
+    }
+    abrirSePuder(sessao)
+  }, [sessao, onRequestLogin])
+
+  const getDocumento = useCallback(
+    () =>
+      toDocumento({
+        ...funnel,
+        nodes: latestRef.current.nodes,
+        edges: latestRef.current.edges,
+        viewport: getViewport(),
+      }),
+    [funnel, getViewport],
+  )
+
+  const handleSaved = useCallback(
+    ({ res, nome, especialista, precos }) => {
+      const { nodes: ns, edges: es } = latestRef.current
+      const conteudo = { name: nome, nodes: ns, edges: es, especialista, precos }
+      onSystemSaved({
+        ...conteudo,
+        ...(res.id && res.id !== funnel.id ? { id: res.id } : {}),
+        viewport: getViewport(),
+        sistema: {
+          versao: res.versao,
+          assinatura: assinatura(conteudo),
+          sincronizadoEm: Date.now(),
+          atualizadoEm: res.atualizado_em,
+          atualizadoPor: sessao?.pessoa?.email ? `pessoa:${sessao.pessoa.email}` : undefined,
+        },
+      })
+      dirtyRef.current = false
+      setSaveOpen(false)
+      toast(
+        res.alterado === false
+          ? `Nada mudou desde a versão ${res.versao}`
+          : res.criado
+            ? `Funil criado no sistema (versão ${res.versao})`
+            : `Salvo no sistema como versão ${res.versao}`,
+      )
+    },
+    [funnel.id, getViewport, onSystemSaved, sessao],
+  )
+
+  const reloadFromSystem = useCallback(async () => {
+    const funil = await abrirFunil(funnel.id)
+    discardRef.current = true
+    onLoadFromSystem(funil)
+    toast(`Versão ${funil.versao} do sistema carregada`)
+  }, [funnel.id, onLoadFromSystem])
+
+  const openVersion = useCallback(
+    async (versao, atual) => {
+      discardRef.current = true
+      try {
+        await onOpenVersion(versao, atual)
+      } catch (err) {
+        discardRef.current = false
+        throw err
+      }
+    },
+    [onOpenVersion],
+  )
+
   // Atalhos de teclado
   useEffect(() => {
     const onKey = (e) => {
       const t = e.target
-      if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return
       const mod = e.metaKey || e.ctrlKey
       const k = e.key.toLowerCase()
+      if (mod && k === 's') {
+        e.preventDefault()
+        if (!document.querySelector('.modal-overlay')) openSave()
+        return
+      }
+      if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable) return
+      if (e.key === 'Escape') {
+        setHelpOpen(false)
+        setHistoryOpen(false)
+        setPenMode(false)
+        closeCtx()
+        return
+      }
+      if (document.querySelector('.modal-overlay')) return
       if (mod && k === 'z' && !e.shiftKey) {
         e.preventDefault()
         undo()
@@ -738,15 +938,11 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
         }
       } else if (e.key === '?') {
         setHelpOpen(true)
-      } else if (e.key === 'Escape') {
-        setHelpOpen(false)
-        setPenMode(false)
-        closeCtx()
       }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [undo, redo, duplicateSelection, copySelection, pasteClipboard, deleteSelection, closeCtx])
+  }, [undo, redo, duplicateSelection, copySelection, pasteClipboard, deleteSelection, closeCtx, openSave])
 
   const onDragOver = useCallback((e) => {
     e.preventDefault()
@@ -766,7 +962,7 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
   )
 
   const exportJSON = useCallback(() => {
-    downloadJSON({ ...funnel, nodes, edges, viewport: getViewport() })
+    downloadJSON(toDocumento({ ...funnel, nodes, edges, viewport: getViewport() }))
     toast('JSON exportado')
   }, [funnel, nodes, edges, getViewport])
 
@@ -834,6 +1030,13 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
         canRedo={canRedo}
         onAutoLayout={autoLayout}
         canLayout={nodes.length > 0}
+        sync={sync}
+        sistema={funnel.sistema}
+        sessao={sessao}
+        onLogin={onRequestLogin}
+        onLogout={onLogout}
+        onSaveSystem={openSave}
+        onHistory={funnel.sistema && sessao ? () => setHistoryOpen(true) : null}
       />
       <div className="editor__body">
         <Sidebar onAdd={addElement} collapsed={!sidebarOpen} />
@@ -862,7 +1065,7 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
             defaultViewport={funnel.viewport ?? undefined}
             fitView={!funnel.viewport && funnel.nodes.length > 0}
             fitViewOptions={{ padding: 0.25 }}
-            deleteKeyCode={['Backspace', 'Delete']}
+            deleteKeyCode={saveOpen || historyOpen ? null : ['Backspace', 'Delete']}
             selectionKeyCode="Shift"
             multiSelectionKeyCode={['Meta', 'Control']}
             proOptions={{ hideAttribution: true }}
@@ -1102,6 +1305,26 @@ function Canvas({ funnel, theme, onToggleTheme, onChange, onRename, onBack }) {
             </div>
           )}
           {helpOpen && <HelpModal onClose={() => setHelpOpen(false)} />}
+          {saveOpen && (
+            <SaveModal
+              funnel={funnel}
+              nodes={nodes}
+              getDocumento={getDocumento}
+              onSaved={handleSaved}
+              onReload={reloadFromSystem}
+              onClose={() => setSaveOpen(false)}
+            />
+          )}
+          {historyOpen && (
+            <HistoryModal
+              funilId={funnel.id}
+              nome={funnel.name}
+              versaoAberta={funnel.sistema?.restauradaDe ?? funnel.sistema?.versao}
+              temPendencias={sync !== 'salvo'}
+              onOpenVersion={openVersion}
+              onClose={() => setHistoryOpen(false)}
+            />
+          )}
         </div>
       </div>
     </div>
