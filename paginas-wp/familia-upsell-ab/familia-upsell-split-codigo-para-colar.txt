@@ -1,0 +1,55 @@
+<!-- Família Restaurada · upsell A/B · página de divisão 50/50 · página /familia-upsell/ · Elementor: 1 widget HTML, página Full Width sem espaço. Recebe o obrigado da Eduzz dos 4 manuais e manda na hora pra /familia-upsell-a/ ou /familia-upsell-b/ com todos os parâmetros (menos ab). Sorteio fixo por navegador em localStorage fr_ab_upsell. QA: ?ab=a ou ?ab=b força a página (não grava). Não envia nada ao Funnel Control. -->
+<style>
+html,body{background:#2F2118 !important}
+#fr-split{position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;margin:0;padding:24px;background:#2F2118;color:#FAF6F1;font:600 15px/1.5 "Open Sans",system-ui,sans-serif;text-align:center;-webkit-font-smoothing:antialiased}
+#fr-split .fr-split-roda{width:38px;height:38px;border-radius:50%;border:3px solid rgba(250,246,241,.18);border-top-color:#A25A38;animation:fr-split-gira .8s linear infinite}
+#fr-split .fr-split-txt{margin:0;padding:0;font-family:Raleway,"Open Sans",system-ui,sans-serif;font-weight:700;font-size:17px;letter-spacing:.01em;color:#FAF6F1}
+#fr-split a,#fr-split a:visited,#fr-split a:hover{color:#FAF6F1 !important;text-decoration:underline !important}
+@keyframes fr-split-gira{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){#fr-split .fr-split-roda{animation:none;border-color:#A25A38}}
+</style>
+<div id="fr-split" role="status" aria-live="polite">
+<div class="fr-split-roda" aria-hidden="true"></div>
+<p class="fr-split-txt">Carregando a próxima etapa…</p>
+<noscript><p class="fr-split-txt"><a href="https://www.ezeneterodrigues.com.br/familia-upsell-a/">Toque aqui pra continuar</a></p></noscript>
+</div>
+<script>
+(function () {
+  var BASE = "https://www.ezeneterodrigues.com.br/familia-upsell-";
+  var KEY = "fr_ab_upsell";
+  try { var mr = document.createElement("meta"); mr.name = "robots"; mr.content = "noindex, nofollow"; document.head.appendChild(mr); } catch (eMeta) {}
+  function valido(v) { return v === "a" || v === "b"; }
+  function sorteia() { return ["a", "b"][Math.floor(Math.random() * 2)] || "a"; }
+  var busca = "", forcado = "", partes = [], v = "", fonte = "";
+  try { busca = String(location.search || "").replace(/^\?/, ""); } catch (eBusca) { busca = ""; }
+  if (busca) {
+    busca.split("&").forEach(function (p) {
+      if (!p) return;
+      var i = p.indexOf("="), k = i === -1 ? p : p.slice(0, i), val = i === -1 ? "" : p.slice(i + 1);
+      try { k = decodeURIComponent(k.replace(/\+/g, " ")); } catch (eK) {}
+      if (String(k).toLowerCase() === "ab") {
+        try { val = decodeURIComponent(val.replace(/\+/g, " ")); } catch (eV) {}
+        val = String(val).toLowerCase().replace(/\s/g, "");
+        if (valido(val)) forcado = val;
+        return;
+      }
+      partes.push(p);
+    });
+  }
+  if (forcado) { v = forcado; fonte = "forcado"; }
+  else {
+    var salvo = "";
+    try { salvo = String(window.localStorage.getItem(KEY) || "").toLowerCase(); } catch (eLe) { salvo = ""; }
+    if (valido(salvo)) { v = salvo; fonte = "salvo"; }
+    else {
+      v = sorteia(); fonte = "sorteio";
+      try { window.localStorage.setItem(KEY, v); } catch (eGrava) { fonte = "sorteio_sem_storage"; }
+    }
+  }
+  var hash = "";
+  try { hash = location.hash || ""; } catch (eHash) {}
+  var destino = BASE + v + "/" + (partes.length ? "?" + partes.join("&") : "") + hash;
+  try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "fr_ab_upsell", variante: v, fonte: fonte }); } catch (eDl) {}
+  try { location.replace(destino); } catch (eRep) { location.href = destino; }
+})();
+</script>

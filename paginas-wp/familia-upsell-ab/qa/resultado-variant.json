@@ -1,0 +1,2657 @@
+{
+ "blocos": "/workspace/familia-restaurada/upsell-ab/build",
+ "total": 201,
+ "falhas": 0,
+ "results": [
+  {
+   "name": "a m=casamento&area=filhos view: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "36b7521e-4e09-4d44-a2e2-b08ac3888cda",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos view: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos view: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos view: só 1 evento FC",
+   "ok": true,
+   "info": [
+    "fr_oferta_view"
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos view: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a m=casamento&area=filhos view :: payloads",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "36b7521e-4e09-4d44-a2e2-b08ac3888cda",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos accept: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "d48e2531-a3c1-4558-abfa-580ee9d979dd",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "d48e2531-a3c1-4558-abfa-580ee9d979dd",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos accept: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos accept: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos accept: 1 fr_oferta_accept com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "d48e2531-a3c1-4558-abfa-580ee9d979dd",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "d48e2531-a3c1-4558-abfa-580ee9d979dd",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos accept: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635273681,
+      "url": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+     }
+    ],
+    "href": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+   }
+  },
+  {
+   "name": "a m=casamento&area=filhos accept: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635273682,
+    "nav": 1791635273681
+   }
+  },
+  {
+   "name": "a m=casamento&area=filhos accept: total de eventos FC = 2 (view + accept)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_accept"
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos accept: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a m=casamento&area=filhos accept :: payloads",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "d48e2531-a3c1-4558-abfa-580ee9d979dd",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "d48e2531-a3c1-4558-abfa-580ee9d979dd",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos decline: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "81836286-9290-4353-856e-9c61dfba0d57",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "81836286-9290-4353-856e-9c61dfba0d57",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos decline: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos decline: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos decline: 1 fr_oferta_decline com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "81836286-9290-4353-856e-9c61dfba0d57",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "81836286-9290-4353-856e-9c61dfba0d57",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos decline: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635275529,
+      "url": "https://www.ezeneterodrigues.com.br/familia-upsell-a-2/?m=casamento&area=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+     }
+    ],
+    "href": "/familia-upsell-a-2/?m=casamento&area=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+   }
+  },
+  {
+   "name": "a m=casamento&area=filhos decline: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635275530,
+    "nav": 1791635275529
+   }
+  },
+  {
+   "name": "a m=casamento&area=filhos decline: total de eventos FC = 2 (view + decline)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_decline"
+   ]
+  },
+  {
+   "name": "a m=casamento&area=filhos decline: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a m=casamento&area=filhos decline :: payloads",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "81836286-9290-4353-856e-9c61dfba0d57",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "81836286-9290-4353-856e-9c61dfba0d57",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=oracao view: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=oracao view: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "a m=oracao view: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "a m=oracao view: vid do quiz",
+   "ok": true,
+   "info": "qa-vid-quiz-1234"
+  },
+  {
+   "name": "a m=oracao view: só 1 evento FC",
+   "ok": true,
+   "info": [
+    "fr_oferta_view"
+   ]
+  },
+  {
+   "name": "a m=oracao view: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a m=oracao accept: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=oracao accept: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "a m=oracao accept: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "a m=oracao accept: vid do quiz",
+   "ok": true,
+   "info": "qa-vid-quiz-1234"
+  },
+  {
+   "name": "a m=oracao accept: 1 fr_oferta_accept com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=oracao accept: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635278361,
+      "url": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+     }
+    ],
+    "href": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+   }
+  },
+  {
+   "name": "a m=oracao accept: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635278362,
+    "nav": 1791635278361
+   }
+  },
+  {
+   "name": "a m=oracao accept: total de eventos FC = 2 (view + accept)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_accept"
+   ]
+  },
+  {
+   "name": "a m=oracao accept: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a m=oracao decline: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=oracao decline: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "a m=oracao decline: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "a m=oracao decline: vid do quiz",
+   "ok": true,
+   "info": "qa-vid-quiz-1234"
+  },
+  {
+   "name": "a m=oracao decline: 1 fr_oferta_decline com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a m=oracao decline: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635280230,
+      "url": "https://www.ezeneterodrigues.com.br/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+     }
+    ],
+    "href": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+   }
+  },
+  {
+   "name": "a m=oracao decline: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635280231,
+    "nav": 1791635280230
+   }
+  },
+  {
+   "name": "a m=oracao decline: total de eventos FC = 2 (view + decline)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_decline"
+   ]
+  },
+  {
+   "name": "a m=oracao decline: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a x=1 view: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "0a116b2f-a0af-4550-8eda-ad308c2693b1",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": null,
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a x=1 view: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "a x=1 view: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "a x=1 view: só 1 evento FC",
+   "ok": true,
+   "info": [
+    "fr_oferta_view"
+   ]
+  },
+  {
+   "name": "a x=1 view: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a x=1 accept: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "adf5eb83-6737-4f4a-a1ff-d1144edea1a9",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": null,
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "adf5eb83-6737-4f4a-a1ff-d1144edea1a9",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": null,
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a x=1 accept: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "a x=1 accept: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "a x=1 accept: 1 fr_oferta_accept com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "adf5eb83-6737-4f4a-a1ff-d1144edea1a9",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": null,
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "adf5eb83-6737-4f4a-a1ff-d1144edea1a9",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": null,
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a x=1 accept: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635283079,
+      "url": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+     }
+    ],
+    "href": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+   }
+  },
+  {
+   "name": "a x=1 accept: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635283079,
+    "nav": 1791635283079
+   }
+  },
+  {
+   "name": "a x=1 accept: total de eventos FC = 2 (view + accept)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_accept"
+   ]
+  },
+  {
+   "name": "a x=1 accept: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a x=1 decline: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "d98db011-9259-44ba-8eda-89c4087bbe21",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": null,
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "d98db011-9259-44ba-8eda-89c4087bbe21",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": null,
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a x=1 decline: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "a x=1 decline: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "a x=1 decline: 1 fr_oferta_decline com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "d98db011-9259-44ba-8eda-89c4087bbe21",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": null,
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "d98db011-9259-44ba-8eda-89c4087bbe21",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": null,
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "a x=1 decline: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635284962,
+      "url": "https://www.ezeneterodrigues.com.br/familia-upsell-a-2/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+     }
+    ],
+    "href": "/familia-upsell-a-2/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+   }
+  },
+  {
+   "name": "a x=1 decline: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635284963,
+    "nav": 1791635284962
+   }
+  },
+  {
+   "name": "a x=1 decline: total de eventos FC = 2 (view + decline)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_decline"
+   ]
+  },
+  {
+   "name": "a x=1 decline: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b m=casamento&area=filhos view: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "9c425c36-db21-439c-ac2b-be8870a40b05",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos view: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos view: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos view: só 1 evento FC",
+   "ok": true,
+   "info": [
+    "fr_oferta_view"
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos view: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b m=casamento&area=filhos accept: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "de2063c7-c9a6-4221-8e56-1d11f01dfa10",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "b"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "de2063c7-c9a6-4221-8e56-1d11f01dfa10",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos accept: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos accept: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos accept: 1 fr_oferta_accept com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "de2063c7-c9a6-4221-8e56-1d11f01dfa10",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "b"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "de2063c7-c9a6-4221-8e56-1d11f01dfa10",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos accept: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635287812,
+      "url": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+     }
+    ],
+    "href": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+   }
+  },
+  {
+   "name": "b m=casamento&area=filhos accept: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635287812,
+    "nav": 1791635287812
+   }
+  },
+  {
+   "name": "b m=casamento&area=filhos accept: total de eventos FC = 2 (view + accept)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_accept"
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos accept: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b m=casamento&area=filhos decline: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "d6a85573-d018-4218-9628-ed435d788957",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "b"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "d6a85573-d018-4218-9628-ed435d788957",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos decline: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos decline: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos decline: 1 fr_oferta_decline com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "d6a85573-d018-4218-9628-ed435d788957",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "b"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "d6a85573-d018-4218-9628-ed435d788957",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": "casamento",
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos decline: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635289681,
+      "url": "https://www.ezeneterodrigues.com.br/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+     }
+    ],
+    "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+   }
+  },
+  {
+   "name": "b m=casamento&area=filhos decline: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635289681,
+    "nav": 1791635289681
+   }
+  },
+  {
+   "name": "b m=casamento&area=filhos decline: total de eventos FC = 2 (view + decline)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_decline"
+   ]
+  },
+  {
+   "name": "b m=casamento&area=filhos decline: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b m=oracao view: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b m=oracao view: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "b m=oracao view: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "b m=oracao view: vid do quiz",
+   "ok": true,
+   "info": "qa-vid-quiz-1234"
+  },
+  {
+   "name": "b m=oracao view: só 1 evento FC",
+   "ok": true,
+   "info": [
+    "fr_oferta_view"
+   ]
+  },
+  {
+   "name": "b m=oracao view: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b m=oracao accept: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "b"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b m=oracao accept: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "b m=oracao accept: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "b m=oracao accept: vid do quiz",
+   "ok": true,
+   "info": "qa-vid-quiz-1234"
+  },
+  {
+   "name": "b m=oracao accept: 1 fr_oferta_accept com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "b"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b m=oracao accept: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635292513,
+      "url": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+     }
+    ],
+    "href": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+   }
+  },
+  {
+   "name": "b m=oracao accept: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635292514,
+    "nav": 1791635292513
+   }
+  },
+  {
+   "name": "b m=oracao accept: total de eventos FC = 2 (view + accept)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_accept"
+   ]
+  },
+  {
+   "name": "b m=oracao accept: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b m=oracao decline: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "b"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b m=oracao decline: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "b m=oracao decline: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "b m=oracao decline: vid do quiz",
+   "ok": true,
+   "info": "qa-vid-quiz-1234"
+  },
+  {
+   "name": "b m=oracao decline: 1 fr_oferta_decline com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "b"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b m=oracao decline: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635294428,
+      "url": "https://www.ezeneterodrigues.com.br/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+     }
+    ],
+    "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+   }
+  },
+  {
+   "name": "b m=oracao decline: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635294428,
+    "nav": 1791635294428
+   }
+  },
+  {
+   "name": "b m=oracao decline: total de eventos FC = 2 (view + decline)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_decline"
+   ]
+  },
+  {
+   "name": "b m=oracao decline: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b x=1 view: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "cb24d609-2ee0-4ea3-9d61-4b4adcc8da28",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": null,
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b x=1 view: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "b x=1 view: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "b x=1 view: só 1 evento FC",
+   "ok": true,
+   "info": [
+    "fr_oferta_view"
+   ]
+  },
+  {
+   "name": "b x=1 view: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b x=1 accept: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "0c2aa03a-ce52-4dbb-9e18-21a05dba85ae",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": null,
+     "variant": "b"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "0c2aa03a-ce52-4dbb-9e18-21a05dba85ae",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": null,
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b x=1 accept: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "b x=1 accept: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "b x=1 accept: 1 fr_oferta_accept com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "0c2aa03a-ce52-4dbb-9e18-21a05dba85ae",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": null,
+     "variant": "b"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "0c2aa03a-ce52-4dbb-9e18-21a05dba85ae",
+     "event": "fr_oferta_accept",
+     "page": "upsell",
+     "area": null,
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b x=1 accept: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635297244,
+      "url": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+     }
+    ],
+    "href": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+   }
+  },
+  {
+   "name": "b x=1 accept: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635297244,
+    "nav": 1791635297244
+   }
+  },
+  {
+   "name": "b x=1 accept: total de eventos FC = 2 (view + accept)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_accept"
+   ]
+  },
+  {
+   "name": "b x=1 accept: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b x=1 decline: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "cf237cfd-f743-42f1-9e2c-4c05adcfa8e9",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": null,
+     "variant": "b"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "cf237cfd-f743-42f1-9e2c-4c05adcfa8e9",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": null,
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b x=1 decline: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "b x=1 decline: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "b x=1 decline: 1 fr_oferta_decline com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "cf237cfd-f743-42f1-9e2c-4c05adcfa8e9",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": null,
+     "variant": "b"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "cf237cfd-f743-42f1-9e2c-4c05adcfa8e9",
+     "event": "fr_oferta_decline",
+     "page": "upsell",
+     "area": null,
+     "variant": "b"
+    }
+   ]
+  },
+  {
+   "name": "b x=1 decline: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635299111,
+      "url": "https://www.ezeneterodrigues.com.br/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+     }
+    ],
+    "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+   }
+  },
+  {
+   "name": "b x=1 decline: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635299112,
+    "nav": 1791635299111
+   }
+  },
+  {
+   "name": "b x=1 decline: total de eventos FC = 2 (view + decline)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_decline"
+   ]
+  },
+  {
+   "name": "b x=1 decline: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down m=casamento&area=filhos view: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "e20e9fbd-7a3c-48c2-a39d-19c4822ad165",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos view: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos view: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos view: só 1 evento FC",
+   "ok": true,
+   "info": [
+    "fr_oferta_view"
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos view: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down m=casamento&area=filhos accept: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "63ba09f0-374c-4a39-9cb9-a6e7958223c5",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": "casamento",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "63ba09f0-374c-4a39-9cb9-a6e7958223c5",
+     "event": "fr_oferta_accept",
+     "page": "downsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos accept: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos accept: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos accept: 1 fr_oferta_accept com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "63ba09f0-374c-4a39-9cb9-a6e7958223c5",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": "casamento",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "63ba09f0-374c-4a39-9cb9-a6e7958223c5",
+     "event": "fr_oferta_accept",
+     "page": "downsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos accept: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635301827,
+      "url": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+     }
+    ],
+    "href": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+   }
+  },
+  {
+   "name": "down m=casamento&area=filhos accept: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635301828,
+    "nav": 1791635301827
+   }
+  },
+  {
+   "name": "down m=casamento&area=filhos accept: total de eventos FC = 2 (view + accept)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_accept"
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos accept: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down m=casamento&area=filhos decline: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "b203ea7f-2c6e-446d-93e8-03d6ecd84d05",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": "casamento",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "b203ea7f-2c6e-446d-93e8-03d6ecd84d05",
+     "event": "fr_oferta_decline",
+     "page": "downsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos decline: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos decline: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos decline: 1 fr_oferta_decline com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "b203ea7f-2c6e-446d-93e8-03d6ecd84d05",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": "casamento",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "b203ea7f-2c6e-446d-93e8-03d6ecd84d05",
+     "event": "fr_oferta_decline",
+     "page": "downsell",
+     "area": "casamento",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos decline: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635303628,
+      "url": "https://www.ezeneterodrigues.com.br/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+     }
+    ],
+    "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+   }
+  },
+  {
+   "name": "down m=casamento&area=filhos decline: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635303629,
+    "nav": 1791635303628
+   }
+  },
+  {
+   "name": "down m=casamento&area=filhos decline: total de eventos FC = 2 (view + decline)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_decline"
+   ]
+  },
+  {
+   "name": "down m=casamento&area=filhos decline: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down m=oracao view: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down m=oracao view: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "down m=oracao view: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "down m=oracao view: vid do quiz",
+   "ok": true,
+   "info": "qa-vid-quiz-1234"
+  },
+  {
+   "name": "down m=oracao view: só 1 evento FC",
+   "ok": true,
+   "info": [
+    "fr_oferta_view"
+   ]
+  },
+  {
+   "name": "down m=oracao view: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down m=oracao accept: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": "oracao",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_accept",
+     "page": "downsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down m=oracao accept: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "down m=oracao accept: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "down m=oracao accept: vid do quiz",
+   "ok": true,
+   "info": "qa-vid-quiz-1234"
+  },
+  {
+   "name": "down m=oracao accept: 1 fr_oferta_accept com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": "oracao",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_accept",
+     "page": "downsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down m=oracao accept: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635306345,
+      "url": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+     }
+    ],
+    "href": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+   }
+  },
+  {
+   "name": "down m=oracao accept: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635306345,
+    "nav": 1791635306345
+   }
+  },
+  {
+   "name": "down m=oracao accept: total de eventos FC = 2 (view + accept)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_accept"
+   ]
+  },
+  {
+   "name": "down m=oracao accept: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down m=oracao decline: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": "oracao",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_decline",
+     "page": "downsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down m=oracao decline: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "down m=oracao decline: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "down m=oracao decline: vid do quiz",
+   "ok": true,
+   "info": "qa-vid-quiz-1234"
+  },
+  {
+   "name": "down m=oracao decline: 1 fr_oferta_decline com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": "oracao",
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-quiz-1234",
+     "event": "fr_oferta_decline",
+     "page": "downsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down m=oracao decline: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635308143,
+      "url": "https://www.ezeneterodrigues.com.br/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+     }
+    ],
+    "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+   }
+  },
+  {
+   "name": "down m=oracao decline: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635308143,
+    "nav": 1791635308143
+   }
+  },
+  {
+   "name": "down m=oracao decline: total de eventos FC = 2 (view + decline)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_decline"
+   ]
+  },
+  {
+   "name": "down m=oracao decline: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down x=1 view: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "f32dcebe-e7af-4d7d-a7cc-b33a6fc8e5b3",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": null,
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down x=1 view: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "down x=1 view: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "down x=1 view: só 1 evento FC",
+   "ok": true,
+   "info": [
+    "fr_oferta_view"
+   ]
+  },
+  {
+   "name": "down x=1 view: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down x=1 accept: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "019bf42a-9602-4134-a9ea-ba1147bf4b6d",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": null,
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "019bf42a-9602-4134-a9ea-ba1147bf4b6d",
+     "event": "fr_oferta_accept",
+     "page": "downsell",
+     "area": null,
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down x=1 accept: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "down x=1 accept: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "down x=1 accept: 1 fr_oferta_accept com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "019bf42a-9602-4134-a9ea-ba1147bf4b6d",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": null,
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "019bf42a-9602-4134-a9ea-ba1147bf4b6d",
+     "event": "fr_oferta_accept",
+     "page": "downsell",
+     "area": null,
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down x=1 accept: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635310845,
+      "url": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+     }
+    ],
+    "href": "https://chk.eduzz.com/QATESTE?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada&u=1"
+   }
+  },
+  {
+   "name": "down x=1 accept: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635310845,
+    "nav": 1791635310845
+   }
+  },
+  {
+   "name": "down x=1 accept: total de eventos FC = 2 (view + accept)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_accept"
+   ]
+  },
+  {
+   "name": "down x=1 accept: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down x=1 decline: 1 view com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "43a132dd-c040-4c83-8ba1-5e154a919826",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": null,
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "43a132dd-c040-4c83-8ba1-5e154a919826",
+     "event": "fr_oferta_decline",
+     "page": "downsell",
+     "area": null,
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down x=1 decline: POST text/plain via sendBeacon (ping)",
+   "ok": true,
+   "info": [
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ],
+    [
+     "ping",
+     "POST",
+     "text/plain;charset=utf-8"
+    ]
+   ]
+  },
+  {
+   "name": "down x=1 decline: sem area2 nem campo extra",
+   "ok": true,
+   "info": [
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ],
+    [
+     "funnel",
+     "visitor_id",
+     "event",
+     "page",
+     "area",
+     "variant"
+    ]
+   ]
+  },
+  {
+   "name": "down x=1 decline: 1 fr_oferta_decline com payload exato",
+   "ok": true,
+   "info": [
+    {
+     "funnel": "familia",
+     "visitor_id": "43a132dd-c040-4c83-8ba1-5e154a919826",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": null,
+     "variant": "a"
+    },
+    {
+     "funnel": "familia",
+     "visitor_id": "43a132dd-c040-4c83-8ba1-5e154a919826",
+     "event": "fr_oferta_decline",
+     "page": "downsell",
+     "area": null,
+     "variant": "a"
+    }
+   ]
+  },
+  {
+   "name": "down x=1 decline: navegou pro destino certo",
+   "ok": true,
+   "info": {
+    "navs": [
+     {
+      "t": 1791635312676,
+      "url": "https://www.ezeneterodrigues.com.br/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+     }
+    ],
+    "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada"
+   }
+  },
+  {
+   "name": "down x=1 decline: evento saiu antes/junto da navegação",
+   "ok": true,
+   "info": {
+    "ev": 1791635312677,
+    "nav": 1791635312676
+   }
+  },
+  {
+   "name": "down x=1 decline: total de eventos FC = 2 (view + decline)",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "fr_oferta_decline"
+   ]
+  },
+  {
+   "name": "down x=1 decline: sem erro de JS",
+   "ok": true,
+   "info": []
+  }
+ ]
+}

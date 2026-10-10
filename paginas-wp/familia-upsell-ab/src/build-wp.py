@@ -136,15 +136,16 @@ LINKS = """  links: {
   },
   /* true = acrescenta ?u=1 no link de aceite, como a oferta no ar faz (1 clique da Eduzz) */
   umClique: true,
-  /* Funnel Control: a API de hoje recusa campo fora da lista. Deixe false até o Max liberar "variant" e "area2". */
-  fcEnviarVariante: false,
+  /* Funnel Control: true = manda "variant" (fcVariante) no view, accept e decline. API liberada pelo Max (FC PR #33, migration em produção 10/10). area2 não vai (a API recusa). */
+  fcEnviarVariante: true,
   /* 2ª área = casamento, mas o quiz marcou que o casamento acabou: "casamento" usa o texto do casamento (como no mockup aprovado);
      "padrao" usa o texto sem a 2ª área. O doc do Alan pede "a dor do casamento que acabou", que ainda não tem texto. */
   casamentoAcabou: "padrao","""
 def config_for(pag):
     c = re.sub(r"  links: \{.*?\n  \},", LINKS, cfg, flags=re.S)
     variante = {"a": "a", "b": "b", "down": "down-a"}[pag]
-    c = c.replace('  paramArea: "area"', '  paramArea: "area",\n  /* braço do teste (vai pro dataLayer e pro pixel) */\n  variante: "' + variante + '"')
+    fcv = {"a": "a", "b": "b", "down": "a"}[pag]
+    c = c.replace('  paramArea: "area"', '  paramArea: "area",\n  /* braço do teste (vai pro dataLayer e pro pixel) */\n  variante: "' + variante + '",\n  /* braço no Funnel Control (campo variant): A = "a", B = "b", downsell da A = "a" (com page downsell) */\n  fcVariante: "' + fcv + '"')
     return c
 def nob(s):
     return "\n".join(l.rstrip() for l in s.split("\n") if l.strip())

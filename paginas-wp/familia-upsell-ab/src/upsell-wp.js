@@ -156,6 +156,8 @@
   }
   /* ---------- Funnel Control + pixel (mesmo formato das ofertas no ar) ---------- */
   var FC_TRACK = "https://funnel-control.vercel.app/api/track/quiz";
+  var FC_AREAS = { casamento: "casamento", filhos: "filhos", oracao: "oracao", financeiro: "financeiro" };
+  var FC_EVENTOS = ["fr_oferta_view", "fr_oferta_accept", "fr_oferta_decline"];
   function fcVid() {
     var s = lerEstado();
     if (!s.vid) {
@@ -180,9 +182,9 @@
     try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: ev, page: info.page, m: info.m, variante: info.variante, area2: info.area2, area2_fonte: info.area2_fonte }); } catch (e) {}
     try { if (typeof window.fbq === "function") window.fbq("trackCustom", ev, info); } catch (e2) {}
     /* A API do Funnel Control recusa campo fora da lista e page fora de upsell/downsell.
-       variant e area2 só entram quando o Funnel Control aceitar (config.fcEnviarVariante). */
-    var body = { funnel: "familia", visitor_id: "", event: ev, page: FC_PAGE, area: m || null };
-    if (C.fcEnviarVariante) { body.variant = C.variante; body.area2 = area || null; }
+       variant (a | b) só nos 3 eventos de oferta (FC PR #33); area2 a API não aceita, não vai. */
+    var body = { funnel: "familia", visitor_id: "", event: ev, page: FC_PAGE, area: FC_AREAS[m] || null };
+    if (C.fcEnviarVariante) { if (FC_EVENTOS.indexOf(ev) !== -1) { body.variant = C.fcVariante; } }
     try { body.visitor_id = fcVid(); fcSend(body); } catch (e3) {}
   }
   window.FR_UP = { m: m, area: area, areaFonte: areaFonte, page: FC_PAGE, variante: C.variante, track: track };
