@@ -127,9 +127,9 @@ logic = real_open(os.path.join(HERE, "upsell-wp.js"), encoding="utf-8").read()
 LINKS = """  links: {
     /* LINKS DE 1 CLIQUE DA EDUZZ: o Peter passa. Enquanto for "#", o botão não sai da página.
        Referência (oferta no ar hoje): kit R$ 97 = https://chk.eduzz.com/crl53eyv · kit R$ 67 = https://chk.eduzz.com/liawsws4 */
-    aceiteA: "#",        /* LINK DE 1 CLIQUE DA PÁGINA A (Combo R$ 97) */
-    aceiteB: "#",        /* LINK DE 1 CLIQUE DA PÁGINA B (3 manuais R$ 47, produto novo) */
-    aceiteDown: "#",     /* LINK DE 1 CLIQUE DO DOWNSELL DA A (Combo R$ 67) */
+    aceiteA: "https://chk.eduzz.com/crl53eyv",        /* LINK DE 1 CLIQUE DA PÁGINA A (Combo R$ 97) */
+    aceiteB: "https://chk.eduzz.com/lwxcwsuz",        /* LINK DE 1 CLIQUE DA PÁGINA B (3 manuais R$ 47, produto novo) */
+    aceiteDown: "https://chk.eduzz.com/liawsws4",     /* LINK DE 1 CLIQUE DO DOWNSELL DA A (Combo R$ 67) */
     recusaA: "/familia-upsell-a-2/",  /* downsell da A (leva ?m e ?area junto) */
     obrigado: "/parabens-familia/",   /* recusa da Página B: página de obrigado da compra (a mesma das ofertas no ar) */
     recusaDown: "/parabens-familia/"  /* recusa do downsell: página de obrigado da compra */
@@ -143,6 +143,7 @@ LINKS = """  links: {
   casamentoAcabou: "padrao","""
 def config_for(pag):
     c = re.sub(r"  links: \{.*?\n  \},", LINKS, cfg, flags=re.S)
+    c = c.replace('parcelaB: "12x de R$ 4,86"', 'parcelaB: "11x de R$ 5,22"')
     variante = {"a": "a", "b": "b", "down": "down-a"}[pag]
     fcv = {"a": "a", "b": "b", "down": "a"}[pag]
     c = c.replace('  paramArea: "area"', '  paramArea: "area",\n  /* braço do teste (vai pro dataLayer e pro pixel) */\n  variante: "' + variante + '",\n  /* braço no Funnel Control (campo variant): A = "a", B = "b", downsell da A = "a" (com page downsell) */\n  fcVariante: "' + fcv + '"')
