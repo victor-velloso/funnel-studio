@@ -1,0 +1,4747 @@
+{
+ "total": 486,
+ "falhas": 0,
+ "results": [
+  {
+   "name": "a-com-area-casamento-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-com-area-casamento-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "a-com-area-casamento-390: 2ª área = \"filhos\"",
+   "ok": true,
+   "info": {
+    "area": "filhos",
+    "cls": "tem-fixo com-area"
+   }
+  },
+  {
+   "name": "a-com-area-casamento-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo com-area"
+  },
+  {
+   "name": "a-com-area-casamento-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-com-area-casamento-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-com-area-casamento-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-com-area-casamento-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-com-area-casamento-390: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=casamento&area=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=casamento&area=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=casamento&area=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-com-area-casamento-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "9c933a01-3364-40d8-a65f-983bdad100c1",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "casamento",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-com-area-casamento-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"9c933a01-3364-40d8-a65f-983bdad100c1\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-com-area-casamento-390 :: textos",
+   "ok": true,
+   "info": {
+    "gancho": "E no seu caso tem um detalhe. No teste, além do que você escolheu, apareceu mais uma área pesando aí: Também pesa aí: o ",
+    "item8": "Viu no teste que o seu filho também pesa aí, e quer ficar na brecha por ele sabendo o que pedir.",
+    "linha14": "E você já sabe qual área é essa: o seu filho. O Filhos Restaurados destrava hoje, junto com os outros. Também pesa aí: o seu filho",
+    "chips": [
+     "Também pesa aí: o seu filho",
+     "Também pesa aí: o seu filho",
+     "Também pesa aí: o seu filho",
+     "Também pesa aí: o seu filho"
+    ],
+    "manuais": [
+     "Filhos Restaurados",
+     "Vida de Oração Restaurada",
+     "Financeiro Restaurado"
+    ],
+    "portas": [
+     "Casamento Restaurado",
+     "Filhos Restaurados",
+     "Vida de Oração Restaurada",
+     "Financeiro Restaurado"
+    ],
+    "downEntra": null
+   }
+  },
+  {
+   "name": "a-com-area-casamento-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-com-area-casamento-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "a-com-area-casamento-1440: 2ª área = \"filhos\"",
+   "ok": true,
+   "info": {
+    "area": "filhos",
+    "cls": "tem-fixo com-area"
+   }
+  },
+  {
+   "name": "a-com-area-casamento-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo com-area"
+  },
+  {
+   "name": "a-com-area-casamento-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-com-area-casamento-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-com-area-casamento-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-com-area-casamento-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-com-area-casamento-1440: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=casamento&area=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=casamento&area=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=casamento&area=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-com-area-casamento-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "fbb1b6d9-ffd7-42e9-b28e-50ee6b6896e9",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "casamento",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-com-area-casamento-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"fbb1b6d9-ffd7-42e9-b28e-50ee6b6896e9\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-com-area-casamento-1440 :: textos",
+   "ok": true,
+   "info": {
+    "gancho": "E no seu caso tem um detalhe. No teste, além do que você escolheu, apareceu mais uma área pesando aí: Também pesa aí: o ",
+    "item8": "Viu no teste que o seu filho também pesa aí, e quer ficar na brecha por ele sabendo o que pedir.",
+    "linha14": "E você já sabe qual área é essa: o seu filho. O Filhos Restaurados destrava hoje, junto com os outros. Também pesa aí: o seu filho",
+    "chips": [
+     "Também pesa aí: o seu filho",
+     "Também pesa aí: o seu filho",
+     "Também pesa aí: o seu filho",
+     "Também pesa aí: o seu filho"
+    ],
+    "manuais": [
+     "Filhos Restaurados",
+     "Vida de Oração Restaurada",
+     "Financeiro Restaurado"
+    ],
+    "portas": [
+     "Casamento Restaurado",
+     "Filhos Restaurados",
+     "Vida de Oração Restaurada",
+     "Financeiro Restaurado"
+    ],
+    "downEntra": null
+   }
+  },
+  {
+   "name": "a-sem-area-casamento-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-sem-area-casamento-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "a-sem-area-casamento-390: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "a-sem-area-casamento-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "a-sem-area-casamento-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-sem-area-casamento-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-sem-area-casamento-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-sem-area-casamento-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-sem-area-casamento-390: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-sem-area-casamento-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "4114bdd6-e2a5-44f2-b5db-0cc85d3956f7",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "casamento",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-sem-area-casamento-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"4114bdd6-e2a5-44f2-b5db-0cc85d3956f7\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-sem-area-casamento-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-sem-area-casamento-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "a-sem-area-casamento-1440: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "a-sem-area-casamento-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "a-sem-area-casamento-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-sem-area-casamento-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-sem-area-casamento-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-sem-area-casamento-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-sem-area-casamento-1440: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-sem-area-casamento-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "3cffba3e-86d1-423d-a922-21da13b2680e",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "casamento",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-sem-area-casamento-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"3cffba3e-86d1-423d-a922-21da13b2680e\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-com-area-casamento-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-com-area-casamento-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "b-com-area-casamento-390: 2ª área = \"financeiro\"",
+   "ok": true,
+   "info": {
+    "area": "financeiro",
+    "cls": "tem-fixo com-area"
+   }
+  },
+  {
+   "name": "b-com-area-casamento-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo com-area"
+  },
+  {
+   "name": "b-com-area-casamento-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-com-area-casamento-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "b-com-area-casamento-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "b-com-area-casamento-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "b-com-area-casamento-390: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "b-com-area-casamento-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "fa9361c5-3b6f-4f48-bac0-bd757481d541",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "casamento",
+      "variant": "b"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "b-com-area-casamento-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"fa9361c5-3b6f-4f48-bac0-bd757481d541\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-com-area-casamento-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-com-area-casamento-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "b-com-area-casamento-1440: 2ª área = \"financeiro\"",
+   "ok": true,
+   "info": {
+    "area": "financeiro",
+    "cls": "tem-fixo com-area"
+   }
+  },
+  {
+   "name": "b-com-area-casamento-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo com-area"
+  },
+  {
+   "name": "b-com-area-casamento-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-com-area-casamento-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "b-com-area-casamento-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "b-com-area-casamento-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "b-com-area-casamento-1440: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "b-com-area-casamento-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "ae41793c-af0a-4139-9fde-daf032077e0b",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "casamento",
+      "variant": "b"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "b-com-area-casamento-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"ae41793c-af0a-4139-9fde-daf032077e0b\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-sem-area-casamento-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-sem-area-casamento-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "b-sem-area-casamento-390: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "b-sem-area-casamento-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "b-sem-area-casamento-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-sem-area-casamento-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "b-sem-area-casamento-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "b-sem-area-casamento-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "b-sem-area-casamento-390: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "b-sem-area-casamento-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "0951c173-3b00-4e74-aa46-3eb9cfaf57e1",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "casamento",
+      "variant": "b"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "b-sem-area-casamento-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"0951c173-3b00-4e74-aa46-3eb9cfaf57e1\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-sem-area-casamento-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-sem-area-casamento-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "b-sem-area-casamento-1440: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "b-sem-area-casamento-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "b-sem-area-casamento-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-sem-area-casamento-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "b-sem-area-casamento-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "b-sem-area-casamento-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "b-sem-area-casamento-1440: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "b-sem-area-casamento-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "64c23b53-c92d-47e8-99f3-2232675842e9",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "casamento",
+      "variant": "b"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "b-sem-area-casamento-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"64c23b53-c92d-47e8-99f3-2232675842e9\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "down-com-area-casamento-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-com-area-casamento-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "down-com-area-casamento-390: 2ª área = \"filhos\"",
+   "ok": true,
+   "info": {
+    "area": "filhos",
+    "cls": "com-area"
+   }
+  },
+  {
+   "name": "down-com-area-casamento-390: classe com/sem área",
+   "ok": true,
+   "info": "com-area"
+  },
+  {
+   "name": "down-com-area-casamento-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-com-area-casamento-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "down-com-area-casamento-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteDown",
+     "href": "#",
+     "fixo": false
+    }
+   ]
+  },
+  {
+   "name": "down-com-area-casamento-390: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaDown",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "down-com-area-casamento-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "19f15482-af52-4213-8e33-e90c464d8c32",
+      "event": "fr_oferta_view",
+      "page": "downsell",
+      "area": "casamento",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "down-com-area-casamento-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"19f15482-af52-4213-8e33-e90c464d8c32\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "down-com-area-casamento-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-com-area-casamento-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "down-com-area-casamento-1440: 2ª área = \"filhos\"",
+   "ok": true,
+   "info": {
+    "area": "filhos",
+    "cls": "com-area"
+   }
+  },
+  {
+   "name": "down-com-area-casamento-1440: classe com/sem área",
+   "ok": true,
+   "info": "com-area"
+  },
+  {
+   "name": "down-com-area-casamento-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-com-area-casamento-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "down-com-area-casamento-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteDown",
+     "href": "#",
+     "fixo": false
+    }
+   ]
+  },
+  {
+   "name": "down-com-area-casamento-1440: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaDown",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "down-com-area-casamento-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "08f6b355-fc46-4e8b-8f18-8e04676ea950",
+      "event": "fr_oferta_view",
+      "page": "downsell",
+      "area": "casamento",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "down-com-area-casamento-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"08f6b355-fc46-4e8b-8f18-8e04676ea950\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "down-sem-area-casamento-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-sem-area-casamento-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "down-sem-area-casamento-390: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "sem-area"
+   }
+  },
+  {
+   "name": "down-sem-area-casamento-390: classe com/sem área",
+   "ok": true,
+   "info": "sem-area"
+  },
+  {
+   "name": "down-sem-area-casamento-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-sem-area-casamento-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "down-sem-area-casamento-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteDown",
+     "href": "#",
+     "fixo": false
+    }
+   ]
+  },
+  {
+   "name": "down-sem-area-casamento-390: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaDown",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "down-sem-area-casamento-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "e9294d77-9f35-4b5e-81ff-f5c416f786c3",
+      "event": "fr_oferta_view",
+      "page": "downsell",
+      "area": "casamento",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "down-sem-area-casamento-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"e9294d77-9f35-4b5e-81ff-f5c416f786c3\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "down-sem-area-casamento-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-sem-area-casamento-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "down-sem-area-casamento-1440: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "sem-area"
+   }
+  },
+  {
+   "name": "down-sem-area-casamento-1440: classe com/sem área",
+   "ok": true,
+   "info": "sem-area"
+  },
+  {
+   "name": "down-sem-area-casamento-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-sem-area-casamento-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "down-sem-area-casamento-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteDown",
+     "href": "#",
+     "fixo": false
+    }
+   ]
+  },
+  {
+   "name": "down-sem-area-casamento-1440: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaDown",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "down-sem-area-casamento-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "5efa495e-a071-47b3-8d4a-a5dfb3d38c33",
+      "event": "fr_oferta_view",
+      "page": "downsell",
+      "area": "casamento",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "down-sem-area-casamento-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"5efa495e-a071-47b3-8d4a-a5dfb3d38c33\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-com-area-oracao-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-com-area-oracao-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "a-com-area-oracao-390: 2ª área = \"casamento\"",
+   "ok": true,
+   "info": {
+    "area": "casamento",
+    "cls": "tem-fixo com-area"
+   }
+  },
+  {
+   "name": "a-com-area-oracao-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo com-area"
+  },
+  {
+   "name": "a-com-area-oracao-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-com-area-oracao-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-com-area-oracao-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-com-area-oracao-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-com-area-oracao-390: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-com-area-oracao-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "25ee0229-2875-46cb-b5de-5d5ba883f86e",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "oracao",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-com-area-oracao-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"25ee0229-2875-46cb-b5de-5d5ba883f86e\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-com-area-oracao-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-com-area-oracao-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "a-com-area-oracao-1440: 2ª área = \"casamento\"",
+   "ok": true,
+   "info": {
+    "area": "casamento",
+    "cls": "tem-fixo com-area"
+   }
+  },
+  {
+   "name": "a-com-area-oracao-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo com-area"
+  },
+  {
+   "name": "a-com-area-oracao-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-com-area-oracao-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-com-area-oracao-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-com-area-oracao-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-com-area-oracao-1440: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-com-area-oracao-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "2e22e800-74de-437d-ac9e-d505b96cf002",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "oracao",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-com-area-oracao-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"2e22e800-74de-437d-ac9e-d505b96cf002\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-sem-area-oracao-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-sem-area-oracao-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "a-sem-area-oracao-390: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "a-sem-area-oracao-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "a-sem-area-oracao-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-sem-area-oracao-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-sem-area-oracao-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-sem-area-oracao-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-sem-area-oracao-390: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=oracao&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=oracao&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=oracao&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-sem-area-oracao-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "479c6735-e14f-4323-8e34-9ee5c5b536d5",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "oracao",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-sem-area-oracao-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"479c6735-e14f-4323-8e34-9ee5c5b536d5\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-sem-area-oracao-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-sem-area-oracao-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "a-sem-area-oracao-1440: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "a-sem-area-oracao-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "a-sem-area-oracao-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-sem-area-oracao-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-sem-area-oracao-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-sem-area-oracao-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-sem-area-oracao-1440: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=oracao&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=oracao&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=oracao&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-sem-area-oracao-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "384ac1f0-cc0a-463e-bd4b-cd3e7cf08c0c",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "oracao",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-sem-area-oracao-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"384ac1f0-cc0a-463e-bd4b-cd3e7cf08c0c\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-com-area-oracao-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-com-area-oracao-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "b-com-area-oracao-390: 2ª área = \"casamento\"",
+   "ok": true,
+   "info": {
+    "area": "casamento",
+    "cls": "tem-fixo com-area"
+   }
+  },
+  {
+   "name": "b-com-area-oracao-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo com-area"
+  },
+  {
+   "name": "b-com-area-oracao-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-com-area-oracao-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "b-com-area-oracao-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "b-com-area-oracao-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "b-com-area-oracao-390: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "b-com-area-oracao-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "374da3ea-ae1a-4e58-ad75-76d3ffe2b9f5",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "oracao",
+      "variant": "b"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "b-com-area-oracao-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"374da3ea-ae1a-4e58-ad75-76d3ffe2b9f5\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-com-area-oracao-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-com-area-oracao-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "b-com-area-oracao-1440: 2ª área = \"casamento\"",
+   "ok": true,
+   "info": {
+    "area": "casamento",
+    "cls": "tem-fixo com-area"
+   }
+  },
+  {
+   "name": "b-com-area-oracao-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo com-area"
+  },
+  {
+   "name": "b-com-area-oracao-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-com-area-oracao-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "b-com-area-oracao-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "b-com-area-oracao-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "b-com-area-oracao-1440: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "b-com-area-oracao-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "df84c3c4-b339-4b30-8628-a863e480ae13",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "oracao",
+      "variant": "b"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "b-com-area-oracao-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"df84c3c4-b339-4b30-8628-a863e480ae13\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-sem-area-oracao-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-sem-area-oracao-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "b-sem-area-oracao-390: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "b-sem-area-oracao-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "b-sem-area-oracao-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-sem-area-oracao-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "b-sem-area-oracao-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "b-sem-area-oracao-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "b-sem-area-oracao-390: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "b-sem-area-oracao-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "4e0224b7-0150-4b31-9a9c-b93634ab7e38",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "oracao",
+      "variant": "b"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "b-sem-area-oracao-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"4e0224b7-0150-4b31-9a9c-b93634ab7e38\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-sem-area-oracao-390 :: textos",
+   "ok": true,
+   "info": {
+    "gancho": "Pensa na sua casa hoje. Quase sempre, além da área que mais dói, tem uma segunda apertando junto. Pode ser a conversa qu",
+    "item8": "Quer cuidar da casa inteira com o mesmo jeito de orar, antes de a próxima área apertar.",
+    "linha14": "E, quando ela apertar, você já vai ter nas mãos a direção pra cada área da casa.",
+    "chips": [],
+    "manuais": [
+     "Casamento Restaurado",
+     "Filhos Restaurados",
+     "Financeiro Restaurado"
+    ],
+    "portas": [
+     "Vida de Oração Restaurada",
+     "Casamento Restaurado",
+     "Filhos Restaurados",
+     "Financeiro Restaurado"
+    ],
+    "downEntra": null
+   }
+  },
+  {
+   "name": "b-sem-area-oracao-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-sem-area-oracao-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "b-sem-area-oracao-1440: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "b-sem-area-oracao-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "b-sem-area-oracao-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-sem-area-oracao-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "b-sem-area-oracao-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "b-sem-area-oracao-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "b-sem-area-oracao-1440: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "b-sem-area-oracao-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "212f3805-2319-46df-88d0-6d7ab49be111",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "oracao",
+      "variant": "b"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "b-sem-area-oracao-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"212f3805-2319-46df-88d0-6d7ab49be111\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-sem-area-oracao-1440 :: textos",
+   "ok": true,
+   "info": {
+    "gancho": "Pensa na sua casa hoje. Quase sempre, além da área que mais dói, tem uma segunda apertando junto. Pode ser a conversa qu",
+    "item8": "Quer cuidar da casa inteira com o mesmo jeito de orar, antes de a próxima área apertar.",
+    "linha14": "E, quando ela apertar, você já vai ter nas mãos a direção pra cada área da casa.",
+    "chips": [],
+    "manuais": [
+     "Casamento Restaurado",
+     "Filhos Restaurados",
+     "Financeiro Restaurado"
+    ],
+    "portas": [
+     "Vida de Oração Restaurada",
+     "Casamento Restaurado",
+     "Filhos Restaurados",
+     "Financeiro Restaurado"
+    ],
+    "downEntra": null
+   }
+  },
+  {
+   "name": "down-com-area-oracao-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-com-area-oracao-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "down-com-area-oracao-390: 2ª área = \"casamento\"",
+   "ok": true,
+   "info": {
+    "area": "casamento",
+    "cls": "com-area"
+   }
+  },
+  {
+   "name": "down-com-area-oracao-390: classe com/sem área",
+   "ok": true,
+   "info": "com-area"
+  },
+  {
+   "name": "down-com-area-oracao-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-com-area-oracao-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "down-com-area-oracao-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteDown",
+     "href": "#",
+     "fixo": false
+    }
+   ]
+  },
+  {
+   "name": "down-com-area-oracao-390: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaDown",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "down-com-area-oracao-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "777126ad-ae9e-49a3-a9f0-f98d6e7432e9",
+      "event": "fr_oferta_view",
+      "page": "downsell",
+      "area": "oracao",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "down-com-area-oracao-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"777126ad-ae9e-49a3-a9f0-f98d6e7432e9\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "down-com-area-oracao-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-com-area-oracao-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "down-com-area-oracao-1440: 2ª área = \"casamento\"",
+   "ok": true,
+   "info": {
+    "area": "casamento",
+    "cls": "com-area"
+   }
+  },
+  {
+   "name": "down-com-area-oracao-1440: classe com/sem área",
+   "ok": true,
+   "info": "com-area"
+  },
+  {
+   "name": "down-com-area-oracao-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-com-area-oracao-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "down-com-area-oracao-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteDown",
+     "href": "#",
+     "fixo": false
+    }
+   ]
+  },
+  {
+   "name": "down-com-area-oracao-1440: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaDown",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "down-com-area-oracao-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "1d26e3e2-17bd-4097-915d-2816d8b7825d",
+      "event": "fr_oferta_view",
+      "page": "downsell",
+      "area": "oracao",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "down-com-area-oracao-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"1d26e3e2-17bd-4097-915d-2816d8b7825d\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "down-sem-area-oracao-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-sem-area-oracao-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "down-sem-area-oracao-390: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "sem-area"
+   }
+  },
+  {
+   "name": "down-sem-area-oracao-390: classe com/sem área",
+   "ok": true,
+   "info": "sem-area"
+  },
+  {
+   "name": "down-sem-area-oracao-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-sem-area-oracao-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "down-sem-area-oracao-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteDown",
+     "href": "#",
+     "fixo": false
+    }
+   ]
+  },
+  {
+   "name": "down-sem-area-oracao-390: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaDown",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "down-sem-area-oracao-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "b4b9bd43-73dd-4637-afe1-5e7d69f53823",
+      "event": "fr_oferta_view",
+      "page": "downsell",
+      "area": "oracao",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "down-sem-area-oracao-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"b4b9bd43-73dd-4637-afe1-5e7d69f53823\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "down-sem-area-oracao-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-sem-area-oracao-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "down-sem-area-oracao-1440: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "sem-area"
+   }
+  },
+  {
+   "name": "down-sem-area-oracao-1440: classe com/sem área",
+   "ok": true,
+   "info": "sem-area"
+  },
+  {
+   "name": "down-sem-area-oracao-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-sem-area-oracao-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "down-sem-area-oracao-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteDown",
+     "href": "#",
+     "fixo": false
+    }
+   ]
+  },
+  {
+   "name": "down-sem-area-oracao-1440: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaDown",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "down-sem-area-oracao-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "b038acca-ee2f-495c-8bbf-5385432c8f4c",
+      "event": "fr_oferta_view",
+      "page": "downsell",
+      "area": "oracao",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "down-sem-area-oracao-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"b038acca-ee2f-495c-8bbf-5385432c8f4c\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-area-invalida-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-area-invalida-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "a-area-invalida-390: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "a-area-invalida-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "a-area-invalida-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-area-invalida-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-area-invalida-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-area-invalida-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-area-invalida-390: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-area-invalida-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "258da0e0-2fcd-4376-858f-65052f7710ed",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "filhos",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-area-invalida-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"258da0e0-2fcd-4376-858f-65052f7710ed\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-area-invalida-390 :: textos",
+   "ok": true,
+   "info": {
+    "gancho": "Pensa na sua casa hoje. Quase sempre, além da área que mais dói, tem uma segunda apertando junto. Pode ser a conversa qu",
+    "item8": "Quer cuidar da casa inteira com o mesmo jeito de orar, antes de a próxima área apertar.",
+    "linha14": "E, quando ela apertar, você já vai ter nas mãos a direção pra cada área da casa.",
+    "chips": [],
+    "manuais": [
+     "Casamento Restaurado",
+     "Vida de Oração Restaurada",
+     "Financeiro Restaurado"
+    ],
+    "portas": [
+     "Filhos Restaurados",
+     "Casamento Restaurado",
+     "Vida de Oração Restaurada",
+     "Financeiro Restaurado"
+    ],
+    "downEntra": null
+   }
+  },
+  {
+   "name": "a-area-invalida-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-area-invalida-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "a-area-invalida-1440: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "a-area-invalida-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "a-area-invalida-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-area-invalida-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-area-invalida-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-area-invalida-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-area-invalida-1440: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-area-invalida-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "7f7817cc-0ea8-40d1-8916-ab8760e23eda",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "filhos",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-area-invalida-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"7f7817cc-0ea8-40d1-8916-ab8760e23eda\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-area-invalida-1440 :: textos",
+   "ok": true,
+   "info": {
+    "gancho": "Pensa na sua casa hoje. Quase sempre, além da área que mais dói, tem uma segunda apertando junto. Pode ser a conversa qu",
+    "item8": "Quer cuidar da casa inteira com o mesmo jeito de orar, antes de a próxima área apertar.",
+    "linha14": "E, quando ela apertar, você já vai ter nas mãos a direção pra cada área da casa.",
+    "chips": [],
+    "manuais": [
+     "Casamento Restaurado",
+     "Vida de Oração Restaurada",
+     "Financeiro Restaurado"
+    ],
+    "portas": [
+     "Filhos Restaurados",
+     "Casamento Restaurado",
+     "Vida de Oração Restaurada",
+     "Financeiro Restaurado"
+    ],
+    "downEntra": null
+   }
+  },
+  {
+   "name": "a-area-igual-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-area-igual-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "a-area-igual-390: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "a-area-igual-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "a-area-igual-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-area-igual-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-area-igual-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-area-igual-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-area-igual-390: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-area-igual-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "a100c003-18de-4b64-ac02-02ef261d9aac",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "filhos",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-area-igual-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"a100c003-18de-4b64-ac02-02ef261d9aac\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-area-igual-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-area-igual-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "a-area-igual-1440: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "a-area-igual-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "a-area-igual-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-area-igual-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-area-igual-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-area-igual-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-area-igual-1440: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=filhos&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-area-igual-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "ff02d8ea-840c-4fe2-91d9-fc25b2d31783",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "filhos",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-area-igual-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"ff02d8ea-840c-4fe2-91d9-fc25b2d31783\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-area-invalida-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-area-invalida-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "b-area-invalida-390: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "b-area-invalida-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "b-area-invalida-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-area-invalida-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "b-area-invalida-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "b-area-invalida-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "b-area-invalida-390: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "b-area-invalida-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "71f6f7e5-4451-455e-9a7f-9e20b7f1842f",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "financeiro",
+      "variant": "b"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "b-area-invalida-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"71f6f7e5-4451-455e-9a7f-9e20b7f1842f\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-area-invalida-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-area-invalida-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "b-area-invalida-1440: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "b-area-invalida-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "b-area-invalida-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-area-invalida-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "b-area-invalida-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "b-area-invalida-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "b-area-invalida-1440: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "b-area-invalida-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "c12c9ab8-4aef-4737-b9a6-91aa7285cb1c",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "financeiro",
+      "variant": "b"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "b-area-invalida-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"c12c9ab8-4aef-4737-b9a6-91aa7285cb1c\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-area-igual-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-area-igual-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "b-area-igual-390: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "b-area-igual-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "b-area-igual-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-area-igual-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "b-area-igual-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "b-area-igual-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "b-area-igual-390: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "b-area-igual-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "d6777670-87c8-4dbb-b5a2-bf52dad667b6",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "financeiro",
+      "variant": "b"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "b-area-igual-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"d6777670-87c8-4dbb-b5a2-bf52dad667b6\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "b-area-igual-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-area-igual-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "b-area-igual-1440: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area"
+   }
+  },
+  {
+   "name": "b-area-igual-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area"
+  },
+  {
+   "name": "b-area-igual-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "b-area-igual-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "b-area-igual-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "b-area-igual-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteB",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "b-area-igual-1440: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "obrigado",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "b-area-igual-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "042c4a1e-dfab-4fc4-bcfa-5ba0f00d3329",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "financeiro",
+      "variant": "b"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "b-area-igual-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"042c4a1e-dfab-4fc4-bcfa-5ba0f00d3329\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "down-area-igual-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-area-igual-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "down-area-igual-390: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "sem-area"
+   }
+  },
+  {
+   "name": "down-area-igual-390: classe com/sem área",
+   "ok": true,
+   "info": "sem-area"
+  },
+  {
+   "name": "down-area-igual-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-area-igual-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "down-area-igual-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteDown",
+     "href": "#",
+     "fixo": false
+    }
+   ]
+  },
+  {
+   "name": "down-area-igual-390: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaDown",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "down-area-igual-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "d12cd2b8-cd71-4c96-a9a1-83db61065f50",
+      "event": "fr_oferta_view",
+      "page": "downsell",
+      "area": "filhos",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "down-area-igual-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"d12cd2b8-cd71-4c96-a9a1-83db61065f50\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "down-area-igual-390 :: textos",
+   "ok": true,
+   "info": {
+    "gancho": "",
+    "item8": null,
+    "linha14": null,
+    "chips": [],
+    "manuais": [],
+    "portas": [
+     "Filhos Restaurados",
+     "Casamento Restaurado",
+     "Vida de Oração Restaurada",
+     "Financeiro Restaurado"
+    ],
+    "downEntra": "Você já tem o Filhos Restaurados. Com esse valor, entram também o Casamento Restaurado, o Vida de Oração Restaurada e o Financeiro Restaurado."
+   }
+  },
+  {
+   "name": "down-area-igual-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-area-igual-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "down-area-igual-1440: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "sem-area"
+   }
+  },
+  {
+   "name": "down-area-igual-1440: classe com/sem área",
+   "ok": true,
+   "info": "sem-area"
+  },
+  {
+   "name": "down-area-igual-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "down-area-igual-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "down-area-igual-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteDown",
+     "href": "#",
+     "fixo": false
+    }
+   ]
+  },
+  {
+   "name": "down-area-igual-1440: recusa -> /parabens-familia/",
+   "ok": true,
+   "info": {
+    "want": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaDown",
+      "href": "/parabens-familia/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "down-area-igual-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "7a093b0e-4b3b-4645-91c6-ccd9940f2bed",
+      "event": "fr_oferta_view",
+      "page": "downsell",
+      "area": "filhos",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "down-area-igual-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"7a093b0e-4b3b-4645-91c6-ccd9940f2bed\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "down-area-igual-1440 :: textos",
+   "ok": true,
+   "info": {
+    "gancho": "",
+    "item8": null,
+    "linha14": null,
+    "chips": [],
+    "manuais": [],
+    "portas": [
+     "Filhos Restaurados",
+     "Casamento Restaurado",
+     "Vida de Oração Restaurada",
+     "Financeiro Restaurado"
+    ],
+    "downEntra": "Você já tem o Filhos Restaurados. Com esse valor, entram também o Casamento Restaurado, o Vida de Oração Restaurada e o Financeiro Restaurado."
+   }
+  },
+  {
+   "name": "a-sem-m-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-sem-m-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "a-sem-m-390: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area sem-m"
+   }
+  },
+  {
+   "name": "a-sem-m-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area sem-m"
+  },
+  {
+   "name": "a-sem-m-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-sem-m-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-sem-m-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-sem-m-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-sem-m-390: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-sem-m-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "7649fd85-3ea8-4ab7-a957-daa0b99eeb5a",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": null,
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-sem-m-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"7649fd85-3ea8-4ab7-a957-daa0b99eeb5a\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-sem-m-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-sem-m-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "a-sem-m-1440: 2ª área = \"\"",
+   "ok": true,
+   "info": {
+    "area": "",
+    "cls": "tem-fixo sem-area sem-m"
+   }
+  },
+  {
+   "name": "a-sem-m-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo sem-area sem-m"
+  },
+  {
+   "name": "a-sem-m-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-sem-m-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-sem-m-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-sem-m-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-sem-m-1440: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-sem-m-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "cc2051bc-2f50-4a3f-9131-5d42095beed4",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": null,
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-sem-m-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"cc2051bc-2f50-4a3f-9131-5d42095beed4\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-m-maiusculo-acento-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-m-maiusculo-acento-390: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 390,
+    "bw": 390,
+    "iw": 390
+   }
+  },
+  {
+   "name": "a-m-maiusculo-acento-390: 2ª área = \"casamento\"",
+   "ok": true,
+   "info": {
+    "area": "casamento",
+    "cls": "tem-fixo com-area"
+   }
+  },
+  {
+   "name": "a-m-maiusculo-acento-390: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo com-area"
+  },
+  {
+   "name": "a-m-maiusculo-acento-390: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-m-maiusculo-acento-390: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-m-maiusculo-acento-390: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-m-maiusculo-acento-390: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-m-maiusculo-acento-390: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-m-maiusculo-acento-390: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "ac3b9e78-81cd-4435-8279-55b00fbb1034",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "oracao",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-m-maiusculo-acento-390: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"ac3b9e78-81cd-4435-8279-55b00fbb1034\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "a-m-maiusculo-acento-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-m-maiusculo-acento-1440: sem rolagem horizontal",
+   "ok": true,
+   "info": {
+    "sw": 1440,
+    "bw": 1440,
+    "iw": 1440
+   }
+  },
+  {
+   "name": "a-m-maiusculo-acento-1440: 2ª área = \"casamento\"",
+   "ok": true,
+   "info": {
+    "area": "casamento",
+    "cls": "tem-fixo com-area"
+   }
+  },
+  {
+   "name": "a-m-maiusculo-acento-1440: classe com/sem área",
+   "ok": true,
+   "info": "tem-fixo com-area"
+  },
+  {
+   "name": "a-m-maiusculo-acento-1440: nenhuma imagem quebrada",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "a-m-maiusculo-acento-1440: fontes Raleway/Open Sans",
+   "ok": true,
+   "info": "Raleway, sans-serif | \"Open Sans\", system-ui, sans-serif"
+  },
+  {
+   "name": "a-m-maiusculo-acento-1440: bloco 5 sem botão",
+   "ok": true,
+   "info": 0
+  },
+  {
+   "name": "a-m-maiusculo-acento-1440: aceite = \"#\" (placeholder)",
+   "ok": true,
+   "info": [
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": false
+    },
+    {
+     "k": "aceiteA",
+     "href": "#",
+     "fixo": true
+    }
+   ]
+  },
+  {
+   "name": "a-m-maiusculo-acento-1440: recusa A -> downsell com m e area",
+   "ok": true,
+   "info": {
+    "want": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+    "rec": [
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     },
+     {
+      "k": "recusaA",
+      "href": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=quiz&utm_medium=funnel&utm_campaign=familia-restaurada",
+      "fixo": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "a-m-maiusculo-acento-1440: 1 fr_oferta_view válido p/ API",
+   "ok": true,
+   "info": [
+    {
+     "url": "https://funnel-control.vercel.app/api/track/quiz",
+     "body": {
+      "funnel": "familia",
+      "visitor_id": "adedb4b7-a92e-4648-b252-3b891b46936e",
+      "event": "fr_oferta_view",
+      "page": "upsell",
+      "area": "oracao",
+      "variant": "a"
+     }
+    },
+    {
+     "url": "https://www.ezeneterodrigues.com.br/wp-json/pys-facebook/v1/event",
+     "err": "TypeError: data.text is not a function"
+    }
+   ]
+  },
+  {
+   "name": "a-m-maiusculo-acento-1440: fr_state semeado sem estado parcial",
+   "ok": true,
+   "info": "{\"vid\":\"adedb4b7-a92e-4648-b252-3b891b46936e\",\"answers\":{},\"history\":[],\"lead\":{}}"
+  },
+  {
+   "name": "fixo-a-390: escondido no topo e nos blocos 5, 8 e 9",
+   "ok": true,
+   "info": {
+    "top": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    },
+    "b5": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    },
+    "b8": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    },
+    "b9": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    }
+   }
+  },
+  {
+   "name": "fixo-a-390: escondido enquanto o botão do preço está na tela",
+   "ok": true,
+   "info": {
+    "on": true,
+    "botaoPrecoNaTela": false
+   }
+  },
+  {
+   "name": "fixo-a-390: aparece depois do preço (garantia e FAQ), salvo com botão de aceite na tela",
+   "ok": true,
+   "info": {
+    "garantia": {
+     "on": true,
+     "visivel": true,
+     "ctaNaTela": false
+    },
+    "faq": {
+     "on": true,
+     "visivel": true,
+     "ctaNaTela": false
+    }
+   }
+  },
+  {
+   "name": "fixo-a-390: some quando o botão do fechamento está na tela",
+   "ok": true,
+   "info": {
+    "on": false,
+    "visivel": false,
+    "ctaNaTela": true
+   }
+  },
+  {
+   "name": "fixo-a-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "fixo-a-1440: escondido no topo e nos blocos 5, 8 e 9",
+   "ok": true,
+   "info": {
+    "top": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    },
+    "b5": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    },
+    "b8": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    },
+    "b9": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    }
+   }
+  },
+  {
+   "name": "fixo-a-1440: escondido enquanto o botão do preço está na tela",
+   "ok": true,
+   "info": {
+    "on": true,
+    "botaoPrecoNaTela": false
+   }
+  },
+  {
+   "name": "fixo-a-1440: aparece depois do preço (garantia e FAQ), salvo com botão de aceite na tela",
+   "ok": true,
+   "info": {
+    "garantia": {
+     "on": true,
+     "visivel": true,
+     "ctaNaTela": false
+    },
+    "faq": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": true
+    }
+   }
+  },
+  {
+   "name": "fixo-a-1440: some quando o botão do fechamento está na tela",
+   "ok": true,
+   "info": {
+    "on": false,
+    "visivel": false,
+    "ctaNaTela": true
+   }
+  },
+  {
+   "name": "fixo-a-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "fixo-b-390: escondido no topo e nos blocos 5, 8 e 9",
+   "ok": true,
+   "info": {
+    "top": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    },
+    "b5": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    },
+    "b8": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    },
+    "b9": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    }
+   }
+  },
+  {
+   "name": "fixo-b-390: escondido enquanto o botão do preço está na tela",
+   "ok": true,
+   "info": {
+    "on": true,
+    "botaoPrecoNaTela": false
+   }
+  },
+  {
+   "name": "fixo-b-390: aparece depois do preço (garantia e FAQ), salvo com botão de aceite na tela",
+   "ok": true,
+   "info": {
+    "garantia": {
+     "on": true,
+     "visivel": true,
+     "ctaNaTela": false
+    },
+    "faq": {
+     "on": true,
+     "visivel": true,
+     "ctaNaTela": false
+    }
+   }
+  },
+  {
+   "name": "fixo-b-390: some quando o botão do fechamento está na tela",
+   "ok": true,
+   "info": {
+    "on": false,
+    "visivel": false,
+    "ctaNaTela": true
+   }
+  },
+  {
+   "name": "fixo-b-390: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "fixo-b-1440: escondido no topo e nos blocos 5, 8 e 9",
+   "ok": true,
+   "info": {
+    "top": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    },
+    "b5": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    },
+    "b8": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    },
+    "b9": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": false
+    }
+   }
+  },
+  {
+   "name": "fixo-b-1440: escondido enquanto o botão do preço está na tela",
+   "ok": true,
+   "info": {
+    "on": true,
+    "botaoPrecoNaTela": false
+   }
+  },
+  {
+   "name": "fixo-b-1440: aparece depois do preço (garantia e FAQ), salvo com botão de aceite na tela",
+   "ok": true,
+   "info": {
+    "garantia": {
+     "on": true,
+     "visivel": true,
+     "ctaNaTela": false
+    },
+    "faq": {
+     "on": false,
+     "visivel": false,
+     "ctaNaTela": true
+    }
+   }
+  },
+  {
+   "name": "fixo-b-1440: some quando o botão do fechamento está na tela",
+   "ok": true,
+   "info": {
+    "on": false,
+    "visivel": false,
+    "ctaNaTela": true
+   }
+  },
+  {
+   "name": "fixo-b-1440: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "fallback res-igual-m: área \"casamento\" (quiz)",
+   "ok": true,
+   "info": {
+    "area": "casamento",
+    "fonte": "quiz"
+   }
+  },
+  {
+   "name": "fallback res-igual-m: fr_state intacto (só leitura)",
+   "ok": true,
+   "info": {
+    "antes": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"casamento\",\"cx\":0}}",
+    "depois": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"casamento\",\"cx\":0}}"
+   }
+  },
+  {
+   "name": "fallback res-igual-m: utm_data sem m e sem area",
+   "ok": true,
+   "info": "{\"timestamp\":1791635557442,\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"}"
+  },
+  {
+   "name": "fallback res-igual-m: vid do quiz reaproveitado",
+   "ok": true,
+   "info": {
+    "url": "https://funnel-control.vercel.app/api/track/quiz",
+    "body": {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-12345678",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   }
+  },
+  {
+   "name": "fallback res-igual-m: recusa leva a área resolvida + UTMs do quiz",
+   "ok": true,
+   "info": {
+    "k": "recusaA",
+    "href": "/familia-upsell-a-2/?m=oracao&area=casamento&utm_source=fb&utm_campaign=cmp1&utm_content=ad%7C123456789",
+    "fixo": false
+   }
+  },
+  {
+   "name": "fallback res-igual-m: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "fallback res-m-diferente: área \"\" (padrão)",
+   "ok": true,
+   "info": {
+    "area": "",
+    "fonte": ""
+   }
+  },
+  {
+   "name": "fallback res-m-diferente: fr_state intacto (só leitura)",
+   "ok": true,
+   "info": {
+    "antes": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"casamento\",\"cx\":0}}",
+    "depois": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"casamento\",\"cx\":0}}"
+   }
+  },
+  {
+   "name": "fallback res-m-diferente: utm_data sem m e sem area",
+   "ok": true,
+   "info": "{\"timestamp\":1791635558331,\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"}"
+  },
+  {
+   "name": "fallback res-m-diferente: vid do quiz reaproveitado",
+   "ok": true,
+   "info": {
+    "url": "https://funnel-control.vercel.app/api/track/quiz",
+    "body": {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-12345678",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "filhos",
+     "variant": "a"
+    }
+   }
+  },
+  {
+   "name": "fallback res-m-diferente: recusa leva a área resolvida + UTMs do quiz",
+   "ok": true,
+   "info": {
+    "k": "recusaA",
+    "href": "/familia-upsell-a-2/?m=filhos&utm_source=fb&utm_campaign=cmp1&utm_content=ad%7C123456789",
+    "fixo": false
+   }
+  },
+  {
+   "name": "fallback res-m-diferente: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "fallback res-sem-m2: área \"\" (padrão)",
+   "ok": true,
+   "info": {
+    "area": "",
+    "fonte": ""
+   }
+  },
+  {
+   "name": "fallback res-sem-m2: fr_state intacto (só leitura)",
+   "ok": true,
+   "info": {
+    "antes": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"\",\"cx\":0}}",
+    "depois": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"\",\"cx\":0}}"
+   }
+  },
+  {
+   "name": "fallback res-sem-m2: utm_data sem m e sem area",
+   "ok": true,
+   "info": "{\"timestamp\":1791635559224,\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"}"
+  },
+  {
+   "name": "fallback res-sem-m2: vid do quiz reaproveitado",
+   "ok": true,
+   "info": {
+    "url": "https://funnel-control.vercel.app/api/track/quiz",
+    "body": {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-12345678",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "b"
+    }
+   }
+  },
+  {
+   "name": "fallback res-sem-m2: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "fallback res-m2-igual-m: área \"\" (padrão)",
+   "ok": true,
+   "info": {
+    "area": "",
+    "fonte": ""
+   }
+  },
+  {
+   "name": "fallback res-m2-igual-m: fr_state intacto (só leitura)",
+   "ok": true,
+   "info": {
+    "antes": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"oracao\"}}",
+    "depois": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"oracao\"}}"
+   }
+  },
+  {
+   "name": "fallback res-m2-igual-m: utm_data sem m e sem area",
+   "ok": true,
+   "info": "{\"timestamp\":1791635560158,\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"}"
+  },
+  {
+   "name": "fallback res-m2-igual-m: vid do quiz reaproveitado",
+   "ok": true,
+   "info": {
+    "url": "https://funnel-control.vercel.app/api/track/quiz",
+    "body": {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-12345678",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "b"
+    }
+   }
+  },
+  {
+   "name": "fallback res-m2-igual-m: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "fallback url-vence-res: área \"financeiro\" (url)",
+   "ok": true,
+   "info": {
+    "area": "financeiro",
+    "fonte": "url"
+   }
+  },
+  {
+   "name": "fallback url-vence-res: fr_state intacto (só leitura)",
+   "ok": true,
+   "info": {
+    "antes": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"casamento\"}}",
+    "depois": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"casamento\"}}"
+   }
+  },
+  {
+   "name": "fallback url-vence-res: utm_data sem m e sem area",
+   "ok": true,
+   "info": "{\"timestamp\":1791635561101,\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"}"
+  },
+  {
+   "name": "fallback url-vence-res: vid do quiz reaproveitado",
+   "ok": true,
+   "info": {
+    "url": "https://funnel-control.vercel.app/api/track/quiz",
+    "body": {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-12345678",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   }
+  },
+  {
+   "name": "fallback url-vence-res: recusa leva a área resolvida + UTMs do quiz",
+   "ok": true,
+   "info": {
+    "k": "recusaA",
+    "href": "/familia-upsell-a-2/?m=oracao&area=financeiro&utm_source=fb&utm_campaign=cmp1&utm_content=ad%7C123456789",
+    "fixo": false
+   }
+  },
+  {
+   "name": "fallback url-vence-res: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "fallback url-invalida-nao-cai-no-res: área \"\" (padrão)",
+   "ok": true,
+   "info": {
+    "area": "",
+    "fonte": ""
+   }
+  },
+  {
+   "name": "fallback url-invalida-nao-cai-no-res: fr_state intacto (só leitura)",
+   "ok": true,
+   "info": {
+    "antes": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"casamento\"}}",
+    "depois": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"casamento\"}}"
+   }
+  },
+  {
+   "name": "fallback url-invalida-nao-cai-no-res: utm_data sem m e sem area",
+   "ok": true,
+   "info": "{\"timestamp\":1791635561988,\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"}"
+  },
+  {
+   "name": "fallback url-invalida-nao-cai-no-res: vid do quiz reaproveitado",
+   "ok": true,
+   "info": {
+    "url": "https://funnel-control.vercel.app/api/track/quiz",
+    "body": {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-12345678",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   }
+  },
+  {
+   "name": "fallback url-invalida-nao-cai-no-res: recusa leva a área resolvida + UTMs do quiz",
+   "ok": true,
+   "info": {
+    "k": "recusaA",
+    "href": "/familia-upsell-a-2/?m=oracao&utm_source=fb&utm_campaign=cmp1&utm_content=ad%7C123456789",
+    "fixo": false
+   }
+  },
+  {
+   "name": "fallback url-invalida-nao-cai-no-res: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "fallback res-down: área \"filhos\" (quiz)",
+   "ok": true,
+   "info": {
+    "area": "filhos",
+    "fonte": "quiz"
+   }
+  },
+  {
+   "name": "fallback res-down: fr_state intacto (só leitura)",
+   "ok": true,
+   "info": {
+    "antes": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"financeiro\",\"m2\":\"filhos\"}}",
+    "depois": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"financeiro\",\"m2\":\"filhos\"}}"
+   }
+  },
+  {
+   "name": "fallback res-down: utm_data sem m e sem area",
+   "ok": true,
+   "info": "{\"timestamp\":1791635562981,\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"}"
+  },
+  {
+   "name": "fallback res-down: vid do quiz reaproveitado",
+   "ok": true,
+   "info": {
+    "url": "https://funnel-control.vercel.app/api/track/quiz",
+    "body": {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-12345678",
+     "event": "fr_oferta_view",
+     "page": "downsell",
+     "area": "financeiro",
+     "variant": "a"
+    }
+   }
+  },
+  {
+   "name": "fallback res-down: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "fallback res-casamento-acabou: área \"\" (padrão)",
+   "ok": true,
+   "info": {
+    "area": "",
+    "fonte": ""
+   }
+  },
+  {
+   "name": "fallback res-casamento-acabou: fr_state intacto (só leitura)",
+   "ok": true,
+   "info": {
+    "antes": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"casamento\",\"cx\":1}}",
+    "depois": "{\"answers\":{\"civil\":\"casada\"},\"history\":[\"t01-abertura\"],\"lead\":{},\"vid\":\"qa-vid-12345678\",\"utms\":{\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"},\"res\":{\"m\":\"oracao\",\"m2\":\"casamento\",\"cx\":1}}"
+   }
+  },
+  {
+   "name": "fallback res-casamento-acabou: utm_data sem m e sem area",
+   "ok": true,
+   "info": "{\"timestamp\":1791635563797,\"utm_source\":\"fb\",\"utm_campaign\":\"cmp1\",\"utm_content\":\"ad|123456789\"}"
+  },
+  {
+   "name": "fallback res-casamento-acabou: vid do quiz reaproveitado",
+   "ok": true,
+   "info": {
+    "url": "https://funnel-control.vercel.app/api/track/quiz",
+    "body": {
+     "funnel": "familia",
+     "visitor_id": "qa-vid-12345678",
+     "event": "fr_oferta_view",
+     "page": "upsell",
+     "area": "oracao",
+     "variant": "a"
+    }
+   }
+  },
+  {
+   "name": "fallback res-casamento-acabou: recusa leva a área resolvida + UTMs do quiz",
+   "ok": true,
+   "info": {
+    "k": "recusaA",
+    "href": "/familia-upsell-a-2/?m=oracao&utm_source=fb&utm_campaign=cmp1&utm_content=ad%7C123456789",
+    "fixo": false
+   }
+  },
+  {
+   "name": "fallback res-casamento-acabou: sem erro de JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "aceite: sem m/area no link da Eduzz",
+   "ok": true,
+   "info": "https://chk.eduzz.com/TESTE?sck=abc&utm_source=fb&utm_campaign=c9&u=1"
+  },
+  {
+   "name": "aceite: UTMs da URL + u=1",
+   "ok": true,
+   "info": "https://chk.eduzz.com/TESTE?sck=abc&utm_source=fb&utm_campaign=c9&u=1"
+  },
+  {
+   "name": "aceite: UTMify reescreveu e o link voltou limpo (sem organic)",
+   "ok": true,
+   "info": "https://chk.eduzz.com/TESTE?sck=abc&utm_source=fb&utm_campaign=c9&u=1"
+  },
+  {
+   "name": "cliques: fr_oferta_accept e fr_oferta_decline enviados",
+   "ok": true,
+   "info": [
+    "fr_oferta_view",
+    "TypeError: data.text is not a function",
+    "fr_oferta_accept",
+    "fr_oferta_decline"
+   ]
+  },
+  {
+   "name": "aceite real: sem erro de JS",
+   "ok": true,
+   "info": []
+  }
+ ]
+}

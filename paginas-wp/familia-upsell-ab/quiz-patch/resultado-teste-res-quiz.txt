@@ -1,0 +1,20 @@
+   S.res = {"m":"casamento","m2":"filhos","cx":0} second= F civil= casada
+PASS quiz P1-casamento telas=41 area=C sit=C1 fc=49
+   S.res = {"m":"filhos","m2":"oracao","cx":0} second= O civil= casada
+PASS quiz P2-filhos-doc-exemplo telas=41 area=F sit=F2 fc=49
+   S.res = {"m":"oracao","m2":"","cx":0} second= null civil= solteira
+PASS quiz P3-oracao-nao-ora telas=37 area=O sit=O1 fc=45
+   S.res = {"m":"financeiro","m2":"filhos","cx":0} second= F civil= viuva
+PASS quiz P4-financeiro telas=40 area=D sit=D16 fc=48
+   S.res = {"m":"casamento","m2":"oracao","cx":1} second= O civil= ex
+PASS quiz P5-ex-casada-nao-ora telas=39 area=C sit=C14 fc=47
+   S.res = {"m":"casamento","m2":"filhos","cx":0} second= F civil= casada
+PASS quiz P6-homem-casado telas=41 area=C sit=C2 fc=49
+   S.res = {"m":"financeiro","m2":"oracao","cx":0} second= O civil= solteira
+PASS quiz P7-empate-pergunta-chave telas=38 area=D sit=D11 fc=46
+PASS upsell com fr_state do quiz fc=3 {"funnel":"familia","visitor_id":"vid-do-quiz-123","event":"fr_oferta_view","page":"upsell","area":"casamento"}
+PASS upsell navegador limpo fc=3 {"funnel":"familia","visitor_id":"bf8a0110-6ee0-45aa-be91-207a2438c84d","event":"fr_oferta_view","page":"upsell","area":"casamento"}
+PASS downsell com fr_state do quiz fc=3 {"funnel":"familia","visitor_id":"vid-do-quiz-123","event":"fr_oferta_view","page":"downsell","area":"casamento"}
+PASS downsell navegador limpo fc=3 {"funnel":"familia","visitor_id":"a9a38b8f-6d63-4f6e-b677-b5dffe3f5350","event":"fr_oferta_view","page":"downsell","area":"casamento"}
+PASS quiz depois da oferta (fr_state={"vid":"213123be-2468-4d0c-9b9c-282a9bfee133","answers":{},"history":[],"lead":{}})
+exit 0

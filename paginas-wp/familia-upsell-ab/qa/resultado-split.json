@@ -1,0 +1,450 @@
+{
+ "checks": [
+  {
+   "name": "forcado a: destino",
+   "ok": true,
+   "info": {
+    "u": "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=casamento&area=filhos&sck=abc_123&fbclid=IwAR0xYz&utm_source=FB&utm_medium=paid&utm_campaign=Fam%C3%ADlia%20Restaurada%20%7C%20CBO&utm_content=Ora%C3%A7%C3%A3o+m%C3%A3e&utm_term=%F0%9F%99%8F&transactionkey=T1&foo=bar&vazio=&semvalor",
+    "exp": "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=casamento&area=filhos&sck=abc_123&fbclid=IwAR0xYz&utm_source=FB&utm_medium=paid&utm_campaign=Fam%C3%ADlia%20Restaurada%20%7C%20CBO&utm_content=Ora%C3%A7%C3%A3o+m%C3%A3e&utm_term=%F0%9F%99%8F&transactionkey=T1&foo=bar&vazio=&semvalor"
+   }
+  },
+  {
+   "name": "forcado a: hash mantido",
+   "ok": true,
+   "info": "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=casamento&area=filhos&sck=abc_123&fbclid=IwAR0xYz&utm_source=FB&utm_medium=paid&utm_campaign=Fam%C3%ADlia%20Restaurada%20%7C%20CBO&utm_content=Ora%C3%A7%C3%A3o+m%C3%A3e&utm_term=%F0%9F%99%8F&transactionkey=T1&foo=bar&vazio=&semvalor#frag"
+  },
+  {
+   "name": "forcado a: UTF-8 ok",
+   "ok": true,
+   "info": {
+    "m": "casamento",
+    "area": "filhos",
+    "sck": "abc_123",
+    "fbclid": "IwAR0xYz",
+    "utm_source": "FB",
+    "utm_medium": "paid",
+    "utm_campaign": "Família Restaurada | CBO",
+    "utm_content": "Oração mãe",
+    "utm_term": "🙏",
+    "transactionkey": "T1",
+    "foo": "bar",
+    "vazio": "",
+    "semvalor": ""
+   }
+  },
+  {
+   "name": "forcado a: sem ab",
+   "ok": true,
+   "info": "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=casamento&area=filhos&sck=abc_123&fbclid=IwAR0xYz&utm_source=FB&utm_medium=paid&utm_campaign=Fam%C3%ADlia%20Restaurada%20%7C%20CBO&utm_content=Ora%C3%A7%C3%A3o+m%C3%A3e&utm_term=%F0%9F%99%8F&transactionkey=T1&foo=bar&vazio=&semvalor"
+  },
+  {
+   "name": "forcado a: dataLayer",
+   "ok": true,
+   "info": [
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "forcado"
+    }
+   ]
+  },
+  {
+   "name": "forcado a: noindex",
+   "ok": true,
+   "info": [
+    "noindex, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+    "noindex, nofollow"
+   ]
+  },
+  {
+   "name": "forcado a: não grava",
+   "ok": true,
+   "info": null
+  },
+  {
+   "name": "forcado a: sem erros JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "forcado b: destino",
+   "ok": true,
+   "info": {
+    "u": "https://www.ezeneterodrigues.com.br/familia-upsell-b/?m=casamento&area=filhos&sck=abc_123&fbclid=IwAR0xYz&utm_source=FB&utm_medium=paid&utm_campaign=Fam%C3%ADlia%20Restaurada%20%7C%20CBO&utm_content=Ora%C3%A7%C3%A3o+m%C3%A3e&utm_term=%F0%9F%99%8F&transactionkey=T1&foo=bar&vazio=&semvalor",
+    "exp": "https://www.ezeneterodrigues.com.br/familia-upsell-b/?m=casamento&area=filhos&sck=abc_123&fbclid=IwAR0xYz&utm_source=FB&utm_medium=paid&utm_campaign=Fam%C3%ADlia%20Restaurada%20%7C%20CBO&utm_content=Ora%C3%A7%C3%A3o+m%C3%A3e&utm_term=%F0%9F%99%8F&transactionkey=T1&foo=bar&vazio=&semvalor"
+   }
+  },
+  {
+   "name": "forcado b: hash mantido",
+   "ok": true,
+   "info": "https://www.ezeneterodrigues.com.br/familia-upsell-b/?m=casamento&area=filhos&sck=abc_123&fbclid=IwAR0xYz&utm_source=FB&utm_medium=paid&utm_campaign=Fam%C3%ADlia%20Restaurada%20%7C%20CBO&utm_content=Ora%C3%A7%C3%A3o+m%C3%A3e&utm_term=%F0%9F%99%8F&transactionkey=T1&foo=bar&vazio=&semvalor#frag"
+  },
+  {
+   "name": "forcado b: UTF-8 ok",
+   "ok": true,
+   "info": {
+    "m": "casamento",
+    "area": "filhos",
+    "sck": "abc_123",
+    "fbclid": "IwAR0xYz",
+    "utm_source": "FB",
+    "utm_medium": "paid",
+    "utm_campaign": "Família Restaurada | CBO",
+    "utm_content": "Oração mãe",
+    "utm_term": "🙏",
+    "transactionkey": "T1",
+    "foo": "bar",
+    "vazio": "",
+    "semvalor": ""
+   }
+  },
+  {
+   "name": "forcado b: sem ab",
+   "ok": true,
+   "info": "https://www.ezeneterodrigues.com.br/familia-upsell-b/?m=casamento&area=filhos&sck=abc_123&fbclid=IwAR0xYz&utm_source=FB&utm_medium=paid&utm_campaign=Fam%C3%ADlia%20Restaurada%20%7C%20CBO&utm_content=Ora%C3%A7%C3%A3o+m%C3%A3e&utm_term=%F0%9F%99%8F&transactionkey=T1&foo=bar&vazio=&semvalor"
+  },
+  {
+   "name": "forcado b: dataLayer",
+   "ok": true,
+   "info": [
+    {
+     "event": "fr_ab_upsell",
+     "variante": "b",
+     "fonte": "forcado"
+    }
+   ]
+  },
+  {
+   "name": "forcado b: noindex",
+   "ok": true,
+   "info": [
+    "noindex, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+    "noindex, nofollow"
+   ]
+  },
+  {
+   "name": "forcado b: não grava",
+   "ok": true,
+   "info": null
+  },
+  {
+   "name": "forcado b: sem erros JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "AB=B maiúsculo força b",
+   "ok": true,
+   "info": "https://www.ezeneterodrigues.com.br/familia-upsell-b/?m=filhos"
+  },
+  {
+   "name": "só ab=a: destino sem ?",
+   "ok": true,
+   "info": "https://www.ezeneterodrigues.com.br/familia-upsell-a/"
+  },
+  {
+   "name": "sem query: destino sem ?",
+   "ok": true,
+   "info": "https://www.ezeneterodrigues.com.br/familia-upsell-a/"
+  },
+  {
+   "name": "ab inválido: tirado e usa o salvo",
+   "ok": true,
+   "info": {
+    "u": "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=oracao",
+    "salvo": "a"
+   }
+  },
+  {
+   "name": "ab sem valor: tirado",
+   "ok": true,
+   "info": "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=oracao"
+  },
+  {
+   "name": "abc/tab mantidos",
+   "ok": true,
+   "info": "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=oracao&abc=1&tab=2"
+  },
+  {
+   "name": "variações: sem erros JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "sorteio grava a/b",
+   "ok": true,
+   "info": "a"
+  },
+  {
+   "name": "1º acesso: dataLayer sorteio",
+   "ok": true,
+   "info": [
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "sorteio"
+    },
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "salvo"
+    },
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "salvo"
+    },
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "salvo"
+    },
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "salvo"
+    },
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "salvo"
+    },
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "salvo"
+    },
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "salvo"
+    },
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "salvo"
+    },
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "salvo"
+    },
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "salvo"
+    },
+    {
+     "event": "fr_ab_upsell",
+     "variante": "b",
+     "fonte": "sorteio"
+    }
+   ]
+  },
+  {
+   "name": "fixo em 10 recargas",
+   "ok": true,
+   "info": {
+    "v": "a",
+    "nav": [
+     "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=financeiro",
+     "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=financeiro&i=0",
+     "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=financeiro&i=1",
+     "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=financeiro&i=2",
+     "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=financeiro&i=3",
+     "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=financeiro&i=4",
+     "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=financeiro&i=5",
+     "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=financeiro&i=6",
+     "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=financeiro&i=7",
+     "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=financeiro&i=8",
+     "https://www.ezeneterodrigues.com.br/familia-upsell-a/?m=financeiro&i=9",
+     "https://www.ezeneterodrigues.com.br/familia-upsell-b/?m=filhos"
+    ]
+   }
+  },
+  {
+   "name": "recargas: dataLayer salvo",
+   "ok": true,
+   "info": [
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "salvo"
+    },
+    {
+     "event": "fr_ab_upsell",
+     "variante": "a",
+     "fonte": "salvo"
+    }
+   ]
+  },
+  {
+   "name": "valor salvo inválido: sorteia de novo",
+   "ok": true,
+   "info": "b"
+  },
+  {
+   "name": "fixo: sem erros JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "nenhuma requisição externa saiu (tudo abortado/local)",
+   "ok": true,
+   "info": [
+    "GET https://www.ezeneterodrigues.com.br/wp-content/themes/astra/assets/css/minified/main.min.css",
+    "GET https://fonts.googleapis.com/css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/tf-header-footer/assets/css/tf-style.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/uploads/theplus-addons/theplus.min.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/css/frontend.min.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/uploads/elementor/css/post-32.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor-pro/assets/css/frontend.min.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/uploads/elementor/css/global.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/uploads/elementor/css/post-5234.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/themes/astra-child/style.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/boosted-elements-progression/assets/css/frontend.min.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/boosted-elements-progression/assets/css/prettyphoto.min.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/essential-addons-for-elementor-lite/assets/front-end/css/view/general.min.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/happy-elementor-addons/assets/fonts/style.min.css",
+    "GET https://www.ezeneterodrigues.com.br/wp-includes/js/jquery/jquery.min.js",
+    "GET https://www.ezeneterodrigues.com.br/wp-includes/js/jquery/jquery-migrate.min.js"
+   ]
+  },
+  {
+   "name": "sem storage: redireciona",
+   "ok": true,
+   "info": "https://www.ezeneterodrigues.com.br/familia-upsell-b/?m=casamento&utm_source=FB"
+  },
+  {
+   "name": "sem storage: fonte",
+   "ok": true,
+   "info": [
+    {
+     "event": "fr_ab_upsell",
+     "variante": "b",
+     "fonte": "sorteio_sem_storage"
+    }
+   ]
+  },
+  {
+   "name": "sem storage: sem erros JS (só o bloco, sem o tema)",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "200 acessos ~50/50 (79..121)",
+   "ok": true,
+   "info": {
+    "a": 95,
+    "b": 105
+   }
+  },
+  {
+   "name": "200 acessos: fonte sempre sorteio",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "200 acessos: sem erros JS",
+   "ok": true,
+   "info": []
+  },
+  {
+   "name": "sem JS: overlay cobre a tela",
+   "ok": true,
+   "info": {
+    "w": 390,
+    "h": 844,
+    "z": "2147483647",
+    "bg": "rgb(47, 33, 24)",
+    "href": "https://www.ezeneterodrigues.com.br/familia-upsell-a/",
+    "aVisivel": 20
+   }
+  },
+  {
+   "name": "sem JS: link noscript pra A",
+   "ok": true,
+   "info": {
+    "w": 390,
+    "h": 844,
+    "z": "2147483647",
+    "bg": "rgb(47, 33, 24)",
+    "href": "https://www.ezeneterodrigues.com.br/familia-upsell-a/",
+    "aVisivel": 20
+   }
+  },
+  {
+   "name": "com JS: overlay cobre a tela e fica por cima do tema",
+   "ok": true,
+   "info": {
+    "w": 390,
+    "h": 844,
+    "topo": true
+   }
+  }
+ ],
+ "fails": 0,
+ "split200": {
+  "a": 95,
+  "b": 105
+ },
+ "external": [
+  "GET https://www.ezeneterodrigues.com.br/wp-content/themes/astra/assets/css/minified/main.min.css",
+  "GET https://fonts.googleapis.com/css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/tf-header-footer/assets/css/tf-style.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/uploads/theplus-addons/theplus.min.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/css/frontend.min.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/uploads/elementor/css/post-32.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor-pro/assets/css/frontend.min.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/uploads/elementor/css/global.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/uploads/elementor/css/post-5234.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/themes/astra-child/style.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/boosted-elements-progression/assets/css/frontend.min.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/boosted-elements-progression/assets/css/prettyphoto.min.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/essential-addons-for-elementor-lite/assets/front-end/css/view/general.min.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/happy-elementor-addons/assets/fonts/style.min.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-includes/js/jquery/jquery.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-includes/js/jquery/jquery-migrate.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/animations/animations.min.css",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/essential-blocks/assets/js/eb-blocks-localize.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/themes/astra/assets/js/minified/frontend.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/tf-header-footer/assets/js/svg-injector.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/tf-header-footer/assets/js/tf-main.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-includes/js/jquery/ui/core.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-includes/js/jquery/ui/mouse.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-includes/js/jquery/ui/slider.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/uploads/theplus-addons/theplus.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/essential-addons-for-elementor-lite/assets/front-end/js/view/general.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/happy-elementor-addons/assets/js/happy-addons.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/happy-elementor-addons-pro/assets/js/happy-addons-pro.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/js/frontend-modules.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor-pro/assets/js/frontend.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/swiper/swiper.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/share-link/share-link.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/js/frontend.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor-pro/assets/js/preloaded-elements-handlers.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor/assets/js/preloaded-modules.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min.js",
+  "GET https://www.googletagmanager.com/gtag/js",
+  "GET https://cdn.utmify.com.br/scripts/utms/latest.js",
+  "GET https://funnel-control.vercel.app/track-cta.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/pixelyoursite/dist/scripts/jquery.bind-first-0.2.3.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/pixelyoursite/dist/scripts/js.cookie-2.1.3.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/pixelyoursite/dist/scripts/tld.min.js",
+  "GET https://www.ezeneterodrigues.com.br/wp-content/plugins/pixelyoursite/dist/scripts/public.js",
+  "GET https://cdn.trackhunter.com.br/pixel.js"
+ ]
+}

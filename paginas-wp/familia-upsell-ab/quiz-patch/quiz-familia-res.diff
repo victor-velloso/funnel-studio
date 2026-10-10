@@ -1,0 +1,10 @@
+--- quiz-familia-ao-vivo.txt	2026-10-09 18:34:18.777958362 -0300
++++ quiz-familia-codigo-para-colar.txt	2026-10-09 18:34:18.789958362 -0300
+@@ -1833,6 +1833,7 @@
+ }
+ function renderPitch(el){
+   var r = computeScore(), s = SITS[r.sit];
++  try{ S.res = { m: FC_AREA[r.main] || "", m2: r.second ? (FC_AREA[r.second] || "") : "", cx: EX() ? 1 : 0 }; persist(); }catch(eRes){}
+   var sitN = tx(s.nome), quando = txt(s.t), nome = esc(S.lead.nome||"");
+   var url = checkoutUrl(r.main);
+   var p3fig = cfgImg("p3");

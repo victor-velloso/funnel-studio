@@ -1,0 +1,9 @@
+200 qa-theo-variant-a-view-202610100933 {"funnel":"familia","visitor_id":"qa-theo-variant-a-view-202610100933","event":"fr_oferta_view","page":"upsell","area":"casamento","variant":"a"} -> {"ok":true}
+200 qa-theo-variant-a-accept-202610100933 {"funnel":"familia","visitor_id":"qa-theo-variant-a-accept-202610100933","event":"fr_oferta_accept","page":"upsell","area":"casamento","variant":"a"} -> {"ok":true}
+200 qa-theo-variant-a-decline-202610100933 {"funnel":"familia","visitor_id":"qa-theo-variant-a-decline-202610100933","event":"fr_oferta_decline","page":"upsell","area":"casamento","variant":"a"} -> {"ok":true}
+200 qa-theo-variant-b-view-202610100933 {"funnel":"familia","visitor_id":"qa-theo-variant-b-view-202610100933","event":"fr_oferta_view","page":"upsell","area":"casamento","variant":"b"} -> {"ok":true}
+200 qa-theo-variant-b-accept-202610100933 {"funnel":"familia","visitor_id":"qa-theo-variant-b-accept-202610100933","event":"fr_oferta_accept","page":"upsell","area":"casamento","variant":"b"} -> {"ok":true}
+200 qa-theo-variant-b-decline-202610100933 {"funnel":"familia","visitor_id":"qa-theo-variant-b-decline-202610100933","event":"fr_oferta_decline","page":"upsell","area":"casamento","variant":"b"} -> {"ok":true}
+200 qa-theo-variant-a-2-view-202610100933 {"funnel":"familia","visitor_id":"qa-theo-variant-a-2-view-202610100933","event":"fr_oferta_view","page":"downsell","area":"casamento","variant":"a"} -> {"ok":true}
+200 qa-theo-variant-a-2-accept-202610100933 {"funnel":"familia","visitor_id":"qa-theo-variant-a-2-accept-202610100933","event":"fr_oferta_accept","page":"downsell","area":"casamento","variant":"a"} -> {"ok":true}
+200 qa-theo-variant-a-2-decline-202610100933 {"funnel":"familia","visitor_id":"qa-theo-variant-a-2-decline-202610100933","event":"fr_oferta_decline","page":"downsell","area":"casamento","variant":"a"} -> {"ok":true}

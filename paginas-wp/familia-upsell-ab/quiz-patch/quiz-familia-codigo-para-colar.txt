@@ -1,0 +1,2008 @@
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<div id="fr-quiz"></div>
+<style>
+/* ===== FAMÍLIA RESTAURADA · O que está acontecendo na minha casa? =========================
+   Tema CLARO, espelhando o quiz Raízes (escoladeintercessao.com.br/quiz-raizes/, v3 visual):
+   fundo branco, cards creme #FAF6F1, borda #EAE0D5, terracota #A25A38 (primário) + verde #2F9540 (terciário),
+   títulos Raleway 800, texto Open Sans, botão pílula terracota, cantos 16px, borda 1.5px.
+   Tema escuro anterior guardado em ../src-dark-backup/.
+   Blindagem: todos os seletores prefixados com #fr-quiz para vencer kit/tema. */
+#fr-quiz{--brown:#A25A38;--brown-dark:#7E4527;--brown-soft:rgba(162,90,56,.10);--green:#2F9540;--green-dark:#256F31;--green-soft:rgba(47,149,64,.12);--ink:#2F2118;--body:#52453B;--muted:#94867A;
+--bg:#FFFFFF;--card:#FAF6F1;--line:#EAE0D5;
+font-family:'Open Sans',sans-serif !important;background:var(--bg) !important;min-height:100vh;color:var(--body) !important;
+display:flex;flex-direction:column;align-items:center;padding:0 0 56px 0;box-sizing:border-box;overflow-x:hidden;max-width:100%}
+#fr-quiz *{box-sizing:border-box;margin:0;padding:0;text-shadow:none !important;background-image:none}
+#fr-quiz h1,#fr-quiz h2,#fr-quiz h3,#fr-quiz p,#fr-quiz ul,#fr-quiz li{margin:0;padding:0;border:none;list-style:none}
+#fr-quiz p,#fr-quiz li,#fr-quiz span,#fr-quiz div,#fr-quiz a,#fr-quiz b,#fr-quiz em,#fr-quiz strong,#fr-quiz input,#fr-quiz button,#fr-quiz label,#fr-quiz i{font-family:'Open Sans',sans-serif !important}
+#fr-quiz button{-webkit-appearance:none !important;appearance:none !important;background-image:none !important;outline:none;min-height:0;height:auto;box-shadow:none;cursor:pointer}
+#fr-quiz input{-webkit-appearance:none !important;appearance:none !important;height:auto;box-shadow:none}
+#fr-quiz .fr-topbar{width:100%;max-width:560px;display:flex;align-items:center;gap:12px;padding:16px 20px 8px}
+#fr-quiz .fr-back{background:transparent !important;border:none !important;color:var(--muted) !important;font-size:24px !important;line-height:1;padding:4px 8px;visibility:hidden;width:auto !important}
+#fr-quiz .fr-back:hover{color:var(--brown) !important}
+#fr-quiz .fr-back.show{visibility:visible}
+#fr-quiz .fr-progress{flex:1;height:8px;background:#F0E7DD !important;border-radius:99px;overflow:hidden}
+#fr-quiz .fr-progress-fill{height:100%;width:100%;transform-origin:left center;background:var(--brown) !important;border-radius:99px;transition:transform .4s ease}
+#fr-quiz .fr-stage{width:100%;max-width:560px;padding:10px 24px 0;animation:frFade .35s ease}
+@keyframes frFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){#fr-quiz .fr-stage{animation:frFadeSoft .3s ease}#fr-quiz *{transition-duration:.01ms !important}}
+@keyframes frFadeSoft{from{opacity:0}to{opacity:1}}
+#fr-quiz .fr-badge{display:block;width:fit-content;margin:16px auto 6px;background:var(--brown-soft) !important;border:1.5px solid rgba(162,90,56,.35) !important;color:var(--brown-dark) !important;font-weight:700 !important;font-size:12px !important;letter-spacing:.1em;text-transform:uppercase;border-radius:99px;padding:9px 18px;text-align:center}
+#fr-quiz .fr-kicker{text-align:center !important;color:var(--brown-dark) !important;font-size:12px !important;font-weight:700 !important;letter-spacing:.14em;text-transform:uppercase;margin:16px 0 10px}
+#fr-quiz .fr-h1{font-family:'Raleway',sans-serif !important;font-weight:800 !important;font-size:32px !important;line-height:1.16 !important;text-align:center !important;margin:12px 0 14px;color:var(--ink) !important}
+#fr-quiz .fr-h1 em{color:var(--brown-dark) !important;font-style:normal !important}
+#fr-quiz .fr-h2{font-family:'Raleway',sans-serif !important;font-weight:800 !important;font-size:24px !important;line-height:1.25 !important;text-align:center !important;margin:10px 0 18px;color:var(--ink) !important}
+#fr-quiz .fr-h2 em{color:var(--brown-dark) !important;font-style:normal !important}
+#fr-quiz .fr-h1 *,#fr-quiz .fr-h2 *{font-family:'Raleway',sans-serif !important}
+#fr-quiz .fr-sub{font-size:16px !important;line-height:1.6 !important;text-align:center !important;color:var(--body) !important;margin:0 0 18px}
+#fr-quiz .fr-sub b,#fr-quiz .fr-card b,#fr-quiz .fr-pitch p b{color:var(--ink) !important;font-weight:700 !important}
+#fr-quiz .fr-hl{background:linear-gradient(transparent 58%, rgba(162,90,56,.28) 58%) !important;font-weight:700;color:var(--ink) !important}
+#fr-quiz .fr-arrow{text-align:center !important;color:var(--muted) !important;font-size:12.5px !important;font-weight:700 !important;letter-spacing:.1em;text-transform:uppercase;margin:14px 0 10px}
+#fr-quiz .fr-note{font-size:13px !important;line-height:1.5 !important;text-align:center !important;color:var(--muted) !important;margin:12px 0 0}
+#fr-quiz .fr-opts{display:flex;flex-direction:column;gap:10px;margin:6px 0 4px}
+#fr-quiz .fr-opts.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#fr-quiz .fr-opt{background:#fff !important;border:1.5px solid var(--line) !important;border-radius:16px;padding:14px 16px;font-size:16px !important;font-weight:600 !important;color:var(--ink) !important;text-align:left;line-height:1.35;transition:all .15s ease;width:100%;display:flex;align-items:center;gap:14px;box-shadow:0 1px 3px rgba(47,33,24,.06)}
+#fr-quiz .fr-opt:hover{border-color:var(--brown) !important;transform:translateY(-1px)}
+#fr-quiz .fr-opt:focus-visible{outline:none;border-color:var(--brown) !important;box-shadow:0 0 0 3px rgba(162,90,56,.18)}
+#fr-quiz .fr-opt.sel{background:var(--brown-soft) !important;border-color:var(--brown) !important;color:var(--brown-dark) !important}
+#fr-quiz .fr-opt .fr-emoji{font-size:34px !important;line-height:1;flex:0 0 auto}
+#fr-quiz .fr-opts.grid .fr-opt{flex-direction:column;text-align:center;gap:8px;padding:16px 10px}
+#fr-quiz .fr-opts.grid .fr-opt .fr-emoji{font-size:38px !important}
+#fr-quiz .fr-opt.quote{font-style:italic;font-weight:600 !important;font-size:15px !important;line-height:1.45}
+#fr-quiz .fr-opt.quote .fr-emoji{font-size:26px !important;color:var(--brown) !important;font-style:normal}
+#fr-quiz .fr-gender{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 4px}
+#fr-quiz .fr-gcard{background:#fff !important;border:1.5px solid var(--line) !important;border-radius:20px;padding:28px 12px 22px;text-align:center;font-weight:700 !important;font-size:17px !important;color:var(--ink) !important;transition:all .15s ease;box-shadow:0 1px 3px rgba(47,33,24,.06)}
+#fr-quiz .fr-gcard:hover{border-color:var(--brown) !important;transform:translateY(-2px)}
+#fr-quiz .fr-gcard .big{font-size:64px !important;display:block;margin:0 0 12px;line-height:1}
+#fr-quiz .fr-cta{display:block;width:100%;background:var(--brown) !important;color:#fff !important;border:none !important;border-radius:50px;padding:17px 20px;font-size:16px !important;font-weight:700 !important;letter-spacing:.02em;margin:18px 0 0;transition:background .15s ease;text-align:center;text-decoration:none !important;box-shadow:0 4px 14px rgba(162,90,56,.35)}
+#fr-quiz .fr-cta:hover{background:var(--brown-dark) !important}
+#fr-quiz .fr-cta:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(162,90,56,.25),0 4px 14px rgba(162,90,56,.35)}
+#fr-quiz .fr-cta:disabled{opacity:.45;cursor:not-allowed}
+#fr-quiz .fr-card{background:var(--card) !important;border:1.5px solid var(--line) !important;border-radius:16px;padding:18px;margin:12px 0;font-size:16px !important;line-height:1.65;color:var(--body) !important;text-align:left}
+#fr-quiz .fr-stat{font-family:'Raleway',sans-serif !important;font-weight:800 !important;font-size:42px !important;color:var(--brown-dark) !important;text-align:center !important;line-height:1.05;margin:10px 0 2px}
+#fr-quiz .fr-statlabel{font-size:13px !important;color:var(--muted) !important;text-align:center !important;margin:0 0 12px}
+#fr-quiz .fr-authority{font-size:12.5px !important;color:var(--muted) !important;text-align:center !important;margin:16px 0 0;line-height:1.6}
+#fr-quiz .fr-input{width:100%;background:#fff !important;border:1.5px solid var(--line) !important;border-radius:12px;padding:15px 16px;font-size:16px !important;color:var(--ink) !important;margin:0 0 10px}
+#fr-quiz .fr-input::placeholder{color:var(--muted) !important;opacity:1}
+#fr-quiz .fr-input:focus{border-color:var(--brown) !important;outline:none}
+#fr-quiz .fr-input.err{border-color:#E0685C !important}
+#fr-quiz .fr-loading{display:flex;flex-direction:column;align-items:center;gap:14px;padding:56px 0}
+#fr-quiz .fr-loadpct{font-family:'Raleway',sans-serif !important;font-weight:800 !important;font-size:40px !important;color:var(--brown-dark) !important}
+#fr-quiz .fr-loadbar{width:80%;max-width:340px;height:10px;background:#F0E7DD !important;border-radius:99px;overflow:hidden}
+#fr-quiz .fr-loadbar div{height:100%;width:100%;transform-origin:left center;transform:scaleX(0);background:var(--brown) !important;border-radius:99px;transition:transform .15s linear}
+#fr-quiz .fr-loadtxt{font-size:14.5px !important;color:var(--body) !important;text-align:center;min-height:24px;font-weight:600;padding:0 20px}
+#fr-quiz .fr-eco{background:var(--brown-soft) !important;border:1.5px solid rgba(162,90,56,.35) !important;border-radius:16px;padding:18px;margin:12px 0;text-align:left}
+#fr-quiz .fr-eco li{font-size:14.5px !important;line-height:1.7;color:var(--ink) !important;padding-left:26px;position:relative}
+#fr-quiz .fr-eco li+li{margin-top:6px}
+#fr-quiz .fr-eco li b{color:var(--ink) !important;font-weight:700 !important}
+#fr-quiz .fr-eco li:before{content:"✔";color:var(--green-dark);position:absolute;left:2px;font-weight:700}
+#fr-quiz .fr-rootemoji{font-size:58px !important;text-align:center !important;display:block;line-height:1;margin:14px 0 0}
+#fr-quiz .fr-verdict{font-family:'Raleway',sans-serif !important;font-weight:800 !important;font-size:23px !important;color:var(--ink) !important;text-align:center;margin:10px 0 6px;line-height:1.3}
+#fr-quiz .fr-verdict em{color:var(--brown-dark) !important;font-style:normal}
+#fr-quiz .fr-ab{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+#fr-quiz .fr-ab .col{border-radius:16px;padding:16px 14px;font-size:13.5px !important;line-height:1.55;text-align:center}
+#fr-quiz .fr-ab .col .ico{font-size:34px !important;display:block;margin:0 0 8px;line-height:1}
+#fr-quiz .fr-ab .a{background:#F3F0EC !important;border:1.5px solid #E1DAD1 !important;color:#6E6157 !important}
+#fr-quiz .fr-ab .b{background:var(--green-soft) !important;border:1.5px solid rgba(47,149,64,.30) !important;color:var(--green-dark) !important}
+#fr-quiz .fr-ab .col b{display:block;font-size:12px !important;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+#fr-quiz .fr-care{background:#fff !important;border:1.5px solid #EAE0D5 !important;border-radius:14px;padding:12px 14px;margin:14px 0;font-size:16px !important;line-height:1.5;color:#52453B !important;text-align:left;display:flex;gap:10px;align-items:flex-start}
+#fr-quiz .fr-vwrap{margin:14px 0 30px !important}
+#fr-quiz .fr-vwrap:last-child{margin-bottom:14px !important}
+#fr-quiz .fr-stars{color:#F5B301 !important;font-size:17px !important;letter-spacing:3px;text-align:center;display:block;margin:0 0 6px}
+#fr-quiz .fr-print{display:block;width:100%;border-radius:16px;border:1.5px solid var(--line);margin:0 0 14px;box-shadow:0 1px 3px rgba(47,33,24,.06)}
+#fr-quiz .fr-pitch{text-align:left}
+#fr-quiz .fr-pitch .fr-h1,#fr-quiz .fr-pitch .fr-h2{text-align:left !important}
+#fr-quiz .fr-pitch p{font-size:17px !important;line-height:1.6;margin:0 0 14px;color:var(--body) !important}
+#fr-quiz .fr-sec{margin:32px 0 0}
+#fr-quiz .fr-check{padding-left:30px;position:relative;font-size:15px !important;line-height:1.6;margin:0 0 10px;color:var(--body) !important}
+#fr-quiz .fr-check:before{content:"✅";position:absolute;left:0;font-size:16px}
+#fr-quiz .fr-min{background:#fff !important;border:1.5px solid var(--line) !important;border-radius:16px;padding:16px;margin:0 0 10px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 1px 3px rgba(47,33,24,.06)}
+#fr-quiz .fr-min .mico{font-size:34px !important;line-height:1;flex:0 0 auto;margin-top:2px}
+#fr-quiz .fr-min.hl{background:var(--brown-soft) !important;border-color:var(--brown) !important}
+#fr-quiz .fr-min .tag{display:inline-block;background:var(--brown) !important;color:#fff !important;font-size:10.5px !important;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px;margin:0 0 8px}
+#fr-quiz .fr-min .tag.soft{background:#D8EBD2 !important;color:#256F31 !important;border:none !important}
+#fr-quiz .fr-min h3{font-family:'Raleway',sans-serif !important;font-size:16.5px !important;font-weight:700 !important;color:var(--ink) !important;margin:0 0 4px}
+#fr-quiz .fr-min p{font-size:13.5px !important;line-height:1.55;margin:0 !important;color:var(--body) !important}
+#fr-quiz .fr-ato{font-size:12px !important;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-dark) !important;margin:20px 0 10px}
+#fr-quiz .fr-price{background:linear-gradient(180deg, rgba(162,90,56,.08), rgba(162,90,56,.16)) !important;border:2px solid var(--brown) !important;border-radius:22px;padding:28px 20px;text-align:center;margin:18px 0;box-shadow:0 8px 30px rgba(162,90,56,.18)}
+#fr-quiz .fr-price .plabel{font-size:13px !important;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brown-dark) !important;margin:0 0 6px}
+#fr-quiz .fr-price .anc{font-size:14.5px !important;color:var(--muted) !important;margin:0 0 6px}
+#fr-quiz .fr-price .p12{font-family:'Raleway',sans-serif !important;font-weight:800 !important;font-size:52px !important;color:var(--brown-dark) !important;line-height:1.02}
+#fr-quiz .fr-price .p12 small{font-family:'Raleway',sans-serif !important;font-size:22px !important;font-weight:700}
+#fr-quiz .fr-price .pav{font-size:14.5px !important;color:var(--muted) !important;margin-top:10px}
+#fr-quiz .fr-price .pnote{display:inline-block;background:#fff !important;border-radius:99px;padding:8px 16px;font-size:13.5px !important;color:var(--ink) !important;margin-top:14px;font-weight:700;border:1.5px solid var(--line) !important}
+#fr-quiz .fr-faq{border-bottom:1px solid var(--line);padding:12px 0}
+#fr-quiz .fr-faq b{display:block;font-size:14.5px !important;color:var(--ink) !important;margin-bottom:4px;font-weight:700 !important}
+#fr-quiz .fr-faq p{font-size:13.5px !important;margin:0 !important;color:var(--body) !important}
+#fr-quiz .fr-fixedcta{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96) !important;border-top:1.5px solid var(--line);display:flex;justify-content:center;z-index:9999}
+#fr-quiz .fr-fixedcta a{max-width:560px;width:100%;margin:0}
+#fr-quiz .fr-multi-hint{font-size:12.5px !important;color:var(--brown-dark) !important;text-align:center;font-weight:700;margin:0 0 10px;text-transform:uppercase;letter-spacing:.06em}
+/* Emoji nativo do aparelho (decisão validada no Raízes) */
+#fr-quiz .fr-emoji,#fr-quiz .fr-gcard .big,#fr-quiz .fr-rootemoji,
+#fr-quiz .fr-min .mico,#fr-quiz .fr-ab .col .ico{
+font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji","Android Emoji",sans-serif !important}
+@media(max-width:420px){#fr-quiz .fr-h1{font-size:27px !important}#fr-quiz .fr-h2{font-size:21px !important}#fr-quiz .fr-price .p12{font-size:44px !important}#fr-quiz .fr-stat{font-size:38px !important}}
+/* ===== Extras Família Restaurada (mesma gramática clara do Raízes) ===== */
+#fr-quiz .fr-opts.small .fr-opt{padding:12px 14px;font-size:14.5px !important;border-radius:14px}
+#fr-quiz .fr-opts.small .fr-opt .fr-emoji{font-size:24px !important}
+#fr-quiz .fr-group{font-size:11.5px !important;color:var(--brown-dark) !important;text-transform:uppercase;letter-spacing:.1em;font-weight:700 !important;margin:10px 0 2px}
+#fr-quiz .fr-support{font-size:13.5px !important;line-height:1.5 !important;text-align:center !important;color:var(--muted) !important;margin:-8px 0 14px}
+#fr-quiz .fr-quote{font-family:'Raleway',sans-serif !important;font-size:21px !important;font-weight:800 !important;color:var(--brown-dark) !important;text-align:center !important;line-height:1.35;margin:14px 0 12px}
+#fr-quiz .fr-relato{background:var(--card) !important;border:1.5px solid var(--line) !important;border-left:4px solid var(--brown) !important;border-radius:14px;padding:14px 16px;margin:12px 0 6px;text-align:left}
+#fr-quiz .fr-relato p{font-size:14.5px !important;line-height:1.6 !important;color:var(--body) !important;font-style:italic;margin:0 0 6px !important}
+#fr-quiz .fr-relato span{font-size:12.5px !important;color:var(--brown-dark) !important;font-weight:700 !important}
+#fr-quiz .fr-legend{font-size:11.5px !important;line-height:1.5 !important;color:var(--muted) !important;margin:6px 0 0;text-align:left}
+#fr-quiz .fr-sym{display:block;width:88px;height:88px;margin:16px auto 0;color:var(--brown)}
+#fr-quiz .fr-sym svg{width:100%;height:100%}
+#fr-quiz .fr-armas{display:flex;justify-content:center;gap:14px;font-size:30px;margin:6px 0 14px;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif !important}
+#fr-quiz .fr-sit{font-family:'Raleway',sans-serif !important;font-weight:800 !important;font-size:21px !important;color:var(--brown-dark) !important;text-align:center;line-height:1.35;margin:6px 0 12px}
+#fr-quiz .fr-arma{background:var(--green-soft) !important;border-color:rgba(47,149,64,.30) !important}
+#fr-quiz .fr-arma h3{font-size:12px !important;font-weight:700 !important;letter-spacing:.1em;text-transform:uppercase;color:var(--green-dark) !important;margin:0 0 8px}
+#fr-quiz .fr-optin{display:flex;gap:10px;align-items:flex-start;font-size:13.5px !important;line-height:1.5;color:var(--body) !important;margin:4px 0 6px;cursor:pointer;text-align:left}
+#fr-quiz .fr-optin input{-webkit-appearance:checkbox !important;appearance:checkbox !important;width:18px;height:18px;margin-top:2px;flex:0 0 auto;accent-color:#A25A38}
+#fr-quiz .fr-cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+#fr-quiz .fr-cmp .col{border-radius:16px;padding:16px 12px;background:#F3F0EC !important;border:1.5px solid #E1DAD1 !important}
+#fr-quiz .fr-cmp .col.b{background:var(--green-soft) !important;border-color:rgba(47,149,64,.30) !important}
+#fr-quiz .fr-cmp .col .ico{font-size:30px;display:block;text-align:center;margin:0 0 6px;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif !important}
+#fr-quiz .fr-cmp .col b.h{display:block;text-align:center;font-size:12px !important;text-transform:uppercase;letter-spacing:.08em;margin:0 0 10px;font-weight:700 !important;color:#6E6157 !important}
+#fr-quiz .fr-cmp .col.b b.h{color:var(--green-dark) !important}
+#fr-quiz .fr-cmp .col p{font-size:13px !important;line-height:1.5 !important;margin:0 0 10px !important;color:var(--body) !important}
+#fr-quiz .fr-cmp .col.a p{color:#6E6157 !important}
+#fr-quiz .fr-cmp .col.b p{color:var(--green-dark) !important}
+#fr-quiz .fr-fixedcta{transform:translateY(120%);transition:transform .35s ease}
+#fr-quiz .fr-fixedcta.show{transform:translateY(0)}
+#fr-quiz .fr-later{font-size:13px !important;color:var(--muted) !important;text-align:center !important;font-style:italic;margin:14px 0 0}
+#fr-quiz .fr-pitch ul.sits li{font-size:14.5px !important;line-height:1.6;color:var(--body) !important;padding-left:22px;position:relative;margin:0 0 6px}
+#fr-quiz .fr-pitch ul.sits li:before{content:"•";color:var(--brown);position:absolute;left:6px;font-weight:700}
+#fr-quiz .fr-pitch ul.sits li.me{color:var(--ink) !important;font-weight:700}
+#fr-quiz .fr-faq b{line-height:1.4}
+/* ===== Página de diagnóstico (doc 7.6): uma carta pra ela. Dois destaques: nome da situação e cartão verde da arma ===== */
+#fr-quiz .fr-dx{padding:0 0 8px}
+#fr-quiz .fr-dx-sec{margin:0 0 36px}
+#fr-quiz .fr-dx-top{text-align:center;margin-bottom:30px}
+#fr-quiz .fr-dx-top .fr-kicker{margin:14px 0 6px}
+#fr-quiz .fr-sym.fr-sym-sm{width:56px;height:56px;margin:14px auto 12px;color:var(--brown)}
+#fr-quiz .fr-dx-lead{font-size:16px !important;line-height:1.5 !important;color:var(--body) !important;text-align:center !important;margin:0 0 10px}
+#fr-quiz .fr-dx-sit{font-family:'Raleway',sans-serif !important;font-weight:800 !important;font-size:28px !important;line-height:1.22 !important;color:var(--brown-dark) !important;text-align:center !important;margin:0 auto 18px;max-width:30ch;letter-spacing:-.005em}
+#fr-quiz .fr-dx-sit .q{font-family:Georgia,'Times New Roman',serif !important;font-size:1.5em;line-height:0;color:rgba(162,90,56,.45) !important;vertical-align:-.28em;margin:0 .06em}
+#fr-quiz .fr-dx-center{text-align:center !important}
+#fr-quiz .fr-dx-rule{border:none !important;height:1px;background:var(--line) !important;width:72px;margin:26px auto 0}
+#fr-quiz .fr-dx-p{font-size:17px !important;line-height:1.7 !important;color:var(--body) !important;margin:0 0 16px;text-align:left}
+#fr-quiz .fr-dx-p b{color:var(--ink) !important;font-weight:700 !important}
+#fr-quiz .fr-dx-hl{font-family:'Raleway',sans-serif !important;font-weight:700 !important;font-size:19.5px !important;line-height:1.45 !important;color:var(--ink) !important;border-left:3px solid var(--brown) !important;padding:2px 0 2px 18px;margin:26px 0 26px}
+#fr-quiz .fr-dx-hl b{font-family:'Raleway',sans-serif !important;font-weight:800 !important;color:var(--brown-dark) !important}
+#fr-quiz .fr-dx-hl-i{font-family:'Open Sans',sans-serif !important;font-style:italic;font-weight:400 !important;font-size:18.5px !important;color:var(--body) !important}
+#fr-quiz .fr-dx-hl-i b{font-family:'Open Sans',sans-serif !important;font-weight:700 !important;font-style:italic;color:var(--brown-dark) !important}
+#fr-quiz .fr-dx-label{font-size:11.5px !important;font-weight:700 !important;letter-spacing:.14em;text-transform:uppercase;color:var(--brown-dark) !important;margin:0 0 12px;text-align:left}
+#fr-quiz .fr-dx-label.g{color:var(--green-dark) !important}
+#fr-quiz .fr-dx-alivio{background:var(--card) !important;border:1.5px solid var(--line) !important;border-radius:16px;padding:20px 20px;font-size:16px !important;line-height:1.7;color:var(--body) !important;margin:22px 0 0}
+#fr-quiz .fr-dx-alivio b{color:var(--ink) !important;font-weight:700 !important}
+/* Cartão da arma: o coração da página */
+#fr-quiz .fr-arma-card{background:linear-gradient(180deg,#F1F8EF,#E8F3E5) !important;border:1.5px solid rgba(47,149,64,.28) !important;border-radius:22px;padding:24px 20px 22px;box-shadow:0 10px 30px rgba(37,111,49,.10),0 1px 3px rgba(37,111,49,.08)}
+#fr-quiz .fr-arma-nome{font-family:'Raleway',sans-serif !important;font-weight:800 !important;font-size:22px !important;line-height:1.3 !important;color:#1F5A29 !important;margin:0 0 12px;text-align:left}
+#fr-quiz .fr-arma-princ{font-size:16px !important;line-height:1.68 !important;color:#2F4A33 !important;margin:0}
+#fr-quiz .fr-arma-div{border-top:2px dotted rgba(47,149,64,.35);margin:22px 0 18px}
+#fr-quiz .fr-passo-label{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}
+#fr-quiz .fr-hora{display:inline-flex;align-items:center;gap:6px;background:#fff !important;border:1px solid rgba(47,149,64,.28);border-radius:99px;padding:4px 10px;font-size:11.5px !important;letter-spacing:.04em;text-transform:none;color:var(--green-dark) !important;font-weight:700}
+#fr-quiz .fr-bilhete{background:#fff !important;border-radius:14px;padding:18px 18px;font-size:16px !important;line-height:1.68;color:var(--ink) !important;box-shadow:0 2px 10px rgba(37,111,49,.10);border:1px solid rgba(47,149,64,.16);position:relative}
+#fr-quiz .fr-bilhete b{color:var(--green-dark) !important;font-weight:700 !important}
+#fr-quiz .fr-voz-label{text-align:center !important;margin:22px 0 8px}
+#fr-quiz .fr-voz{font-family:'Raleway',sans-serif !important;font-style:italic;font-weight:700 !important;font-size:19px !important;line-height:1.45 !important;color:#1F5A29 !important;text-align:center !important;margin:0 8px}
+#fr-quiz .fr-printhint{font-size:12.5px !important;color:var(--muted) !important;text-align:center !important;margin:12px 0 0}
+#fr-quiz .fr-dx .fr-care{margin:18px 0 0}
+#fr-quiz .fr-dx-front{display:flex;gap:12px;align-items:flex-start;font-size:16px !important;line-height:1.65 !important;color:var(--body) !important}
+#fr-quiz .fr-dx-front svg{flex:0 0 auto;margin-top:4px;color:var(--brown)}
+#fr-quiz .fr-dx-front b{color:var(--ink) !important;font-weight:700 !important}
+#fr-quiz .fr-dx-end{border-top:1px solid var(--line);padding-top:32px}
+#fr-quiz .fr-dx-endtitle{font-family:'Raleway',sans-serif !important;font-weight:800 !important;font-size:24px !important;line-height:1.25 !important;color:var(--ink) !important;text-align:center !important;margin:0 0 18px}
+#fr-quiz .fr-locks{margin:6px 0 4px;padding:0}
+#fr-quiz .fr-locks li{display:flex;align-items:center;gap:12px;padding:12px 2px;border-bottom:1px dashed var(--line);font-size:15px !important;line-height:1.45;color:var(--muted) !important;opacity:.85}
+#fr-quiz .fr-locks li:last-child{border-bottom:none}
+#fr-quiz .fr-locks li svg{flex:0 0 auto;color:var(--muted)}
+#fr-quiz .fr-dx-end .fr-cta{margin-top:22px}
+#fr-quiz .fr-guarda{font-size:13px !important;color:var(--muted) !important;text-align:center !important;margin:12px 0 0}
+/* Ritmo: fade suave ao rolar (sem atraso pra ler) */
+#fr-quiz .fr-anim .fr-dx-sec{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+#fr-quiz .fr-anim .fr-dx-sec.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){#fr-quiz .fr-anim .fr-dx-sec{opacity:1;transform:none;transition:none}}
+@media(max-width:420px){#fr-quiz .fr-dx-sit{font-size:26px !important}#fr-quiz .fr-dx-hl{font-size:19px !important}}
+@media(min-width:700px){#fr-quiz .fr-dx-sit{font-size:32px !important}}
+/* ===== Resultado em carta + oferta visual (spec C) ===== */
+#fr-quiz[data-step="t35-resultado"] .fr-stage,#fr-quiz[data-step="t41-pitch"] .fr-stage{max-width:640px;padding-left:12px;padding-right:12px}
+#fr-quiz .fr-folha{background:#FAF6F1 !important;border:1px solid #EAE0D5;border-radius:16px;box-shadow:0 8px 28px rgba(47,33,24,.06);padding:8px 16px 20px;max-width:600px;margin:0 auto;overflow:hidden}
+#fr-quiz .fr-selo{text-align:center !important;color:#7E4527 !important;font-size:12px !important;font-weight:700 !important;letter-spacing:.12em;text-transform:uppercase;margin:8px 0 8px}
+#fr-quiz .fr-frase{font-size:17px !important;line-height:1.5 !important;font-style:italic;text-align:center !important;color:#52453B !important;margin:0 0 12px}
+#fr-quiz .fr-reco{font-size:17px !important;font-weight:700;color:#2F2118 !important;margin:0 0 8px}
+#fr-quiz .fr-sinais{list-style:none;margin:0 0 12px;padding:0}
+#fr-quiz .fr-sinais li{display:flex;gap:12px;align-items:center;font-size:16px !important;line-height:1.35;color:#2F2118 !important;margin:0 0 10px}
+#fr-quiz .fr-icirc{width:40px;height:40px;border-radius:50%;flex:0 0 auto;background:#fff !important;border:1px solid #EAE0D5;display:flex;align-items:center;justify-content:center;color:#A25A38}
+#fr-quiz .fr-virada{font-family:'Raleway',sans-serif !important;font-weight:700 !important;font-size:19px !important;line-height:1.45 !important;color:#2F2118 !important;border-left:3px solid #256F31;padding:2px 0 2px 14px;margin:6px 0 12px}
+#fr-quiz .fr-linha{font-size:16px !important;line-height:1.5 !important;font-style:italic;color:#52453B !important;margin:0}
+#fr-quiz .fr-linha b{font-style:italic}
+#fr-quiz .fr-tentou{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+#fr-quiz .fr-chipx{background:#F3F0EC !important;color:#6E6157 !important;text-decoration:line-through;border-radius:99px;padding:6px 12px;font-size:16px !important;line-height:1.3}
+#fr-quiz .fr-dotsep{color:#94867A}
+#fr-quiz .fr-seta{color:#A25A38;display:inline-flex}
+#fr-quiz .fr-chave{font-size:17px !important;line-height:1.45 !important;font-weight:700;color:#2F2118 !important;margin:4px 0 0;width:100%}
+#fr-quiz .fr-dx-alivio{display:flex;gap:12px;align-items:flex-start;font-size:16px !important;line-height:1.55}
+#fr-quiz .fr-dx-alivio i{display:block;margin-top:6px}
+#fr-quiz .fr-arma-kicker,#fr-quiz .fr-passo-kicker,#fr-quiz .fr-voz-kicker{display:flex;align-items:center;gap:6px;font-size:12px !important;font-weight:700 !important;letter-spacing:.08em;text-transform:uppercase;color:#256F31 !important;margin:0 0 8px}
+#fr-quiz .fr-bilhete{background:#fff !important;border-radius:12px;padding:16px 14px 8px;margin:14px 4px 4px;position:relative;transform:rotate(-1deg);box-shadow:0 8px 18px rgba(47,33,24,.08);border:1px solid rgba(47,149,64,.16)}
+#fr-quiz .fr-tape{position:absolute;top:-7px;right:16px;width:52px;height:14px;background:rgba(162,90,56,.28);transform:rotate(6deg);border-radius:2px}
+#fr-quiz .fr-bilhete-top{display:flex;gap:8px;align-items:flex-start;justify-content:space-between}
+#fr-quiz .fr-acao{color:#A25A38;flex:0 0 auto}
+#fr-quiz .fr-passo-intro{font-size:16px !important;font-weight:700;color:#256F31 !important;margin:0 0 8px}
+#fr-quiz .fr-passos{list-style:none;margin:0;padding:0}
+#fr-quiz .fr-passos li{display:flex;gap:10px;align-items:flex-start;font-size:16px !important;line-height:1.45;color:#2F2118 !important;margin:0 0 8px}
+#fr-quiz .fr-n{width:24px;height:24px;border-radius:50%;background:#2F9540;color:#fff !important;font-size:13px !important;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+#fr-quiz .fr-printbtn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:transparent !important;border:none !important;color:#7E4527 !important;font-size:16px !important;font-weight:700;margin:8px 0 4px;padding:8px}
+#fr-quiz .fr-front{display:flex;gap:10px;align-items:flex-start;font-size:16px !important;line-height:1.5}
+#fr-quiz .fr-trilha{list-style:none;margin:8px 0 12px;padding:0}
+#fr-quiz .fr-trilha li{display:flex;gap:12px;align-items:flex-start;position:relative;padding:0 0 14px;font-size:16px !important;line-height:1.4;color:#94867A !important}
+#fr-quiz .fr-trilha li.on{color:#256F31 !important}
+#fr-quiz .fr-trilha li.on b{color:#1F5A29 !important}
+#fr-quiz .fr-trilha .dot{width:32px;height:32px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;background:#F3F0EC !important;color:#94867A;border:1.5px solid #E1DAD1;position:relative;z-index:1}
+#fr-quiz .fr-trilha li.on .dot{background:#2F9540 !important;color:#fff;border-color:#2F9540}
+#fr-quiz .fr-trilha li:before{content:"";position:absolute;left:15px;top:32px;bottom:0;width:2px;background:#EAE0D5}
+#fr-quiz .fr-trilha li:last-child:before{content:none}
+#fr-quiz .fr-trilha i{display:block;font-size:16px !important}
+#fr-quiz .fr-blurs{display:flex;flex-wrap:wrap;margin-top:4px}
+#fr-quiz .fr-blur{filter:blur(3.5px);display:inline-block;background:#F3F0EC !important;border-radius:99px;padding:4px 10px;margin:6px 6px 0 0;font-size:16px !important;color:#6E6157 !important;user-select:none}
+#fr-quiz .fr-center{text-align:center !important}
+#fr-quiz .fr-guarda{font-size:16px !important}
+#fr-quiz .fr-ar{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:12px;margin:8px 0 4px}
+#fr-quiz .fr-ar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+#fr-quiz .fr-ar-page{aspect-ratio:3/4;max-height:420px}
+#fr-quiz .fr-sum{background:#FAF6F1 !important;border:1px solid #EAE0D5;border-radius:16px;padding:16px}
+#fr-quiz .fr-sumrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:6px 0}
+#fr-quiz .fr-sitchip{display:inline-flex;align-items:center;gap:6px;background:#fff !important;border:1.5px solid #EAE0D5;border-radius:99px;padding:6px 12px;font-size:16px !important;line-height:1.3;color:#2F2118 !important}
+#fr-quiz .fr-sitchip.on{background:#EEF6EF !important;border-color:#2F9540;font-weight:700}
+#fr-quiz .fr-sitchip .me{font-style:normal;font-size:12px !important;letter-spacing:.06em;text-transform:uppercase;background:#2F9540;color:#fff !important;border-radius:99px;padding:2px 6px}
+#fr-quiz .fr-sitchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
+#fr-quiz .fr-also{display:inline-flex;align-items:center;gap:6px;font-size:16px !important;font-style:italic;color:#52453B !important}
+#fr-quiz .fr-okarma{display:flex;align-items:center;justify-content:center;gap:6px;color:#256F31 !important;font-weight:700;font-size:16px !important;margin:4px 0 8px}
+#fr-quiz .fr-ciclo{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}
+#fr-quiz .fr-ciclo-ring{position:absolute;left:18%;top:8%;width:64%;height:70%;pointer-events:none}
+#fr-quiz .fr-ciclo .cn{background:#fff !important;border:1.5px solid #EAE0D5;border-radius:14px;padding:10px 8px;text-align:center;font-size:16px !important;line-height:1.35;color:#2F2118 !important;position:relative;z-index:1}
+#fr-quiz .fr-ciclo .k{width:26px;height:26px;border-radius:50%;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;background:#FAF6F1 !important;color:#A25A38 !important;border:1.5px solid #A25A38;font-weight:700}
+#fr-quiz .fr-ciclo .cn b{display:block}
+#fr-quiz .fr-ciclo .cn .sub{display:block;margin-top:4px;font-size:16px !important;line-height:1.35}
+#fr-quiz .fr-ciclo .cmid{grid-column:1 / -1;text-align:center;font-family:'Raleway',sans-serif !important;font-weight:800 !important;font-size:18px !important;line-height:1.3;color:#256F31 !important}
+#fr-quiz .fr-ciclo-nota{text-align:center !important;font-size:16px !important;font-weight:700;color:#256F31 !important;margin:8px 0 0}
+#fr-quiz .fr-p3art{width:120px;height:120px;margin:0 auto 10px;border-radius:16px;overflow:hidden;background:#FAF6F1 !important;display:flex;align-items:center;justify-content:center;gap:8px;color:#A25A38}
+#fr-quiz .fr-p3art img{width:100%;height:100%;object-fit:cover}
+#fr-quiz .fr-verse{text-align:center !important;font-size:16px !important;font-style:italic;color:#7E4527 !important;border:1px solid #EAE0D5;border-radius:12px;padding:10px 12px;letter-spacing:.02em}
+#fr-quiz .fr-verse span{display:block;font-style:normal;font-size:12px !important;letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+#fr-quiz .fr-p3chips{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+#fr-quiz .fr-p3chip{display:flex;gap:8px;align-items:center;background:#FAF6F1 !important;border-radius:12px;padding:8px 10px;font-size:16px !important;line-height:1.35;color:#2F2118 !important}
+#fr-quiz .fr-stepper{list-style:none;margin:0 0 12px;padding:0}
+#fr-quiz .fr-stepper li{display:flex;gap:12px;position:relative;padding:0 0 16px}
+#fr-quiz .fr-stepper li:before{content:"";position:absolute;left:15px;top:34px;bottom:0;width:2px;background:#EAE0D5}
+#fr-quiz .fr-stepper li:last-child:before{content:none}
+#fr-quiz .fr-num{width:32px;height:32px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;border:1.5px solid #A25A38;color:#A25A38 !important;font-weight:700;background:#fff !important;position:relative;z-index:1}
+#fr-quiz .fr-stepper li.done .fr-num{background:#2F9540 !important;color:#fff !important;border-color:#2F9540}
+#fr-quiz .fr-num .ok{position:absolute;right:-6px;bottom:-4px;background:#fff !important;border-radius:50%;color:#2F9540}
+#fr-quiz .fr-stepper b{font-size:17px !important;color:#2F2118 !important}
+#fr-quiz .fr-stepper p{font-size:16px !important;line-height:1.45 !important;margin:2px 0 0 !important}
+#fr-quiz .done-note{display:block;font-size:16px !important;color:#256F31 !important;font-weight:700;margin-top:4px}
+#fr-quiz .fr-submat{text-align:center !important;font-style:italic;font-size:16px !important;color:#52453B !important;margin:0 0 8px}
+#fr-quiz .fr-desk{position:relative;height:280px;margin:12px auto;max-width:340px;overflow:hidden}
+#fr-quiz .fr-sheet{position:absolute;width:46%;height:210px;top:36px;background:#fff !important;border:1px solid #EAE0D5;border-radius:4px;overflow:hidden;box-shadow:0 6px 16px rgba(47,33,24,.08)}
+#fr-quiz .fr-sheet.a{left:4%;transform:rotate(-8deg)}
+#fr-quiz .fr-sheet.b{right:4%;transform:rotate(7deg)}
+#fr-quiz .fr-sheet img{width:100%;height:100%;object-fit:cover;object-position:top}
+#fr-quiz .fr-sheet.paper{background:linear-gradient(#fff,#FAF6F1) !important}
+#fr-quiz .fr-phone{position:absolute;left:50%;top:0;transform:translateX(-50%);width:142px;height:260px;background:#2F2118;border-radius:22px;padding:8px;z-index:2;box-shadow:0 12px 24px rgba(47,33,24,.22)}
+#fr-quiz .fr-phone .scr{background:#fff !important;border-radius:14px;overflow:hidden;height:100%}
+#fr-quiz .fr-phone img{width:100%;height:100%;object-fit:cover;object-position:top}
+#fr-quiz .fr-calls{list-style:none;margin:8px 0;padding:0}
+#fr-quiz .fr-calls li{display:flex;gap:8px;align-items:flex-start;font-size:16px !important;line-height:1.4;color:#2F2118 !important;margin:0 0 8px}
+#fr-quiz .fr-ainda{font-size:16px !important;font-style:italic;color:#52453B !important;margin:4px 0 12px}
+#fr-quiz .fr-capitulo{font-size:16px !important;font-style:italic;text-align:center !important;color:#7E4527 !important;margin:4px 0 12px}
+#fr-quiz .fr-extras{list-style:none;margin:0 0 8px;padding:0}
+#fr-quiz .fr-extras li{display:flex;gap:10px;align-items:center;font-size:16px !important;margin:0 0 8px;color:#2F2118 !important}
+#fr-quiz .fr-quem{text-align:center}
+#fr-quiz .fr-autora{width:96px;height:96px;border-radius:50%;object-fit:cover;display:block;margin:4px auto 8px;border:2px solid #EAE0D5}
+#fr-quiz .fr-selosnum{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;list-style:none;margin:8px 0 12px;padding:0}
+#fr-quiz .fr-selosnum li{background:#FAF6F1 !important;border:1px solid #EAE0D5;border-radius:14px;padding:10px 6px;text-align:center}
+#fr-quiz .fr-selosnum b{display:block;font-family:'Raleway',sans-serif !important;font-size:16px !important;color:#A25A38 !important;line-height:1.2}
+#fr-quiz .fr-selosnum span{display:block;font-size:16px !important;line-height:1.3;color:#52453B !important;margin-top:4px}
+#fr-quiz .fr-car{width:100%;overflow:hidden}
+#fr-quiz .fr-car-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;width:100%;scrollbar-width:none}
+#fr-quiz .fr-slide{flex:0 0 100%;scroll-snap-align:start;margin:0;background:#fff !important;border:1px solid #EAE0D5;border-radius:16px;overflow:hidden;box-shadow:0 8px 20px rgba(47,33,24,.06)}
+#fr-quiz .fr-slide img{width:100%;max-height:380px;object-fit:contain;display:block;background:#fff}
+#fr-quiz .fr-slide figcaption{font-size:16px !important;font-weight:700;color:#7E4527 !important;padding:10px 12px 12px}
+#fr-quiz .fr-car-nav{display:flex;justify-content:center;gap:10px;margin:8px 0}
+#fr-quiz .fr-car-nav button{width:40px;height:40px;border-radius:50%;border:1.5px solid #EAE0D5 !important;background:#fff !important;color:#A25A38 !important;display:flex;align-items:center;justify-content:center}
+#fr-quiz .fr-car-nav button:first-child{transform:scaleX(-1)}
+#fr-quiz .fr-pricecapa{width:92px;height:92px;margin:0 auto 8px;border-radius:12px;overflow:hidden;border:1px solid #EAE0D5}
+#fr-quiz .fr-pricecapa img{width:100%;height:100%;object-fit:cover}
+#fr-quiz .fr-av,#fr-quiz .fr-parc,#fr-quiz .fr-pag{font-size:16px !important;text-align:center !important;margin:4px 0 !important}
+#fr-quiz .fr-pag{display:flex;gap:6px;align-items:center;justify-content:center;color:#52453B !important}
+#fr-quiz .fr-sealrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;list-style:none;margin:12px 0;padding:0}
+#fr-quiz .fr-sealrow li{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:16px !important;line-height:1.3;color:#2F2118 !important}
+#fr-quiz .fr-gar{display:flex;gap:12px;align-items:center;background:#FAF6F1 !important;border:1px solid #EAE0D5;border-radius:16px;padding:14px}
+#fr-quiz .fr-seal7{width:84px;height:84px;border-radius:50%;flex:0 0 auto;border:3px solid #A25A38;background:#fff !important;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#7E4527 !important;box-shadow:inset 0 0 0 4px rgba(162,90,56,.15)}
+#fr-quiz .fr-seal7 span{font-family:'Raleway',sans-serif !important;font-weight:800;font-size:28px !important;line-height:1;color:#A25A38 !important}
+#fr-quiz .fr-seal7 small{font-size:11px !important;letter-spacing:.12em;font-weight:700}
+#fr-quiz .fr-gar p{font-size:16px !important;line-height:1.45 !important;margin:0 !important}
+#fr-quiz .fr-acc{border-bottom:1px solid #EAE0D5}
+#fr-quiz .fr-acc summary{font-size:16px !important;font-weight:700;color:#2F2118 !important;padding:14px 28px 14px 0;cursor:pointer;list-style:none;position:relative;line-height:1.4}
+#fr-quiz .fr-acc summary::-webkit-details-marker{display:none}
+#fr-quiz .fr-acc summary:after{content:"";position:absolute;right:6px;top:20px;width:8px;height:8px;border-right:2px solid #A25A38;border-bottom:2px solid #A25A38;transform:rotate(45deg)}
+#fr-quiz .fr-acc[open] summary:after{transform:rotate(-135deg);top:24px}
+#fr-quiz .fr-acc p{font-size:16px !important;line-height:1.55 !important;margin:0 0 12px !important}
+#fr-quiz .fr-antes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 12px}
+#fr-quiz .fr-antes .col{border-radius:16px;padding:12px 10px;text-align:center}
+#fr-quiz .fr-antes .a{background:#F3F0EC !important;border:1.5px solid #E1DAD1}
+#fr-quiz .fr-antes .b{background:#EEF6EF !important;border:1.5px solid rgba(47,149,64,.3)}
+#fr-quiz .fr-antes .ico{display:block;margin:0 auto 6px;color:#A25A38}
+#fr-quiz .fr-antes .b .ico{color:#256F31}
+#fr-quiz .fr-antes b{display:block;font-size:16px !important;margin:0 0 6px}
+#fr-quiz .fr-antes p{font-size:16px !important;line-height:1.35 !important;margin:0 0 6px !important}
+#fr-quiz .fr-antes .a p,#fr-quiz .fr-antes .a b{color:#6E6157 !important}
+#fr-quiz .fr-antes .b p,#fr-quiz .fr-antes .b b{color:#256F31 !important}
+#fr-quiz .fr-anim .fr-blk{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s ease}
+#fr-quiz .fr-anim .fr-blk.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){#fr-quiz .fr-anim .fr-blk{opacity:1;transform:none;transition:none}}
+#fr-quiz .fr-pitch .fr-h2{text-align:center !important}
+/* Escala de espaço (rodada visual): 56px entre seções, 28px entre blocos, 14px título→texto, corpo 1.6 */
+#fr-quiz{--sp-sec:56px;--sp-blk:28px;--sp-title:14px}
+#fr-quiz .fr-h1,#fr-quiz .fr-h2{margin-bottom:var(--sp-title) !important}
+#fr-quiz .fr-sub,#fr-quiz .fr-card,#fr-quiz .fr-dx-p,#fr-quiz .fr-pitch p,#fr-quiz .fr-support,#fr-quiz .fr-dx-lead,#fr-quiz .fr-frase,#fr-quiz .fr-linha,#fr-quiz .fr-arma-princ,#fr-quiz .fr-stepper p,#fr-quiz .fr-antes p,#fr-quiz .fr-calls li,#fr-quiz .fr-sinais li{line-height:1.6 !important}
+#fr-quiz .fr-opts{gap:12px;margin-top:4px}
+#fr-quiz .fr-card{margin:16px 0}
+#fr-quiz .fr-pitch>.fr-blk{margin:0 0 var(--sp-sec)}
+#fr-quiz .fr-folha{padding:28px 22px 36px !important}
+#fr-quiz .fr-dx-top{margin-bottom:var(--sp-sec) !important}
+#fr-quiz .fr-dx-sec{margin:0 0 var(--sp-sec) !important}
+#fr-quiz .fr-dx-p{margin:0 0 16px !important}
+#fr-quiz .fr-dx-label{margin:0 0 var(--sp-title) !important}
+#fr-quiz .fr-reco{margin:0 0 16px !important}
+#fr-quiz .fr-frase{margin:0 0 16px !important}
+#fr-quiz .fr-folha .fr-ar{margin:var(--sp-blk) 0 8px !important}
+#fr-quiz .fr-sinais{margin:0 0 var(--sp-blk) !important}
+#fr-quiz .fr-sinais li{margin:0 0 14px !important;align-items:flex-start}
+#fr-quiz .fr-virada{margin:8px 0 var(--sp-blk) !important}
+#fr-quiz .fr-dx-alivio{margin:var(--sp-blk) 0 0 !important}
+#fr-quiz .fr-arma-nome{margin:0 0 var(--sp-title) !important}
+#fr-quiz .fr-pitch .fr-h2{margin:0 0 var(--sp-title) !important}
+#fr-quiz .fr-sum{text-align:center !important;padding:28px 20px 24px !important;display:flex;flex-direction:column;align-items:center}
+#fr-quiz .fr-summark{display:flex;justify-content:center;margin:8px auto 12px}
+#fr-quiz .fr-summark .fr-sym{margin:0 auto !important}
+#fr-quiz .fr-sumsit{font-family:'Raleway',sans-serif !important;font-weight:800 !important;font-size:26px !important;line-height:1.25 !important;color:#7E4527 !important;text-align:center !important;margin:4px 0 12px !important;max-width:22ch}
+#fr-quiz .fr-sum .fr-okarma{margin:4px 0 12px !important}
+#fr-quiz .fr-sum .fr-dx-p{text-align:center !important;margin:4px 0 0 !important;max-width:36ch}
+#fr-quiz .fr-sum-second{width:100%;margin:20px 0 0 !important;padding-top:16px;border-top:1px solid #EAE0D5;font-style:italic;color:#6E6157 !important;font-size:15px !important;line-height:1.5 !important;display:flex;align-items:center;justify-content:center;gap:8px;text-align:center}
+#fr-quiz .fr-sum-second .fr-sym{margin:0 !important;flex:0 0 auto}
+#fr-quiz .fr-ciclo{gap:16px !important;margin:16px 0 4px !important}
+#fr-quiz .fr-ciclo-ring{display:none !important}
+#fr-quiz .fr-ciclo .cn{padding:16px 12px !important;line-height:1.45 !important}
+#fr-quiz .fr-p3chips{gap:12px !important;margin:var(--sp-blk) 0 12px !important}
+#fr-quiz .fr-p3chip{gap:12px !important;padding:12px 14px !important;align-items:center}
+#fr-quiz .fr-p3chip .fr-icirc{width:40px;height:40px;flex:0 0 auto}
+#fr-quiz .fr-p3chip .arr{color:#A25A38 !important;font-weight:700;padding:0 2px}
+#fr-quiz .fr-stepper li{padding:0 0 24px}
+#fr-quiz .fr-stepper p{margin:8px 0 0 !important}
+#fr-quiz .fr-stepper li.done .fr-num svg{display:block}
+#fr-quiz .fr-desk{height:300px !important;max-width:100% !important;margin:var(--sp-blk) auto !important}
+#fr-quiz .fr-phone{width:176px;height:292px;padding:10px}
+#fr-quiz .fr-phone .scr{background:#FAF6F1 !important;display:flex;align-items:center;justify-content:center}
+#fr-quiz .fr-phone img{width:100% !important;height:100% !important;object-fit:contain !important;object-position:center !important}
+#fr-quiz .fr-sheet{height:220px;top:46px;background:#FAF6F1 !important}
+#fr-quiz .fr-sheet img{object-fit:contain !important;object-position:center !important;background:#FAF6F1 !important}
+#fr-quiz .fr-ar.fr-ar-page{aspect-ratio:auto !important;max-height:none !important;height:auto !important;overflow:visible !important;margin:var(--sp-blk) auto 4px !important;border:1px solid #EAE0D5;background:#FAF6F1 !important;padding:10px;box-shadow:0 8px 24px rgba(47,33,24,.06)}
+#fr-quiz .fr-ar.fr-ar-page img{position:static !important;inset:auto !important;width:100% !important;height:auto !important;max-height:none !important;object-fit:contain !important}
+#fr-quiz .fr-calls{margin:20px 0 var(--sp-blk) !important}
+#fr-quiz .fr-calls li{margin:0 0 12px !important;align-items:center}
+#fr-quiz .fr-antes{gap:20px !important;margin:0 0 var(--sp-blk) !important;align-items:stretch}
+#fr-quiz .fr-antes .col{height:100%;display:flex;flex-direction:column;padding:20px 14px 16px !important}
+#fr-quiz .fr-antes p:last-child{margin-bottom:0 !important}
+#fr-quiz .fr-sitchips{gap:10px !important;margin:8px 0 16px !important}
+#fr-quiz .fr-extras li{margin:0 0 12px !important;line-height:1.5}
+#fr-quiz .fr-gar{margin:0}
+#fr-quiz .fr-sym{display:flex;align-items:center;justify-content:center;color:#A25A38}
+#fr-quiz .fr-dx-top>.fr-sym{margin:8px auto}
+#fr-quiz .fr-sym svg,#fr-quiz .fr-sym img{width:100%;height:100%;display:block;object-fit:contain}
+#fr-quiz .fr-car,#fr-quiz .fr-car-track{max-width:100%;min-width:0}
+#fr-quiz .fr-car-track::-webkit-scrollbar{display:none}
+#fr-quiz .fr-pitch .fr-legend{font-size:16px !important;line-height:1.45 !important;text-align:center !important}
+/* Ícones inline: tamanho explícito, sem o encolhimento do tema */
+#fr-quiz svg.fr-ico{display:block;flex:none;max-width:none !important;overflow:visible;vertical-align:middle}
+#fr-quiz .fr-care{align-items:flex-start}
+#fr-quiz .fr-care .fr-ico{margin-top:2px;color:#A25A38}
+#fr-quiz .fr-front{align-items:center}
+#fr-quiz .fr-passos li:last-child{margin-bottom:0}
+#fr-quiz .fr-voz-kicker{margin:28px 0 14px !important}
+#fr-quiz .fr-pitch .fr-dx-label{text-align:center !important}
+#fr-quiz .fr-selosnum{align-items:stretch !important}
+#fr-quiz .fr-selosnum li{align-self:stretch;height:100%;display:flex;flex-direction:column}
+@media(max-width:420px){
+#fr-quiz .fr-badge{font-size:9.5px !important;letter-spacing:0 !important;padding:6px 10px !important;line-height:1.3 !important;max-width:100%}
+#fr-quiz .fr-selosnum span{font-size:13px !important;line-height:1.35 !important}
+}
+/* Relatos: só a área do comentário, card claro, sem o preto sobrando */
+#fr-quiz .fr-car-track{align-items:flex-start;transition:height .2s ease}
+#fr-quiz .fr-slide{background:#FAF6F1 !important;border:1px solid #E4D9CC !important;border-radius:14px !important;box-shadow:0 6px 16px rgba(47,33,24,.06);padding:12px !important;overflow:hidden;height:auto !important}
+#fr-quiz .fr-slide figcaption{padding:10px 0 0 !important}
+#fr-quiz .fr-rcrop{display:block;position:relative;overflow:hidden;width:100%;border-radius:10px}
+#fr-quiz .fr-rcrop.r1{aspect-ratio:749 / 214}
+#fr-quiz .fr-rcrop.r2{aspect-ratio:749 / 247}
+#fr-quiz .fr-rcrop.r1 img,#fr-quiz .fr-rcrop.r2 img{position:absolute !important;display:block !important;width:calc(100% * 800 / 749) !important;height:auto !important;max-width:none !important;max-height:none !important;aspect-ratio:1 / 1 !important;object-fit:fill !important;left:calc(100% * -12 / 749) !important;margin:0 !important;background:transparent !important}
+#fr-quiz .fr-rcrop.r1 img{top:calc(100% * -299 / 214) !important}
+#fr-quiz .fr-rcrop.r2 img{top:calc(100% * -264 / 247) !important}
+#fr-quiz .fr-rcrop.r3{width:100%;max-width:454px;height:auto;margin:0 auto;aspect-ratio:auto}
+#fr-quiz .fr-rcrop.r3 img{position:static !important;display:block !important;width:100% !important;max-width:454px !important;height:auto !important;max-height:none !important;object-fit:contain !important;left:auto !important;top:auto !important;margin:0 auto !important}
+</style>
+<script>
+(function(){
+"use strict";
+/* ================= CONFIGURACAO (edite aqui) ================= */
+var CFG = {
+  posthogKey: "",                    // chave PostHog (phc_...). Vazio = desligado
+  posthogHost: "https://us.i.posthog.com",
+  metaPixelId: "",                   // Vazio = usa o pixel que a pagina/WordPress ja carrega (padrao Raizes/Escola)
+  /* ÚNICO lugar pra trocar o destino dos leads. Hoje: Web App do Theo -> planilha "Leads Quiz Família Restaurada", aba "Leads"
+     (integracao/README-leads-planilha.md). Antes era o Web App Raízes/Escola (aba "quiz-familia-restaurada"). Trocar a URL aqui e rebuildar. */
+  leadWebhookUrl: "https://script.google.com/macros/s/AKfycbyXbW4-RthXdi7TDC4o8Vm3DDPbUeJQa0LCZ5TfufEhqzxmpYYC5laFq0rr2divG5Jq/exec",
+  fonte: "quiz-familia-restaurada",
+  checkout: { // UTMs da URL de entrada passam por cima dos padroes
+    C: "https://chk.eduzz.com/2a5cwqts",
+    F: "https://chk.eduzz.com/4n3tu4uo",
+    O: "https://chk.eduzz.com/sskhzojc",
+    D: "https://chk.eduzz.com/KW8ZZKDR01"
+  },
+  utmDefaults: { utm_source:"quiz", utm_medium:"funnel", utm_campaign:"familia-restaurada" },
+  avista: "47", parcelas: "11x de R$ 5,22",
+  /* Pasta da mídia. python3 build.py --asset-base URL [--asset-map mapa.json] */
+  assetBase: "https://www.ezeneterodrigues.com.br/wp-content/uploads/2026/09/"
+};
+/* Nome do arquivo (minúsculo) -> URL absoluta, quando o WordPress renomeia (ex.: sufixo -1). */
+var ASSET_MAP = {};
+function au(file){
+  var f = String(file||"");
+  var low = f.toLowerCase();
+  var map = ASSET_MAP || {};
+  if(map[f]) return map[f];
+  if(map[low]) return map[low];
+  var b = CFG.assetBase || "";
+  if(!b) return "";
+  if(b.charAt(b.length-1)!=="/") b = b+"/";
+  return b+low;
+}
+/* Chaves de situação (C1… e $1/$16/$11), fallback de área e p3. Vazio = não renderiza. */
+CFG.images = {
+  C1:au("fr-cena-c1.webp"), C2:au("fr-cena-c2.webp"), C15:au("fr-cena-c15.webp"), C7:au("fr-cena-c7.webp"), C10:au("fr-cena-c10.webp"), C14:au("fr-cena-c14.webp"),
+  F2:au("fr-cena-f2.webp"), F7:au("fr-cena-f7.webp"), F8:au("fr-cena-f8.webp"), F20:au("fr-cena-f20.webp"),
+  O7:au("fr-cena-o7.webp"), O2:au("fr-cena-o2.webp"), O5:au("fr-cena-o5.webp"), O12:au("fr-cena-o12.webp"), O1:au("fr-cena-o1.webp"), O15:au("fr-cena-o15.webp"),
+  "$1":au("fr-cena-s1.webp"), "$16":au("fr-cena-s16.webp"), "$11":au("fr-cena-s11.webp"),
+  area_C:au("fr-area-c.webp"), area_F:au("fr-area-f.webp"), area_O:au("fr-area-o.webp"), "area_$":au("fr-area-s.webp"),
+  p3:au("fr-p3-quadrada.webp"),
+  capa_C:au("fr-capa-casamento.webp"), capa_F:au("fr-capa-filhos.webp"), capa_O:au("fr-capa-oracao.webp"), capa_D:au("fr-capa-financeiro.webp"),
+  autora:au("fr-ezenete-autora.webp"),
+  preview_C:au("fr-preview-casamento.webp"), preview_F:au("fr-preview-filhos.webp"), preview_O:au("fr-preview-oracao.webp"), preview_D:au("fr-preview-financeiro.webp"),
+  simbolo_C:au("fr-simbolo-casamento.svg"), simbolo_F:au("fr-simbolo-filhos.svg"), simbolo_O:au("fr-simbolo-oracao.svg"), simbolo_D:au("fr-simbolo-financeiro.svg"),
+  relato1:au("fr-relato-1.webp"), relato2:au("fr-relato-2.webp"), relato3:au("fr-relato-3.webp")
+};
+/* Comparação sem o caractere >= (o wpautop do Elementor já trocou x>=2 numa publicação). */
+function ge(a,b){ var d=a-b; return d===Math.abs(d); }
+/* ============================================================= */
+var STORE = "fr_state";
+var S = { answers:{}, history:[], lead:{} };
+try{ if(/[?&]reset=1/.test(location.search)){ localStorage.removeItem(STORE); } }catch(e){}
+try{ var saved = localStorage.getItem(STORE); if(saved){ S = JSON.parse(saved); } }catch(e){}
+function persist(){ try{ localStorage.setItem(STORE, JSON.stringify(S)); }catch(e){} }
+var A = S.answers;
+var root = document.getElementById("fr-quiz");
+/* ---------- analytics (mesmo padrao Raizes/Escola) ---------- */
+if(CFG.metaPixelId && typeof window.fbq !== "function"){
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  window.fbq('init', CFG.metaPixelId); window.fbq('track','PageView');
+}
+if(CFG.posthogKey){
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],o="capture identify alias register register_once unregister reset get_distinct_id opt_in_capturing opt_out_capturing".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  window.posthog.init(CFG.posthogKey,{api_host:CFG.posthogHost});
+}
+function track(ev, data){
+  try{
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({event:"quiz_"+ev}, data||{}));
+    if(typeof fbq === "function"){ fbq("trackCustom", "Quiz_"+ev, data||{}); }
+    if(typeof gtag === "function"){ gtag("event", "quiz_"+ev, data||{}); }
+    if(window.posthog && window.posthog.capture){ window.posthog.capture("quiz_"+ev, data||{}); }
+  }catch(e){}
+  try{ fcTrack(ev, data); }catch(e2){}
+}
+var FC_TRACK = "https://funnel-control.vercel.app/api/track/quiz";
+var FC_AREA = { C: "casamento", F: "filhos", O: "oracao", D: "financeiro" };
+function fcVid() {
+  if (!S.vid) {
+    S.vid = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : ("fc" + Math.random().toString(36).slice(2) + Date.now().toString(36));
+    persist();
+  }
+  return S.vid;
+}
+function fcSend(body) {
+  var payload = JSON.stringify(body);
+  try {
+    if (navigator.sendBeacon) {
+      var blob = new Blob([payload], { type: "text/plain;charset=UTF-8" });
+      if (navigator.sendBeacon(FC_TRACK, blob)) return;
+    }
+  } catch (e) {}
+  try {
+    fetch(FC_TRACK, { method: "POST", mode: "cors", headers: { "Content-Type": "text/plain;charset=UTF-8" }, body: payload, keepalive: true }).catch(function () {});
+  } catch (e2) {}
+}
+function fcTrack(ev, data) {
+  var d = data || {};
+  var step = ev.indexOf("step_") === 0 ? ev.slice(5) : null;
+  var hist = S.history || [];
+  var prev = step && ge(hist.length, 2) ? hist[hist.length - 2] : null;
+  var utm = S.utms || {};
+  var area = d.area ? (FC_AREA[d.area] || null) : null;
+  fcSend({
+    funnel: "familia",
+    visitor_id: fcVid(),
+    event: ev,
+    step: step,
+    prev_step: prev,
+    step_index: typeof d.step_index === "number" ? d.step_index : null,
+    area: area,
+    situacao: typeof d.situacao === "string" ? d.situacao : null,
+    utm_source: utm.utm_source || null,
+    utm_medium: utm.utm_medium || null,
+    utm_campaign: utm.utm_campaign || null,
+    utm_content: utm.utm_content || null,
+    utm_term: utm.utm_term || null,
+    fbclid: utm.fbclid || null
+  });
+}
+var UTM_KEYS = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","gclid","src","sck"];
+function pageUtms(){ var o={}; try{ var p=new URLSearchParams(location.search); UTM_KEYS.forEach(function(k){ var v=p.get(k); if(v) o[k]=v; }); }catch(e){} return o; }
+/* UTMs/fbclid da URL de entrada ficam guardadas no localStorage na primeira tela (a pessoa pode recarregar/voltar sem elas).
+   Primeiro toque: não sobrescreve as já guardadas; só completa chaves que faltam. */
+(function(){ var u = pageUtms(); if(Object.keys(u).length){ S.utms = Object.assign({}, u, S.utms||{}); persist(); } })();
+function leadUtms(){ return Object.assign({}, pageUtms(), S.utms||{}); }
+function checkoutUrl(area){
+  try{
+    var base = new URL(CFG.checkout[area]);
+    Object.keys(CFG.utmDefaults).forEach(function(k){ base.searchParams.set(k, CFG.utmDefaults[k]); });
+    var u = leadUtms();
+    Object.keys(u).forEach(function(k){ base.searchParams.set(k, u[k]); });
+    return base.toString();
+  }catch(e){ return CFG.checkout[area]; }
+}
+/* ---------- helpers ---------- */
+function fem(){ return A.sexo !== "Homem"; }
+function g(f,m){ return fem() ? f : m; }
+function esc(s){ return String(s||"").replace(/[&<>"']/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+function lc(s){ return String(s).toLowerCase().replace(/deus/g,"Deus").replace(/pra\. ezenete/g,"Pra. Ezenete"); }
+function joinE(arr){ if(arr.length<=1) return arr.join(""); return arr.slice(0,-1).join(", ")+" e "+arr[arr.length-1]; }
+function ucf(s){ s=String(s||""); return s.charAt(0).toUpperCase()+s.slice(1); }
+/* genero nas telas de Casamento (secao 10 do doc: marido vira esposa, ele vira ela) */
+function ele(){ return g("ele","ela"); } function Ele(){ return g("Ele","Ela"); } function dele(){ return g("dele","dela"); }
+function mulherDeDeus(){ return g("mulher de Deus","gente de Deus"); }
+/* ---------- condicoes do doc (secao 4) ---------- */
+function CAS(){ return ["casada","junto","ex"].indexOf(V("civil"))>-1; }
+function EX(){ return V("civil")==="ex"; }
+function CASADA(){ return ["casada","junto"].indexOf(V("civil"))>-1; }
+function FIL(){ var f=V("filhos"); return !!f && f!=="nao"; }
+function ORA(){ var o=V("oracao"); if(["hora","jeito","campanha"].indexOf(o)>-1) return "SIM"; if(o==="vezes") return "AS"; if(o==="quase"||o==="nunca") return "NAO"; return ""; }
+function tentou(){ return V("tentou")||[]; }
+function lutouVerbos(){ var t=tentou(), tudo=t.indexOf("tudo")>-1, r=[]; if(tudo||t.indexOf("campanha")>-1||V("oracao")==="campanha") r.push("fez campanha"); if(tudo||t.indexOf("jejum")>-1) r.push("jejuou"); if(tudo||t.indexOf("madrugada")>-1) r.push("passou madrugada de joelho"); return r; }
+function LUTOU(){ var t=tentou(); return ["campanha","jejum","madrugada","tudo"].some(function(x){ return t.indexOf(x)>-1; }) || V("oracao")==="campanha"; }
+function NADA(){ return tentou().indexOf("nada")>-1; }
+/* ================= ETAPAS ================= */
+function o(id,e,t,p,show){ return {id:id,e:e,t:t,p:p||null,show:show||null}; }
+function Q(name,key,title,opts,cfg){ return Object.assign({name:name,type:"q",key:key,title:title,opts:opts},cfg||{}); }
+function txt(t){ return typeof t==="function" ? t() : t; }
+function stepOpts(st){ var list = typeof st.opts==="function" ? st.opts() : st.opts; return list.filter(function(x){ return !x.show || x.show(); }); }
+function stepByKey(k){ for(var i=0;i<STEPS.length;i++){ if(STEPS[i].key===k) return STEPS[i]; } return null; }
+function isVisible(st){ return !st.showIf || st.showIf(); }
+/* V(key): resposta so vale se a tela ainda aparece pra ela e a opcao ainda existe (regra de ouro: nada de eco de resposta que nao vale) */
+function V(k){
+  if(k==="sexo") return A.sexo;
+  var st = stepByKey(k); var v = A[k];
+  if(!st || v==null) return null;
+  if(!isVisible(st)) return null;
+  var ids = stepOpts(st).map(function(x){ return x.id; });
+  if(st.type==="multi"){ var f = v.filter(function(x){ return ids.indexOf(x)>-1; }); return f.length ? f : null; }
+  return ids.indexOf(v)>-1 ? v : null;
+}
+function optOf(k,id){ var st=stepByKey(k); if(!st) return null; var l=stepOpts(st); for(var i=0;i<l.length;i++){ if(l[i].id===id) return l[i]; } return null; }
+function L(k){ var v=V(k); if(v==null) return ""; var op=optOf(k,v); return op ? txt(op.t) : ""; }
+function Ls(k){ return (V(k)||[]).map(function(id){ var op=optOf(k,id); return op?txt(op.t):""; }); }
+var TEMPO_ECO = {meses:"alguns meses", ano:"mais ou menos 1 ano", d25:"de 2 a 5 anos", m5:"mais de 5 anos"};
+var HORA_TXT = {cedo:"Amanhã cedinho", almoco:"No seu almoço", noite:"Hoje à noite", sem:"Quando der"};
+function horaTxt(){ return HORA_TXT[V("hora")] || "Quando der"; }
+var STEPS = [
+{ name:"t01-abertura", type:"open" },
+Q("t02-idade","idade","Quantos anos você tem?",[o("a25","🌷","Até 25"),o("a33","🌸","26 a 33"),o("a40","🌼","34 a 40"),o("a50","🌻","41 a 50"),o("a60","🌺","51 a 60"),o("a61","💐","Mais de 60")]),
+Q("t03-civil","civil","Hoje você é...",[
+  o("casada","💍",function(){return g("Casada","Casado");}),
+  o("junto","🏠","Moro junto"),
+  o("ex","💔",function(){return g("Já fui casada (separada ou divorciada)","Já fui casado (separado ou divorciado)");}),
+  o("viuva","🕊️",function(){return g("Viúva","Viúvo");}),
+  o("solteira",function(){return g("🙋‍♀️","🙋‍♂️");},function(){return g("Solteira","Solteiro");})]),
+Q("t04-filhos","filhos","Você tem filhos?",[o("peq","🧒","Sim, pequenos (até 12)"),o("adol","🧑","Sim, adolescentes"),o("adul","👨‍👩‍👧","Sim, já adultos"),o("varias","👨‍👩‍👧‍👦","Tenho de várias idades"),o("nao","🚫","Não tenho filhos")]),
+Q("t05-igreja","igreja","E a sua vida de igreja hoje, na real?",[o("semana","⛪","Congrego toda semana"),o("consigo","🙂","Vou quando consigo"),o("esfriei","🥶","Esfriei, quase não vou"),o("naocong","❤️","Hoje não congrego, mas amo a Deus")]),
+Q("t06-tempo-fe","tempoFe","Há quanto tempo você caminha com Deus?",[o("m2","🌱","Menos de 2 anos"),o("d2","🌿","De 2 a 10 anos"),o("m10","🌳","Mais de 10 anos"),o("vida","📖","A vida inteira. Cresci na igreja.")]),
+Q("t07-quem-ora","quemOra","Na sua casa, quem ora pela família?",[
+  o("so",function(){return g("🙋‍♀️","🙋‍♂️");},function(){return g("Só eu, sozinha","Só eu, sozinho");}),
+  o("casal","🤝",function(){return g("Eu e meu marido","Eu e minha esposa");},null,function(){return CASADA();}),
+  o("fam","👵","Eu e alguém da família"),
+  o("ninguem","😔","Hoje ninguém ora direito. Nem eu.",{O:1})]),
+Q("t08-oracao","oracao","E a sua oração hoje, como está? Na real, sem julgamento.",[
+  o("hora","🙏","Oro todo dia, com hora e lugar"),
+  o("jeito","💬","Oro todo dia, do meu jeito, falando com Deus durante o dia"),
+  o("campanha","📿","Oro mais quando aperta: faço campanha ou propósito"),
+  o("vezes","🕰️","Oro de vez em quando, quando lembro",{O:1}),
+  o("quase","😶","Quase não oro mais",{O:1}),
+  o("nunca","🤍","Nunca tive o costume de orar")],{support:"Não tem resposta certa. É só pra eu entender a sua realidade."}),
+Q("t09-origem","origem","Por onde você conhece a Pra. Ezenete?",[o("ig","📱","Pelo Instagram"),o("yt","▶️","Pelo YouTube"),o("dt","🎶","Pelo Diante do Trono ou pela Lagoinha"),o("ind","🗣️","Alguém me indicou"),o("agora","👋","Estou conhecendo agora")]),
+Q("t10-hora","hora","Qual hora do dia é mais sua, sem ninguém te pedindo nada?",[o("cedo","🌅","Cedinho, antes da casa acordar"),o("almoco","☀️","Na hora do almoço"),o("noite","🌙","À noite, quando a casa silencia"),o("sem","🌀","Não tenho essa hora. Minha casa não para.")]),
+{ name:"t11-insercao", type:"insert", render:function(){
+    var h;
+    if(V("quemOra")==="so"){
+      h = "<p class='fr-quote'>\"Sou eu "+g("sozinha","sozinho")+" pra tudo.\"</p><div class='fr-card'>A gente escuta essa frase de muita "+mulherDeDeus()+". Se é a sua, respira: você não é "+g("a única","o único")+", e estar "+g("cansada","cansado")+" não quer dizer que a sua fé acabou.<br><br>As próximas perguntas são sobre o que está acontecendo aí dentro. Responde com o coração.</div>";
+    } else if(V("quemOra")==="ninguem" || ORA()==="NAO"){
+      h = "<h2 class='fr-h2'>Obrigada pela sinceridade.</h2><div class='fr-card'>Isso não é motivo de vergonha. Tem fase em que a casa aperta tanto que até a oração some. E tem gente que nunca aprendeu por onde começar.<br><br>Continua comigo. No final você vai entender o que está acontecendo, e o que fazer.</div>";
+    } else {
+      var longa = ["m10","vida"].indexOf(V("tempoFe"))>-1;
+      h = "<h2 class='fr-h2'>Que bom que você não carrega isso "+g("sozinha","sozinho")+".</h2><div class='fr-card'>"+(longa?"E com tanto tempo de caminhada com Deus, deve doer ainda mais ver uma situação que não muda, né?<br><br>":"")+"Continua comigo. As próximas perguntas são sobre a sua casa.</div>";
+    }
+    return h + cta("CONTINUAR");
+  }},
+{ name:"t12-lutas", type:"multi", key:"lutas", small:true, title:"O que está pesando dentro da sua casa hoje? Marque tudo que é verdade.", opts:[
+  o("c_desprezo","💔","Desprezo e palavras que ferem",{C:1},CASADA),
+  o("c_frio","🧊","Casamento frio, dois estranhos em casa",{C:1},CASADA),
+  o("c_traicao","🚪",function(){return "Traição, ou "+ele()+" saiu de casa";},{C:1},CASADA),
+  o("c_separacao","💔","A separação ainda dói todo dia",{C:1},EX),
+  o("c_magoa","😣",function(){return "Mágoa do que "+ele()+" fez comigo";},{C:1},EX),
+  o("f_longe","🙏","Filho longe de Deus",{F:1},FIL),
+  o("f_vicio","🌫️","Filho no vício ou em más companhias",{F:1},FIL),
+  o("f_rebelde","😠","Filho rebelde, que não me ouve",{F:1},FIL),
+  o("o_vontade","😶","Perdi a vontade de orar",{O:1}),
+  o("o_longe","🏜️","Deus parece longe",{O:1}),
+  o("d_divida","💸","Dívida que não fecha",{D:1}),
+  o("d_seguro","🧾",function(){return "Sou eu que seguro a casa "+g("sozinha","sozinho");},{D:1}),
+  o("tudo","🌀","Tudo junto. Uma coisa puxa a outra.")]},
+Q("t13-tempo","tempo","E há quanto tempo a sua casa está assim?",[o("meses","🗓️","Alguns meses"),o("ano","📅","Mais ou menos 1 ano"),o("d25","⏳","De 2 a 5 anos"),o("m5","🪨","Mais de 5 anos. Já virou rotina.")]),
+{ name:"t14-cena-casamento", type:"q", key:"cenaCas", quoted:true, showIf:CAS,
+  title:function(){ return EX() ? "E hoje, quando você pensa no casamento que acabou, o que sai primeiro?" : "Quando você pensa no seu casamento hoje, qual frase sai primeiro?"; },
+  opts:function(){ return EX() ? [
+    o("dor","💔","Acabou, mas a dor não acabou.",{C:2}),
+    o("oro","🙏",function(){return "Ainda oro por "+ele()+", mesmo "+g("separada","separado")+".";},{C:2},function(){ return ORA()!=="NAO"; }),
+    o("perdoar","😣",function(){return "Não consigo perdoar o que "+ele()+" fez.";},{C:1}),
+    o("paz","🌱","Quero paz pra recomeçar.",{C:1})
+  ] : [
+    o("hum","😞","Não aguento mais tanta humilhação e desprezo.",{C:2}),
+    o("naofala","🤐",function(){return Ele()+" chega em casa e não fala comigo.";},{C:1}),
+    o("deito","🛏️",function(){return "Deito "+g("sozinha","sozinho")+", mesmo sendo "+g("casada","casado")+".";},{C:1}),
+    o("embora","🚪",function(){return Ele()+" foi embora e eu não aceito.";},{C:2}),
+    o("amor","🤍","Tá difícil, mas ainda tem amor aqui.",{C:1})
+  ]; } },
+Q("t15-filho","cenaFil","E quando você pensa no seu filho (ou filha), o que dói mais?",[
+  o("criei","😢","Criei na igreja e mesmo assim se desviou. Eu me culpo.",{F:2}),
+  o("medo","😨","Tenho medo do que pode acontecer com ele lá fora.",{F:2}),
+  o("ouve","🔇","Ele não me ouve mais. Qualquer conversa vira briga.",{F:1}),
+  o("bem","🛡️","Graças a Deus tá bem, mas quero cobrir antes que o mundo pegue.",{F:1})],{quoted:true, showIf:FIL}),
+{ name:"t16-como-ora", type:"q", key:"jeitoOrar", quoted:true,
+  title:function(){ return ORA()==="NAO" ? "E o que te afasta da oração hoje?" : "E quando você ora, como é?"; },
+  opts:function(){ return ORA()==="NAO" ? [
+    o("comecar","🕰️","Quero orar, mas não consigo começar.",{O:2}),
+    o("comosei",function(){return g("🤷‍♀️","🤷‍♂️");},"Não sei como orar. Falo com Deus do jeito que eu sei.",{O:2}),
+    o("cansada","🪫",function(){return "Tô "+g("cansada","cansado")+" demais. A casa não deixa.";},{O:1}),
+    o("ensinou","🤍","Nunca ninguém me ensinou.",{O:1})
+  ] : [
+    o("teto","🧱","Parece que não passa do teto."),
+    o("direcao","🧭","Oro, mas sinto que oro sem direção. Não sei como orar direito.",{O:1}),
+    o("choro","😭","Só choro. Não sei nem o que pedir."),
+    o("vontade","😶","Perdi a vontade. Parece que não tenho o que falar com Deus.",{O:2}),
+    o("parar","🕰️","Quero orar mais, mas não consigo parar pra isso.",{O:2})
+  ]; } },
+Q("t17-dinheiro","dinheiro","E o dinheiro dentro de casa?",[
+  o("apertado","🙂","Tá apertado, mas a gente se vira."),
+  o("paga","💸","Paga uma conta, aparece outra.",{D:2}),
+  o("vergonha","😳","Tenho vergonha. Ninguém sabe o tamanho do buraco.",{D:2}),
+  o("seguro","🧾",function(){return "Sou eu que seguro tudo, e tô "+g("cansada","cansado")+".";},{D:1}),
+  o("paz","🕊️","Graças a Deus, essa parte tá em paz.")],{quoted:true}),
+{ name:"t18-ja-fez", type:"multi", key:"tentou", small:true, exclusive:"nada", title:"O que você já fez pela sua casa até hoje? Marque tudo.",
+  support:"Não tem resposta errada. Tudo isso tem valor, e não saber por onde começar também é uma resposta sincera.", opts:[
+  o("campanha","📿","Campanha de oração"),o("jejum","🍞","Jejum"),o("madrugada","🌙","Madrugada de joelho"),
+  o("pedi","📲","Pedi oração pra todo mundo (vídeo, igreja, grupo)"),o("conversei","🗣️","Conversei, cobrei, dei bronca"),
+  o("chorei","🤫",function(){return "Chorei escondido e fiquei "+g("quieta","quieto");}),
+  o("tudo","🔁","Tudo isso, mais de uma vez"),o("nada",function(){return g("🤷‍♀️","🤷‍♂️");},"Ainda não fiz nada. Não sei nem por onde começar.")]},
+Q("t19-depois","depois","E depois disso, o que aconteceu?",[
+  o("melhorou","🔁","Melhorou uns dias e voltou tudo."),
+  o("nada","🧱","Nada mudou. Parece que Deus não me ouve."),
+  o("cansando","🪫","Eu é que fui cansando. Hoje nem tenho vontade.",{O:1}),
+  o("piorou","📉","Piorou.")],{quoted:true, showIf:function(){ return !NADA(); }}),
+{ name:"t20-semente", type:"insert", render:function(){
+    var armas = "<div class='fr-armas' aria-hidden='true'>🗡️🛡️🤐🙌</div>";
+    var mid = "<p class='fr-sub'>A Pra. Ezenete ensina: <b>nem toda situação pede a mesma arma. Um soldado não usa a espada pra tudo.</b></p><p class='fr-sub'>Tem situação que se resolve com a Palavra na boca. Tem situação que se resolve fechando a boca. E tem situação que só anda depois de um perdão.</p>";
+    var h;
+    if(LUTOU()){
+      var t = tentou(), itens = [];
+      var camp = t.indexOf("campanha")>-1 || t.indexOf("tudo")>-1 || V("oracao")==="campanha";
+      if(camp) itens.push("campanha");
+      if(t.indexOf("jejum")>-1 || t.indexOf("tudo")>-1) itens.push("jejum");
+      if(t.indexOf("madrugada")>-1 || t.indexOf("tudo")>-1) itens.push("madrugada de joelho");
+      h = "<h2 class='fr-h2'>Presta atenção, porque é aqui que muita "+mulherDeDeus()+" se engana.</h2>"
+        + "<p class='fr-sub'>Quem já "+joinE(lutouVerbos())+" pela própria casa sabe: o problema não foi falta de oração.</p>"
+        + "<p class='fr-sub'>É que, do jeito que quase todo mundo aprende, a gente ora do mesmo jeito pra toda situação."+(camp?" Campanha pela traição. Campanha pelo filho. Campanha pela dívida.":"")+"</p>"
+        + mid + "<p class='fr-sub'><span class='fr-hl'>Quando a gente não entende a causa, ora sem saber o que pedir. E aí cansa rápido.</span></p>";
+    } else if(ORA()==="SIM"){
+      h = "<h2 class='fr-h2'>Presta atenção nisso aqui.</h2>"
+        + "<p class='fr-sub'>Você ora "+(V("oracao")==="hora"?"todo dia, com hora e lugar":"todo dia, do seu jeito")+". Isso é precioso. Então não é falta de oração.</p>"
+        + "<p class='fr-sub'>A pergunta é outra: <b>você ora do mesmo jeito pra tudo?</b></p>"
+        + mid + "<p class='fr-sub'><span class='fr-hl'>Quando a gente não entende a causa, ora sem saber o que pedir.</span></p>";
+    } else {
+      h = "<h2 class='fr-h2'>Talvez você esteja pensando: \"o problema é que eu não oro\". Calma.</h2>"
+        + "<p class='fr-sub'>Tem uma coisa que quase ninguém ensina: cada situação tem uma causa. E cada causa pede um jeito de orar diferente.</p>"
+        + mid + "<p class='fr-sub'><span class='fr-hl'>Não é sobre orar horas. É sobre entender o que tá acontecendo e saber o que fazer pra aquela situação.</span></p>";
+    }
+    return armas + h + cta("NOSSA, FAZ SENTIDO");
+  }},
+Q("t21-area","area","Se Deus mexesse em UMA coisa na sua casa esta semana, qual seria?",[
+  o("C","💍",function(){ return EX() ? "A dor do meu casamento que acabou" : "O meu casamento"; },{C:2},CAS),
+  o("F","👧","O meu filho",{F:2},FIL),
+  o("O","🔥","A minha vida de oração",{O:2}),
+  o("D","🧾","As contas da casa",{D:2})]),
+Q("t22-filhos-sentem","filhosSentem","Os seus filhos já sentem o peso do que acontece em casa?",[
+  o("sim","💔","Sim. E isso me dói mais que tudo.",{F:1}),
+  o("esconde","🙈","Tento esconder, mas eles percebem.",{F:1}),
+  o("nao","🤲","Ainda não, e quero que nunca sintam.")],{showIf:FIL}),
+{ name:"t23-esconde", type:"q", key:"esconde", title:function(){ return "Seja "+g("sincera","sincero")+" comigo: o que você não conta pra ninguém, nem na igreja?"; }, opts:[
+  o("cas","🤐","O que acontece no meu casamento",{C:1},CAS),
+  o("fil","🤐","O que o meu filho está vivendo",{F:1},FIL),
+  o("ora","🤐","Que a minha oração não tá como eu queria",{O:1}),
+  o("div","🤐","O tamanho das dívidas",{D:1}),
+  o("cans","🪫",function(){return "Que eu tô "+g("cansada","cansado")+" de tudo";})]},
+{ name:"t24-nao-esta-so", type:"insert", render:function(){
+    var tp = ucf(TEMPO_ECO[V("tempo")]||"");
+    var h = (tp ? "<h2 class='fr-h2'>"+tp+" carregando isso é muito tempo.</h2>" : "");
+    if(LUTOU()){
+      h += "<p class='fr-sub'>E olha: você não está "+g("sozinha","sozinho")+". Uma frase que a equipe da Pra. Ezenete escuta todo dia é esta:</p>"
+        + "<p class='fr-quote'>\"Já jejuei, já fiz campanha, já subi o monte. E a situação da minha casa continua exatamente igual.\"</p>"
+        + "<p class='fr-sub'>Se você se viu aí, guarda isso: <span class='fr-hl'>o problema nunca foi a sua vontade de lutar.</span></p>";
+    } else {
+      h += "<p class='fr-sub'>E olha: você não está "+g("sozinha","sozinho")+". Tem muita "+mulherDeDeus()+" escrevendo isso agora, do jeito dela:</p>"
+        + "<p class='fr-quote'>«Minha casa está Revirada já não sei mais o que fazer»</p>"
+        + "<p class='fr-sub'>Se você se viu aí, guarda isso: <span class='fr-hl'>não saber o que fazer não quer dizer que você não tem fé. Quer dizer que ninguém te mostrou.</span></p>";
+    }
+    return h + cta("CONTINUAR");
+  }},
+Q("t25-consciencia","consciencia","Alguém já te ensinou o que fazer, na oração, pra cada tipo de situação?",[
+  o("nunca",function(){return g("🤷‍♀️","🤷‍♂️");},"Nunca ninguém me ensinou"),o("ouvi","👂","Já ouvi falar, mas não sei fazer na prática"),o("pouco","😵","Sei um pouco, mas na hora do aperto esqueço tudo")]),
+{ name:"t26-objecao", type:"q", key:"objecao", quoted:true,
+  title:function(){ return "Última pergunta antes de montar o seu resultado. Sendo bem "+g("sincera","sincero")+": o que mais te seguraria de "+(ORA()==="NAO"?"começar a orar":"começar a orar diferente")+" pela sua casa?"; },
+  opts:[
+    o("A","😔","Já orei tanto e nada mudou. Tenho medo de me frustrar de novo.",null,function(){ return ORA()==="SIM"||ORA()==="AS"||LUTOU(); }),
+    o("A2","😔","Tenho medo de começar e não dar em nada.",null,function(){ return ORA()==="NAO" && !LUTOU(); }),
+    o("B","⏰","Não tenho tempo. Minha casa não para."),
+    o("C","🧱",function(){ var quem = CAS()&&FIL() ? g("Meu marido ou meu filho","Minha esposa ou meu filho") : CAS() ? g("Meu marido","Minha esposa") : FIL() ? "Meu filho" : "O pessoal da minha casa"; return "Não adianta só eu. "+quem+" não quer mudar."; })
+  ] },
+{ name:"t27-quebra", type:"insert", render:function(){
+    var ob = V("objecao"), h = "", rel;
+    var legenda = "<p class='fr-legend'>Relato real publicado nas redes da Pra. Ezenete. É o testemunho pessoal dela e não representa promessa de resultado.</p>";
+    if(ob==="A"){
+      h = "<h2 class='fr-h2'>Sobre o medo de se frustrar de novo: <em>ele é justo. E tem explicação.</em></h2>"
+        + "<div class='fr-card'>Você não orou errado por falta de fé. "+(LUTOU()?"Você orou do mesmo jeito pra toda situação, porque foi o que te ensinaram.":"Você orou do jeito que aprendeu, sem ninguém te mostrar o que fazer em cada situação.")
+        + "<br><br>A Pra. Ezenete fala isso com franqueza de mãe: oração não é negócio, não é troca. Você não ora pra comprar um resultado. E ela mesma conta que, quando começou, cinco minutos de oração era muito pra ela.<br><br><b>O que muda não é a quantidade. É entender a causa e usar a arma certa pra aquela situação.</b></div>";
+      rel = relato("Cura e libertação de coisas que não entendia, já estava cansada de buscar, jejuar e continuar do mesmo jeito. Glória a Deus","@andrezarosolen");
+    } else if(ob==="A2"){
+      h = "<h2 class='fr-h2'>Sobre o medo de começar e não dar em nada: <em>é normal. E tem resposta.</em></h2>"
+        + "<div class='fr-card'>Ninguém começa grande. A Pra. Ezenete conta que, quando começou, cinco minutos de oração era muito pra ela.<br><br>E oração não é negócio, não é troca. Você não ora pra comprar um resultado. Você ora porque Deus é Pai e escuta.<br><br><b>O que ajuda a começar não é força de vontade. É saber o que fazer pra situação que você tá vivendo.</b></div>";
+      rel = relato("Cura e libertação de coisas que não entendia, já estava cansada de buscar, jejuar e continuar do mesmo jeito. Glória a Deus","@andrezarosolen");
+    } else if(ob==="B"){
+      var hs = {cedo:"A sua hora é cedinho, antes da casa acordar.", almoco:"A sua hora é no almoço.", noite:"A sua hora é à noite, quando a casa silencia.", sem:"A sua casa não para. Eu sei."};
+      h = "<h2 class='fr-h2'>Sobre o tempo: <em>ninguém vai te pedir três horas de joelho.</em></h2>"
+        + "<div class='fr-card'>"+(hs[V("hora")]?hs[V("hora")]+"<br><br>":"")+"O conselho da Pra. Ezenete é simples: cai da cama já de joelhos. Cinco, dez minutos, antes do celular. E durante o dia a Palavra vai com você: no ônibus, no carro, lavando louça.<br><br><b>Pequeno e fiel vale mais que grande e nunca.</b></div>";
+      rel = relato("Estou passando dias maravilhosos com VCS, é um dos como se estivessem dentro da minha casa🙌! Obrigado pastora @ezenete.rodrigues. Agradeço a Deus por fazer parte junto com vocês","@sandraregina_leao");
+    } else {
+      var quem = (CAS() ? ele() : FIL() ? "o seu filho" : "o pessoal da sua casa");
+      h = "<h2 class='fr-h2'>Sobre "+quem+" não querer mudar: <em>você tem razão. Você não controla a vontade de ninguém.</em></h2>"
+        + "<div class='fr-card'>Ninguém vira robô porque alguém orou. Deus trata com "+(CAS()?ele():"ele")+", mas não anula a vontade "+(CAS()?dele():"dele")+".<br><br>Só que interceder é exatamente isso: orar por quem não está orando por si mesmo. A sua oração não fica pendurada no comportamento "+(CAS()?dele():"dele")+". Fica firmada em Deus.<br><br><b>E tem mais: quase sempre a primeira coisa que Deus trata é o nosso coração.</b></div>";
+      rel = relato("Deus quebrou toda maldição herditaria na minha vida e de minha família,toda honra e gloria a ele","@katianascimento9902");
+    }
+    return kicker("Sobre o que te segura") + h + rel + legenda + cta("ENTENDI, QUERO VER O MEU RESULTADO");
+  }},
+{ name:"t28-sonho", type:"q", key:"sonho",
+  title:"Agora quero te ouvir sobre outra coisa. Se Deus mexesse nisso, qual seria a primeira cena que você ia ver?",
+  opts:function(){ var ar = V("area");
+    if(ar==="C" && EX()) return [o("dormir","🌱","Eu dormindo em paz, sem essa dor no peito")]; /* ex-casada: só esta cena */
+    if(ar==="C") return [o("conversa","🗨️",function(){return Ele()+" chegando em casa e conversando comigo";}),o("igreja","⛪","A gente sentado junto na igreja"),o("paz","🕊️","Paz. Sem grito, sem porta batendo")];
+    if(ar==="F") return [o("louvando","🎶","Meu filho louvando a Deus de novo"),o("abraco","🤗","Ele me abraçando e pedindo a bênção"),o("semmedo","😴","Dormir sem medo do telefone tocar de madrugada")];
+    if(ar==="D") return [o("app","📱","Abrir o aplicativo do banco sem medo"),o("nome","✅","Nome limpo"),o("deitar","😴","Deitar sem pensar em conta")];
+    return [o("acordar","☀️","Acordar com vontade de orar"),o("chorar","😭","Chorar na presença de Deus"),o("saber","🗣️","Orar sabendo o que dizer")];
+  } },
+Q("t29-sentir","sentir","E você? O que mais quer sentir de novo?",[o("paz","🕊️","Paz"),o("alegria","😊","Alegria de verdade"),o("forca","💪","Força pra continuar"),o("presenca","✨","A presença de Deus perto de mim")],{grid:true}),
+{ name:"t30-sonho-insercao", type:"insert", render:function(){
+    return "<h2 class='fr-h2'>Guarda essa cena: <em>\""+esc(L("sonho"))+"\"</em>.</h2>"
+      + "<div class='fr-card'>Não é pedir demais. É o coração de Deus pela sua casa. <b>\"Se não for o Senhor o construtor da casa, será inútil trabalhar na construção\" (Salmos 127:1).</b><br><br>A sua parte não é carregar tudo "+g("sozinha","sozinho")+". É entender o que tá acontecendo e fazer a sua parte com Deus. <span class='fr-hl'>E pra isso existe um jeito.</span></div>"
+      + cta("CONTINUAR");
+  }},
+Q("t31-compromisso","compromisso","Se você entendesse hoje o que tá acontecendo na sua casa e o que fazer, você faria, nem que fosse 10 minutos por dia?",[
+  o("sim","✅","Sim. É disso que eu preciso."),o("medo","🤲",function(){return "Sim, mas tenho medo de não conseguir "+g("sozinha","sozinho")+".";}),o("acho","🤔","Acho que sim. Quero entender melhor primeiro.")]),
+Q("t32-frase","frase","Então vamos ao ponto. Qual dessas frases parece ter sido escrita sobre a SUA vida?",[
+  o("C","💍",function(){return "Não aguento mais tanto desprezo. Eu só queria "+g("o meu marido","a minha esposa")+" de volta, de verdade, dentro de casa.";},{C:3},CASADA),
+  o("CX","💔",function(){return Ele()+" foi embora, mas a dor ficou morando aqui dentro.";},{C:3},EX),
+  o("F","👧","Eu sempre me culpo pelo meu filho. Às vezes não tenho força nem pra orar, só choro.",{F:3},FIL),
+  o("O","🔥","Eu quero orar, mas não consigo começar. Parece que não tenho o que falar com Deus.",{O:3}),
+  o("D","🧾","Paga uma conta, aparece outra. Tenho vergonha e não durmo pensando nisso.",{D:3})],{quoted:true, quote:true}),
+{ name:"t33-loading", type:"loading", dur:4200, msgs:[[0,"Olhando com calma pra sua casa..."],[35,"Entendendo o que está acontecendo na sua casa..."],[75,"Separando o que fazer pra sua situação..."]] },
+{ name:"t34-captura", type:"leadgate" },
+{ name:"t35-resultado", type:"result" },
+{ name:"t36-interesse", type:"q", key:"interesse", title:"Existe um jeito de orar pra cada situação, e ele começa exatamente pela que apareceu no seu resultado. É o que a Pra. Ezenete ensina há mais de 20 anos. Quer ver como funciona?",
+  opts:[o("ver","👉","Quero ver"),o("entender","🤔","Quero entender melhor primeiro")] },
+{ name:"t37-diferenca", type:"insert", render:function(){
+    var lut = LUTOU(), sim = ORA()==="SIM";
+    var headA = (lut||sim) ? "O jeito que te ensinaram" : "Quando ninguém te ensina";
+    var a1 = lut ? "A mesma oração pra toda situação: campanha, campanha, campanha" : sim ? "O mesmo jeito de orar pra tudo" : "Não saber nem por onde começar";
+    var colA = "<p>"+a1+"</p><p>Pedido vago: \"Senhor, abençoa a minha casa\"</p>"
+      + ((lut && V("depois")==="melhorou") ? "<p>Alívio de uns dias, e volta tudo</p>" : "")
+      + "<p>Cansaço e culpa: \"será que o problema sou eu?\"</p>";
+    var colB = "<p>1. <b>Entender o que tá acontecendo de verdade</b>, do jeito que dói (\"quando "+ele()+" me ignora e não conversa comigo\", \"quando o meu filho não quer mais saber da igreja\")</p>"
+      + "<p>2. <b>Usar a arma daquela situação</b>: a Palavra, o louvor, o silêncio, o perdão, o arrependimento, o jejum, uma atitude</p>"
+      + "<p>3. <b>Falar a Palavra em voz alta e fazer</b> Pra hoje</p>"
+      + "<p>Oração com direção, que você consegue fazer todo dia</p>";
+    return "<h2 class='fr-h2'>Olha a diferença:</h2>"
+      + "<div class='fr-cmp'><div class='col a'><span class='ico'>😩</span><b class='h'>"+headA+"</b>"+colA+"</div><div class='col b'><span class='ico'>🗡️</span><b class='h'>A Arma Certa</b>"+colB+"</div></div>"
+      + "<p class='fr-sub'>Por que nessa ordem? Porque quem não entende a causa ora sem saber o que pedir. <span class='fr-hl'>E oração sem atitude cansa.</span></p>"
+      + cta("FAZ SENTIDO, CONTINUAR");
+  }},
+{ name:"t38-quem-ensina", type:"insert", render:function(){
+    return "<span class='fr-stars'>★★★★★</span>"
+      + "<h2 class='fr-h2'>Antes de te mostrar o que fazer, <em>conhece quem ensina.</em></h2>"
+      + "<div class='fr-card'>A Pra. Ezenete Rodrigues está há mais de 20 anos à frente do Ministério de Intercessão da Estância Paraíso, em Sabará (MG). A caminhada dela está ligada à intercessão do Diante do Trono, na Igreja Batista da Lagoinha. Já formou mais de 200 mil pessoas na intercessão. É autora do livro <i>Uma Vida de Milagres</i>."
+      + (V("origem")==="agora" ? "<br><br>Aos 15 anos, os médicos mandaram a família preparar o enterro. Deus a levantou. Essa história virou livro e virou um chamado: ensinar o povo de Deus a orar pela própria casa." : "")
+      + "</div>"
+      + "<p class='fr-kicker'>Dois relatos reais</p>"
+      + relato("Eu fui grandemente abençoada, foi o sobrenatural de Deus. Pude entender a importância de ser filha. Glorioso","@maria.rgoncalves")
+      + relato("Com certeza, avançamos 1000 côvados nessas águas do Trono de Deus.....dias indeléveis!!..... gratidão ao Senhor por todos vocês","@pra.tania_almeida")
+      + "<p class='fr-legend'>Relatos reais publicados nas redes da Pra. Ezenete. São testemunhos pessoais e não representam promessa de resultado.</p>"
+      + cta("QUERO SABER O QUE FAZER");
+  }},
+Q("t39-autocrenca","autocrenca","Agora que você entendeu o que está acontecendo: você acredita que a história da sua casa pode ser diferente daqui pra frente?",[o("creio","🙌","Creio"),o("quero","🙏","Quero crer. Preciso de direção.")]),
+{ name:"t40-loading-plano", type:"loading", dur:3000, msgsFn:function(){ return [[0,"Separando o que fazer em \""+sitNome(computeScore().sit)+"\"..."],[40,"Escolhendo as situações que parecem com a sua..."],[85,"Pronto."]]; } },
+{ name:"t41-pitch", type:"pitch" }
+];
+/* ================= PONTUACAO (secao 6) ================= */
+var ORDER = ["C","F","O","D"];
+var FRASE_AREA = {C:"C", CX:"C", F:"F", O:"O", D:"D"};
+function computeScore(){
+  var sc = {C:0,F:0,O:0,D:0};
+  STEPS.forEach(function(st){
+    if(!st.key || !isVisible(st)) return;
+    var v = V(st.key); if(v==null) return;
+    (Array.isArray(v)?v:[v]).forEach(function(id){ var op = optOf(st.key,id); if(op && op.p){ Object.keys(op.p).forEach(function(k){ sc[k]+=op.p[k]; }); } });
+  });
+  if(!CAS()) sc.C = 0;   /* dignidade */
+  if(!FIL()) sc.F = 0;
+  var elig = ORDER.filter(function(a){ return (a!=="C"||CAS()) && (a!=="F"||FIL()); });
+  var fa = FRASE_AREA[V("frase")] || null;
+  var ranked = elig.slice().sort(function(x,y){
+    if(sc[y]!==sc[x]) return sc[y]-sc[x];
+    if(x===fa) return -1; if(y===fa) return 1;
+    return ORDER.indexOf(x)-ORDER.indexOf(y);
+  });
+  var main = ranked[0];
+  var second = null;
+  if(ranked[1]){ if(ge(sc[ranked[1]], 2)){ second = ranked[1]; } }
+  return { score:sc, main:main, second:second, sit:sitFor(main) };
+}
+function sitFor(area){
+  if(area==="C"){ var c=V("cenaCas"); return {hum:"C1",naofala:"C2",deito:"C15",embora:"C7",oro:"C7",amor:"C10",dor:"C14",perdoar:"C14",paz:"C14"}[c] || (EX()?"C14":"C2"); }
+  if(area==="F"){ return {criei:"F2",medo:"F7",ouve:"F8",bem:"F20"}[V("cenaFil")] || "F2"; }
+  if(area==="O"){ return {teto:"O7",direcao:"O2",choro:"O2",comosei:"O2",vontade:"O5",parar:"O12",comecar:"O1",ensinou:"O1",cansada:"O15"}[V("jeitoOrar")] || "O2"; }
+  return {paga:"D1",vergonha:"D16",seguro:"D11"}[V("dinheiro")] || "D1";
+}
+/* ================= OS 4 RESULTADOS (secao 7, doc v3: pagina de diagnostico "carta") ================= */
+var AREA_NAME = {C:"Casamento", F:"Filhos", O:"Vida de Oração", D:"Financeiro"};
+var AREA_NOME = {C:"Casamento", F:"Filhos", O:"Oração", D:"Financeiro"};
+var MATERIAL = {C:"Casamento Restaurado", F:"Filhos Restaurados", O:"Vida de Oração Restaurada", D:"Financeiro Restaurado"};
+var SUB = {C:"20 armas espirituais para as situações do seu casamento", F:"20 armas espirituais para as situações dos seus filhos", O:"20 armas espirituais para as situações da sua vida de oração", D:"20 armas espirituais para as situações do seu financeiro"};
+var BTN = {C:"QUERO AS 20 ARMAS PRO MEU CASAMENTO", F:"QUERO AS 20 ARMAS PRO MEU FILHO", O:"QUERO AS 20 ARMAS PRA MINHA VIDA DE ORAÇÃO", D:"QUERO AS 20 ARMAS PRO MEU FINANCEIRO"};
+/* Variante masculina (7.1): sozinha->sozinho, calada->calado, mae->pai, perdoada->perdoado (+ adjetivos que falam dele). Pronomes do conjuge via ele()/dele()/g(). */
+var MX_RULES = [[/sozinha/g,"sozinho"],[/calada/g,"calado"],[/perdoada/g,"perdoado"],[/ficando pequena/g,"ficando pequeno"],[/está cansada/g,"está cansado"],
+  [/Escondida,/g,"Escondido,"],[/menos filha/g,"menos filho"],[/a salvadora/g,"o salvador"],[/está cheia/g,"está cheio"],[/culpada/g,"culpado"],
+  [/quem foi ferida/g,"quem foi ferido"],[/Tem mulher que/g,"Tem homem que"],[/quem cuide dela/g,"quem cuide dele"],[/como mãe/g,"como pai"],
+  [/A reação de mãe/g,"A reação de pai"],[/muita mãe/g,"muito pai"],[/separada/g,"separado"]];
+function MX(s){ s = txt(s)||""; if(fem()) return s; MX_RULES.forEach(function(r){ s = s.replace(r[0], r[1]); }); return s; }
+function T18(id){ return tentou().indexOf(id)>-1; }
+function jovem(){ return ["a25","a33","a40"].indexOf(V("idade"))>-1; }  /* F20: ate 40 anos, sem "e netos" */
+var LINHA_AREA = {
+  C:function(sit){
+    if(sit==="C14") return "";
+    if(sit==="C7") return "<b>"+g("Ele não é o seu inimigo","Ela não é a sua inimiga")+"</b>, mesmo tendo ido embora.";
+    return "<b>"+g("O seu marido não é o seu inimigo.","A sua esposa não é a sua inimiga.")+"</b> A luta é contra o que entra pela brecha.";
+  },
+  F:function(){ return "<b>Ele responde pelas escolhas dele. Você, pela sua parte.</b>"; },
+  O:function(){ return "<b>E não é Deus que desistiu de você.</b>"; },
+  D:function(){ return "<b>Deus não te chamou pra barganhar. Chamou pra trazer tudo pra luz, com Ele.</b>"; }
+};
+function AREA2_TXT(a){ return {C:(EX()?"a dor do casamento que acabou":"o seu casamento"), F:"o seu filho", O:"a sua vida de oração", D:"as contas da casa"}[a]; }
+function sitTitulo(id){ var s = SITS[id]; return s ? txt(s.t) : ""; }
+function sitNome(id){ var s = SITS[id]; return s ? txt(s.nome) : ""; }
+/* t = título "Quando…" (capítulo do PDF). nome = {NOME_SITUACAO}. frase = uma linha. */
+var SITS = {
+  C1:{
+    t:function(){ return "Quando "+ele()+" me feriu com palavras"; },
+    nome:"Palavras que ainda doem",
+    frase:function(){ return Ele()+" falou uma vez, e a frase fica tocando na sua cabeça até parecer verdade sobre você."; },
+    sinais:[
+      {i:"bubble", t:"O tom de desprezo dói mais que a palavra"},
+      {i:"refresh", t:"A frase volta na louça, na hora de deitar"},
+      {i:"user", t:"Você vai ficando pequena dentro de casa"}
+    ],
+    virada:function(){ return "A ferida não fica no dia em que "+ele()+" falou. De tanto voltar, ela vira verdade sobre você. É por ela que o inimigo entra."; },
+    tentou:["Devolver na mesma moeda","Engolir calada"],
+    chave:"Os dois deixam a ferida aberta.",
+    arma:"Entregar a ferida e guardar a boca",
+    princ:"Levar a dor pra Deus antes que ela vire raiz.",
+    passo:[
+      function(){ return "Escreva a frase que mais te feriu, do jeito que "+ele()+" falou."; },
+      'Leia pra Deus: "Isso doeu. Essa frase não vai morar em mim."',
+      "Rasgue o papel."
+    ],
+    voz:"O que foi dito contra mim não define quem eu sou.",
+    acao:"tear"
+  },
+  C2:{
+    t:function(){ return "Quando "+ele()+" me ignora e não conversa comigo"; },
+    nome:"O muro do silêncio",
+    frase:function(){ return Ele()+" chega, dá um \"oi\" quando dá, e você fica medindo cada palavra dentro da própria casa."; },
+    sinais:[
+      {i:"door", t:function(){ return Ele()+" chega e mal fala"; }},
+      {i:"bubble", t:'Você puxa assunto, volta um "hum"'},
+      {i:"home", t:"Dois estranhos dividindo o teto"}
+    ],
+    virada:"O silêncio quase nunca é só contra você. Mas, do lado de cá, ele vira muro. E o inimigo não precisa de briga pra separar uma casa. O muro basta.",
+    tentou:["Cobrar conversa","Indireta, falar mais alto"],
+    chave:"Porta fechada por dentro não abre no grito.",
+    arma:"O silêncio diante de Deus, e a paciência",
+    princ:function(){ return "Falar com Deus sobre "+ele()+" antes de falar com "+ele()+"."; },
+    passo:[
+      "Hoje, não cobre nada.",
+      function(){ return "Faça um gesto em silêncio: um café do jeito "+dele()+', um bilhete "estou orando por você".'; },
+      function(){ return horaTxt()+', 5 minutos diante de Deus. Diga só: "Senhor, estou aqui."'; }
+    ],
+    voz:function(){ return "Deus fala com "+ele()+" onde a minha voz não chega."; },
+    acao:"coffee"
+  },
+  C15:{
+    t:function(){ return "Quando eu me sinto "+g("sozinha","sozinho")+" dentro do casamento"; },
+    nome:function(){ return g("Sozinha do lado ","Sozinho do lado ")+dele(); },
+    frase:function(){ return Ele()+" dorme do seu lado, e mesmo assim você deita "+g("sozinha","sozinho")+", e ainda tem vergonha de sentir isso."; },
+    sinais:[
+      {i:"bed", t:"Tem alguém do lado, parece que não tem ninguém"},
+      {i:"shh", t:function(){ return 'Você engole, porque "'+g("tem marido","tem esposa")+'"'; }},
+      {i:"box", t:"Resolve tudo, carrega tudo"}
+    ],
+    virada:"Solidão no casamento dói mais, porque vem com vergonha. E coração vazio por muito tempo começa a mendigar amor, e a endurecer.",
+    tentou:[function(){ return "Esperar "+ele()+" perceber"; },"Se fechar também"],
+    chave:function(){ return "Ninguém enche um vazio que não foi feito pra "+ele()+" encher."; },
+    arma:"A intimidade com Deus",
+    princ:"Quem está cheia de Deus para de mendigar amor e passa a oferecer.",
+    passoIntro:function(){ return horaTxt()+", de porta fechada:"; },
+    passo:[
+      "Agradeça por uma coisa.",
+      "Conte pra Deus como você se sente, sem enfeitar.",
+      "Um louvor e 5 minutos de silêncio. Só depois peça."
+    ],
+    voz:"Deus me vê. Eu não sou invisível pra Ele.",
+    acao:"music"
+  },
+  C7:{
+    t:function(){ return "Quando "+ele()+" saiu de casa"; },
+    nome:function(){ return "O vazio que "+ele()+" deixou"; },
+    frase:function(){
+      if(EX()) return "Acabou no papel, mas aí dentro não acabou, e você ainda ora por "+ele()+".";
+      return Ele()+" foi embora, a casa ficou grande demais, e aí dentro você ainda não aceita que acabou.";
+    },
+    sinais:[
+      {i:"door", t:function(){ return "O lado "+dele()+" ficou vazio"; }},
+      {i:"moon", t:"A casa ficou grande demais"},
+      {i:"phone", t:"A vontade de correr atrás"}
+    ],
+    virada:function(){ return "A batalha não está na porta de casa. Está na mente "+dele()+". E ali ninguém entra no grito. Entra de joelhos."; },
+    tentou:["Mensagem, cobrança","Implorar"],
+    chave:function(){ return "Você não controla a vontade "+dele()+". E nem precisa."; },
+    arma:function(){ return "Ficar na brecha pela mente "+dele(); },
+    princ:function(){ return "Orar pela mente "+dele()+" e por quem está ao redor, com a Palavra, sem implorar."; },
+    passo:[
+      function(){ return "Escolha um horário fixo pra orar por "+ele()+" e marque no celular."; },
+      function(){ return "Hoje, nesse horário, leia 2 Coríntios 10:4-5 com o nome "+dele()+"."; }
+    ],
+    voz:"Deus vai aonde eu não posso ir.",
+    acao:"clock"
+  },
+  C10:{
+    t:"Quando o nosso casamento esfriou",
+    nome:"Casamento no piloto automático",
+    frase:"Ainda tem amor, mas a conversa virou conta, lista de mercado e cansaço.",
+    sinais:[
+      {i:"list", t:"Conversa só de conta e mercado"},
+      {i:"eyeoff", t:"Olhar nos olhos, faz tempo"},
+      {i:"cloud", t:"Dois cansados na mesma casa"}
+    ],
+    virada:"Frieza não faz barulho, então ninguém corre pra apagar. Casamento frio não acaba numa explosão. Acaba no silêncio da rotina.",
+    tentou:[function(){ return "Esperar a vontade voltar"; }, function(){ return "Esperar "+ele()+" tomar a iniciativa"; }],
+    chave:"Fogo não volta esperando. Volta quando alguém coloca lenha.",
+    arma:"Voltar ao primeiro amor, com atitude",
+    princ:"Gesto primeiro, o sentimento vem atrás (Apocalipse 2).",
+    passo:[
+      function(){ return 'Faça uma "primeira obra": um bilhete no bolso '+dele()+', um café a dois ou uma foto antiga com "lembra disso?".'; },
+      function(){ return horaTxt()+", entregue o seu casamento a Deus com as suas palavras."; }
+    ],
+    voz:"O Espírito Santo sopra sobre as brasas do meu casamento.",
+    acao:"heart"
+  },
+  C14:{
+    t:"Quando eu não consigo perdoar",
+    nome:"Mágoa que não passa",
+    frase:"Acabou, mas a dor volta numa foto, num nome, numa pergunta, e não te deixa virar a página.",
+    sinais:[
+      {i:"camera", t:"A dor volta numa foto, num nome"},
+      {i:"flame", t:"Parece que foi ontem"},
+      {i:"book", t:"A página não vira"}
+    ],
+    virada:"A mágoa não prende quem feriu. Prende quem foi ferida. Uma parte de você ficou lá, no dia da dor.",
+    tentou:['Dizer "eu perdoo" e esperar sentir',"Tentar esquecer"],
+    chave:"Te ensinaram o perdão como sentimento. E sentimento não obedece.",
+    arma:"O perdão como decisão",
+    princ:"Não é dizer que não doeu, nem voltar a confiar. É entregar a Deus o direito de julgar.",
+    passo:[
+      function(){ return "Escreva o que "+ele()+" fez, sem filtro."; },
+      'Leia cada item: "Eu perdoo ___ por isso. Entrego a Ti o direito de julgar."',
+      "Rasgue e anote a data de hoje."
+    ],
+    voz:"Eu entrego a Deus o direito de julgar. Eu estou livre.",
+    acao:"pen"
+  },
+  F2:{
+    t:"Quando eu criei no caminho, e mesmo assim ele se desviou",
+    nome:function(){ return g("A culpa de mãe","A culpa de pai"); },
+    frase:'Você levou pela mão pra igreja, e agora a pergunta não sai da cabeça: "onde foi que eu errei?".',
+    sinais:[
+      {i:"church", t:"Criou na igreja, e ele foi pra outro caminho"},
+      {i:"help", t:'"Onde foi que eu errei?"'},
+      {i:"refresh", t:"A cabeça volta em cada bronca, cada ausência"}
+    ],
+    virada:"Essa culpa parece humildade, mas é uma arma apontada pra você. Quem passa o dia se acusando não tem força pra orar pelo filho.",
+    tentou:["Conversar, aconselhar, cobrar","Chorar escondido"],
+    chave:"Tudo feito debaixo de culpa sai pesado. E ele sente.",
+    arma:"Deixar Deus tirar a culpa das suas costas",
+    princ:"Onde houve erro, tem perdão. Condenação, não.",
+    passo:[
+      "Escreva tudo de que você se acusa como mãe.",
+      'Onde errou, peça perdão. Onde não, diga: "isso eu não aceito".',
+      "Rasgue e cole no lugar Romanos 8:1."
+    ],
+    voz:"Eu não carrego a culpa das escolhas do meu filho.",
+    acao:"tear"
+  },
+  F7:{
+    t:"Quando o meu filho anda com más companhias",
+    nome:"O medo de cada saída",
+    frase:"Ele sai, o seu coração vai junto, e cada mensagem sem resposta já vira o pior na sua cabeça.",
+    sinais:[
+      {i:"door", t:"Ele sai e o coração vai junto"},
+      {i:"phone", t:"Mensagem sem resposta, e a cabeça imagina o pior"},
+      {i:"clock", t:"Cada demora pesa"}
+    ],
+    virada:"O medo empurra pra dois extremos: vigiar tudo ou se calar. Os dois abrem distância. E filho longe por dentro fica mais perto do que tem lá fora.",
+    tentou:["Sermão","Proibir, desconfiar"],
+    chave:"Sermão afasta. Presença aproxima.",
+    arma:"Orar por onde ele anda e chegar perto em casa",
+    princ:"Uma mão na oração, onde você não entra. A outra trazendo ele pra perto.",
+    passo:[
+      "Chame ele pra um lanche, só vocês dois, sem cobrança.",
+      "Pergunte o nome de um amigo de quem ele gosta.",
+      function(){ return horaTxt()+", ore por esse amigo pelo nome."; }
+    ],
+    voz:"O Senhor guarda a saída e a chegada do meu filho.",
+    acao:"coffee"
+  },
+  F8:{
+    t:"Quando o meu filho é rebelde e me enfrenta",
+    nome:"Queda de braço em casa",
+    frase:"Qualquer conversa vira briga, e tem dia que você não reconhece o filho que carregou no colo.",
+    sinais:[
+      {i:"flame", t:"Qualquer conversa vira briga"},
+      {i:"ear", t:"Você fala, ele não ouve"},
+      {i:"heart", t:"Nem parece o filho que você carregou no colo"}
+    ],
+    virada:"A briga já não é sobre o assunto. É sobre quem ganha. E autoridade que precisa gritar já está perdendo a guerra.",
+    tentou:["Falar mais alto","Repetir o sermão"],
+    chave:"Pra filho que não quer ouvir, a arma quase nunca é falar mais.",
+    arma:"Autoridade com mansidão, e a estratégia de Deus",
+    princ:"Cada filho tem um jeito. A estratégia vem de Deus, não do grito.",
+    passo:[
+      "Faça uma coisa com ele sem corrigir nada: nem roupa, nem quarto, nem jeito de falar.",
+      function(){ return horaTxt()+", peça a Deus uma estratégia pra esse filho e anote o que vier."; }
+    ],
+    voz:"A minha autoridade não precisa de grito pra ser autoridade.",
+    acao:"pen"
+  },
+  F20:{
+    t:function(){ return jovem() ? "Quando vamos consagrar os nossos filhos" : "Quando vamos consagrar os nossos filhos e netos"; },
+    nome:"Filho bem, coração inquieto",
+    frase:"Graças a Deus ele tá bem, mas você vê o que o mundo faz com tanto filho e quer cobrir o seu antes que aperte.",
+    sinais:[
+      {i:"hands", t:"Graças a Deus, ele está bem"},
+      {i:"globe", t:"Você vê o que o mundo faz com tanto filho"},
+      {i:"shield", t:"E quer cobrir antes que aperte"}
+    ],
+    virada:"O alvo do inimigo não é só a casa de hoje. É a geração. E a hora de cobrir é quando está tudo bem.",
+    tentou:["Orar forte só quando a crise chega"],
+    chave:"Aí é correr atrás. Você tem a chance de fazer o contrário.",
+    arma:"A bênção falada sobre ele",
+    princ:"Dizer em voz alta que o seu filho é herança de Deus.",
+    passo:[
+      "Abençoe o seu filho com Números 6:24-26, usando o nome dele.",
+      'Se der, com a mão sobre ele. Se ele estiver longe, sobre uma foto, e mande "orei por você hoje".'
+    ],
+    voz:"Os meus filhos são herança do Senhor.",
+    acao:"hands"
+  },
+  O7:{
+    t:"Quando eu oro e parece que Deus não me ouve",
+    nome:"Oração que bate no teto",
+    frase:"Você pede a mesma coisa há tanto tempo que já dá medo de perguntar se Deus ainda escuta.",
+    sinais:[
+      {i:"refresh", t:"O mesmo pedido, de novo e de novo"},
+      {i:"wall", t:"Parece que bate no teto e volta"},
+      {i:"help", t:'"Será que Deus parou de me ouvir?"'}
+    ],
+    virada:"O perigo não é a demora. É o que a demora faz com você. O inimigo não impede Deus de ouvir. Então tenta convencer você a parar.",
+    tentou:["Orar mais alto, mais tempo","Pedir pra mais gente orar"],
+    chave:"Não falta volume. Falta saber o que fazer enquanto a resposta não chega.",
+    arma:"Perseverar no tempo de Deus",
+    princ:"Daniel foi ouvido no primeiro dia, e só viu a resposta 21 dias depois (Daniel 10:12).",
+    passo:[
+      "Liste os pedidos antigos, com a data em que cada um começou.",
+      'Ao lado de cada um: "Deus ouviu desde o primeiro dia".',
+      "Leia Daniel 10:12 em voz alta."
+    ],
+    voz:"A demora não é silêncio de Deus. É o tempo de Deus.",
+    acao:"list"
+  },
+  O2:{
+    t:"Quando eu não sei o que falar com Deus",
+    nome:"Sem palavras diante de Deus",
+    frase:"Você chega pra orar, não sabe o que dizer, e fica achando que a sua oração é pobre.",
+    sinais:[
+      {i:"refresh", t:"As mesmas frases de sempre"},
+      {i:"cloud", t:"Às vezes só sai choro"},
+      {i:"bubble", t:"Perto da irmã que ora bonito, a sua parece pouca"}
+    ],
+    virada:'Isso não é problema de fé. É vergonha de orar "feio". E essa vergonha vai afastando você de Deus, um pouquinho por dia.',
+    tentou:["Se esforçar pra falar mais","Vídeo de como orar"],
+    chave:"Não falta esforço. Faltam palavras. E Deus já te deu as Dele.",
+    arma:"Orar a Palavra",
+    princ:"Quando faltam palavras, você usa as de Deus. Os Salmos foram escritos pra isso.",
+    passo:[
+      function(){ return horaTxt()+", leia o Salmo 23 devagar, em voz alta."; },
+      "Depois de cada versículo, diga uma frase sua pra Deus.",
+      "Anote o versículo que mais falou com você."
+    ],
+    voz:"Quando me faltam palavras, eu oro a Palavra.",
+    acao:"book"
+  },
+  O5:{
+    t:"Quando eu perdi a vontade de orar",
+    nome:"A vontade de orar sumiu",
+    frase:"Você sabe que precisa, mas a vontade foi embora, e isso dá medo.",
+    sinais:[
+      {i:"flame", t:"A vontade foi embora"},
+      {i:"help", t:"Parece que não tem o que falar com Deus"},
+      {i:"alert", t:"E dá medo, porque você sabe que precisa"}
+    ],
+    virada:"A fé não esfriou. O que tem é distância. E distância dá pra voltar. O perigo é esperar a vontade voltar sozinha.",
+    tentou:["Esperar a vontade voltar","Se forçar e se culpar"],
+    chave:"As duas coisas cansam.",
+    arma:"Decidir antes de sentir",
+    princ:"O salmista mandava a própria alma esperar em Deus (Salmos 42:11).",
+    passo:[
+      function(){ return horaTxt()+', diga em voz alta: "Eu não tenho vontade, mas estou aqui."'; },
+      "Coloque um louvor de que você gosta e cante junto, do começo ao fim."
+    ],
+    voz:"Minha alma, espere em Deus. Eu ainda vou louvá-Lo.",
+    acao:"music"
+  },
+  O12:{
+    t:"Quando a rotina não me deixa tempo para Deus",
+    nome:"Deus sempre pra depois",
+    frase:"Você quer orar, de verdade, mas o dia engole tudo e fica aquela sensação de estar devendo pra Deus.",
+    sinais:[
+      {i:"clock", t:"O dia engole tudo"},
+      {i:"list", t:'"Quando a vida acalmar, eu oro"'},
+      {i:"cloud", t:"Aquela sensação de estar devendo pra Deus"}
+    ],
+    virada:"A fase ideal não chega. E cada dia esperando a hora certa, a culpa cresce e a oração diminui.",
+    tentou:["Prometer uma hora inteira de oração"],
+    chave:"Não cabe no dia. Você não cumpre, se sente mal e desiste de novo.",
+    arma:"Um lugar fixo pra Deus na rotina de verdade",
+    princ:"Pequeno e fixo, no meio das tarefas.",
+    passo:[
+      "Escolha uma âncora do seu dia: o café, o banho, o ônibus.",
+      'Escreva: "Este é o meu horário com Deus".',
+      "Amanhã, nessa âncora, 5 minutos. Só 5."
+    ],
+    voz:"A minha vida com Deus não espera a fase ideal.",
+    acao:"coffee"
+  },
+  O1:{
+    t:"Quando eu quero orar, mas não consigo começar",
+    nome:"Travada na hora de começar",
+    frase:'Você quer orar, mas não sabe por onde começar, e o "daqui a pouco eu oro" vira amanhã.',
+    sinais:[
+      {i:"heart", t:"A vontade existe"},
+      {i:"clock", t:'"Daqui a pouco eu oro"… e o daqui a pouco não chega'},
+      {i:"help", t:"Parece que todo mundo sabe orar, menos você"}
+    ],
+    virada:"Não é falta de fé. É o tamanho que a oração ganhou na sua cabeça. Uma hora de joelho nunca cabe no dia, então nunca começa.",
+    tentou:["Esperar o momento certo",'"Amanhã vai ser diferente"'],
+    chave:"O momento certo não aparece sozinho.",
+    arma:"Começar pequeno, antes de tudo",
+    princ:"Pequeno e fiel vale mais que grande e nunca.",
+    passo:[
+      "Hoje à noite, ponha a Bíblia em cima do celular.",
+      'Amanhã, antes de pegar o celular: "Senhor, hoje eu começo contigo."',
+      "Sete dias seguidos. Se falhar um, continue no outro."
+    ],
+    voz:"O meu tempo com Deus começa agora, não depois.",
+    acao:"phone"
+  },
+  O15:{
+    t:"Quando a crise da minha casa está roubando a minha oração",
+    nome:"Cansada demais pra orar",
+    frase:"A casa aperta tanto que, quando chega a hora de orar, não sobra força nem pra pedir.",
+    sinais:[
+      {i:"battery", t:"Sem força nem pra orar"},
+      {i:"home", t:"A casa aperta por todo lado"},
+      {i:"clipboard", t:"A oração virou mais um peso na lista"}
+    ],
+    virada:"Parece que tudo depende de você. Não depende. Você não é a salvadora da sua casa. Jesus é.",
+    tentou:["Buscar mais força pra orar mais"],
+    chave:"Ninguém sai do cansaço colocando mais peso nas costas.",
+    arma:"Entregar o peso e deixar outros orarem com você",
+    princ:"A sua parte agora não é fazer mais. É entregar.",
+    passo:[
+      function(){ return horaTxt()+', diga a Deus: "Senhor, as minhas forças acabaram."'; },
+      "Mande mensagem pra 2 ou 3 pessoas de confiança pedindo oração nesta semana."
+    ],
+    voz:"Eu não carrego este fardo sozinha.",
+    acao:"phone"
+  },
+  D1:{
+    t:"Quando as dívidas tiram a minha paz",
+    nome:"Dívida tirando a paz",
+    frase:"O dinheiro virou um peso que não sai da cabeça, nem na hora de deitar.",
+    sinais:[
+      {i:"brain", t:"Não sai da cabeça"},
+      {i:"eyeoff", t:"Dá vontade de nem olhar"},
+      {i:"moon", t:"A paz vai embora junto"}
+    ],
+    virada:"O medo cresce no escuro. Dívida sem tamanho parece impagável. E quanto menos você olha, maior ela fica por dentro.",
+    tentou:["Pedir um milagre e torcer","Trabalhar mais e não olhar"],
+    chave:"O que foge da luz continua crescendo.",
+    arma:"Trazer tudo pra luz e entregar a ansiedade",
+    princ:"Levar tudo a Deus em oração, com gratidão (Filipenses 4:6-7).",
+    passo:[
+      function(){ return horaTxt()+', escreva no alto de uma folha: "Senhor, eu olho para isso contigo."'; },
+      "Comece a lista: pra quem, quanto, quantas parcelas. Mesmo que não termine hoje."
+    ],
+    voz:"Eu não fujo mais. Eu trago tudo pra luz, diante de Deus.",
+    acao:"pen"
+  },
+  D16:{
+    t:"Quando eu tenho vergonha de dever e de pedir ajuda",
+    nome:"Vergonha de estar devendo",
+    frase:"Ninguém sabe o tamanho do buraco, e a vergonha pesa quase mais que a dívida.",
+    sinais:[
+      {i:"shh", t:"Ninguém sabe o tamanho do buraco"},
+      {i:"alert", t:"A vergonha pesa mais que a dívida"},
+      {i:"hands", t:"Pedir ajuda, nem pensar"}
+    ],
+    virada:"A vergonha manda a gente se esconder, como no jardim. Mas estar devendo não te faz menos filha.",
+    tentou:["Resolver sozinha, em segredo"],
+    chave:"O segredo é justamente o que dá força pra vergonha.",
+    arma:"Receber a graça e sair do esconderijo",
+    princ:"Deus foi atrás de Adão e Eva. Em Cristo não há condenação.",
+    passo:[
+      "Diga a Deus do que você tem vergonha, pelo nome.",
+      'Mande pra alguém maduro na fé: "Estou num aperto e preciso de oração. Posso conversar com você?"'
+    ],
+    voz:"Em Cristo Jesus não há condenação pra mim.",
+    acao:"bubble"
+  },
+  D11:{
+    t:function(){ return "Quando sou eu que seguro a casa "+g("sozinha","sozinho"); },
+    nome:"A casa inteira nas costas",
+    frase:"Tudo passa por você, conta, compra, problema, e ninguém pergunta quem cuida de você.",
+    sinais:[
+      {i:"box", t:"Tudo passa por você"},
+      {i:"cloud", t:"O cansaço não é só do corpo"},
+      {i:"hands", t:"Quem cuida de todo mundo não tem quem cuide dela"}
+    ],
+    virada:'É carregar sozinha o que não foi feito pra uma pessoa só. Até Moisés ouviu: "assim você vai se esgotar".',
+    tentou:["Aguentar mais um pouco","Dormir menos, não reclamar"],
+    chave:"Força tem limite.",
+    arma:"Entregar o peso a Deus e aceitar ajuda",
+    princ:"Parar de carregar sozinha o que é de Deus carregar (Mateus 11:28).",
+    passo:[
+      function(){ return horaTxt()+", liste o que está nas suas costas."; },
+      "Entregue a Deus, item por item, o que só Ele resolve.",
+      "Peça ajuda hoje em uma tarefa. Uma só."
+    ],
+    voz:"Eu não preciso carregar tudo sozinha.",
+    acao:"hands"
+  }
+};
+function blocoOracao(){
+  if(LUTOU()){
+    var extra = {melhorou:"Por isso alivia uns dias e volta.", nada:"Deus ouve. A arma é que era outra.", cansando:"Não era pra carregar desse jeito.", piorou:"Por isso piorou em vez de melhorar."}[V("depois")] || "";
+    return {ico:"hand", html:"<b>Não foi falta de fé.</b> Você lutou com a arma que te ensinaram. Essa situação pede outra."+(extra?" <i>"+extra+"</i>":"")};
+  }
+  if(ORA()==="SIM") return {ico:"key", html:"<b>E não é falta de oração.</b> É tentar abrir todas as portas da casa com uma chave só."};
+  return {ico:"sprout", html:"<b>Oração difícil não quer dizer que a fé acabou.</b> Ninguém te mostrou o que fazer. Dá pra começar hoje."};
+}
+function cuidado(r){
+  var l = V("lutas")||[];
+  if(r.main==="C"){ if(r.sit==="C1" || l.indexOf("c_desprezo")!==-1) return "Se existe agressão, ameaça ou medo em casa, a sua segurança vem primeiro: <b>180</b> (24h, grátis) ou <b>190</b>. Orar e se proteger andam juntos."; }
+  if(r.main==="F"){ if(l.indexOf("f_vicio")!==-1 || V("cenaFil")==="medo") return "Vício, depressão ou risco? Oração e ajuda profissional andam juntas: CAPS, médico, psicólogo. Em crise, <b>CVV 188</b>."; }
+  if(r.main==="O"){ if(l.indexOf("o_longe")!==-1){ if(l.indexOf("o_vontade")!==-1) return "Tristeza que não passa ou crise de ansiedade? Procure também um médico ou psicólogo. Em crise, <b>CVV 188</b>."; } }
+  if(r.main==="D") return "Perdendo o sono a ponto de pensar em desistir? <b>CVV 188</b>, hoje. E buscar orientação financeira é sabedoria.";
+  return "";
+}
+/* ================= RENDER ================= */
+var SYM = {"casamento": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M58.19 89.23 A24 24 0 1 1 64.49 84.43 M61.81 46.77 A24 24 0 1 1 55.51 51.57 M55.41 86.70 A20.5 20.5 0 1 1 61.33 82.66 M64.59 49.30 A20.5 20.5 0 1 1 58.67 53.34\"/><path d=\"M60 23 Q60 28 65 28 Q60 28 60 33 Q60 28 55 28 Q60 28 60 23Z\" stroke-width=\"1.1\"/><path d=\"M60 15v4M48 21l2 2.5M72 21l-2 2.5\" stroke-width=\"1.1\"/></svg>", "filhos": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 78V46a18 18 0 0 1 36 0v32\"/><path d=\"M42 78V46.5L32 51v31l10-4\" /><path d=\"M48 78V48a12 12 0 0 1 24 0v30\" stroke-width=\"1\" opacity=\".55\"/><path d=\"M60 40v6M53 43l2 4M67 43l-2 4\" stroke-width=\"1\" opacity=\".7\"/><path d=\"M30 78h60\"/><path d=\"M22 110c14-4 26-10 28-18s2-10 4-14\" /><path d=\"M50 110c8-4 14-10 14-18s0-10 2-14\" /><path d=\"M42 102h3M52 92h2\" stroke-width=\"1\" opacity=\".55\"/></svg>", "constancia": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M30 80c0 10 12 16 30 16s26-4 34-12l10-6c2-1 1-3-1-3H86c-8-3-18-4-26-4s-22 2-30 9z\"/><path d=\"M48 74c4 2 20 2 24 0\"/><path d=\"M31 78c-8-2-10 8-2 11\"/><path d=\"M44 96l-2 6h36l-2-6\"/><path d=\"M103 72c-6-6-6-14 0-24 6 10 6 18 0 24z\"/><path d=\"M103 68c-2.5-3-2.5-7 0-11 2.5 4 2.5 8 0 11z\" stroke-width=\"1\"/><path d=\"M103 40v-5M92 46l-3-3M114 46l3-3\" stroke-width=\"1\" opacity=\".7\"/></svg>", "financeiro": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 120\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M60 112 Q60.0 67.0 60 22\"/><path d=\"M60.0 56.2 Q59.3 52.5 56.3 50.3 Q55.9 54.6 60.0 56.2\" stroke-width=\"1.1\"/><path d=\"M60.0 56.2 Q60.7 52.5 63.7 50.3 Q64.1 54.6 60.0 56.2\" stroke-width=\"1.1\"/><path d=\"M60.0 50.3 Q59.3 46.6 56.3 44.4 Q55.9 48.8 60.0 50.3\" stroke-width=\"1.1\"/><path d=\"M60.0 50.3 Q60.7 46.6 63.7 44.4 Q64.1 48.8 60.0 50.3\" stroke-width=\"1.1\"/><path d=\"M60.0 44.5 Q59.3 40.8 56.3 38.6 Q55.9 42.9 60.0 44.5\" stroke-width=\"1.1\"/><path d=\"M60.0 44.5 Q60.7 40.8 63.7 38.6 Q64.1 42.9 60.0 44.5\" stroke-width=\"1.1\"/><path d=\"M60.0 38.7 Q59.3 34.9 56.3 32.7 Q55.9 37.1 60.0 38.7\" stroke-width=\"1.1\"/><path d=\"M60.0 38.7 Q60.7 34.9 63.7 32.7 Q64.1 37.1 60.0 38.7\" stroke-width=\"1.1\"/><path d=\"M60.0 32.8 Q59.3 29.1 56.3 26.9 Q55.9 31.2 60.0 32.8\" stroke-width=\"1.1\"/><path d=\"M60.0 32.8 Q60.7 29.1 63.7 26.9 Q64.1 31.2 60.0 32.8\" stroke-width=\"1.1\"/><path d=\"M60.0 26.9 Q59.3 23.2 56.3 21.0 Q55.9 25.4 60.0 26.9\" stroke-width=\"1.1\"/><path d=\"M60.0 26.9 Q60.7 23.2 63.7 21.0 Q64.1 25.4 60.0 26.9\" stroke-width=\"1.1\"/><path d=\"M60 22 l0.0 -8\" stroke-width=\"1\"/><path d=\"M58 112 Q53.0 71.0 36 30\"/><path d=\"M47.2 61.2 Q45.5 57.8 41.9 56.6 Q42.8 60.8 47.2 61.2\" stroke-width=\"1.1\"/><path d=\"M47.2 61.2 Q46.7 57.4 49.0 54.4 Q50.6 58.5 47.2 61.2\" stroke-width=\"1.1\"/><path d=\"M45.5 55.8 Q43.7 52.5 40.2 51.3 Q41.2 55.6 45.5 55.8\" stroke-width=\"1.1\"/><path d=\"M45.5 55.8 Q45.0 52.1 47.2 49.0 Q48.9 53.1 45.5 55.8\" stroke-width=\"1.1\"/><path d=\"M43.8 50.5 Q41.9 47.2 38.3 46.1 Q39.4 50.3 43.8 50.5\" stroke-width=\"1.1\"/><path d=\"M43.8 50.5 Q43.2 46.8 45.3 43.7 Q47.1 47.7 43.8 50.5\" stroke-width=\"1.1\"/><path d=\"M41.9 45.2 Q40.0 41.9 36.4 40.8 Q37.5 45.1 41.9 45.2\" stroke-width=\"1.1\"/><path d=\"M41.9 45.2 Q41.2 41.5 43.4 38.3 Q45.2 42.3 41.9 45.2\" stroke-width=\"1.1\"/><path d=\"M39.9 39.8 Q38.0 36.6 34.3 35.6 Q35.5 39.8 39.9 39.8\" stroke-width=\"1.1\"/><path d=\"M39.9 39.8 Q39.2 36.1 41.3 33.0 Q43.1 36.9 39.9 39.8\" stroke-width=\"1.1\"/><path d=\"M37.8 34.5 Q35.8 31.3 32.2 30.4 Q33.5 34.5 37.8 34.5\" stroke-width=\"1.1\"/><path d=\"M37.8 34.5 Q37.1 30.8 39.1 27.6 Q41.0 31.5 37.8 34.5\" stroke-width=\"1.1\"/><path d=\"M36 30 l-1.4 -8\" stroke-width=\"1\"/><path d=\"M62 112 Q67.0 71.0 84 30\"/><path d=\"M72.8 61.2 Q73.3 57.4 71.0 54.4 Q69.4 58.5 72.8 61.2\" stroke-width=\"1.1\"/><path d=\"M72.8 61.2 Q74.5 57.8 78.1 56.6 Q77.2 60.8 72.8 61.2\" stroke-width=\"1.1\"/><path d=\"M74.5 55.8 Q75.0 52.1 72.8 49.0 Q71.1 53.1 74.5 55.8\" stroke-width=\"1.1\"/><path d=\"M74.5 55.8 Q76.3 52.5 79.8 51.3 Q78.8 55.6 74.5 55.8\" stroke-width=\"1.1\"/><path d=\"M76.2 50.5 Q76.8 46.8 74.7 43.7 Q72.9 47.7 76.2 50.5\" stroke-width=\"1.1\"/><path d=\"M76.2 50.5 Q78.1 47.2 81.7 46.1 Q80.6 50.3 76.2 50.5\" stroke-width=\"1.1\"/><path d=\"M78.1 45.2 Q78.8 41.5 76.6 38.3 Q74.8 42.3 78.1 45.2\" stroke-width=\"1.1\"/><path d=\"M78.1 45.2 Q80.0 41.9 83.6 40.8 Q82.5 45.1 78.1 45.2\" stroke-width=\"1.1\"/><path d=\"M80.1 39.8 Q80.8 36.1 78.7 33.0 Q76.9 36.9 80.1 39.8\" stroke-width=\"1.1\"/><path d=\"M80.1 39.8 Q82.0 36.6 85.7 35.6 Q84.5 39.8 80.1 39.8\" stroke-width=\"1.1\"/><path d=\"M82.2 34.5 Q82.9 30.8 80.9 27.6 Q79.0 31.5 82.2 34.5\" stroke-width=\"1.1\"/><path d=\"M82.2 34.5 Q84.2 31.3 87.8 30.4 Q86.5 34.5 82.2 34.5\" stroke-width=\"1.1\"/><path d=\"M84 30 l1.4 -8\" stroke-width=\"1\"/><path d=\"M50 88c6 4 14 4 20 0M50 92c6 4 14 4 20 0\"/></svg>"};
+var SYM_OF = {C:"casamento", F:"filhos", O:"constancia", D:"financeiro"};
+var stage, fill, backBtn;
+function kicker(t){ return "<p class='fr-kicker'>"+t+"</p>"; }
+function cta(t, id){ return "<button class='fr-cta' id='"+(id||"fr-next")+"'>"+t+"</button>"; }
+function relato(q, who){ return "<div class='fr-relato'><p>«"+q+"»</p><span>"+who+"</span></div>"; }
+/* Defesa wp-emoji (padrao seguro do Raizes: neutraliza a funcao, SEM MutationObserver proprio) */
+function neutralizarWpEmoji(){
+  try{ var t = window.twemoji; if(t && typeof t.parse === "function" && !t.__frOff){ t.__frOff = 1; t.parse = function(n){ return n; }; } return !!(t && t.__frOff); }catch(e){ return false; }
+}
+function restaurarEmojiNativo(node){
+  if(!node) return;
+  try{ var imgs = node.querySelectorAll("img.emoji, img.wp-smiley, img[src*='s.w.org/images/core/emoji']");
+    var i = imgs.length; while(i!==0){ i = i-1; var img = imgs[i]; var t = img.getAttribute("alt"); if(t && img.parentNode){ img.parentNode.replaceChild(document.createTextNode(t), img); } } }catch(e){}
+}
+function visibleSteps(){ return STEPS.filter(isVisible); }
+function cur(){ var vs = visibleSteps(); var n = S.history.length ? S.history[S.history.length-1] : vs[0].name;
+  for(var i=0;i<vs.length;i++){ if(vs[i].name===n) return {st:vs[i], i:i, vs:vs}; }
+  /* a tela salva deixou de valer (ex.: mudou uma resposta): volta pra ultima valida do historico */
+  while(S.history.length>1){ S.history.pop(); n=S.history[S.history.length-1]; for(var j=0;j<vs.length;j++){ if(vs[j].name===n) return {st:vs[j], i:j, vs:vs}; } }
+  S.history=[vs[0].name]; return {st:vs[0], i:0, vs:vs};
+}
+function next(){
+  var c = cur(); var vs = visibleSteps(); var idx = -1;
+  for(var i=0;i<vs.length;i++){ if(vs[i].name===c.st.name){ idx=i; break; } }
+  var nx = vs[Math.min(idx+1, vs.length-1)];
+  S.history.push(nx.name); persist(); render();
+  track("step_"+nx.name, {step_index:idx+1});
+}
+function back(){ if(S.history.length > 1){ S.history.pop(); persist(); render(); } }
+function render(){
+  var c = cur(), st = c.st;
+  backBtn.classList.toggle("show", c.i > 0 && ["result","pitch","loading","leadgate"].indexOf(st.type)<0);
+  fill.style.transform = "scaleX(" + (c.i/(c.vs.length-1)) + ")";
+  root.setAttribute("data-step", st.name);
+  stage.innerHTML = "";
+  var el = document.createElement("div"); stage.appendChild(el);
+  window.scrollTo(0,0);
+  if(st.type === "open"){ renderOpen(el); }
+  else if(st.type === "q"){ renderQ(el, st); }
+  else if(st.type === "multi"){ renderMulti(el, st); }
+  else if(st.type === "insert"){ el.innerHTML = st.render(); bindNext(el); }
+  else if(st.type === "loading"){ renderLoading(el, st); }
+  else if(st.type === "leadgate"){ renderLeadGate(el); }
+  else if(st.type === "result"){ renderResult(el); }
+  else if(st.type === "pitch"){ renderPitch(el); }
+  restaurarEmojiNativo(el);
+}
+function bindNext(el){ var b = el.querySelector("#fr-next"); if(b){ b.addEventListener("click", next); } }
+function renderOpen(el){
+  el.innerHTML = "<span class='fr-badge'>Teste gratuito · O que está acontecendo na minha casa? · 5 minutos</span>"
+    + "<h1 class='fr-h1'>A sua casa tá pesada e você já não sabe mais <em>o que fazer?</em></h1>"
+    + "<p class='fr-sub'>O casamento. Um filho. A oração. As contas. Quando uma coisa aperta, parece que tudo aperta junto.</p>"
+    + "<p class='fr-sub' style='margin-bottom:14px'>Responda e entenda por que isso tá acontecendo na sua casa e o que fazer, na oração, pra essa situação. <span class='fr-hl'>Cada situação tem uma causa e pede uma arma espiritual diferente. No final, você vê qual é a da sua.</span></p>"
+    + "<p class='fr-arrow'>↓ Responda para começar ↓</p>"
+    + "<h2 class='fr-h2' style='margin:6px 0 12px'>Pra começar, você é:</h2>"
+    + "<div class='fr-gender'>"
+    + "<button class='fr-gcard' data-v='Mulher'><span class='big'>👩</span>Mulher</button>"
+    + "<button class='fr-gcard' data-v='Homem'><span class='big'>👨</span>Homem</button>"
+    + "</div>"
+    + "<p class='fr-authority'>Com base no ensino da Pra. Ezenete Rodrigues, há mais de 20 anos à frente do Ministério de Intercessão da Estância Paraíso, em Sabará (MG).</p>";
+  el.querySelectorAll(".fr-gcard").forEach(function(b){
+    b.addEventListener("click", function(){ A.sexo = b.getAttribute("data-v"); persist(); track("start", {sexo:A.sexo}); setTimeout(next, 120); });
+  });
+}
+function optBtn(st, op, sel){
+  var t = txt(op.t); var e = txt(op.e);
+  return "<button class='fr-opt"+(st.quote?" quote":"")+(sel?" sel":"")+"' data-id='"+op.id+"'>"+(e?"<span class='fr-emoji'>"+e+"</span>":"")+"<span>"+(st.quoted?"\""+t+"\"":t)+"</span></button>";
+}
+function renderQ(el, st){
+  var opts = stepOpts(st);
+  var h = "<h2 class='fr-h2'>"+txt(st.title)+"</h2>" + (st.support?"<p class='fr-support'>"+st.support+"</p>":"")
+    + "<div class='fr-opts"+(st.grid?" grid":"")+(st.small?" small":"")+"'>";
+  opts.forEach(function(op){ h += optBtn(st, op, false); });
+  el.innerHTML = h + "</div>";
+  el.querySelectorAll(".fr-opt").forEach(function(b){
+    b.addEventListener("click", function(){ A[st.key] = b.getAttribute("data-id"); persist(); b.classList.add("sel"); setTimeout(next, 140); });
+  });
+}
+function renderMulti(el, st){
+  var opts = stepOpts(st), ids = opts.map(function(x){ return x.id; });
+  var chosen = (A[st.key]||[]).filter(function(x){ return ids.indexOf(x)>-1; });
+  var h = "<h2 class='fr-h2'>"+txt(st.title)+"</h2>" + (st.support?"<p class='fr-support'>"+st.support+"</p>":"")
+    + "<div class='fr-opts"+(st.grid?" grid":"")+(st.small?" small":"")+"'>";
+  opts.forEach(function(op){ h += optBtn(st, op, false); });
+  el.innerHTML = h + "</div>" + cta("CONTINUAR");
+  var btn = el.querySelector("#fr-next");
+  function sync(){ btn.disabled = chosen.length === 0; el.querySelectorAll(".fr-opt").forEach(function(b){ b.classList.toggle("sel", chosen.indexOf(b.getAttribute("data-id")) > -1); }); }
+  el.querySelectorAll(".fr-opt").forEach(function(b){
+    b.addEventListener("click", function(){
+      var v = b.getAttribute("data-id"), p = chosen.indexOf(v);
+      if(p > -1){ chosen.splice(p,1); }
+      else if(st.exclusive && v===st.exclusive){ chosen = [v]; }
+      else { if(st.exclusive){ var ex = chosen.indexOf(st.exclusive); if(ex>-1) chosen.splice(ex,1); } chosen.push(v); }
+      A[st.key] = chosen.slice(); persist(); sync();
+    });
+  });
+  btn.addEventListener("click", function(){ if(chosen.length){ next(); } });
+  sync();
+}
+function renderLoading(el, st){
+  var msgs = st.msgsFn ? st.msgsFn() : st.msgs;
+  el.innerHTML = "<div class='fr-loading'><p class='fr-loadpct' id='fr-pct'>0%</p><div class='fr-loadbar'><div id='fr-lb' style='transform:scaleX(0)'></div></div><p class='fr-loadtxt' id='fr-lt'></p></div>";
+  var t = el.querySelector("#fr-lt"), pct = el.querySelector("#fr-pct"), bar = el.querySelector("#fr-lb");
+  var p = 0, dur = st.dur||4000, step = 60, name = st.name;
+  t.textContent = msgs[0][1];
+  var iv = setInterval(function(){
+    if(root.getAttribute("data-step")!==name){ clearInterval(iv); return; }
+    p += 100/(dur/step);
+    if(ge(p, 100)){ p = 100; clearInterval(iv); setTimeout(function(){ if(root.getAttribute("data-step")===name) next(); }, 350); }
+    pct.textContent = Math.round(p)+"%"; bar.style.transform = "scaleX(" + (p/100) + ")";
+    var m = msgs[0][1]; msgs.forEach(function(x){ if(ge(p, x[0])) m = x[1]; }); t.textContent = m;
+  }, step);
+}
+function lcf(s){ s=String(s||"").replace(/\.$/,""); return /^Deus/.test(s) ? s : s.charAt(0).toLowerCase()+s.slice(1); }
+function respostasLegiveis(){
+  var o = {sexo:A.sexo||""};
+  STEPS.forEach(function(st){ if(!st.key) return; var v=V(st.key); if(v==null) return; o[st.key] = Array.isArray(v) ? Ls(st.key) : L(st.key); });
+  return o;
+}
+function renderLeadGate(el){
+  el.innerHTML = "<p class='fr-rootemoji'>🏠</p>"
+    + "<h2 class='fr-h2'>Pronto. Já dá pra ver o que está acontecendo na sua casa, <em>e o que fazer.</em></h2>"
+    + "<p class='fr-sub'>O resultado abre aqui na tela, agora. Só me diz quem é você.</p>"
+    + "<input class='fr-input' id='fr-nome' type='text' placeholder='Primeiro nome' autocomplete='given-name'>"
+    + "<input class='fr-input' id='fr-zap' type='tel' inputmode='tel' placeholder='WhatsApp (com DDD)' autocomplete='tel'>"
+    + "<input class='fr-input' id='fr-email' type='email' inputmode='email' placeholder='E-mail' autocomplete='email'>"
+    + "<label class='fr-optin'><input type='checkbox' id='fr-optin'><span>Aceito receber mensagens da equipe da Pra. Ezenete no WhatsApp e no e-mail.</span></label>"
+    + cta("VER O QUE ESTÁ ACONTECENDO NA MINHA CASA")
+    + "<p class='fr-note'>🔒 Seus dados ficam com a equipe da Pra. Ezenete Rodrigues. Sem spam. Pra sair, é só responder SAIR no WhatsApp.</p>";
+  el.querySelector("#fr-next").addEventListener("click", function(){
+    var nome = el.querySelector("#fr-nome"), zap = el.querySelector("#fr-zap"), email = el.querySelector("#fr-email");
+    var ok = true; [nome, zap, email].forEach(function(f){ f.classList.remove("err"); });
+    if(!nome.value.trim()){ nome.classList.add("err"); ok = false; }
+    var digits = zap.value.replace(/\D/g,""); if(digits.length < 10){ zap.classList.add("err"); ok = false; }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())){ email.classList.add("err"); ok = false; }
+    if(!ok) return;
+    S.lead = { nome:nome.value.trim().split(/\s+/)[0], nome_completo:nome.value.trim(), whatsapp:digits, email:email.value.trim(), optin:el.querySelector("#fr-optin").checked };
+    persist();
+    var r = computeScore();
+    /* Mapa de campos = integracao/README-leads-planilha.md (Theo), colunas A-T da planilha "Leads Quiz Família Restaurada" */
+    var payload = {
+      nome:S.lead.nome_completo, whatsapp:S.lead.whatsapp, email:S.lead.email,
+      resultado:AREA_NOME[r.main], segunda_area:r.second?AREA_NOME[r.second]:"",
+      situacao:sitTitulo(r.sit), oracao:L("oracao")||"", objecao:L("objecao")||"", tempo:L("tempo")||"",
+      aceite:!!S.lead.optin,
+      utms:leadUtms(),
+      score:r.score, respostas:respostasLegiveis(),
+      ts:new Date().toISOString(), fonte:CFG.fonte,
+      /* extras (ignorados pelas colunas, úteis no payload_json) */
+      situacao_id:r.sit, checkout:CFG.checkout[r.main]
+    };
+    try{
+      if(CFG.leadWebhookUrl){ fetch(CFG.leadWebhookUrl, {method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain"}, body:JSON.stringify(payload), keepalive:true}); }
+    }catch(e){}
+    track("lead", {area:r.main, area2:r.second||"", situacao:r.sit});
+    next();
+  });
+}
+function tx(v){ return MX(txt(v)); }
+function imgCode(id){ if(id==="D1") return "$1"; if(id==="D16") return "$16"; if(id==="D11") return "$11"; return id; }
+function cfgImg(key){ var m = CFG.images || {}; return m[key] || ""; }
+var ICONS = {
+  door:"<path d='M5 21V5a1 1 0 0 1 1-1h12v18'/><path d='M3 21h18'/><circle cx='15' cy='12' r='.8' fill='currentColor'/>",
+  bubble:"<path d='M5 16.5A7 7 0 1 1 12 20H6l-2 2z'/>",
+  home:"<path d='M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z'/>",
+  bed:"<path d='M3 18V11a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7'/><path d='M3 14h18M3 18h18'/><path d='M7 9V7h5'/>",
+  clock:"<circle cx='12' cy='12' r='8'/><path d='M12 8v4l3 2'/>",
+  phone:"<rect x='7' y='3' width='10' height='18' rx='2'/><path d='M11 18h2'/>",
+  camera:"<path d='M4 8h3l2-2h6l2 2h3v11H4z'/><circle cx='12' cy='13' r='3'/>",
+  flame:"<path d='M12 3s5 4 5 8a5 5 0 0 1-10 0c0-2 1.2-3.2 2.2-4.2 0 2 1.2 2.8 2.2 2.8C11.4 7 12 5 12 3z'/>",
+  book:"<path d='M5 4.5h11a2 2 0 0 1 2 2V20H7a2 2 0 0 0-2 2z'/><path d='M5 4.5v16'/>",
+  church:"<path d='M12 3v3M10 6h4'/><path d='M6 21V11l6-4 6 4v10'/><path d='M10 21v-4h4v4'/>",
+  help:"<circle cx='12' cy='12' r='8'/><path d='M9.5 9.5a2.5 2.5 0 1 1 3.2 2.4c-.7.4-1.2.9-1.2 1.8'/><path d='M12 17h.01'/>",
+  shield:"<path d='M12 3 5 6v6c0 4 2.8 6.4 7 8 4.2-1.6 7-4 7-8V6z'/>",
+  globe:"<circle cx='12' cy='12' r='8'/><path d='M3 12h18'/><path d='M12 4c2.5 2.4 2.5 13.6 0 16-2.5-2.4-2.5-13.6 0-16z'/>",
+  wall:"<path d='M4 5h16v14H4z'/><path d='M4 9.5h16M4 14h16M8 5v4.5M12 9.5V14M16 14v5'/>",
+  battery:"<rect x='2' y='7' width='18' height='10' rx='2'/><path d='M22 10v4M6 12h.01'/>",
+  clipboard:"<rect x='6' y='4' width='12' height='16' rx='2'/><path d='M9 4.5h6V7H9zM9 11h6M9 15h4'/>",
+  brain:"<path d='M9 7a3 3 0 0 0-3 3 2.5 2.5 0 0 0 0 5A3 3 0 0 0 9 18h1V7z'/><path d='M15 7a3 3 0 0 1 3 3 2.5 2.5 0 0 1 0 5 3 3 0 0 1-3 3h-1V7z'/><path d='M12 7v11'/>",
+  eyeoff:"<path d='M4 4l16 16'/><path d='M9.5 6.3A9 9 0 0 1 12 6c5 0 8 6 8 6a16 16 0 0 1-2.4 3'/><path d='M6 6.8C4.2 8.2 3 10 3 12s4 6 9 6c1.2 0 2.3-.3 3.3-.7'/>",
+  shh:"<path d='M9 10a3 3 0 1 1 6 0v3H9z'/><path d='M12 16v2M9.5 18h5'/>",
+  box:"<path d='M3 8l9-4 9 4-9 4z'/><path d='M3 8v8l9 4 9-4V8'/><path d='M12 12v8'/>",
+  hands:"<path d='M8 12V6.5a1.4 1.4 0 0 1 2.8 0V12'/><path d='M10.8 11V5.2a1.4 1.4 0 0 1 2.8 0V12'/><path d='M13.6 11V8a1.4 1.4 0 0 1 2.8 0v6.2c0 3-1.8 5-4.8 5H9.2A3.6 3.6 0 0 1 5.6 15v-2.2a1.4 1.4 0 0 1 2.8 0'/>",
+  key:"<circle cx='8' cy='14' r='3'/><path d='M10.8 14H20l-1.6 1.8L20 17.6'/>",
+  sprout:"<path d='M12 21V11'/><path d='M12 11c0-4 3-6 7-6-1 4-3 6-7 6z'/><path d='M12 14c0-3-2.4-5-6-5 1 3 2.8 5 6 5z'/>",
+  sword:"<path d='M14.5 4 20 9.5'/><path d='M13 6l5 5-7.5 7.5H6V14z'/><path d='M4 20l4-4'/>",
+  lock:"<rect x='5' y='11' width='14' height='9' rx='2'/><path d='M8 11V8a4 4 0 0 1 8 0v3'/>",
+  check:"<path d='M5 12.5 9.5 17 19 7'/>",
+  cloud:"<path d='M7 18h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.6 1.6A3.5 3.5 0 0 0 7 18z'/>",
+  pin:"<path d='M12 17v4'/><path d='M8 8l2-4h4l2 4v5l-2 2h-4l-2-2z'/>",
+  mail:"<rect x='3' y='5' width='18' height='14' rx='2'/><path d='M4 7l8 6 8-6'/>",
+  card:"<rect x='3' y='6' width='18' height='12' rx='2'/><path d='M3 10h18'/>",
+  coffee:"<path d='M5 8h10v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z'/><path d='M15 9h2a2 2 0 0 1 0 4h-2'/><path d='M8 20h6'/>",
+  heart:"<path d='M12 19s-6.5-4-6.5-8A3.5 3.5 0 0 1 12 8a3.5 3.5 0 0 1 6.5 3c0 4-6.5 8-6.5 8z'/>",
+  music:"<path d='M9 17.5a2.4 2.4 0 1 1-1.6-2.3V6l9-2v8'/><circle cx='16.4' cy='14.2' r='2.1'/>",
+  list:"<path d='M9 7h11M9 12h11M9 17h11'/><path d='M4 7h.01M4 12h.01M4 17h.01'/>",
+  pen:"<path d='M4 20l3.2-.8L18.5 8l-2.8-2.8L4.4 16.5z'/><path d='M13.2 6.6l2.8 2.8'/>",
+  search:"<circle cx='11' cy='11' r='6'/><path d='M20 20l-3.5-3.5'/>",
+  megaphone:"<path d='M4 10v4l9 3.5V6.5z'/><path d='M13 9.5a3 3 0 0 1 0 5'/><path d='M7 14.2V17a2 2 0 0 0 2 2'/>",
+  refresh:"<path d='M20 12a8 8 0 1 1-2-5.3'/><path d='M20 4v5h-5'/>",
+  moon:"<path d='M20 14.5A7.5 7.5 0 1 1 9.5 4 6 6 0 0 0 20 14.5z'/>",
+  hand:"<path d='M8 11V6.2a1.3 1.3 0 0 1 2.6 0V11'/><path d='M10.6 10V5a1.3 1.3 0 0 1 2.6 0v6'/><path d='M13.2 10.5V7.2a1.3 1.3 0 0 1 2.6 0V14c0 3.2-1.7 5.5-5 5.5H9A3.5 3.5 0 0 1 5.5 16v-3.2a1.3 1.3 0 0 1 2.6 0'/>",
+  alert:"<path d='M12 4 21 20H3z'/><path d='M12 10v4M12 17h.01'/>",
+  sun:"<circle cx='12' cy='12' r='3.5'/><path d='M12 3.5v2M12 18.5v2M3.5 12h2M18.5 12h2M6 6l1.4 1.4M16.6 16.6 18 18M18 6l-1.4 1.4M7.4 16.6 6 18'/>",
+  compass:"<circle cx='12' cy='12' r='8'/><path d='m14.8 9.2-1.6 4.2-4.2 1.6 1.6-4.2z'/>",
+  user:"<circle cx='12' cy='8' r='3'/><path d='M6 19c1.2-2.6 3-4 6-4s4.8 1.4 6 4'/>",
+  ear:"<path d='M7 10a5 5 0 0 1 10 0c0 3-2 3.5-2 6'/><path d='M10 16.5a2.5 2.5 0 0 0 2.5 2.5'/>",
+  tear:"<path d='M7 4h8l3 3v11a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z'/><path d='M15 4v3h3M8 14c1.5 1 2 2 4 1.2'/>",
+  cycle:"<path d='M4 12a8 8 0 0 1 13-6l1.5-1.5'/><path d='M16 3h4v4'/><path d='M20 12a8 8 0 0 1-13 6l-1.5 1.5'/><path d='M8 21H4v-4'/>",
+  pix:"<path fill='currentColor' stroke='none' d='M12 3.2 14.6 5.8 12 8.4 9.4 5.8z'/><path fill='currentColor' stroke='none' d='M18.2 9.4 20.8 12 18.2 14.6 15.6 12z'/><path fill='currentColor' stroke='none' d='M12 15.6 14.6 18.2 12 20.8 9.4 18.2z'/><path fill='currentColor' stroke='none' d='M5.8 9.4 8.4 12 5.8 14.6 3.2 12z'/>"
+};
+function ico(name, px){
+  var p = ICONS[name] || ICONS.check;
+  var s = px || 22;
+  return "<svg class='fr-ico' viewBox='0 0 24 24' width='"+s+"' height='"+s+"' style='width:"+s+"px !important;height:"+s+"px !important;min-width:"+s+"px;min-height:"+s+"px;max-width:none;flex:none;display:block;overflow:visible' fill='none' stroke='currentColor' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>"+p+"</svg>";
+}
+function icoCirc(name){ return "<span class='fr-icirc'>"+ico(name, 20)+"</span>"; }
+function dropNode(n){ if(n){ if(n.parentNode) n.parentNode.removeChild(n); } }
+function bindMedia(scope){
+  var imgs = scope.querySelectorAll("img.fr-fall, img.fr-symimg");
+  Array.prototype.forEach.call(imgs, function(img){
+    img.addEventListener("error", function(){
+      var fb = img.getAttribute("data-fb");
+      if(fb){ img.removeAttribute("data-fb"); img.src = fb; return; }
+      var mode = img.getAttribute("data-drop") || "box";
+      if(mode==="sym"){
+        var area = img.getAttribute("data-area");
+        var host = img.parentNode;
+        if(host){ if(SYM[SYM_OF[area]]) host.innerHTML = SYM[SYM_OF[area]]; }
+        return;
+      }
+      if(mode==="img"){ dropNode(img); return; }
+      if(mode==="desk"){
+        var desk = img.parentNode;
+        while(desk){ if(desk.classList){ if(desk.classList.contains("fr-desk")) break; } desk = desk.parentNode; }
+        dropNode(desk);
+        return;
+      }
+      dropNode(img.parentNode);
+    });
+  });
+}
+function symHtml(area, px){
+  var key = {C:"simbolo_C", F:"simbolo_F", O:"simbolo_O", D:"simbolo_D"}[area];
+  var url = cfgImg(key);
+  var wh = px || 56;
+  var inline = SYM[SYM_OF[area]] || "";
+  if(!url) return "<span class='fr-sym' style='width:"+wh+"px;height:"+wh+"px'>"+inline+"</span>";
+  return "<span class='fr-sym' style='width:"+wh+"px;height:"+wh+"px'><img class='fr-symimg' data-drop='sym' data-area='"+area+"' alt='' width='"+wh+"' height='"+wh+"' src='"+esc(url)+"'></span>";
+}
+function areaMark(area, px){
+  var name = {C:"heart", F:"sprout", O:"hands", D:"sun"}[area] || "check";
+  var s = px || 28;
+  var inner = Math.round(s * 0.62);
+  return "<span class='fr-icirc' style='width:"+s+"px;height:"+s+"px;min-width:"+s+"px;flex:0 0 "+s+"px'>"+ico(name, inner)+"</span>";
+}
+function sceneHtml(sitId){
+  var primary = cfgImg(imgCode(sitId));
+  var areaCh = sitId.charAt(0)==="D" ? "$" : sitId.charAt(0);
+  var fb = cfgImg("area_"+areaCh);
+  if(!primary) primary = fb;
+  if(!primary) return "";
+  var extra = "";
+  if(fb){ if(fb!==primary) extra = " data-fb='"+esc(fb)+"'"; }
+  return "<div class='fr-ar'><img class='fr-fall' loading='lazy' alt='' src='"+esc(primary)+"'"+extra+"></div>";
+}
+function imgTag(url, alt, drop){
+  if(!url) return "";
+  return "<img class='fr-fall' loading='lazy' alt='"+esc(alt||"")+"' data-drop='"+(drop||"box")+"' src='"+esc(url)+"'>";
+}
+var IRMAS = {
+  C:["Palavras que ainda doem","O muro do silêncio","Casamento no piloto automático","Desconfiança que não dorme","Mágoa que não passa"],
+  F:["A culpa de mãe","Filho se afastando da fé","Queda de braço em casa","O medo de cada saída"],
+  O:["Travada na hora de começar","Sem palavras diante de Deus","Cansada demais pra orar","Orando sozinha pela casa"],
+  D:["Dívida tirando a paz","Nome sujo, telefone tocando","A casa inteira nas costas","Vergonha de estar devendo"]
+};
+function chipFlex(s){
+  if(!fem()) return s.replace(/sozinha/g,"sozinho").replace(/Sozinha/g,"Sozinho").replace(/mãe/g,"pai");
+  return s;
+}
+function tresIrmas(area, nome){
+  var pool = (IRMAS[area]||[]).map(chipFlex).filter(function(x){ return x!==nome; });
+  return pool.slice(0, 3);
+}
+function poolOferta(area){
+  if(area==="C"){
+    if(EX()) return ["O vazio que "+ele()+" deixou","Divórcio batendo na porta","Mágoa que não passa"];
+    return ["Palavras que ainda doem","O muro do silêncio","Casamento no piloto automático","Desconfiança que não dorme"];
+  }
+  if(area==="F") return ["Filho se afastando da fé", chipFlex("A culpa de mãe"), "Filho preso no vício", "Queda de braço em casa"];
+  if(area==="O") return ["Travada na hora de começar","Sem palavras diante de Deus","Cansada demais pra orar", chipFlex("Orando sozinha pela casa")];
+  return IRMAS.D.slice();
+}
+function quatroChips(area, nome){
+  var pool = poolOferta(area).filter(function(x){ return x!==nome; });
+  var out = [nome];
+  pool.forEach(function(x){ if(out.length!==4) out.push(x); });
+  return out;
+}
+function reageCurta(){
+  if(LUTOU()){
+    var t = tentou(), r = [];
+    if(t.indexOf("tudo")!==-1 || t.indexOf("campanha")!==-1 || V("oracao")==="campanha") r.push("campanha");
+    if(t.indexOf("tudo")!==-1 || t.indexOf("jejum")!==-1) r.push("jejum");
+    if(t.indexOf("tudo")!==-1 || t.indexOf("madrugada")!==-1) r.push("madrugada");
+    if(!r.length) r.push("campanha");
+    return r.join(", ");
+  }
+  if(ORA()==="SIM") return "Você ora";
+  return "Cobra, chora escondido, espera";
+}
+function voltaCurta(){
+  if(!LUTOU()) return "E continua igual";
+  var d = V("depois");
+  if(d==="melhorou") return "Alivia uns dias";
+  if(d==="nada") return "Nada muda";
+  if(d==="cansando") return "Você cansa";
+  if(d==="piorou") return "Piora";
+  return "E continua igual";
+}
+function watchOnce(node, fn){
+  if(!node) return;
+  if(!("IntersectionObserver" in window)){ fn(); return; }
+  var io = new IntersectionObserver(function(ents){
+    ents.forEach(function(en){ if(en.isIntersecting){ fn(); io.disconnect(); } });
+  }, {threshold:0.01});
+  io.observe(node);
+}
+function fadeIn(root){
+  var box = root.querySelector(".fr-dx, .fr-pitch");
+  if(!box) return;
+  var secs = root.querySelectorAll(".fr-blk");
+  if(!("IntersectionObserver" in window)) return;
+  box.classList.add("fr-anim");
+  var io = new IntersectionObserver(function(ents){
+    ents.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, {rootMargin:"0px 0px -8% 0px", threshold:0.01});
+  Array.prototype.forEach.call(secs, function(x, i){ if(i===0) x.classList.add("in"); else io.observe(x); });
+}
+function renderResult(el){
+  var r = computeScore(), s = SITS[r.sit];
+  var nome = esc(S.lead.nome||""), sitN = tx(s.nome), quando = txt(s.t);
+  var hora = horaTxt(), al = blocoOracao(), care = cuidado(r), linha = LINHA_AREA[r.main](r.sit);
+  var lead = (nome ? nome+", o" : "O")+" que você está vivendo tem nome:";
+  var sinais = s.sinais.map(function(x){ return "<li>"+icoCirc(x.i)+"<span>"+esc(tx(x.t))+"</span></li>"; }).join("");
+  var chips = s.tentou.map(function(x){ return "<span class='fr-chipx'>"+esc(tx(x))+"</span>"; }).join("<span class='fr-dotsep'>·</span>");
+  var intro = s.passoIntro ? "<p class='fr-passo-intro'>"+esc(tx(s.passoIntro))+"</p>" : "";
+  var passos = s.passo.map(function(x, i){ return "<li><span class='fr-n'>"+(i+1)+"</span><span>"+esc(tx(x))+"</span></li>"; }).join("");
+  var irm = tresIrmas(r.main, sitN).map(function(x){ return "<span class='fr-blur'>"+esc(x)+"</span>"; }).join("");
+  var front = "";
+  if(r.second){
+    front = "<section class='fr-blk fr-dx-sec'><p class='fr-front'>"+areaMark(r.second, 28)+"<span><b>Também pesa aí: "+AREA2_TXT(r.second)+".</b> Quando tudo aperta junto, não é coincidência.</span></p></section>";
+  }
+  el.innerHTML = "<div class='fr-folha fr-dx'>"
+    + "<section class='fr-blk fr-dx-top'>"
+    + symHtml(r.main, 56)
+    + "<p class='fr-selo'>O QUE ESTÁ ACONTECENDO NA SUA CASA</p>"
+    + "<p class='fr-dx-lead'>"+lead+"</p>"
+    + "<h1 class='fr-dx-sit'><span class='q'>“</span>"+esc(sitN)+"<span class='q'>”</span></h1>"
+    + "<p class='fr-frase'>"+esc(tx(s.frase))+"</p>"
+    + sceneHtml(r.sit)
+    + "<hr class='fr-dx-rule'></section>"
+    + "<section class='fr-blk fr-dx-sec'>"
+    + "<p class='fr-dx-label'>POR DENTRO</p>"
+    + "<p class='fr-reco'>Você se reconhece aqui?</p>"
+    + "<ul class='fr-sinais'>"+sinais+"</ul>"
+    + "<p class='fr-virada'>"+esc(tx(s.virada))+"</p>"
+    + (linha ? "<p class='fr-linha'>"+linha+"</p>" : "")
+    + "<hr class='fr-dx-rule'></section>"
+    + "<section class='fr-blk fr-dx-sec'>"
+    + "<p class='fr-dx-label'>POR QUE AINDA NÃO MUDOU</p>"
+    + "<div class='fr-tentou'>"+chips+"<span class='fr-seta' aria-hidden='true'>"+ico("refresh", 18)+"</span><p class='fr-chave'>"+esc(tx(s.chave))+"</p></div>"
+    + "<div class='fr-dx-alivio'>"+icoCirc(al.ico)+"<div>"+al.html+"</div></div>"
+    + "<hr class='fr-dx-rule'></section>"
+    + "<section class='fr-blk fr-dx-sec'><div class='fr-arma-card' id='fr-arma-card'>"
+    + "<p class='fr-arma-kicker'>"+ico("sword", 18)+" A ARMA PRA ESSA SITUAÇÃO</p>"
+    + "<h2 class='fr-arma-nome'>"+esc(tx(s.arma))+"</h2>"
+    + "<p class='fr-arma-princ'>"+esc(tx(s.princ))+"</p>"
+    + "<div class='fr-bilhete'><span class='fr-tape' aria-hidden='true'></span>"
+    + "<div class='fr-bilhete-top'><div><p class='fr-passo-kicker'>O PRIMEIRO PASSO · "+esc(hora)+"</p></div>"+ "<span class='fr-acao'>"+ico(s.acao||"check", 64)+"</span></div>"
+    + intro
+    + "<ol class='fr-passos'>"+passos+"</ol>"
+    + "<p class='fr-voz-kicker'>"+ico("bubble", 16)+" PRA FALAR EM VOZ ALTA</p>"
+    + "<p class='fr-voz'>“"+esc(tx(s.voz))+"”</p>"
+    + "<button type='button' class='fr-printbtn' id='fr-print'>"+ico("pin", 16)+" Tire um print pra não esquecer</button>"
+    + "</div></div>"
+    + (care ? "<div class='fr-care'>"+ico("phone", 18)+"<span>"+care+"</span></div>" : "")
+    + "</section>"
+    + front
+    + "<section class='fr-blk fr-dx-sec fr-dx-end'>"
+    + "<h2 class='fr-dx-endtitle'>Isso é só o primeiro passo.</h2>"
+    + "<ol class='fr-trilha' id='fr-trilha'>"
+    + "<li class='on'><span class='dot'>"+ico("check", 16)+"</span><div><b>O primeiro passo pra “"+esc(sitN)+"”</b><i>já é seu</i></div></li>"
+    + "<li><span class='dot'>"+ico("lock", 16)+"</span><div>A oração pronta</div></li>"
+    + "<li><span class='dot'>"+ico("lock", 16)+"</span><div>Os versículos pra declarar</div></li>"
+    + "<li><span class='dot'>"+ico("lock", 16)+"</span><div>O passo a passo completo</div></li>"
+    + "<li><span class='dot'>"+ico("lock", 16)+"</span><div>As situações que costumam vir junto:<span class='fr-blurs'>"+irm+"</span></div></li>"
+    + "</ol>"
+    + "<p class='fr-dx-p fr-center'>A Pra. Ezenete organizou o caminho inteiro, situação por situação.</p>"
+    + cta("QUERO VER O CAMINHO COMPLETO")
+    + "<p class='fr-guarda'>Guarda o seu primeiro passo. Ele já é seu.</p>"
+    + "</section></div>";
+  var btn = el.querySelector("#fr-next");
+  btn.addEventListener("click", function(){ track("clique_caminho_completo", {area:r.main, situacao:r.sit}); });
+  var pr = el.querySelector("#fr-print");
+  if(pr) pr.addEventListener("click", function(){ track("clique_print", {area:r.main, situacao:r.sit}); });
+  bindNext(el);
+  bindMedia(el);
+  track("resultado_visto", {area:r.main, situacao:r.sit});
+  fadeIn(el);
+  var armaSent = false, passoSent = false;
+  watchOnce(el.querySelector("#fr-arma-card"), function(){ if(armaSent) return; armaSent = true; track("arma_vista", {area:r.main, situacao:r.sit}); });
+  watchOnce(el.querySelector("#fr-trilha"), function(){ if(passoSent) return; passoSent = true; track("primeiro_passo_visto", {area:r.main, situacao:r.sit}); });
+  void quando;
+}
+function nomePronome(area){
+  if(area==="C") return dele();
+  if(area==="F") return "do seu filho";
+  return "";
+}
+function areaPreview(area){
+  var key = {C:"preview_C", F:"preview_F", O:"preview_O", D:"preview_D"}[area];
+  return key ? cfgImg(key) : "";
+}
+function phoneHtml(area){
+  var capa = cfgImg("capa_"+area);
+  if(!capa) return "";
+  var prev = areaPreview(area);
+  var sheets;
+  if(prev) sheets = "<div class='fr-sheet a'><img class='fr-fall' data-drop='img' alt='' src='"+esc(prev)+"'></div><div class='fr-sheet b'><img class='fr-fall' data-drop='img' alt='' src='"+esc(prev)+"'></div>";
+  else sheets = "<div class='fr-sheet a paper'></div><div class='fr-sheet b paper'></div>";
+  return "<div class='fr-desk'>"+sheets+"<div class='fr-phone'><div class='scr'><img class='fr-fall' data-drop='desk' loading='lazy' alt='Capa do material' src='"+esc(capa)+"'></div></div></div>";
+}
+function interiorHtml(area){
+  var nomeN = nomePronome(area);
+  var ora = nomeN ? "Oração pronta, com espaço pro nome "+nomeN : "Oração pronta";
+  var items = [
+    {i:"search", t:"O que está acontecendo"},
+    {i:"sword", t:"A arma e o passo a passo"},
+    {i:"hands", t:ora},
+    {i:"check", t:"Pra hoje"}
+  ];
+  var lis = items.map(function(x){ return "<li>"+ico(x.i, 18)+"<span>"+esc(x.t)+"</span></li>"; }).join("");
+  var prev = areaPreview(area);
+  var fig = prev ? "<div class='fr-ar fr-ar-page'><img class='fr-fall' loading='lazy' alt='Página de uma situação no material' src='"+esc(prev)+"'></div>" : "";
+  return fig+"<ul class='fr-calls'>"+lis+"</ul>";
+}
+function cicloHtml(){
+  var n2 = reageCurta(), n3 = voltaCurta();
+  void n2;
+  return "<div class='fr-ciclo'>"
+    + "<div class='cn c1'><span class='k'>1</span><b>A situação aperta</b></div>"
+    + "<div class='cn c2'><span class='k'>2</span><b>Você reage</b></div>"
+    + "<div class='cn c3'><span class='k'>3</span><b>"+esc(n3)+"</b></div>"
+    + "<div class='cn c4'><span class='k'>4</span><b>Vem a culpa</b><span class='sub'>“será que o problema sou eu?”</span></div>"
+    + "<div class='cmid'>O problema não é você.</div>"
+    + "</div>"
+    + (LUTOU() ? "<p class='fr-ciclo-nota'>Quem já lutou assim por essa casa não tem fé pequena.</p>" : "");
+}
+function p3chips(area){
+  var map = {
+    C:[["shh","Briga","boca fechada"],["hands","Ferida","perdão"],["coffee","Frieza","gesto de carinho"]],
+    F:[["door","Não quer ouvir","orar e deixar a porta aberta"],["box","Culpa","tirar das costas"],["hands","Medo","presença"]],
+    O:[["clock","Não sai","5 minutos fiéis"],["book","Sem palavras","a Palavra na boca"],["pin","Correria","um lugar fixo pra Deus"]],
+    D:[["sun","Dívida","os números na luz"],["compass","Sufoco","sabedoria pra renegociar"],["hands","Peso","coragem de pedir ajuda"]]
+  };
+  return (map[area]||[]).map(function(x){
+    return "<span class='fr-p3chip'>"+icoCirc(x[0])+"<span><b>"+esc(x[1])+"</b> <span class='arr'>&rarr;</span> "+esc(x[2])+"</span></span>";
+  }).join("");
+}
+function renderPitch(el){
+  var r = computeScore(), s = SITS[r.sit];
+  try{ S.res = { m: FC_AREA[r.main] || "", m2: r.second ? (FC_AREA[r.second] || "") : "", cx: EX() ? 1 : 0 }; persist(); }catch(eRes){}
+  var sitN = tx(s.nome), quando = txt(s.t), nome = esc(S.lead.nome||"");
+  var url = checkoutUrl(r.main);
+  var p3fig = cfgImg("p3");
+  var p3img = p3fig ? "<div class='fr-p3art'><img class='fr-fall' loading='lazy' alt='' src='"+esc(p3fig)+"'></div>" : "<div class='fr-p3art fr-p3fallback' aria-hidden='true'>"+ico("alert", 28)+ico("coffee", 28)+"</div>";
+  var chips = quatroChips(r.main, sitN).map(function(x, i){
+    var tag = i===0 ? "<i class='me'>a sua</i>" : "";
+    return "<span class='fr-sitchip"+(i===0?" on":"")+"'>"+esc(x)+tag+"</span>";
+  }).join("");
+  var autora = cfgImg("autora");
+  var foto = autora ? "<img class='fr-autora fr-fall' data-drop='img' loading='lazy' alt='Pra. Ezenete Rodrigues' src='"+esc(autora)+"'>" : "";
+  var relatos = [
+    {k:"relato1", who:"@katianascimento9902", crop:"r1"},
+    {k:"relato2", who:"@andrezarosolen", crop:"r2"},
+    {k:"relato3", who:"@maria.rgoncalves", crop:"r3"}
+  ].map(function(x){
+    var u = cfgImg(x.k);
+    var im = u ? "<span class='fr-rcrop "+x.crop+"'><img class='fr-fall' data-drop='img' loading='lazy' alt='Relato de "+esc(x.who)+"' src='"+esc(u)+"'></span>" : "";
+    return "<figure class='fr-slide'>"+im+"<figcaption>"+esc(x.who)+"</figcaption></figure>";
+  }).join("");
+  var faq1 = {C:ele()+" volta", F:"meu filho volta pra Deus", D:"a dívida some"}[r.main];
+  var faq = "";
+  if(r.main==="O") faq += "<details class='fr-acc'><summary>Isso garante que Deus vai responder do jeito que eu quero?</summary><p>Não. O material te ajuda a orar com direção e constância. A resposta é de Deus, no tempo dele.</p></details>";
+  else if(faq1) faq += "<details class='fr-acc'><summary>Isso garante que "+esc(faq1)+"?</summary><p>Não. Milagre é decisão de Deus. O material te mostra a causa e o que fazer em cada situação.</p></details>";
+  var faqQuem;
+  if(r.main==="O" || r.main==="D") faqQuem = "<details class='fr-acc'><summary>E se ninguém em casa mudar?</summary><p>A sua oração não depende de ninguém mudar primeiro. Você faz a sua parte com direção. O resto é com Deus.</p></details>";
+  else faqQuem = "<details class='fr-acc'><summary>E se "+ele()+" não quer mudar?</summary><p>Você responde pela sua oração, não pelas escolhas "+dele()+". Interceder é orar por quem não ora.</p></details>";
+  faq += faqQuem
+    + "<details class='fr-acc'><summary>Quase não oro. Serve pra mim?</summary><p>Serve. Começa do começo, com oração pronta. Não precisa orar bonito.</p></details>"
+    + "<details class='fr-acc'><summary>Não tenho tempo.</summary><p>De 5 a 15 minutos. Cada situação cabe numa manhã.</p></details>"
+    + "<details class='fr-acc'><summary>Faço tratamento ou terapia.</summary><p>Continue. Um caminha junto com o outro.</p></details>"
+    + "<details class='fr-acc'><summary>Estou sofrendo agressão.</summary><p>A sua segurança vem primeiro: 180 ou 190.</p></details>"
+    + "<details class='fr-acc'><summary>Como recebo?</summary><p>Logo depois do pagamento, no e-mail da compra e em Minhas Compras, na Eduzz.</p></details>"
+    + "<details class='fr-acc'><summary>Como pago?</summary><p>Pix ou cartão. R$ "+CFG.avista+" à vista ou "+CFG.parcelas+".</p></details>"
+    + "<details class='fr-acc'><summary>E se eu não gostar?</summary><p>Você tem 7 dias pra pedir o reembolso.</p></details>";
+  var btn = "<a class='fr-cta fr-buy' href='"+esc(url)+"'>"+BTN[r.main]+"</a>";
+  var also = r.second ? "<p class='fr-sum-second'>"+areaMark(r.second, 28)+" também: "+AREA2_TXT(r.second)+"</p>" : "";
+  var p3fecha = LUTOU() ? "Não foi falta de fé. Foi o mesmo remédio pra tudo." : "Não é falta de fé. Faltou o remédio certo.";
+  var passo3txt;
+  if(r.main==="O" || r.main==="D") passo3txt = "Em voz alta, com o seu nome e o de quem você está cobrindo, e um passo hoje.";
+  else passo3txt = "Em voz alta, com o nome "+(r.main==="C" ? dele() : "dele")+", e um passo hoje.";
+  el.innerHTML = "<div class='fr-pitch'>"
+    + "<section class='fr-blk fr-sum'>"
+    + "<p class='fr-selo'>SEU RESULTADO</p>"
+    + "<div class='fr-summark'>"+symHtml(r.main, 56)+"</div>"
+    + "<h2 class='fr-sumsit'>"+esc(sitN)+"</h2>"
+    + "<p class='fr-okarma'>"+ico("check", 18)+" Primeira arma na mão</p>"
+    + "<p class='fr-dx-p'>"+(nome?nome+", ":"")+"me dá 2 minutos. Quero te mostrar por que isso volta, e o que fazer em cada situação.</p>"
+    + also
+    + "</section>"
+    + "<section class='fr-blk'><h2 class='fr-h2'>Por que parece que nada muda</h2>"+cicloHtml()+"</section>"
+    + "<section class='fr-blk'>"
+    + p3img
+    + "<p class='fr-dx-p'>Ninguém trata dor de dente com xarope de tosse. Pode tomar o vidro inteiro.</p>"
+    + "<p class='fr-chave'>Cada situação tem uma causa. E cada causa, a sua arma.</p>"
+    + "<p class='fr-verse'>“As armas da nossa luta são poderosas em Deus.” <span>2 Coríntios 10:4</span></p>"
+    + "<div class='fr-p3chips'>"+p3chips(r.main)+"</div>"
+    + "<p class='fr-ciclo-nota'>"+p3fecha+"</p>"
+    + "</section>"
+    + "<section class='fr-blk'><h2 class='fr-h2'>Como a Pra. Ezenete ensina há mais de 20 anos:</h2>"
+    + "<ol class='fr-stepper'>"
+    + "<li class='done'><span class='fr-num'>"+ico("check", 18)+"</span><div><b>Entender o que está acontecendo.</b><p>Não é “abençoa minha casa”. É dar nome à situação.</p><i class='done-note'>você já fez</i></div></li>"
+    + "<li><span class='fr-num'>2</span><div><b>Usar a arma daquela situação.</b><p>Palavra, louvor, silêncio, perdão, jejum, atitude.</p></div></li>"
+    + "<li><span class='fr-num'>3</span><div><b>Falar a Palavra e fazer a sua parte.</b><p>"+esc(passo3txt)+"</p></div></li>"
+    + "</ol>"
+    + "<p class='fr-dx-p'>O passo 1 você já viu no resultado. Agora imagina isso pra cada situação da sua casa.</p>"
+    + "</section>"
+    + "<section class='fr-blk' id='fr-b5'>"
+    + "<h2 class='fr-h2'>"+esc(MATERIAL[r.main])+"</h2>"
+    + "<p class='fr-submat'>"+esc(SUB[r.main])+"</p>"
+    + "<p class='fr-dx-p fr-center'>Manual de oração · 20 situações reais · uma arma pra cada</p>"
+    + phoneHtml(r.main)
+    + "<p class='fr-dx-label'>POR DENTRO DE CADA SITUAÇÃO</p>"
+    + interiorHtml(r.main)
+    + "<p class='fr-ainda'>E ainda: versículos pra declarar, uma declaração pro dia e espaço pra anotar.</p>"
+    + "<p class='fr-dx-label'>AS SITUAÇÕES QUE MAIS PARECEM COM A SUA</p>"
+    + "<div class='fr-sitchips'>"+chips+"</div>"
+    + "<p class='fr-capitulo'>No material, a sua está no capítulo “"+esc(quando)+"”.</p>"
+    + "<p class='fr-dx-label'>E MAIS</p>"
+    + "<ul class='fr-extras'>"
+    + "<li>"+icoCirc("clock")+"<span>Rotina de 5 a 15 minutos</span></li>"
+    + "<li>"+icoCirc("door")+"<span>Como montar um quarto de guerra</span></li>"
+    + "<li>"+icoCirc("shield")+"<span>A sua autoridade e quem é o inimigo de verdade</span></li>"
+    + "</ul>"
+    + "<p class='fr-center fr-dx-p'>"+ico("phone", 18)+" No celular ou impresso.</p>"
+    + "</section>"
+    + "<section class='fr-blk fr-quem'>"
+    + foto
+    + "<h2 class='fr-h2'>Pra. Ezenete Rodrigues</h2>"
+    + "<ul class='fr-selosnum'>"
+    + "<li><b>20+ anos</b><span>à frente da intercessão da Estância Paraíso</span></li>"
+    + "<li><b>200 mil</b><span>pessoas formadas na intercessão</span></li>"
+    + "<li><b>Autora</b><span>de Uma Vida de Milagres</span></li>"
+    + "</ul>"
+    + "<p class='fr-dx-p'>Ela conta que, no começo, 5 minutos de oração era muito. Ninguém começa grande. A gente começa fiel.</p>"
+    + "</section>"
+    + "<section class='fr-blk'>"
+    + "<p class='fr-stars'>★★★★★</p>"
+    + "<div class='fr-car'><div class='fr-car-track' id='fr-car-track'>"+relatos+"</div></div>"
+    + "<div class='fr-car-nav'><button type='button' id='fr-car-prev' aria-label='Relato anterior'>"+ico("refresh", 18)+"</button><button type='button' id='fr-car-next' aria-label='Próximo relato'>"+ico("refresh", 18)+"</button></div>"
+    + "<p class='fr-legend'>Relatos reais das redes da Pra. Ezenete. Não são promessa de resultado.</p>"
+    + "</section>"
+    + "<section class='fr-blk'><div class='fr-price'>"
+    + (cfgImg("capa_"+r.main) ? "<div class='fr-pricecapa'><img class='fr-fall' data-drop='img' alt='' src='"+esc(cfgImg("capa_"+r.main))+"'></div>" : "")
+    + "<p class='plabel'>"+esc(MATERIAL[r.main])+"</p>"
+    + "<div class='p12'>R$ "+CFG.avista+"</div>"
+    + "<p class='fr-av'>à vista, no Pix ou no cartão</p>"
+    + "<p class='fr-parc'>ou <b>"+CFG.parcelas+"</b> no cartão</p>"
+    + "<p class='fr-pag'>"+ico("card", 18)+" Pagamento único.</p>"
+    + "<ul class='fr-sealrow'>"
+    + "<li>"+icoCirc("shield")+"<span>7 dias pra pedir reembolso</span></li>"
+    + "<li>"+icoCirc("mail")+"<span>Acesso no e-mail e em Minhas Compras, na Eduzz</span></li>"
+    + "<li>"+icoCirc("phone")+"<span>No celular ou impresso</span></li>"
+    + "</ul>"
+    + btn.replace("fr-buy'", "fr-buy' id='fr-buy-top'")
+    + "</div></section>"
+    + "<section class='fr-blk fr-gar'>"
+    + "<div class='fr-seal7' aria-hidden='true'><span>7</span><small>DIAS</small></div>"
+    + "<p><b>Garantia de 7 dias.</b> Leia, ore, use. Se não for pra você, pede o reembolso em até 7 dias e devolvemos tudo.</p>"
+    + "</section>"
+    + "<section class='fr-blk'>"+faq+"</section>"
+    + "<section class='fr-blk'>"
+    + "<div class='fr-antes'>"
+    + "<div class='col a'><span class='ico'>"+ico("cloud", 28)+"</span><b>Sem direção</b><p>a mesma oração pra tudo</p><p>cansaço e culpa</p></div>"
+    + "<div class='col b'><span class='ico'>"+ico("compass", 28)+"</span><b>Com direção</b><p>saber o que está acontecendo</p><p>uma arma e um passo pra cada situação</p></div>"
+    + "</div>"
+    + "<p class='fr-dx-p fr-center'>Deus é quem restaura. A sua parte é orar com direção e obedecer.</p>"
+    + btn.replace("fr-buy'", "fr-buy' id='fr-buy2'")
+    + "<p class='fr-later'>Não é pra agora? Guarda o seu primeiro passo. Ele já é seu.</p>"
+    + "</section>"
+    + "<div style='height:110px'></div></div>"
+    + "<div class='fr-fixedcta' id='fr-fixed'><a class='fr-cta fr-buy' id='fr-buy' href='"+esc(url)+"'>"+BTN[r.main]+"</a></div>";
+  el.querySelectorAll(".fr-buy").forEach(function(a){ a.addEventListener("click", function(){ track("checkout_click", {area:r.main, situacao:r.sit}); }); });
+  var trackEl = el.querySelector("#fr-car-track");
+  var prev = el.querySelector("#fr-car-prev"), nextb = el.querySelector("#fr-car-next");
+  function fitCar(){
+    if(!trackEl) return;
+    var slides = trackEl.children, w = trackEl.clientWidth || 1, i = Math.round(trackEl.scrollLeft / w), s;
+    if(i < 0) i = 0;
+    if(ge(i, slides.length)) i = slides.length - 1;
+    s = slides[i];
+    if(s) trackEl.style.height = s.offsetHeight + "px";
+  }
+  if(prev) prev.addEventListener("click", function(){ if(trackEl) trackEl.scrollBy({left:-trackEl.clientWidth, behavior:"smooth"}); });
+  if(nextb) nextb.addEventListener("click", function(){ if(trackEl) trackEl.scrollBy({left:trackEl.clientWidth, behavior:"smooth"}); });
+  if(trackEl){
+    trackEl.addEventListener("scroll", fitCar, {passive:true});
+    window.addEventListener("resize", fitCar);
+    trackEl.querySelectorAll("img").forEach(function(im){ im.addEventListener("load", fitCar); });
+    fitCar();
+  }
+  bindMedia(el);
+  fadeIn(el);
+  var fx = el.querySelector("#fr-fixed"), b5 = el.querySelector("#fr-b5");
+  function chk(){ if(!document.body.contains(b5)){ window.removeEventListener("scroll", chk); return; } var show = !ge(b5.getBoundingClientRect().top, window.innerHeight * 0.9); fx.classList.toggle("show", show); }
+  window.addEventListener("scroll", chk, {passive:true}); chk();
+  track("pitch_visto", {area:r.main});
+  void sitN;
+}
+function boot(){
+  root.innerHTML = "<div class='fr-topbar'><button class='fr-back' id='fr-back' aria-label='Voltar'>&#8249;</button><div class='fr-progress'><div class='fr-progress-fill' id='fr-fill'></div></div></div><div class='fr-stage' id='fr-stage'></div>";
+  stage = root.querySelector("#fr-stage"); fill = root.querySelector("#fr-fill"); backBtn = root.querySelector("#fr-back");
+  backBtn.addEventListener("click", back);
+  if(!S.history || !S.history.length || typeof S.history[0] !== "string"){ S.history = [STEPS[0].name]; }
+  render(); track("view");
+  try{ var aberto = cur(); track("step_" + aberto.st.name, {step_index:aberto.i}); }catch(e3){}
+  try{ var tent = 0; var ivWp = setInterval(function(){ var n = neutralizarWpEmoji(); restaurarEmojiNativo(root); tent = tent+1; if(n || ge(tent, 16)){ clearInterval(ivWp); } }, 500);
+    window.addEventListener("load", function(){ setTimeout(function(){ neutralizarWpEmoji(); restaurarEmojiNativo(root); }, 400); }); }catch(e){}
+}
+window.__FR = { S:S, computeScore:computeScore, visibleSteps:visibleSteps, V:V, checkoutUrl:checkoutUrl, sitTitulo:sitTitulo, sitNome:sitNome };
+if(document.readyState === "loading"){ document.addEventListener("DOMContentLoaded", boot); } else { boot(); }
+})();
+</script>
